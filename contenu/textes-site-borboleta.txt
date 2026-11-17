@@ -1,0 +1,243 @@
+Normal | Borboleta Institut
+Normal | Contenu complet du site et arborescence
+Normal | Ce document contient l'arborescence du site et le texte définitif de chaque page, prêt à intégrer. Le site reprend la logique de Sparenata, avec deux pôles : se former et prendre soin de soi. Tout est écrit dans le ton de Borboleta : éditorial, chaleureux, au vouvoiement. Les titres sont en serif, le mot mis en valeur apparaît en italique doré, comme sur le site actuel.
+Heading 1 | Repères de marque
+List Parag | Logo papillon doré, signature Borboleta Institut.
+List Parag | Palette : crème et beige, doré, anthracite.
+List Parag | Titres en serif, mot-clé en italique doré. Suréclats en capitales espacées dorées. Corps en sans-serif.
+List Parag | Ton : direct, soigné, au vouvoiement. Signature : le geste juste, transmis avec soin.
+List Parag | Formatrice : Mariline Pinho da Costa. Instagram : @borboletainstitut.
+Heading 1 | Arborescence
+Normal | Accueil
+Normal | L'institut
+Normal | L'institut et l'approche
+Normal | La formatrice, Mariline Pinho da Costa
+Normal | La certification Qualiopi
+Normal | Les soins
+Normal | Drainage lymphatique, méthode Renata França
+Normal | Remodelage et soin signature
+Normal | Soins anti-cellulite, rouleau brésilien
+Normal | Soins du visage, Kobido et LCP
+Normal | Technologies, radiofréquence et pressothérapie
+Normal | Soins spécifiques, post-opératoire et femme enceinte
+Normal | Cures et offres découverte
+Normal | Tarifs
+Normal | Réservation en ligne, Planity
+Normal | Les formations
+Normal | La formation drainage lymphatique corps
+Normal | Drainage lymphatique visage
+Normal | Remodelage, massage anti-cellulite
+Normal | Drainage lymphatique post-opératoire
+Normal | Lifting japonais, Kobido
+Normal | Le programme et le déroulement
+Normal | Financement
+Normal | Calendrier des sessions
+Normal | S'inscrire
+Normal | Résultats et témoignages
+Normal | FAQ
+Normal | Contact
+Heading 1 | Accueil
+Normal | BORBOLETA INSTITUT · DRAVEIL
+Normal | Le drainage lymphatique, méthode Renata França
+Normal | Un institut spécialisé à Draveil, et un centre de formation pour transmettre ce savoir-faire. Vous venez pour prendre soin de vous, ou pour apprendre le geste. Les deux se vivent ici, avec la même exigence.
+Normal | Bouton : DÉCOUVRIR LES SOINS
+Normal | Bouton : DÉCOUVRIR LES FORMATIONS
+Normal | NOTRE SIGNATURE
+Normal | Le geste juste, transmis avec soin
+Normal | Un bon drainage se reconnaît à la main : la pression, le rythme, la précision. C'est ce que Mariline pratique au quotidien, et ce qu'elle transmet en formation.
+Normal | PRENDRE SOIN DE SOI
+Normal | Nos soins
+Normal | Drainage lymphatique, remodelage, soins du visage, technologies douces. Des résultats visibles dès la première séance, dans le calme d'un institut pensé pour vous déconnecter.
+Normal | Bouton : VOIR LES SOINS
+Normal | SE FORMER
+Normal | Nos formations
+Normal | Cinq formations professionnelles, en présentiel et en petit groupe, certifiées Qualiopi. On y apprend en faisant, jusqu'à ce que le geste soit vraiment à vous.
+Normal | Bouton : VOIR LES FORMATIONS
+Normal | VOTRE FORMATRICE
+Normal | Mariline Pinho da Costa
+Normal | Praticienne et formatrice, elle accompagne chaque stagiaire avec exigence et bienveillance.
+Normal | Bouton : EN SAVOIR PLUS
+Normal | LA CONFIANCE
+Normal | Certifié Qualiopi. Note de 5 sur 5 auprès de la clientèle.
+Heading 1 | L'institut
+Normal | L'INSTITUT
+Normal | Borboleta, prendre soin autrement
+Normal | Retrouver un corps fin et tonique sans chirurgie ni technique invasive : c'est tout l'objet de Borboleta Institut, à Draveil, au sud-est de Paris. Mariline, votre esthéticienne spécialisée, vous reçoit dans le calme et vous invite à vous déconnecter pour prendre enfin soin de vous.
+Normal | LA MÉTHODE
+Normal | Le drainage et le remodelage
+Normal | Le drainage lymphatique, par des pressions fermes à un rythme accéléré, stimule la circulation, réduit les oedèmes et la cellulite et affine le corps dès la première séance. Le remodelage, lui, déplace la graisse vers des zones plus harmonieuses et sculpte le corps par des mouvements vigoureux et fermes. La silhouette se redessine, joliment galbée.
+Normal | NOTRE APPROCHE
+Normal | Apprendre avec ses mains
+Normal | Pas d'esbroufe ni de diaporamas interminables. On montre, on fait faire, on corrige, on recommence, jusqu'à ce que le geste soit vraiment ancré. La même exigence vaut en cabine et en formation.
+Heading 2 | La formatrice
+Normal | VOTRE FORMATRICE
+Normal | Mariline Pinho da Costa
+Normal | Praticienne et formatrice spécialisée en techniques de bien-être, Mariline transmet son savoir avec exigence et bienveillance, bien au-delà du simple protocole.
+Normal | Sa pédagogie tient en quelques mots : montrer, faire faire, corriger, recommencer. Parce que la technique s'ancre dans le geste répété, dans un espace de confiance et sans jugement. Chacune repart avec des bases solides, pas juste des notes à relire.
+Normal | Bouton : @BORBOLETAINSTITUT
+Heading 1 | Les soins
+Normal | PRENDRE SOIN DE SOI
+Normal | Nos soins
+Normal | Tous nos soins reposent sur la méthode Renata França et sur des techniques douces, sans chirurgie. Le drainage et le remodelage du corps sont exclusivement réservés aux femmes. Le drainage du visage, Miracle Face, est ouvert aux femmes et aux hommes. La plupart des soins existent en séance et en cure, à tarif dégressif.
+Normal | Bouton : RÉSERVER EN LIGNE
+Heading 2 | Offres découverte
+Normal | La première fois, on prend le temps de faire connaissance avec la méthode.
+Normal | Première séance de drainage lymphatique méthode Renata França (1h)   90 €
+Normal | Drainage lymphatique visage et corps, le combo parfait (1h30)   140 €
+Normal | Bilan personnalisé radiofréquence (30min) 20 €
+Normal | Bilan personnalisé et 1 zone de radiofréquence (1h)  69 €
+Heading 2 | Drainage lymphatique corps
+Normal | Le soin signature de l'institut, pour une silhouette affinée et une vraie sensation de légèreté.
+Normal | Corps entier (1h)  120 €
+Normal | Corps entier, cure de 5 séances (1h)   500 €
+Normal | Membres inférieurs (30min)   50 €
+Normal | Membres inférieurs, cure de 5 séances (30min)   230 €
+Normal | Le combo parfait, drainage RF et Miracle Face  (1h30)   140 €
+Heading 2 | Drainage lymphatique visage, Miracle Face
+Normal | Un effet bonne mine immédiat, des traits reposés, un regard défatigué. Pour les femmes comme pour les hommes.
+Normal | Miracle Face, drainage visage  (30min)   50 €
+Normal | Miracle Face, cure de 5 séances  (30min)   230 €
+Heading 2 | Remodelage et soin signature
+Normal | Sculpter la silhouette par des manoeuvres fermes et précises. Le soin Body Signature réunit drainage et remodelage en une seule prestation.
+Normal | Remodelage corps entier  (1h15)   130 €
+Normal | Soin Body Signature, drainage et remodelage  (1h15)   120 €
+Normal | Remodelage corps entier, cure de 5 séances  (1h15)   550 €
+Normal | Remodelage membres inférieurs  (40min)   60 €
+Normal | Remodelage membres inférieurs, cure de 5 séances  (40min)   275 €
+Heading 2 | Soins anti-cellulite au rouleau brésilien
+Normal | Un soin ciblé qui prolonge le drainage. Une séance de drainage lymphatique au préalable est indispensable.
+Normal | Drainage membres inférieurs et rouleau brésilien, 1 zone  (50min)   80 €
+Normal | Rouleau brésilien, 1 zone  (20min)   30 €
+Normal | Rouleau brésilien, 2 zones  (40min)   50 €
+Heading 2 | Soins du visage sur mesure LCP
+Normal | Des soins professionnels LCP, 97 % d'origine naturelle, made in France et vegan, chacun complété par un drainage visage express. Tous en 1h, au tarif de 90 €.
+List Parag | Pro Age+ : anti-âge, fermeté, nutrition, à l'extrait de caviar.
+List Parag | Hydra Fresh : hydratation, repulpe, éclat, à l'acide hyaluronique ou au collagène.
+List Parag | Pollution Control : purifiant, détoxifiant, matifiant, à l'acide glycolique.
+List Parag | Boost Sculpt : tonicité, anti-fatigue, éclat, à la vitamine C.
+Heading 2 | Lifting japonais, Kobido
+Normal | Lissage, drainage et digitopression pour un effet rajeunissant naturel, sans maquillage. Un vrai moment de reconnexion.
+Normal | Kobido, 1 séance  (1h)   90 €
+Normal | Kobido, cure de 5 séances  (1h)   400 €
+Heading 2 | Technologies, radiofréquence Bloomea
+Normal | Une radiofréquence non invasive pour raffermir, affiner et redessiner la silhouette. Un bilan personnalisé précède toute cure.
+Normal | Corps, 1 zone  (45min)   80 €
+Normal | Corps, 2 zones  (1h30)   140 €
+Normal | Cure de 10 séances, 1 zone, remise de 10 %  (45min)   720 €
+Heading 2 | Pressothérapie
+Normal | Des bottes de pression stimulent en douceur le drainage et la circulation veineuse.
+Normal | Pressothérapie  (30min)   25 €
+Heading 2 | Soins post-opératoires, chirurgie esthétique
+Normal | Un drainage adapté pour accompagner la récupération après une chirurgie esthétique, dans le respect des consignes médicales.
+Normal | 10 séances de drainage post-opératoire corps entier, méthode Renata França  (1h)   800 €
+Normal | 10 séances post-opératoire, méthode Dr Vodder, par zone  (35min)   450 €
+Heading 2 | Drainage thérapeutique, méthode Dr Vodder
+Normal | Un drainage manuel par zone, pour les problématiques ciblées : cellulite profonde, jambes lourdes, oedèmes. Visage et cou, nuque, poitrine, bras, abdomen, membres inférieurs, lombaires, dos.
+Normal | Séance, par zone  (35min)   50 €
+Normal | Cure de 10 séances, par zone  (35min)   450 €
+Heading 2 | Bien-être femme enceinte, à partir de 3 mois
+Normal | Un soin tout en douceur pour soulager les jambes lourdes et retrouver de la légèreté.
+Normal | Drainage lymphatique  (50min)   75 €
+Normal | Drainage lymphatique, cure de 5 séances  (50min)   350 €
+Normal | Drainage RF et Miracle Face  (1h20)   100 €
+Heading 2 | Cures et formules
+Normal | CURE SUMMER EXPRESS
+Normal | Drainage lymphatique visage et corps, 5 séances  (1h30)   650 €
+Normal | Remodelage corps anti-cellulite, 5 séances  (1h15)   550 €
+Normal | Drainage lymphatique corps, 5 séances  (1h)   500 €
+Normal | Radiofréquence 1 zone corps, 5 séances  (45min)   400 €
+Normal | Drainage lymphatique jambes et rouleau brésilien 1 zone, 5 séances  (50min)   400 €
+Normal | LES CURES, MÉTHODE RENATA FRANÇA
+Normal | Drainage lymphatique corps entier, 10 séances  (1h)   800 €
+Normal | Drainage lymphatique full body, visage et corps, 10 séances  (1h30)   1200 €
+Normal | Body Signature, drainage et remodelage, 10 séances  (1h20)   1100 €
+Heading 1 | Les formations
+Normal | INSTITUT DE FORMATION PROFESSIONNELLE · RÉGION PARISIENNE
+Normal | Apprendre le geste, vraiment
+Normal | Cinq formations pour maîtriser le drainage lymphatique et ses techniques soeurs. En présentiel, en petit groupe, certifiées Qualiopi. On commence par le drainage corps, le socle, puis on choisit ses spécialisations.
+Normal | Bouton : S'INSCRIRE
+Heading 2 | Formation 1 : Drainage lymphatique corps
+Normal | PRÉSENTIEL · 21H · 3 JOURS
+Normal | Drainage Lymphatique corps
+Normal | Trois jours pour apprendre à drainer, à libérer, à soulager. La formation socle, à suivre en premier : anatomie, physiologie, protocole et contre-indications.
+Normal | Durée : 21 heures
+Normal | Format : 3 jours en présentiel
+Normal | Niveau : débutant accepté
+Normal | Groupe : petit groupe
+Normal | Programme : anatomie du système lymphatique et voies de drainage, techniques manuelles, pression, pompage, appel et réabsorption, pratique intensive sur mannequin puis entre participants avec corrections en temps réel, indications et contre-indications cliniques.
+Heading 2 | Formation 2 : Drainage lymphatique visage
+Normal | PRÉSENTIEL · FORMAT À CONFIRMER
+Normal | Drainage Lymphatique visage
+Normal | Le drainage du visage à visée esthétique : effet bonne mine, traits reposés, regard défatigué.
+Normal | Format : présentiel
+Normal | Niveau : drainage corps recommandé
+Normal | Groupe : petit groupe
+Normal | Programme : spécificités lymphatiques du visage, du cou et de la nuque, protocole visage complet, dosage de la pression sur les zones sensibles, intégration du soin dans une prestation plus large.
+Heading 2 | Formation 3 : Remodelage, massage anti-cellulite
+Normal | PRÉSENTIEL · FORMAT À CONFIRMER
+Normal | Le remodelage du corps
+Normal | La technique qui sculpte : déplacer les amas graisseux, lisser la cellulite, redessiner la silhouette par des manoeuvres fermes et précises.
+Normal | Format : présentiel
+Normal | Niveau : drainage corps recommandé
+Normal | Groupe : petit groupe
+Normal | Programme : compréhension du tissu adipeux et de la cellulite, palper-rouler, pincements et glissements, remodelage corps entier et membres inférieurs, le soin signature qui combine drainage et remodelage.
+Heading 2 | Formation 4 : Drainage post-opératoire, chirurgie esthétique
+Normal | PRÉSENTIEL · FORMAT À CONFIRMER
+Normal | Le drainage post-opératoire
+Normal | Accompagner la récupération après une chirurgie esthétique du visage et du corps, par un drainage adapté, dans le respect strict des consignes médicales.
+Normal | Format : présentiel
+Normal | Niveau : drainage corps et visage en prérequis
+Normal | Groupe : petit groupe
+Normal | Programme : phases de la récupération post-opératoire, précautions et signaux d'alerte, protocoles adaptés visage et corps, douceur des manoeuvres et adaptation à chaque zone opérée, traçabilité des séances.
+Heading 2 | Formation 5 : Lifting japonais, Kobido
+Normal | PRÉSENTIEL · FORMAT À CONFIRMER
+Normal | Le Kobido
+Normal | La technique japonaise qui combine lissage, drainage et digitopression pour un effet rajeunissant naturel, sans maquillage. Un soin de reconnexion, à intégrer à votre carte.
+Normal | Format : présentiel
+Normal | Niveau : ouvert, soin complémentaire
+Normal | Groupe : petit groupe
+Normal | Programme : origine et principes du Kobido, lecture du visage et points de digitopression, enchaînement complet du protocole liftant, travail du rythme et de la précision, mise en valeur du soin en cabine.
+Normal | Note interne : durées et tarifs des formations 2 à 5 à fixer, la formation corps servant de repère à 21 heures sur 3 jours.
+Heading 2 | Le programme et le déroulement
+Normal | DÉROULEMENT
+Normal | Comment ça se passe ?
+Normal | De l'inscription à la fin de la formation, chaque étape est pensée pour que tout soit simple et clair. Vous n'avez qu'à vous concentrer sur l'apprentissage.
+List Parag | Consultez le catalogue : toutes les informations, les dates disponibles et les modalités d'inscription y figurent.
+List Parag | Réservez votre place : l'inscription se fait via le catalogue, l'adresse du lieu vous est transmise une semaine avant le début de la session.
+List Parag | Formez-vous en pratique : des journées qui alternent théorie, démonstrations et pratique en binôme, sous la guidance attentive de la formatrice.
+List Parag | Repartez outillée : avec les gestes maîtrisés et la confiance nécessaire pour intégrer la technique à votre pratique.
+Normal | Toutes les formations se vivent en présentiel, en région parisienne, en petit groupe. La pratique occupe l'essentiel du temps.
+Normal | Bouton : PROGRAMME COMPLET SUR LE CATALOGUE
+Heading 2 | Financement
+Normal | PRISE EN CHARGE
+Normal | Une formation finançable
+Normal | Borboleta Institut est un organisme de formation certifié Qualiopi. Vos formations peuvent ainsi faire l'objet d'une prise en charge, notamment par les OPCO, par le CPF, par le FAFCEA pour les cheffes d'entreprise artisanale, ou par France Travail. Nous vous accompagnons dans le montage de votre dossier.
+Normal | Bouton : S'INSCRIRE
+Heading 1 | Résultats et témoignages
+Normal | ELLES EN PARLENT
+Normal | Une note de 5 sur 5
+Normal | Sur 138 avis, la clientèle salue l'accueil, la propreté, le cadre et la qualité des prestations, tous notés 5 sur 5. Cette page met en avant les avis vérifiés, les résultats avant et après en soin, et, dès les premières sessions, les retours des stagiaires en formation.
+Normal | Mise en page suggérée : une sélection d'avis vérifiés en vignettes, un bloc avant et après pour le drainage et le remodelage, et un espace réservé aux témoignages de stagiaires à alimenter après les premières formations.
+Heading 1 | FAQ
+Normal | QUESTIONS FRÉQUENTES
+Heading 3 | Les soins
+Normal | Le drainage est-il réservé aux femmes ? Le drainage et le remodelage du corps sont exclusivement réservés aux femmes. Le drainage du visage, Miracle Face, est ouvert aux femmes et aux hommes.
+Normal | Voit-on des résultats dès la première séance ? Oui. Le drainage réduit les oedèmes et procure une sensation de légèreté immédiate. Les cures prolongent et installent les résultats.
+Normal | Y a-t-il des contre-indications ? Certaines situations nécessitent un avis préalable. N'hésitez pas à les signaler lors de la prise de rendez-vous ou du bilan.
+Normal | Comment réserver ? La réservation se fait en ligne, à tout moment, via notre page Planity.
+Heading 3 | Les formations
+Normal | Faut-il déjà être professionnelle ? Non. La formation socle au drainage corps accepte les débutantes. Les esthéticiennes, masseuses, praticiennes bien-être et personnes en reconversion y trouvent leur place.
+Normal | Où ont lieu les formations ? En présentiel, en région parisienne. L'adresse exacte vous est communiquée une semaine avant la session.
+Normal | Repart-on avec un document ? Oui. Une attestation de fin de formation vous est remise, et vous repartez avec des bases solides, pas seulement des notes à relire.
+Normal | La formation est-elle finançable ? L'institut est certifié Qualiopi. Une prise en charge est possible, notamment via les OPCO, le FAFCEA ou France Travail.
+Normal | Que se passe-t-il en cas d'annulation ? Les conditions d'annulation vous sont précisées à l'inscription.
+Heading 1 | Contact
+Normal | NOUS TROUVER
+Normal | Venez nous rencontrer
+Normal | Borboleta Institut, 10 allée des Grandes Pièces, 91210 Draveil. Au sud-est de Paris.
+Normal | Horaires : du lundi au vendredi de 9h à 19h30, le mercredi à partir de 10h, le samedi de 9h à 14h, fermé le dimanche.
+Normal | Pour les soins, réservation en ligne via Planity. Pour les formations, inscription via le catalogue. Vous pouvez aussi nous écrire sur Instagram, @borboletainstitut, ou via le formulaire ci-dessous.
+Normal | Formulaire : nom, courriel, téléphone, objet, votre message. Pour une formation, précisez la formation visée.
+Normal | Bouton : RÉSERVER UN SOIN
+Normal | Bouton : S'INSCRIRE À UNE FORMATION
+IMAGES 0

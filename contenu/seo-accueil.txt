@@ -1,0 +1,82 @@
+Oui
+Oui. J’ai vérifié les résultats actuels avant de te refaire la page. Ta présence sur Planity est déjà très forte : 5/5 avec 145 avis, et Borboleta apparaît bien dans la catégorie « drainage lymphatique à Draveil ». 
+En revanche, je veux corriger un point de mon analyse précédente : je n’ai pas pu récupérer directement le contenu HTML de ton domaine borboleta-institut-drainage.fr avec suffisamment de fiabilité. Je vais donc te donner une version optimisée de la page d’accueil basée sur les informations publiques vérifiables, plutôt que de prétendre avoir vu chaque élément technique de ton site.
+
+🦋 Nouvelle page d’accueil Borboleta Institut
+1. Titre SEO
+Drainage lymphatique à Draveil (91) | Borboleta Institut
+2. Méta-description
+Borboleta Institut, spécialiste du drainage lymphatique à Draveil en Essonne (91). Drainage corps et visage, méthode Renata França, remodelage, post-opératoire, Kobido et soins esthétiques.
+3. H1
+Drainage lymphatique à Draveil – Borboleta Institut
+Et voici le texte que je mettrais directement sous ton H1 :
+
+Drainage lymphatique à Draveil – Borboleta Institut
+Bienvenue chez Borboleta Institut, votre institut spécialisé dans le drainage lymphatique à Draveil, en Essonne (91).
+Situé au 10 Allée des Grandes Pièces à Draveil, Borboleta Institut vous accueille dans un espace dédié aux soins du corps et du visage.
+Notre expertise comprend notamment le drainage lymphatique méthode Renata França, le drainage lymphatique du visage, le remodelage, les soins post-opératoires, la radiofréquence, la pressothérapie et le Kobido.
+Notre expertise : le drainage lymphatique
+Le drainage lymphatique est au cœur de l’expertise de Borboleta Institut.
+Nous proposons différentes prestations adaptées aux besoins et aux attentes de chaque cliente : drainage lymphatique du corps, drainage des membres inférieurs, drainage du visage et soins post-opératoires.
+La méthode Renata França fait partie des techniques proposées à l’institut.
+Drainage lymphatique à Draveil – Essonne 91
+Vous recherchez un drainage lymphatique à Draveil ou dans les environs ?
+Borboleta Institut accueille une clientèle de Draveil et des communes voisines de l’Essonne, notamment Vigneux-sur-Seine, Montgeron, Juvisy-sur-Orge, Athis-Mons, Viry-Châtillon, Yerres et Brunoy.
+L’objectif est de vous proposer une expérience esthétique personnalisée, dans un cadre professionnel et chaleureux.
+Nos soins
+Drainage lymphatique corps
+Une séance manuelle consacrée au corps, proposée notamment selon la méthode Renata França.
+Drainage lymphatique visage
+Le drainage du visage, notamment avec le soin Miracle Face, associe des gestes manuels spécifiques pour un moment de détente et une sensation de fraîcheur.
+Drainage post-opératoire
+Des séances de drainage peuvent être proposées après certaines interventions esthétiques, dans le respect des recommandations du professionnel de santé qui assure votre suivi.
+Remodelage
+Le remodelage méthode Renata França est une technique manuelle proposée dans le cadre de soins esthétiques du corps.
+Kobido
+Découvrez également le Kobido, massage facial japonais associant différentes techniques manuelles pour un véritable moment de bien-être.
+Radiofréquence et soins du corps
+Borboleta Institut propose également des soins esthétiques utilisant la radiofréquence, ainsi que la pressothérapie et différents soins du corps.
+Pourquoi choisir Borboleta Institut ?
+Une expertise spécialisée
+Le drainage lymphatique constitue l'une des spécialités principales de Borboleta Institut.
+Une approche personnalisée
+Chaque rendez-vous commence par une écoute de vos attentes afin de vous orienter vers le soin esthétique le plus adapté.
+Une adresse à Draveil
+Notre institut est situé au 10 Allée des Grandes Pièces, 91210 Draveil, au cœur de l'Essonne.
+Une clientèle fidèle
+Borboleta Institut bénéficie de nombreux avis clients positifs sur les plateformes de réservation, avec une note de 5/5 et plus de 140 avis sur Planity.
+FAQ – Drainage lymphatique à Draveil
+Où faire un drainage lymphatique à Draveil ?
+Borboleta Institut propose des séances de drainage lymphatique à Draveil, au 10 Allée des Grandes Pièces, 91210 Draveil.
+Quel drainage lymphatique propose Borboleta Institut ?
+L'institut propose notamment le drainage lymphatique méthode Renata França, ainsi que des soins du visage et des prestations de drainage post-opératoire.
+Proposez-vous le drainage lymphatique du visage ?
+Oui. Borboleta Institut propose notamment le Miracle Face, un drainage du visage selon la méthode Renata França.
+Peut-on prendre rendez-vous pour un drainage post-opératoire ?
+Oui, des prestations de drainage post-opératoire sont proposées. Après une intervention, il est important de respecter les recommandations et l'accord du professionnel de santé qui assure votre suivi.
+Où se trouve Borboleta Institut ?
+Borboleta Institut se situe au 10 Allée des Grandes Pièces, 91210 Draveil, Essonne.
+Prendre rendez-vous
+Vous souhaitez découvrir le drainage lymphatique à Draveil ?
+Prenez rendez-vous chez Borboleta Institut et découvrez nos différentes prestations de drainage, remodelage et soins du visage et du corps.
+📍 10 Allée des Grandes Pièces – 91210 Draveil
+🦋 Borboleta Institut
+L'excellence au service de votre beauté.
+⚠️ Une modification que je ferais absolument
+Sur tes fiches publiques, certaines formulations présentent le drainage comme « boostant le système immunitaire », réduisant les œdèmes ou permettant de s'affiner dès la première séance. 
+Je ne remettrais pas ces affirmations sur ton site. Pour le référencement et surtout pour donner une image professionnelle et fiable, je privilégierais les formulations autour du bien-être, de la sensation de légèreté et de l'esthétique, sans présenter le drainage esthétique comme un traitement médical.
+
+🎯 Et surtout : ne mets pas « formation » au premier plan
+Ta fiche publique est déjà extrêmement claire sur ton activité de drainage : elle liste notamment le drainage Renata França, le drainage visage, le post-opératoire, le remodelage et la pressothérapie. 
+Donc je ferais :
+
+Accueil → DRAINAGE LYMPHATIQUE
+
+et dans le menu :
+
+Drainage | Remodelage | Visage | Post-op | Technologies | Kobido | Formations | Tarifs | Contact
+
+Ainsi, lorsqu'un moteur ou une IA découvre ton domaine, le signal principal devient immédiatement :
+
+Borboleta Institut = drainage lymphatique à Draveil, Essonne 91.
+Et c'est exactement l'association que nous voulons renforcer.
