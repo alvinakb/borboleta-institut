@@ -19,9 +19,8 @@ import { Component, input } from '@angular/core';
       [class.emplacement--sombre]="sombre()"
       [style.aspect-ratio]="pleinEcran() ? null : ratio()"
       [attr.data-photo]="fichier()"
-      [attr.role]="description() ? 'img' : null"
-      [attr.aria-label]="description() || null"
-      [attr.aria-hidden]="description() ? null : 'true'"
+      [attr.data-description]="description() || null"
+      aria-hidden="true"
     >
       <img
         class="emplacement__papillon"
@@ -40,7 +39,7 @@ import { Component, input } from '@angular/core';
 export class EmplacementImage {
   /** Chemin attendu de la future photo, ex. « assets/images/accueil-hero.jpg » (non affiché). */
   readonly fichier = input.required<string>();
-  /** Description de l’image (texte alternatif). Vide : image décorative, ignorée des lecteurs d’écran. */
+  /** Texte alternatif de la future photo. Tant que la photo manque, l’emplacement reste masqué aux lecteurs d’écran. */
   readonly description = input('');
   /** Rapport largeur / hauteur, ex. « 4 / 3 ». */
   readonly ratio = input('4 / 3');
