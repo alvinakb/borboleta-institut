@@ -1,0 +1,84 @@
+<a class="lien-evitement" href="#contenu">Aller au contenu</a>
+<header class="entete">
+  <div class="conteneur entete__barre">
+    <a class="entete__logo" routerLink="/" aria-label="Borboleta Institut, retour à l'accueil">
+      <img src="images/logo-fond-clair.jpg" alt="Borboleta Institut" width="2048" height="1366" />
+    </a>
+
+    <button
+      type="button"
+      class="burger"
+      [attr.aria-expanded]="menuMobileOuvert()"
+      aria-controls="menu-principal"
+      (click)="basculerMenuMobile()"
+    >
+      <span class="burger__barres" aria-hidden="true"></span>
+      <span class="visuellement-cache">{{
+        menuMobileOuvert() ? 'Fermer le menu' : 'Ouvrir le menu'
+      }}</span>
+    </button>
+
+    <nav
+      id="menu-principal"
+      class="nav"
+      [class.nav--ouverte]="menuMobileOuvert()"
+      aria-label="Menu principal"
+    >
+      <ul class="nav__liste">
+        @for (entree of menu; track entree.libelle; let i = $index) {
+          @if (entree.sousMenu) {
+            <li class="nav__item nav__item--deroulant" (focusout)="focusSorti($event, i)">
+              <button
+                type="button"
+                class="nav__lien nav__bouton"
+                [id]="'bouton-sous-menu-' + i"
+                [attr.aria-expanded]="sousMenuOuvert() === i"
+                [attr.aria-controls]="'sous-menu-' + i"
+                (click)="basculerSousMenu(i)"
+              >
+                {{ entree.libelle }}
+                <span class="nav__chevron" aria-hidden="true"></span>
+              </button>
+              <ul
+                class="sous-menu"
+                [id]="'sous-menu-' + i"
+                [class.sous-menu--ouvert]="sousMenuOuvert() === i"
+              >
+                @for (lien of entree.sousMenu; track lien.lien) {
+                  <li>
+                    @if (lien.externe) {
+                      <a class="sous-menu__lien" [href]="lien.lien" target="_blank" rel="noopener"
+                        >{{ lien.libelle
+                        }}<span class="visuellement-cache"> (nouvel onglet)</span></a
+                      >
+                    } @else {
+                      <a
+                        class="sous-menu__lien"
+                        [routerLink]="lien.lien"
+                        routerLinkActive="actif"
+                        ariaCurrentWhenActive="page"
+                        >{{ lien.libelle }}</a
+                      >
+                    }
+                  </li>
+                }
+              </ul>
+            </li>
+          } @else {
+            <li class="nav__item">
+              <a
+                class="nav__lien"
+                [routerLink]="entree.lien"
+                routerLinkActive="actif"
+                [routerLinkActiveOptions]="{ exact: true }"
+                ariaCurrentWhenActive="page"
+                >{{ entree.libelle }}</a
+              >
+            </li>
+          }
+        }
+      </ul>
+      <app-bouton-reserver class="nav__reserver" libelle="Réserver" />
+    </nav>
+  </div>
+</header>

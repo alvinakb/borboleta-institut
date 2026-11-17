@@ -1,0 +1,59 @@
+<section class="entete-page">
+  <div class="conteneur">
+    <p class="surtitre">Prise en charge</p>
+    <h1 class="titre-page">Une formation <em>finançable</em></h1>
+    <p class="chapo">
+      Borboleta Institut est un organisme de formation certifié Qualiopi. Vos formations peuvent
+      ainsi faire l'objet d'une prise en charge. Nous vous accompagnons dans le montage de votre
+      dossier.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="conteneur flux">
+    <p class="surtitre">Les dispositifs</p>
+    <h2 class="titre">Les solutions de <em>financement</em></h2>
+    <ul class="grille" style="margin-top: 2rem; padding: 0; list-style: none">
+      @for (d of dispositifs; track d.nom) {
+        <li class="flux">
+          <h3>{{ d.nom }}</h3>
+          <p>{{ d.texte }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<section class="section section--blanche">
+  <div class="conteneur flux">
+    <p class="surtitre">Qualité</p>
+    <h2 class="titre">Certifié <em>Qualiopi</em></h2>
+    <p>
+      Certificat Qualiopi :
+      @if (legal.certificatQualiopi) {
+        {{ legal.certificatQualiopi }}
+      } @else {
+        <span class="a-completer">{{ aCompleter }}</span>
+      }
+    </p>
+    <p>
+      Numéro de déclaration d'activité :
+      @if (legal.numeroDeclarationActivite) {
+        {{ legal.numeroDeclarationActivite }}
+      } @else {
+        <span class="a-completer">{{ aCompleter }}</span>
+      }
+    </p>
+  </div>
+</section>
+
+<app-bloc-cta
+  surtitre="On s'occupe de vous"
+  titre="Parlons de votre"
+  motCle="dossier"
+  texte="Dites-nous quelle formation vous visez et votre situation : nous vous orientons vers le bon financement."
+>
+  <a class="bouton" routerLink="/inscription">S'inscrire</a>
+  <a class="bouton bouton--contour" routerLink="/contact">Nous contacter</a>
+</app-bloc-cta>

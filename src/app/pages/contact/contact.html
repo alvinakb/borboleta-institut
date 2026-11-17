@@ -1,0 +1,55 @@
+<section class="entete-page">
+  <div class="conteneur">
+    <p class="surtitre">Nous trouver</p>
+    <h1 class="titre-page">Venez nous <em>rencontrer</em></h1>
+    <p class="chapo">
+      {{ info.nom }}, {{ adresse }}. {{ info.adresse.complement }}, en
+      {{ info.adresse.departement }}.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="conteneur deux-colonnes" style="align-items: start">
+    <div class="flux">
+      <h2 class="titre">Infos <em>pratiques</em></h2>
+      <h3>Horaires</h3>
+      <ul>
+        @for (h of info.horaires; track h.jours) {
+          <li>{{ h.jours }} : {{ h.heures }}</li>
+        }
+      </ul>
+      <p>
+        Pour les soins, réservation en ligne via Planity. Pour les formations, inscription par le
+        formulaire, par téléphone ou WhatsApp, ou via Mon Compte Formation. Vous pouvez aussi nous
+        écrire sur Instagram,
+        <a [href]="info.instagram.url" target="_blank" rel="noopener"
+          >{{ info.instagram.compte }}<span class="visuellement-cache"> (nouvel onglet)</span></a
+        >.
+      </p>
+      <div class="groupe-boutons">
+        <app-bouton-reserver libelle="Réserver un soin" />
+        <a class="bouton bouton--contour" routerLink="/inscription">S'inscrire à une formation</a>
+        <a class="bouton bouton--contour" [href]="itineraire" target="_blank" rel="noopener"
+          >Itinéraire<span class="visuellement-cache"> (nouvel onglet)</span></a
+        >
+      </div>
+    </div>
+
+    <!-- Emplacement du formulaire de contact et du bouton WhatsApp (étape contact-o2switch). -->
+    <div class="emplacement-formulaire flux" id="formulaire-contact">
+      <h2 class="titre">Nous <em>écrire</em></h2>
+      <p>
+        Le formulaire de contact (nom, e-mail, téléphone, objet, formation visée, message) sera
+        ajouté à l'étape suivante.
+      </p>
+      @if (whatsapp) {
+        <a class="bouton bouton--contour" [href]="whatsapp" target="_blank" rel="noopener"
+          >WhatsApp<span class="visuellement-cache"> (nouvel onglet)</span></a
+        >
+      } @else {
+        <p><span class="a-completer">Bouton WhatsApp : numéro à compléter</span></p>
+      }
+    </div>
+  </div>
+</section>

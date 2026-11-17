@@ -1,0 +1,51 @@
+<section class="entete-page">
+  <div class="conteneur">
+    <p class="surtitre">L'institut</p>
+    <h1 class="titre-page">Nos <em>tarifs</em></h1>
+    <p class="chapo">
+      Le détail de tous les soins de Borboleta Institut à Draveil (91), en séance et en cure. Les
+      tarifs sont identiques à ceux affichés sur Planity, où vous pouvez réserver à tout moment.
+    </p>
+    <nav class="groupe-boutons" aria-label="Catégories de soins">
+      @for (categorie of categories; track categorie.id) {
+        <a class="lien-fleche" [routerLink]="[]" [fragment]="categorie.id">{{ categorie.titre }}</a>
+      }
+    </nav>
+  </div>
+</section>
+
+<section class="section">
+  <div class="conteneur">
+    @for (categorie of categories; track categorie.id) {
+      <section
+        class="categorie"
+        [id]="categorie.id"
+        [attr.aria-labelledby]="'titre-' + categorie.id"
+      >
+        <h2 class="titre" [id]="'titre-' + categorie.id">{{ categorie.titre }}</h2>
+        <p>{{ categorie.intro }}</p>
+        <ul class="liste-tarifs">
+          @for (soin of categorie.soins; track soin.nom) {
+            <li class="ligne">
+              <span class="ligne__nom"
+                >{{ soin.nom }} <span class="ligne__duree">({{ soin.duree }})</span></span
+              >
+              <span class="ligne__prix">{{ formaterPrix(soin.prix) }}</span>
+              <app-bouton-reserver variante="contour" [aideAcces]="'Réserver : ' + soin.nom" />
+            </li>
+          }
+        </ul>
+      </section>
+    }
+  </div>
+</section>
+
+<app-bloc-cta
+  surtitre="Offrir"
+  titre="Une envie de faire plaisir ?"
+  motCle="Les cartes cadeaux"
+  texte="Disponibles en institut, pour un soin, une cure ou un montant libre."
+>
+  <a class="bouton" routerLink="/cartes-cadeaux">Les cartes cadeaux</a>
+  <app-bouton-reserver libelle="Réserver un soin" variante="contour" />
+</app-bloc-cta>

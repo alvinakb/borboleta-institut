@@ -1,0 +1,63 @@
+<section class="entete-page">
+  <div class="conteneur">
+    <p class="surtitre">Elles en parlent</p>
+    <h1 class="titre-page">
+      Une note de <em>{{ info.avis.note }} sur {{ info.avis.noteMax }}</em>
+    </h1>
+    <p class="chapo">
+      Sur {{ info.avis.source }}, {{ info.avis.nombre }} avis saluent l'accueil, la propreté, le
+      cadre et la qualité des prestations de Borboleta Institut à Draveil.
+    </p>
+    <div class="groupe-boutons">
+      <a class="bouton" [href]="info.avis.url" target="_blank" rel="noopener"
+        >Lire les avis sur {{ info.avis.source
+        }}<span class="visuellement-cache"> (nouvel onglet)</span></a
+      >
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="conteneur flux">
+    <p class="surtitre">Avis vérifiés</p>
+    <h2 class="titre">Une sélection d'avis <em>vérifiés</em></h2>
+    <p>
+      Les avis publiés ici sont repris tels quels depuis {{ info.avis.source }}. Une sélection sera
+      ajoutée prochainement ; en attendant, vous pouvez tous les lire sur la page Planity de
+      l'institut.
+    </p>
+  </div>
+</section>
+
+<section class="section section--blanche">
+  <div class="conteneur flux">
+    <p class="surtitre">Centre de formation</p>
+    <h2 class="titre">Les retours des <em>stagiaires</em></h2>
+    <p>
+      Cet espace accueillera les retours des stagiaires dès les premières sessions de formation.
+    </p>
+  </div>
+</section>
+
+<section class="section section--beige texte-centre">
+  <div class="conteneur flux">
+    <p class="surtitre">Instagram</p>
+    <h2 class="titre">
+      Suivez <em>{{ info.instagram.compte }}</em>
+    </h2>
+    <div class="groupe-boutons" style="justify-content: center">
+      <a class="bouton bouton--contour" [href]="info.instagram.url" target="_blank" rel="noopener"
+        >Voir le compte Instagram<span class="visuellement-cache"> (nouvel onglet)</span></a
+      >
+    </div>
+  </div>
+</section>
+
+<app-bloc-cta
+  surtitre="À votre tour"
+  titre="Venez vivre"
+  motCle="l'expérience Borboleta"
+  [sombre]="true"
+>
+  <app-bouton-reserver libelle="Réserver un soin" />
+</app-bloc-cta>

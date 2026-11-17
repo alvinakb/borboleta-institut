@@ -1,0 +1,54 @@
+<section class="entete-page">
+  <div class="conteneur">
+    <p class="surtitre">Votre formatrice</p>
+    <h1 class="titre-page">{{ info.responsable }}, <em>praticienne</em> et formatrice</h1>
+    <p class="chapo">
+      Praticienne et formatrice spécialisée en techniques de bien-être, Mariline transmet son savoir
+      avec exigence et bienveillance, bien au-delà du simple protocole.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="conteneur deux-colonnes">
+    <app-emplacement-image
+      fichier="assets/images/formatrice-mains.jpg"
+      description="Les mains de la formatrice pendant une démonstration"
+    />
+    <div class="flux">
+      <p class="surtitre">Sa pédagogie</p>
+      <h2 class="titre">Montrer, faire faire, <em>corriger</em></h2>
+      <p>
+        Sa pédagogie tient en quelques mots : montrer, faire faire, corriger, recommencer. Parce que
+        la technique s'ancre dans le geste répété, dans un espace de confiance et sans jugement.
+        Chacune repart avec des bases solides, pas juste des notes à relire.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--blanche">
+  <div class="conteneur flux">
+    <p class="surtitre">Son parcours</p>
+    <h2 class="titre">Formations et <em>expérience</em></h2>
+    <ul class="flux" style="padding-left: 1.2rem">
+      @for (etape of parcours; track etape.texte) {
+        <li>
+          <strong>{{ etape.annee }}</strong> : {{ etape.texte }}
+        </li>
+      }
+    </ul>
+    <p>Langues parlées : {{ langues.join(', ') }}.</p>
+    <div class="groupe-boutons">
+      <a class="bouton bouton--contour" [href]="info.instagram.url" target="_blank" rel="noopener"
+        >{{ info.instagram.compte
+        }}<span class="visuellement-cache"> sur Instagram (nouvel onglet)</span></a
+      >
+    </div>
+  </div>
+</section>
+
+<app-bloc-cta surtitre="Se former" titre="Apprendre à ses" motCle="côtés" [sombre]="true">
+  <a class="bouton" routerLink="/formations">Voir les formations</a>
+  <a class="bouton bouton--clair" routerLink="/inscription">S'inscrire</a>
+</app-bloc-cta>

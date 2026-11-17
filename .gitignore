@@ -1,16 +1,42 @@
-# Node modules
+# Sortie de compilation (Angular)
+/dist
+/tmp
+/out-tsc
+/bazel-out
+dist/
+build/
+
+# Node
+/node_modules
 node_modules/
 npm-debug.log
 yarn-error.log
 
-# IDE
+# Angular
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+__screenshots__/
+
+# IDE et éditeurs
 .vscode/
 .idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.history/
 *.swp
 *.swo
 *~
 
-# OS
+# Système
 .DS_Store
 .DS_Store?
 ._*
@@ -19,12 +45,10 @@ yarn-error.log
 ehthumbs.db
 Thumbs.db
 
-# Build
-dist/
-build/
+# Divers
 *.bak
 
-# Environment
+# Environnement
 .env
 .env.local
 .env.*.local
@@ -33,7 +57,7 @@ build/
 logs/
 *.log
 
-# Temporary
+# Temporaire
 temp/
 tmp/
 .cache/

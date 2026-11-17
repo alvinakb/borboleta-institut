@@ -1,0 +1,54 @@
+<section class="entete-page">
+  <div class="conteneur">
+    <p class="surtitre">Informations légales</p>
+    <h1 class="titre-page">Mentions <em>légales</em></h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="conteneur flux" style="max-width: 52rem">
+    <h2 class="titre">Éditeur du site</h2>
+    <p>
+      {{ info.nom }}<br />
+      Responsable de la publication : {{ info.responsable }}<br />
+      {{ adresse }}<br />
+      SIRET : {{ info.legal.siret }}<br />
+      E-mail : <a [href]="'mailto:' + info.email">{{ info.email }}</a>
+    </p>
+
+    <h2 class="titre">Organisme de formation</h2>
+    <p>
+      Numéro de déclaration d'activité :
+      @if (info.legal.numeroDeclarationActivite) {
+        {{ info.legal.numeroDeclarationActivite }}
+      } @else {
+        <span class="a-completer">{{ aCompleter }}</span>
+      }
+      <br />
+      Certificat Qualiopi :
+      @if (info.legal.certificatQualiopi) {
+        {{ info.legal.certificatQualiopi }}
+      } @else {
+        <span class="a-completer">{{ aCompleter }}</span>
+      }
+    </p>
+
+    <h2 class="titre">Hébergeur</h2>
+    <p>
+      {{ info.legal.hebergeur.nom }},
+      <a [href]="info.legal.hebergeur.site" target="_blank" rel="noopener"
+        >{{ info.legal.hebergeur.site }}<span class="visuellement-cache"> (nouvel onglet)</span></a
+      ><br />
+      Adresse de l'hébergeur : <span class="a-completer">{{ aCompleter }}</span>
+    </p>
+
+    <h2 class="titre">Propriété intellectuelle</h2>
+    <p>
+      Les textes, logos et visuels de ce site sont la propriété de {{ info.nom }}. Toute
+      reproduction sans autorisation écrite est interdite.
+    </p>
+
+    <h2 class="titre">Données personnelles</h2>
+    <p>Voir notre <a routerLink="/confidentialite">politique de confidentialité</a>.</p>
+  </div>
+</section>

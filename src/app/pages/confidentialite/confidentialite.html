@@ -1,0 +1,39 @@
+<section class="entete-page">
+  <div class="conteneur">
+    <p class="surtitre">Vos données</p>
+    <h1 class="titre-page">Politique de <em>confidentialité</em></h1>
+  </div>
+</section>
+
+<section class="section">
+  <div class="conteneur flux" style="max-width: 52rem">
+    <h2 class="titre">Responsable du traitement</h2>
+    <p>{{ info.nom }}, {{ info.responsable }}, {{ adresse }}.</p>
+
+    <h2 class="titre">Données collectées</h2>
+    <p>
+      Lorsque vous utilisez le formulaire de contact, nous recueillons votre nom, votre e-mail,
+      votre téléphone, l'objet de votre demande, la formation visée le cas échéant et votre message.
+    </p>
+
+    <h2 class="titre">Finalité</h2>
+    <p>
+      Ces données servent uniquement à répondre à votre demande et, si vous le souhaitez, à vous
+      informer des prochaines sessions de formation. Elles ne sont ni vendues ni cédées.
+    </p>
+
+    <h2 class="titre">Réservation en ligne</h2>
+    <p>
+      La réservation des soins se fait sur Planity, qui applique sa propre politique de
+      confidentialité.
+    </p>
+
+    <h2 class="titre">Vos droits</h2>
+    <p>
+      Vous pouvez demander l'accès, la rectification ou la suppression de vos données en écrivant à
+      <a [href]="'mailto:' + info.email">{{ info.email }}</a>.
+    </p>
+
+    <p><a routerLink="/mentions-legales">Mentions légales</a></p>
+  </div>
+</section>

@@ -1,0 +1,48 @@
+<section class="entete-page">
+  <div class="conteneur">
+    <p class="surtitre">Prendre soin de soi</p>
+    <h1 class="titre-page">Nos <em>soins</em> à Draveil</h1>
+    <p class="chapo">
+      Tous nos soins reposent sur la méthode Renata França et sur des techniques douces, sans
+      chirurgie. Le drainage et le remodelage du corps sont exclusivement réservés aux femmes. Le
+      drainage du visage, Miracle Face, est ouvert aux femmes et aux hommes. La plupart des soins
+      existent en séance et en cure, à tarif dégressif.
+    </p>
+    <div class="groupe-boutons">
+      <app-bouton-reserver libelle="Réserver en ligne" />
+      <a class="bouton bouton--contour" routerLink="/tarifs">Tous les tarifs</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="conteneur">
+    <h2 class="visuellement-cache">Les catégories de soins</h2>
+    <div class="grille">
+      @for (categorie of categories; track categorie.id) {
+        <app-carte-soin [categorie]="categorie" />
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--blanche">
+  <div class="conteneur flux">
+    <p class="surtitre">Soins post-opératoires</p>
+    <h2 class="titre">Avec l'accord de votre <em>professionnel de santé</em></h2>
+    <p class="chapo">
+      Après une chirurgie esthétique, les séances de drainage se font toujours avec l'accord du
+      professionnel de santé qui assure votre suivi, et dans le respect de ses consignes.
+    </p>
+  </div>
+</section>
+
+<app-bloc-cta
+  surtitre="Réservation en ligne"
+  titre="Choisissez votre soin et"
+  motCle="réservez"
+  texte="Les disponibilités sont à jour en temps réel sur Planity."
+>
+  <app-bouton-reserver libelle="Réserver sur Planity" />
+  <a class="bouton bouton--contour" routerLink="/cartes-cadeaux">Offrir une carte cadeau</a>
+</app-bloc-cta>

@@ -1,0 +1,71 @@
+<section class="entete-page">
+  <div class="conteneur">
+    <p class="surtitre">Centre de formation professionnelle · Région parisienne</p>
+    <h1 class="titre-page">Apprendre le geste, <em>vraiment</em></h1>
+    <p class="chapo">
+      Cinq formations pour maîtriser le drainage lymphatique et ses techniques sœurs. En présentiel,
+      en petit groupe, dans un centre certifié Qualiopi. On commence par le drainage corps, le
+      socle, puis on choisit ses spécialisations.
+    </p>
+    <div class="groupe-boutons">
+      <a class="bouton" routerLink="/inscription">S'inscrire</a>
+      <a class="bouton bouton--contour" routerLink="/parcours">Le parcours par niveaux</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="conteneur">
+    @for (f of formations; track f.id) {
+      <article class="formation deux-colonnes" [id]="f.id">
+        <app-emplacement-image
+          [fichier]="'assets/images/formation-' + f.id + '.jpg'"
+          [description]="'Formation ' + f.titre"
+        />
+        <div class="flux">
+          <p class="surtitre">Formation {{ f.numero }} · {{ f.surtitre }}</p>
+          <h2 class="titre">{{ f.titre }}</h2>
+          <p>{{ f.accroche }}</p>
+          <dl class="fiche">
+            <div>
+              <dt>Durée</dt>
+              <dd>{{ texteDuree(f) }}</dd>
+            </div>
+            <div>
+              <dt>Format</dt>
+              <dd>{{ f.format }}</dd>
+            </div>
+            <div>
+              <dt>Niveau</dt>
+              <dd>{{ f.niveau }}</dd>
+            </div>
+            <div>
+              <dt>Groupe</dt>
+              <dd>{{ f.groupe }}</dd>
+            </div>
+            <div>
+              <dt>Tarif</dt>
+              <dd>{{ textePrix(f) }}</dd>
+            </div>
+          </dl>
+          <p><strong>Programme :</strong> {{ f.programme }}</p>
+          <div class="groupe-boutons">
+            <a class="bouton" routerLink="/inscription">S'inscrire</a>
+            <a class="bouton bouton--contour" routerLink="/contact">En savoir plus</a>
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+</section>
+
+<app-bloc-cta
+  surtitre="Prise en charge"
+  titre="Une formation"
+  motCle="finançable"
+  texte="Organisme certifié Qualiopi : CPF, OPCO, FAFCEA ou France Travail. Nous vous accompagnons dans votre dossier."
+  [sombre]="true"
+>
+  <a class="bouton" routerLink="/financement">Le financement</a>
+  <a class="bouton bouton--clair" routerLink="/calendrier">Les prochaines sessions</a>
+</app-bloc-cta>

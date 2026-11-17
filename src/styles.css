@@ -1,0 +1,298 @@
+/* Styles globaux de Borboleta Institut : charte, reset léger et classes de base.
+   Le design détaillé des pages vient à l'étape suivante. */
+
+/* ---------- Charte ---------- */
+:root {
+  --creme: #f4f1eb;
+  --beige: #e8dcc8;
+  --dore-clair: #e9cb86;
+  --dore-fonce: #a97b3f;
+  --degrade-dore: linear-gradient(135deg, #e9cb86 0%, #a97b3f 100%);
+  --anthracite: #2c2c2c;
+  --noir: #0e0e0e;
+  --blanc: #ffffff;
+
+  --police-titre: 'Cormorant Garamond', 'Cormorant', Garamond, 'Times New Roman', serif;
+  --police-texte: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+
+  --largeur-max: 1200px;
+  --marge-laterale: clamp(1.25rem, 4vw, 2.5rem);
+  --espace-section: clamp(3.5rem, 8vw, 6.5rem);
+}
+
+/* ---------- Reset léger ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--police-texte);
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--anthracite);
+  background: var(--creme);
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--dore-fonce);
+  text-underline-offset: 0.2em;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--dore-fonce);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Mise en page ---------- */
+.conteneur {
+  width: 100%;
+  max-width: calc(var(--largeur-max) + 2 * var(--marge-laterale));
+  margin-inline: auto;
+  padding-inline: var(--marge-laterale);
+}
+
+.section {
+  padding-block: var(--espace-section);
+}
+.section--beige {
+  background: var(--beige);
+}
+.section--blanche {
+  background: var(--blanc);
+}
+.section--sombre {
+  background: var(--noir);
+  color: var(--creme);
+}
+
+.grille {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+}
+
+.deux-colonnes {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .deux-colonnes {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.texte-centre {
+  text-align: center;
+}
+
+.flux > * + * {
+  margin-top: 1rem;
+}
+
+/* ---------- Typographie ---------- */
+.surtitre {
+  font-family: var(--police-texte);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dore-fonce);
+}
+.section--sombre .surtitre {
+  color: var(--dore-clair);
+}
+
+.titre,
+.titre-page {
+  font-family: var(--police-titre);
+  font-weight: 500;
+  line-height: 1.1;
+  color: inherit;
+  overflow-wrap: break-word;
+}
+.titre-page {
+  font-size: clamp(2.4rem, 7vw, 4.25rem);
+}
+.titre {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+.titre em,
+.titre-page em {
+  font-style: italic;
+  font-weight: 400;
+  background: var(--degrade-dore);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: var(--dore-fonce);
+  -webkit-text-fill-color: transparent;
+}
+
+.chapo {
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  max-width: 44rem;
+}
+
+/* ---------- En-tête de page ---------- */
+.entete-page {
+  padding-block: clamp(3rem, 8vw, 5.5rem);
+  background: var(--beige);
+}
+.entete-page .conteneur > * + * {
+  margin-top: 1rem;
+}
+
+/* ---------- Boutons ---------- */
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;
+  padding: 0.75rem 1.6rem;
+  font-family: var(--police-texte);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  color: var(--noir);
+  background: var(--degrade-dore);
+  border: 1px solid var(--dore-fonce);
+  border-radius: 0;
+  cursor: pointer;
+  transition:
+    filter 0.2s ease,
+    background-color 0.2s ease;
+}
+.bouton:hover {
+  filter: brightness(1.05);
+}
+.bouton--contour {
+  background: transparent;
+  color: var(--anthracite);
+}
+.bouton--contour:hover {
+  background: var(--beige);
+}
+.bouton--clair {
+  background: transparent;
+  color: var(--creme);
+  border-color: var(--dore-clair);
+}
+.bouton--clair:hover {
+  background: rgba(233, 203, 134, 0.15);
+}
+
+.groupe-boutons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+
+.lien-fleche {
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: var(--anthracite);
+}
+.lien-fleche::after {
+  content: ' →';
+}
+
+/* ---------- Emplacements de formulaire (étape ultérieure) ---------- */
+.emplacement-formulaire {
+  padding: 2rem;
+  border: 1px dashed var(--dore-fonce);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- Accessibilité ---------- */
+.visuellement-cache {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.a-completer {
+  display: inline-block;
+  padding: 0 0.4rem;
+  background: #fff3cd;
+  color: #6b4e00;
+  border: 1px dashed #a97b3f;
+  font-weight: 500;
+}
+
+/* ---------- Héros (accueil) ---------- */
+.hero {
+  position: relative;
+  display: grid;
+}
+.hero > * {
+  grid-area: 1 / 1;
+}
+.hero__texte {
+  align-self: center;
+  padding-block: 4rem;
+  position: relative;
+  z-index: 1;
+}
+.hero__texte > * + * {
+  margin-top: 1.25rem;
+}

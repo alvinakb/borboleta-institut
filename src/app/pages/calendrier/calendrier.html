@@ -1,0 +1,42 @@
+<section class="entete-page">
+  <div class="conteneur">
+    <p class="surtitre">Centre de formation</p>
+    <h1 class="titre-page">Calendrier des <em>sessions</em></h1>
+    <p class="chapo">Prochaines sessions : nous consulter.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="conteneur deux-colonnes" style="align-items: start">
+    <div class="flux">
+      <p class="surtitre">Les formations</p>
+      <h2 class="titre">Être informée des <em>prochaines dates</em></h2>
+      <p>
+        Les dates sont fixées au fil de l'année, en petit groupe. Laissez-nous vos coordonnées et la
+        formation qui vous intéresse : nous vous prévenons dès qu'une session est ouverte.
+      </p>
+      <ul>
+        @for (f of formations; track f.id) {
+          <li>
+            <a routerLink="/formations" [fragment]="f.id">{{ f.titre }}</a> : prochaine session,
+            nous consulter
+          </li>
+        }
+      </ul>
+    </div>
+    <!-- Emplacement du formulaire « Être informée des prochaines dates » (étape contact-o2switch). -->
+    <div class="emplacement-formulaire flux" id="formulaire-dates">
+      <h3>Formulaire « Être informée des prochaines dates »</h3>
+      <p>
+        Le formulaire sera ajouté à l'étape suivante. En attendant, écrivez-nous via la page
+        contact.
+      </p>
+      <a class="bouton" routerLink="/contact">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<app-bloc-cta surtitre="Prise en charge" titre="Pensez au" motCle="financement" [sombre]="true">
+  <a class="bouton" routerLink="/financement">Le financement</a>
+  <a class="bouton bouton--clair" routerLink="/inscription">S'inscrire</a>
+</app-bloc-cta>

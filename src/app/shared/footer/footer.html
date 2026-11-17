@@ -1,0 +1,58 @@
+<footer class="pied">
+  <div class="conteneur pied__grille">
+    <div class="pied__bloc">
+      <img
+        class="pied__logo"
+        src="images/logo-fond-noir.jpg"
+        alt="Borboleta Institut"
+        width="1600"
+        height="1066"
+        loading="lazy"
+      />
+      <p class="pied__signature">{{ info.signature }}</p>
+      <app-bouton-reserver libelle="Réserver un soin" variante="clair" />
+    </div>
+
+    <div class="pied__bloc">
+      <h2 class="pied__titre">Nous trouver</h2>
+      <address>
+        {{ info.nom }}<br />
+        {{ info.adresse.rue }}<br />
+        {{ info.adresse.codePostal }} {{ info.adresse.ville }}
+      </address>
+      <a [href]="itineraire" target="_blank" rel="noopener"
+        >Itinéraire<span class="visuellement-cache"> vers {{ adresse }} (nouvel onglet)</span></a
+      >
+    </div>
+
+    <div class="pied__bloc">
+      <h2 class="pied__titre">Horaires</h2>
+      <dl class="pied__horaires">
+        @for (h of info.horaires; track h.jours) {
+          <div>
+            <dt>{{ h.jours }}</dt>
+            <dd>{{ h.heures }}</dd>
+          </div>
+        }
+      </dl>
+    </div>
+
+    <div class="pied__bloc">
+      <h2 class="pied__titre">Suivez-nous</h2>
+      <a [href]="info.instagram.url" target="_blank" rel="noopener"
+        >Instagram {{ info.instagram.compte
+        }}<span class="visuellement-cache"> (nouvel onglet)</span></a
+      >
+      <ul class="pied__liens">
+        @for (lien of liens; track lien.lien) {
+          <li>
+            <a [routerLink]="lien.lien">{{ lien.libelle }}</a>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+  <p class="conteneur pied__bas">
+    © {{ annee }} {{ info.nom }}, Draveil (91). Organisme de formation certifié Qualiopi.
+  </p>
+</footer>

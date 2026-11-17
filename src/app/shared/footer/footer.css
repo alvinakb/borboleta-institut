@@ -1,0 +1,99 @@
+:host {
+  display: block;
+}
+
+.pied {
+  background: var(--noir);
+  color: var(--creme);
+  padding-top: 3.5rem;
+  font-size: 0.95rem;
+}
+
+.pied a {
+  color: var(--creme);
+}
+.pied a:hover {
+  color: var(--dore-clair);
+}
+
+.pied__grille {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  .pied__grille {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1080px) {
+  .pied__grille {
+    grid-template-columns: 1.2fr 1fr 1.2fr 1fr;
+  }
+}
+
+.pied__bloc {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.pied__logo {
+  width: 9rem;
+  height: auto;
+  mix-blend-mode: screen; /* le fond noir du JPG se fond dans le bandeau */
+}
+
+.pied__signature {
+  font-family: var(--police-titre);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--dore-clair);
+}
+
+.pied__titre {
+  font-family: var(--police-texte);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dore-clair);
+}
+
+address {
+  font-style: normal;
+}
+
+.pied__horaires {
+  margin: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+.pied__horaires div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 0.5rem;
+}
+.pied__horaires dt::after {
+  content: ' :';
+}
+.pied__horaires dd {
+  margin: 0;
+}
+
+.pied__liens {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.pied__bas {
+  margin-top: 3rem;
+  padding-block: 1.5rem;
+  border-top: 1px solid rgba(244, 241, 235, 0.15);
+  font-size: 0.8rem;
+  opacity: 0.8;
+}

@@ -1,0 +1,205 @@
+<!-- Héros -->
+<section class="hero">
+  <app-emplacement-image
+    class="hero__image"
+    fichier="assets/images/accueil-hero.jpg"
+    description="Cabine de soin de Borboleta Institut à Draveil"
+    [pleinEcran]="true"
+  />
+  <div class="conteneur hero__texte">
+    <p class="surtitre">Borboleta Institut · Draveil (91)</p>
+    <h1 class="titre-page">Drainage lymphatique à <em>Draveil</em> (91)</h1>
+    <p class="chapo">
+      Un institut spécialisé dans le drainage lymphatique méthode Renata França, et un centre de
+      formation pour transmettre ce savoir-faire. Vous venez pour prendre soin de vous, ou pour
+      apprendre le geste : les deux se vivent ici, avec la même exigence.
+    </p>
+    <div class="groupe-boutons">
+      <a class="bouton" routerLink="/soins">Découvrir les soins</a>
+      <a class="bouton bouton--contour" routerLink="/formations">Découvrir les formations</a>
+    </div>
+  </div>
+</section>
+
+<!-- Signature -->
+<section class="section texte-centre">
+  <div class="conteneur flux">
+    <p class="surtitre">Notre signature</p>
+    <h2 class="titre">Le geste juste, <em>transmis</em> avec soin</h2>
+    <p class="chapo" style="margin-inline: auto">
+      Un bon drainage se reconnaît à la main : la pression, le rythme, la précision. C'est ce que
+      Mariline pratique au quotidien à l'institut, et ce qu'elle transmet en formation.
+    </p>
+  </div>
+</section>
+
+<!-- Deux pôles à égalité : soins et formations -->
+<section class="section section--blanche">
+  <div class="conteneur deux-colonnes">
+    <div class="flux">
+      <p class="surtitre">Prendre soin de soi</p>
+      <h2 class="titre">Nos <em>soins</em></h2>
+      <p>
+        Drainage lymphatique, remodelage, soins du visage, technologies douces : des soins
+        esthétiques pour retrouver une sensation de légèreté, dans le calme d'un institut pensé pour
+        vous déconnecter.
+      </p>
+      <div class="groupe-boutons">
+        <a class="bouton" routerLink="/soins">Voir les soins</a>
+        <app-bouton-reserver libelle="Réserver sur Planity" variante="contour" />
+      </div>
+    </div>
+    <div class="flux">
+      <p class="surtitre">Se former</p>
+      <h2 class="titre">Nos <em>formations</em></h2>
+      <p>
+        Cinq formations professionnelles, en présentiel et en petit groupe, dans un centre certifié
+        Qualiopi. On y apprend en faisant, jusqu'à ce que le geste soit vraiment à vous.
+      </p>
+      <div class="groupe-boutons">
+        <a class="bouton" routerLink="/formations">Voir les formations</a>
+        <a class="bouton bouton--contour" routerLink="/inscription">S'inscrire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Soins à la une -->
+<section class="section">
+  <div class="conteneur flux">
+    <p class="surtitre">L'institut</p>
+    <h2 class="titre">Le drainage lymphatique, <em>méthode Renata França</em></h2>
+    <div class="grille" style="margin-top: 2rem">
+      @for (categorie of soins; track categorie.id) {
+        <app-carte-soin [categorie]="categorie" />
+      }
+    </div>
+    <div class="groupe-boutons">
+      <a class="bouton bouton--contour" routerLink="/soins">Tous les soins</a>
+      <a class="bouton bouton--contour" routerLink="/tarifs">Les tarifs</a>
+    </div>
+  </div>
+</section>
+
+<!-- Formations -->
+<section class="section section--beige">
+  <div class="conteneur flux">
+    <p class="surtitre">Centre de formation</p>
+    <h2 class="titre">Apprendre le geste, <em>vraiment</em></h2>
+    <ol class="grille" style="margin-top: 2rem; padding: 0; list-style: none">
+      @for (f of formations; track f.id) {
+        <li class="flux">
+          <p class="surtitre">Formation {{ f.numero }} · {{ texteDuree(f) }}</p>
+          <h3>{{ f.titre }}</h3>
+          <p>{{ f.accroche }}</p>
+        </li>
+      }
+    </ol>
+    <div class="groupe-boutons">
+      <a class="bouton" routerLink="/formations">Voir les formations</a>
+      <a class="bouton bouton--contour" routerLink="/parcours">Le parcours</a>
+    </div>
+  </div>
+</section>
+
+<!-- Formatrice -->
+<section class="section">
+  <div class="conteneur deux-colonnes">
+    <app-emplacement-image
+      fichier="assets/images/accueil-formatrice.jpg"
+      description="Les mains de la formatrice pendant un drainage"
+    />
+    <div class="flux">
+      <p class="surtitre">Votre formatrice</p>
+      <h2 class="titre">{{ info.responsable }}</h2>
+      <p>
+        Praticienne et formatrice, fondatrice de Borboleta Institut, elle accompagne chaque
+        stagiaire avec exigence et bienveillance.
+      </p>
+      <div class="groupe-boutons">
+        <a class="bouton bouton--contour" routerLink="/formatrice">En savoir plus</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Confiance -->
+<section class="section section--sombre texte-centre">
+  <div class="conteneur flux">
+    <p class="surtitre">La confiance</p>
+    <h2 class="titre">
+      Noté <em>{{ info.avis.note }}/{{ info.avis.noteMax }}</em> sur {{ info.avis.source }}
+    </h2>
+    <p>
+      {{ info.avis.nombre }} avis sur {{ info.avis.source }}. Organisme de formation certifié
+      Qualiopi.
+    </p>
+    <div class="groupe-boutons" style="justify-content: center">
+      <a class="bouton bouton--clair" routerLink="/avis">Lire les avis</a>
+    </div>
+  </div>
+</section>
+
+<!-- Cartes cadeaux -->
+<section class="section section--blanche">
+  <div class="conteneur deux-colonnes">
+    <div class="flux">
+      <p class="surtitre">Offrir</p>
+      <h2 class="titre">Les cartes <em>cadeaux</em></h2>
+      <p>
+        Un soin, une cure ou un montant libre : offrez un vrai moment pour soi. Les cartes cadeaux
+        sont disponibles en institut.
+      </p>
+      <div class="groupe-boutons">
+        <a class="bouton bouton--contour" routerLink="/cartes-cadeaux"
+          >Découvrir les cartes cadeaux</a
+        >
+      </div>
+    </div>
+    <app-emplacement-image
+      fichier="assets/images/accueil-carte-cadeau.jpg"
+      description="Carte cadeau Borboleta Institut"
+    />
+  </div>
+</section>
+
+<!-- FAQ (SEO) -->
+<section class="section">
+  <div class="conteneur flux">
+    <p class="surtitre">Questions fréquentes</p>
+    <h2 class="titre">Drainage lymphatique à <em>Draveil</em></h2>
+    @for (q of questions; track q.question) {
+      <div class="flux">
+        <h3>{{ q.question }}</h3>
+        <p>{{ q.reponse }}</p>
+      </div>
+    }
+    <a class="lien-fleche" routerLink="/faq">Toutes les questions</a>
+  </div>
+</section>
+
+<!-- Instagram -->
+<section class="section section--beige texte-centre">
+  <div class="conteneur flux">
+    <p class="surtitre">Instagram</p>
+    <h2 class="titre">
+      Suivez <em>{{ info.instagram.compte }}</em>
+    </h2>
+    <div class="groupe-boutons" style="justify-content: center">
+      <a class="bouton bouton--contour" [href]="info.instagram.url" target="_blank" rel="noopener"
+        >Voir le compte Instagram<span class="visuellement-cache"> (nouvel onglet)</span></a
+      >
+    </div>
+  </div>
+</section>
+
+<app-bloc-cta
+  surtitre="Prendre rendez-vous"
+  titre="Envie de découvrir le drainage lymphatique à"
+  motCle="Draveil ?"
+  texte="Réservez votre soin en ligne sur Planity, ou contactez-nous pour une formation."
+  [sombre]="true"
+>
+  <app-bouton-reserver libelle="Réserver un soin" />
+  <a class="bouton bouton--clair" routerLink="/contact">Nous contacter</a>
+</app-bloc-cta>

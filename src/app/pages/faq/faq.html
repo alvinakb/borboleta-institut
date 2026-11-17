@@ -1,0 +1,31 @@
+<section class="entete-page">
+  <div class="conteneur">
+    <p class="surtitre">Questions fréquentes</p>
+    <h1 class="titre-page">Vos <em>questions</em></h1>
+    <p class="chapo">
+      Le drainage lymphatique à Draveil (91), les soins, la réservation et les formations : les
+      réponses aux questions que l'on nous pose le plus souvent.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="conteneur">
+    @for (groupe of groupes; track groupe.titre) {
+      <section class="flux" style="margin-bottom: 3rem">
+        <h2 class="titre">{{ groupe.titre }}</h2>
+        @for (q of groupe.questions; track q.question) {
+          <details>
+            <summary>{{ q.question }}</summary>
+            <p>{{ q.reponse }}</p>
+          </details>
+        }
+      </section>
+    }
+  </div>
+</section>
+
+<app-bloc-cta surtitre="Une autre question ?" titre="Écrivez-nous" motCle="simplement">
+  <a class="bouton" routerLink="/contact">Nous contacter</a>
+  <app-bouton-reserver libelle="Réserver un soin" variante="contour" />
+</app-bloc-cta>
