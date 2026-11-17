@@ -95,9 +95,9 @@ export class Formations {
         'La pratique occupe l’essentiel du temps. On montre, on fait faire, on corrige, on recommence.',
     },
     {
-      titre: 'Un suivi après la formation',
+      titre: 'Une attestation de fin de formation',
       texte:
-        'Une question en cabine, un geste à revoir : la formatrice reste disponible une fois la formation terminée.',
+        'Une attestation de fin de formation vous est remise, et vous repartez avec des bases solides, pas seulement des notes à relire.',
     },
   ];
 

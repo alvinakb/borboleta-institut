@@ -33,5 +33,4 @@ export class Accueil {
   protected readonly nombreFormations = FORMATIONS.length;
   protected readonly texteDuree = texteDuree;
   protected readonly questions = FAQ[0].questions;
-  protected readonly vignettesInstagram = [1, 2, 3, 4];
 }

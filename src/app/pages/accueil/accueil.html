@@ -146,16 +146,6 @@
       <h2 class="titre" id="titre-instagram">Suivez-nous sur Instagram</h2>
       <p>Les soins, l’institut et les formations, au fil des jours.</p>
     </div>
-    <ul class="instagram" aria-hidden="true">
-      @for (n of vignettesInstagram; track n) {
-        <li>
-          <app-emplacement-image
-            [fichier]="'assets/images/instagram-' + n + '.jpg'"
-            ratio="1 / 1"
-          />
-        </li>
-      }
-    </ul>
     <div class="groupe-boutons">
       <a class="bouton" [href]="info.instagram.url" target="_blank" rel="noopener"
         >Voir {{ info.instagram.compte

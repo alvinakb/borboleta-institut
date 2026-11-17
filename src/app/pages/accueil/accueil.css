@@ -67,19 +67,3 @@
     align-items: start;
   }
 }
-
-/* ---------- Instagram ---------- */
-.instagram {
-  list-style: none;
-  margin: var(--esp-6) 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--esp-3);
-}
-@media (min-width: 768px) {
-  .instagram {
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--esp-4);
-  }
-}

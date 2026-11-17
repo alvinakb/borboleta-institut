@@ -29,7 +29,6 @@ Liste de toutes les photos prévues sur le site. En attendant, chaque emplacemen
 | `assets/images/accueil-institut.jpg` | Accueil | Bloc « L’institut à Draveil » | Paysage 4:3 (1600 × 1200) | La cabine : table de soin, linge blanc, lumière naturelle |
 | `assets/images/accueil-formation.jpg` | Accueil | Bloc « Centre de formation » | Paysage 4:3 | Mains d’une stagiaire guidées par celles de la formatrice (visage hors cadre) |
 | `assets/images/accueil-carte-cadeau.jpg` | Accueil | Bloc « Les cartes cadeaux » | Paysage 3:2 (1600 × 1067) | Carte cadeau Borboleta posée sur une serviette ou un plateau, détail doré |
-| `assets/images/instagram-1.jpg` à `instagram-4.jpg` | Accueil | Aperçu Instagram (4 vignettes) | Carré 1:1 (960 × 960) | Quatre publications récentes du compte, choisies parmi les plus représentatives |
 | `assets/images/soin-<id>.jpg` | Soins (cartes de la page `/soins`) | Image de chaque carte de soin | Paysage 4:3 (960 × 720) | Le geste propre à chaque soin. Une photo par identifiant de `contenu/tarifs.json` : `offres-decouverte`, `drainage-renata-franca`, `miracle-face`, `remodelage`, `rouleau-bresilien`, `visage-lcp`, `kobido`, `radiofrequence`, `pressotherapie`, `post-operatoire`, `dr-vodder`, `femme-enceinte`, `cures` |
 | `assets/images/institut-cabine.jpg` | L’institut | Bloc « Le drainage et le remodelage » | Paysage 4:3 | La cabine, vue d’ensemble, lumière douce |
 | `assets/images/cartes-cadeaux.jpg` | Cartes cadeaux | Bloc principal | Paysage 4:3 | Carte cadeau en main ou dans son enveloppe |
