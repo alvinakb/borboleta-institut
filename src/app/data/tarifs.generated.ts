@@ -227,7 +227,7 @@ export const CATEGORIES_SOINS: readonly CategorieSoins[] = [
         prix: 140,
       },
       {
-        nom: 'Corps, cure de 10 séances 2 zones (-15 %)',
+        nom: 'Corps, cure de 10 séances 2 zones',
         duree: '1h30',
         prix: 1200,
       },

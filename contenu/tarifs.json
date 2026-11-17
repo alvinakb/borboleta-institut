@@ -87,7 +87,7 @@
         {"nom": "Corps, 1 zone (ventre, cuisses, bras ou dos)", "duree": "45min", "prix": 80},
         {"nom": "Corps, cure de 10 séances 1 zone (-10 %)", "duree": "45min", "prix": 720},
         {"nom": "Corps, 2 zones", "duree": "1h30", "prix": 140},
-        {"nom": "Corps, cure de 10 séances 2 zones (-15 %)", "duree": "1h30", "prix": 1200},
+        {"nom": "Corps, cure de 10 séances 2 zones", "duree": "1h30", "prix": 1200},
         {"nom": "Soin visage anti-âge global avec radiofréquence by Bloomea", "duree": "1h", "prix": 120},
         {"nom": "Radiofréquence visage complet", "duree": "50min", "prix": 80},
         {"nom": "Radiofréquence visage complet, cure de 6 séances", "duree": "50min", "prix": 400}
