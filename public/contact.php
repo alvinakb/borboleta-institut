@@ -301,18 +301,17 @@ function limiteAtteinte(): bool
     }
     @touch($fichier);
 
-    if (random_int(1, 20) === 1) {
-        foreach (glob($dossier . DIRECTORY_SEPARATOR . '*') ?: [] as $ancien) {
-            if (is_file($ancien) && time() - (int) filemtime($ancien) > 3600) {
-                @unlink($ancien);
-            }
+    // Nettoyage à chaque envoi : les empreintes de plus d'une heure sont effacées.
+    foreach (glob($dossier . DIRECTORY_SEPARATOR . '*') ?: [] as $ancien) {
+        if (is_file($ancien) && time() - (int) filemtime($ancien) > 3600) {
+            @unlink($ancien);
         }
     }
     return false;
 }
 
 if (limiteAtteinte()) {
-    repondre(429, false, 'Une demande vient déjà d’être envoyée. Patientez une minute avant de réessayer.');
+    repondre(429, false, 'Une demande vient déjà d’être envoyée. Patientez 30 secondes avant de réessayer.');
 }
 
 // ---------------------------------------------------------------------------------------
@@ -325,9 +324,17 @@ function enTete(string $texte): string
     return mb_encode_mimeheader($texte, 'UTF-8', 'B', "\r\n");
 }
 
-/** « Nom <adresse> » avec le nom encodé. */
+/**
+ * « Nom <adresse> » avec le nom nettoyé puis encodé. Les caractères qui ont un sens dans une
+ * adresse (< > , ; : " \ ( ) [ ] @) sont retirés du nom, pour qu'un nom comme
+ * « Dupont, Jean <autre@exemple.fr> » ne puisse pas détourner le Reply-To.
+ */
 function adresseNommee(string $nom, string $adresse): string
 {
+    $nom = trim((string) preg_replace('/\s+/u', ' ', (string) preg_replace('/[<>,;:"\\\\()\[\]@]/u', ' ', $nom)));
+    if ($nom === '') {
+        return '<' . $adresse . '>';
+    }
     return enTete($nom) . ' <' . $adresse . '>';
 }
 
