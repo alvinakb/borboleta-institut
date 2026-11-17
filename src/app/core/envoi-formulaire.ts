@@ -56,7 +56,15 @@ export class EnvoiFormulaire {
     try {
       corps = await reponse.json();
     } catch {
-      // Pas de JSON : le PHP n’est pas exécuté (ng serve, serveur de test).
+      // Pas de JSON. Si le serveur a répondu une erreur (page 500 par ex.), c’est un échec réel ;
+      // sinon le PHP n’est pas exécuté (ng serve, serveur de test) : mode test.
+      if (!reponse.ok) {
+        return {
+          statut: 'erreur',
+          message:
+            'L’envoi n’a pas abouti. Réessayez dans quelques instants ou écrivez-nous par e-mail.',
+        };
+      }
       return { statut: 'test' };
     }
 
