@@ -1,0 +1,86 @@
+:host {
+  display: block;
+}
+
+/* Mobile : la bande déborde jusqu’aux bords de l’écran (une photo et un peu de la suivante),
+   aimantée sur le début de chaque photo, alignée sur la marge du conteneur. */
+.galerie__bande {
+  list-style: none;
+  display: flex;
+  gap: var(--esp-4);
+  margin: 0 calc(-1 * var(--marge-laterale));
+  padding: var(--esp-1) var(--marge-laterale) var(--esp-3);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--marge-laterale);
+  scrollbar-width: thin;
+  scrollbar-color: var(--taupe) transparent;
+}
+/* Anneau de focus à l’intérieur : la bande touche les bords de l’écran sur mobile. */
+.galerie__bande:focus-visible {
+  outline: 2px solid var(--brun);
+  outline-offset: -2px;
+  border-radius: var(--rayon-carte);
+}
+.galerie__photo {
+  flex: 0 0 80%;
+  max-width: none;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 640px) {
+  .galerie__photo {
+    flex-basis: 46%;
+  }
+}
+
+/* Ordinateur : trois photos visibles, dans la largeur du conteneur. */
+@media (min-width: 1024px) {
+  .galerie__bande {
+    gap: var(--esp-5);
+    margin-inline: 0;
+    padding-inline: 0;
+    scroll-padding-inline: 0;
+  }
+  .galerie__bande:focus-visible {
+    outline-offset: 4px;
+  }
+  .galerie__photo {
+    flex-basis: calc((100% - 2 * var(--esp-5)) / 3);
+  }
+}
+
+.galerie__commandes {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--esp-3);
+  margin-top: var(--esp-4);
+}
+.galerie__fleche {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid var(--espresso);
+  border-radius: var(--rayon-bouton);
+  background: transparent;
+  color: var(--espresso);
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    opacity var(--transition);
+}
+.galerie__fleche:hover:not(:disabled) {
+  background: var(--nude);
+}
+.galerie__fleche:focus-visible {
+  outline: 2px solid var(--brun);
+  outline-offset: 2px;
+}
+.galerie__fleche:disabled {
+  opacity: 0.35;
+  cursor: default;
+}

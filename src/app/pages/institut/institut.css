@@ -29,3 +29,7 @@
   font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
+
+.images__entete {
+  margin-bottom: var(--esp-6);
+}
