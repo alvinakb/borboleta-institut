@@ -13,15 +13,52 @@
 
       <h2>Données collectées</h2>
       <p>
-        Lorsque vous utilisez le formulaire de contact, nous recueillons votre nom, votre e-mail,
-        votre téléphone, l’objet de votre demande, la formation visée le cas échéant et votre
-        message.
+        Le site propose deux formulaires, qui recueillent uniquement ce que vous y saisissez&nbsp;:
+      </p>
+      <ul>
+        <li>
+          le formulaire de contact&nbsp;: votre nom, votre e-mail, votre téléphone (facultatif),
+          l’objet de votre demande, la formation visée le cas échéant, votre message et, si vous le
+          souhaitez, la façon dont vous nous avez connus ;
+        </li>
+        <li>
+          le formulaire «&nbsp;Être informée des prochaines dates&nbsp;»&nbsp;: votre nom, votre
+          e-mail, votre téléphone (facultatif) et la formation qui vous intéresse.
+        </li>
+      </ul>
+
+      <h2>Finalité et base légale</h2>
+      <p>
+        Ces données servent uniquement à répondre à votre demande et, si vous l’avez demandé, à vous
+        prévenir de l’ouverture d’une session de formation. Elles sont traitées avec votre accord,
+        donné en cochant la case du formulaire. Elles ne sont ni vendues, ni cédées, ni utilisées
+        pour de la prospection.
       </p>
 
-      <h2>Finalité</h2>
+      <h2>Ce qui se passe à l’envoi</h2>
       <p>
-        Ces données servent uniquement à répondre à votre demande et, si vous le souhaitez, à vous
-        informer des prochaines sessions de formation. Elles ne sont ni vendues ni cédées.
+        Votre demande est transmise par e-mail à {{ info.nom }}, à l’adresse
+        <a [href]="'mailto:' + info.email">{{ info.email }}</a>, et un e-mail de confirmation vous
+        est envoyé. Le site n’enregistre pas vos demandes dans une base de données&nbsp;: elles sont
+        seulement conservées dans la boîte mail de l’institut.
+      </p>
+      <p>
+        Seule {{ info.responsable }} a accès à ces messages. Le site et la messagerie sont hébergés
+        par {{ info.legal.hebergeur.nom }}, en France, qui agit comme prestataire technique.
+      </p>
+      <p>
+        Pour limiter les envois automatiques (spam), le serveur garde pendant un court instant une
+        empreinte chiffrée de l’adresse IP de l’appareil qui envoie le formulaire, sans l’adresse
+        elle-même. Cette empreinte est effacée automatiquement dans l’heure.
+      </p>
+
+      <h2>Durée de conservation</h2>
+      <p>
+        Vos messages sont conservés dans la boîte mail de l’institut le temps nécessaire pour
+        traiter votre demande et assurer le suivi de nos échanges, puis supprimés. Les demandes
+        d’information sur les sessions de formation sont conservées jusqu’à ce que nous vous ayons
+        prévenue de l’ouverture de la session, ou jusqu’à ce que vous nous demandiez de ne plus
+        l’être.
       </p>
 
       <h2>Réservation en ligne</h2>
@@ -32,9 +69,16 @@
 
       <h2>Vos droits</h2>
       <p>
-        Vous pouvez demander l’accès, la rectification ou la suppression de vos données en écrivant
-        à
-        <a [href]="'mailto:' + info.email">{{ info.email }}</a>.
+        Vous pouvez à tout moment demander l’accès à vos données, leur rectification, leur
+        suppression, ou vous opposer à leur utilisation, en écrivant à
+        <a [href]="'mailto:' + info.email">{{ info.email }}</a>. Nous vous répondons dans les
+        meilleurs délais.
+      </p>
+      <p>
+        Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à
+        la CNIL (<a href="https://www.cnil.fr" target="_blank" rel="noopener"
+          >cnil.fr<span class="visuellement-cache"> (nouvel onglet)</span></a
+        >).
       </p>
 
       <p><a routerLink="/mentions-legales">Mentions légales</a></p>
