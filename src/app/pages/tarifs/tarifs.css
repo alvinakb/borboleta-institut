@@ -88,6 +88,14 @@
   color: var(--espresso);
   text-align: left;
   cursor: pointer;
+  border-radius: 16px;
+  padding-inline: var(--esp-4);
+  margin-inline: calc(-1 * var(--esp-4));
+  width: calc(100% + 2 * var(--esp-4));
+  transition: background-color var(--transition);
+}
+.categorie__bouton:hover {
+  background: color-mix(in srgb, var(--nude) 45%, transparent);
 }
 .categorie__nom {
   display: flex;

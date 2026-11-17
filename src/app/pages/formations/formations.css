@@ -126,17 +126,18 @@
   align-items: center;
   gap: var(--esp-3);
   min-height: 44px;
-  padding: 0;
-  background: none;
-  border: 0;
+  padding: var(--esp-2) var(--esp-5, 20px);
+  background: transparent;
+  border: 1px solid var(--ligne);
+  border-radius: 999px;
   font-weight: 600;
   color: var(--espresso);
-  text-decoration: underline;
-  text-decoration-color: var(--taupe);
-  text-underline-offset: 0.3em;
   cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition);
 }
 .formation__programme-bouton:hover {
+  background: var(--nude);
+  border-color: var(--nude);
   color: var(--brun);
 }
 .formation__icone {
