@@ -13,71 +13,71 @@ export const routes: Routes = [
     title: 'Drainage lymphatique à Draveil (91)' + SUFFIXE,
     data: {
       description:
-        'Borboleta Institut, drainage lymphatique à Draveil (91), méthode Renata França : soins corps et visage, remodelage, Kobido, et centre de formation certifié Qualiopi.',
+        'Borboleta Institut, drainage lymphatique à Draveil (91) méthode Renata França : soins corps et visage, remodelage, Kobido. Centre de formation Qualiopi.',
     },
   },
   {
     path: 'institut',
     loadComponent: () => import('./pages/institut/institut').then((m) => m.Institut),
-    title: "L'institut et l'approche, drainage lymphatique à Draveil" + SUFFIXE,
+    title: 'L’institut et l’approche à Draveil' + SUFFIXE,
     data: {
       description:
-        'Découvrez Borboleta Institut à Draveil (91) : un lieu calme dédié au drainage lymphatique méthode Renata França et au remodelage, pour votre bien-être et votre silhouette.',
+        'Borboleta Institut à Draveil (91) : un lieu calme dédié au drainage lymphatique méthode Renata França et au remodelage, pour votre bien-être.',
     },
   },
   {
     path: 'soins',
     loadComponent: () => import('./pages/soins/soins').then((m) => m.Soins),
-    title: 'Nos soins, drainage lymphatique à Draveil (91)' + SUFFIXE,
+    title: 'Soins de drainage lymphatique à Draveil' + SUFFIXE,
     data: {
       description:
-        'Drainage lymphatique corps et visage, remodelage, rouleau brésilien, Kobido, soins LCP, radiofréquence et pressothérapie à Draveil (91). Réservation en ligne sur Planity.',
+        'Drainage lymphatique corps et visage, remodelage, Kobido, soins LCP, radiofréquence et pressothérapie à Draveil (91). Réservation sur Planity.',
     },
   },
   {
     path: 'tarifs',
     loadComponent: () => import('./pages/tarifs/tarifs').then((m) => m.Tarifs),
-    title: 'Tarifs des soins, drainage lymphatique à Draveil' + SUFFIXE,
+    title: 'Tarifs drainage lymphatique à Draveil' + SUFFIXE,
     data: {
       description:
-        'Tous les tarifs de Borboleta Institut à Draveil (91) : drainage lymphatique méthode Renata França, remodelage, soins du visage, radiofréquence, cures et offres découverte.',
+        'Tous les tarifs de Borboleta Institut à Draveil (91) : drainage méthode Renata França, remodelage, soins visage, radiofréquence, cures et offres.',
     },
   },
   {
     path: 'cartes-cadeaux',
     loadComponent: () =>
       import('./pages/cartes-cadeaux/cartes-cadeaux').then((m) => m.CartesCadeaux),
-    title: 'Cartes cadeaux, drainage lymphatique à Draveil' + SUFFIXE,
+    title: 'Cartes cadeaux bien-être à Draveil' + SUFFIXE,
     data: {
       description:
-        'Offrez un moment de bien-être chez Borboleta Institut à Draveil (91) : cartes cadeaux pour un soin, une cure ou un montant libre, disponibles en institut.',
+        'Offrez un moment de bien-être chez Borboleta Institut à Draveil (91) : cartes cadeaux pour un soin, une cure ou un montant libre, en institut.',
     },
   },
   {
     path: 'avis',
     loadComponent: () => import('./pages/avis/avis').then((m) => m.Avis),
-    title: 'Avis clientes, drainage lymphatique à Draveil' + SUFFIXE,
+    title: 'Avis clientes, note de 5/5 sur Planity' + SUFFIXE,
     data: {
       description:
-        'Borboleta Institut, drainage lymphatique à Draveil (91), noté 5 sur 5 par sa clientèle sur Planity. Découvrez les avis vérifiés et suivez-nous sur Instagram.',
+        'Borboleta Institut, drainage lymphatique à Draveil (91) : note de 5/5 sur 145 avis Planity. Lisez les avis et suivez-nous sur Instagram.',
     },
   },
   {
     path: 'formations',
     loadComponent: () => import('./pages/formations/formations').then((m) => m.Formations),
-    title: 'Formations drainage lymphatique, certifiées Qualiopi' + SUFFIXE,
+    title: 'Formations drainage lymphatique' + SUFFIXE,
     data: {
       description:
-        'Cinq formations professionnelles en présentiel et en petit groupe : drainage lymphatique corps et visage, remodelage, post-opératoire et Kobido. Centre certifié Qualiopi.',
+        'Cinq formations en présentiel et en petit groupe : drainage corps et visage, remodelage, post-opératoire et Kobido. Centre certifié Qualiopi.',
     },
   },
   {
     path: 'parcours',
     loadComponent: () => import('./pages/parcours/parcours').then((m) => m.Parcours),
-    title: 'Le parcours et le déroulement des formations' + SUFFIXE,
+    title: 'Parcours et déroulement des formations' + SUFFIXE,
     data: {
       description:
-        "De l'inscription à la fin de la formation : le parcours par niveaux et le déroulement des formations au drainage lymphatique de Borboleta Institut, en région parisienne.",
+        'De l’inscription à la fin de la formation : le parcours par niveaux et le déroulement des formations au drainage lymphatique de Borboleta Institut.',
     },
   },
   {
@@ -86,7 +86,7 @@ export const routes: Routes = [
     title: 'La formatrice, Da Costa Mariline' + SUFFIXE,
     data: {
       description:
-        'Da Costa Mariline, praticienne et formatrice, fondatrice de Borboleta Institut à Draveil (91). Formée à la méthode Renata França, à la méthode Dr Vodder et au Kobido.',
+        'Da Costa Mariline, praticienne et formatrice, fondatrice de Borboleta Institut à Draveil (91). Méthode Renata França, Dr Vodder et Kobido.',
     },
   },
   {
@@ -95,7 +95,7 @@ export const routes: Routes = [
     title: 'Financement des formations, CPF et OPCO' + SUFFIXE,
     data: {
       description:
-        'Organisme certifié Qualiopi : vos formations au drainage lymphatique peuvent être prises en charge par le CPF, les OPCO, le FAFCEA ou France Travail. Nous vous accompagnons.',
+        'Organisme certifié Qualiopi : vos formations au drainage lymphatique peuvent être financées par le CPF, les OPCO, le FAFCEA ou France Travail.',
     },
   },
   {
@@ -104,34 +104,34 @@ export const routes: Routes = [
     title: 'Calendrier des sessions de formation' + SUFFIXE,
     data: {
       description:
-        'Prochaines sessions de formation au drainage lymphatique chez Borboleta Institut : nous consulter. Laissez vos coordonnées pour être informée des prochaines dates.',
+        'Prochaines sessions de formation au drainage lymphatique chez Borboleta Institut : nous consulter. Soyez informée des prochaines dates.',
     },
   },
   {
     path: 'inscription',
     loadComponent: () => import('./pages/inscription/inscription').then((m) => m.Inscription),
-    title: "S'inscrire à une formation" + SUFFIXE,
+    title: 'S’inscrire à une formation' + SUFFIXE,
     data: {
       description:
-        'Inscrivez-vous à une formation au drainage lymphatique chez Borboleta Institut : par le formulaire du site, par téléphone ou WhatsApp, ou via Mon Compte Formation (CPF).',
+        'Inscrivez-vous à une formation au drainage lymphatique chez Borboleta Institut : par le formulaire du site ou via Mon Compte Formation (CPF).',
     },
   },
   {
     path: 'contact',
     loadComponent: () => import('./pages/contact/contact').then((m) => m.Contact),
-    title: 'Contact, drainage lymphatique à Draveil (91)' + SUFFIXE,
+    title: 'Contact, drainage lymphatique à Draveil' + SUFFIXE,
     data: {
       description:
-        'Contactez Borboleta Institut, 10 allée des Grandes Pièces, 91210 Draveil : horaires, accès, formulaire de contact et réservation de vos soins sur Planity.',
+        'Contactez Borboleta Institut, 10 allée des Grandes Pièces, 91210 Draveil : horaires, accès, formulaire de contact et réservation sur Planity.',
     },
   },
   {
     path: 'faq',
     loadComponent: () => import('./pages/faq/faq').then((m) => m.Faq),
-    title: 'Questions fréquentes, drainage lymphatique à Draveil' + SUFFIXE,
+    title: 'FAQ drainage lymphatique à Draveil' + SUFFIXE,
     data: {
       description:
-        'Vos questions sur le drainage lymphatique à Draveil (91) et sur nos formations : déroulement des soins, réservation, contre-indications, financement et inscription.',
+        'Vos questions sur le drainage lymphatique à Draveil (91) et nos formations : déroulement des soins, réservation, financement et inscription.',
     },
   },
   {
@@ -141,7 +141,7 @@ export const routes: Routes = [
     title: 'Mentions légales' + SUFFIXE,
     data: {
       description:
-        'Mentions légales du site de Borboleta Institut, institut de drainage lymphatique et centre de formation à Draveil (91) : éditeur, hébergeur et informations légales.',
+        'Mentions légales du site de Borboleta Institut, institut de drainage lymphatique et centre de formation à Draveil (91) : éditeur et hébergeur.',
     },
   },
   {
@@ -151,7 +151,7 @@ export const routes: Routes = [
     title: 'Politique de confidentialité' + SUFFIXE,
     data: {
       description:
-        'Politique de confidentialité de Borboleta Institut : données collectées par le formulaire de contact, finalités, durée de conservation et exercice de vos droits.',
+        'Politique de confidentialité de Borboleta Institut : données du formulaire de contact, finalités, durée de conservation et exercice de vos droits.',
     },
   },
   {
@@ -159,8 +159,9 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/page-404/page-404').then((m) => m.Page404),
     title: 'Page introuvable' + SUFFIXE,
     data: {
+      noindex: true,
       description:
-        "Cette page n'existe pas ou a été déplacée. Retrouvez les soins et les formations de Borboleta Institut, drainage lymphatique à Draveil (91).",
+        'Cette page n’existe pas ou a été déplacée. Retrouvez les soins et les formations de Borboleta Institut, drainage lymphatique à Draveil (91).',
     },
   },
 ];

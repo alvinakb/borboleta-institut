@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { lienWhatsApp } from '../../data/site-info';
+import { SITE_INFO, lienTelephone, lienWhatsApp } from '../../data/site-info';
 import { BlocCta } from '../../shared/bloc-cta/bloc-cta';
 
 @Component({
@@ -11,4 +11,6 @@ import { BlocCta } from '../../shared/bloc-cta/bloc-cta';
 })
 export class Inscription {
   protected readonly whatsapp = lienWhatsApp();
+  protected readonly telephone = lienTelephone();
+  protected readonly numero = SITE_INFO.telephone;
 }

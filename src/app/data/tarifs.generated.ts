@@ -39,7 +39,7 @@ export const CATEGORIES_SOINS: readonly CategorieSoins[] = [
   {
     "id": "drainage-renata-franca",
     "titre": "Drainage lymphatique méthode Renata França",
-    "intro": "Le soin signature de l'institut, pour une vraie sensation de légèreté.",
+    "intro": "Le soin signature de l’institut, pour une vraie sensation de légèreté.",
     "soins": [
       {
         "nom": "Corps entier",
@@ -147,10 +147,10 @@ export const CATEGORIES_SOINS: readonly CategorieSoins[] = [
   {
     "id": "visage-lcp",
     "titre": "Soins du visage sur mesure LCP",
-    "intro": "Soins professionnels LCP, 97 % d'origine naturelle, made in France et vegan, chacun complété par un drainage visage express. Tous en 1h, au tarif de 90 €.",
+    "intro": "Soins professionnels LCP, 97 % d’origine naturelle, made in France et vegan, chacun complété par un drainage visage express. Tous en 1h, au tarif de 90 €.",
     "soins": [
       {
-        "nom": "Pro Age+ : anti-âge, fermeté, nutrition, à l'extrait de caviar",
+        "nom": "Pro Age+ : anti-âge, fermeté, nutrition, à l’extrait de caviar",
         "duree": "1h",
         "prix": 90
       },
@@ -243,7 +243,7 @@ export const CATEGORIES_SOINS: readonly CategorieSoins[] = [
   {
     "id": "pressotherapie",
     "titre": "Pressothérapie",
-    "intro": "Des bottes de pression qui stimulent en douceur la circulation.",
+    "intro": "Des bottes de pression enveloppantes, pour un moment de détente et une agréable sensation de légèreté dans les jambes.",
     "soins": [
       {
         "nom": "Pressothérapie",
@@ -255,7 +255,7 @@ export const CATEGORIES_SOINS: readonly CategorieSoins[] = [
   {
     "id": "post-operatoire",
     "titre": "Soins post-opératoires, chirurgie esthétique",
-    "intro": "Un drainage adapté pour accompagner la récupération après une chirurgie esthétique, avec l'accord et dans le respect des consignes du professionnel de santé qui assure le suivi.",
+    "intro": "Un drainage adapté pour accompagner la récupération après une chirurgie esthétique, avec l’accord et dans le respect des consignes du professionnel de santé qui assure le suivi.",
     "soins": [
       {
         "nom": "10 séances de drainage post-opératoire corps entier, méthode Renata França",

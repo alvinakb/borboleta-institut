@@ -6,9 +6,9 @@ import type { LienNav, MenuNav } from './types';
 export const MENU_PRINCIPAL: readonly MenuNav[] = [
   { libelle: 'Accueil', lien: '/' },
   {
-    libelle: "L'institut",
+    libelle: 'L’institut',
     sousMenu: [
-      { libelle: "L'institut et l'approche", lien: '/institut' },
+      { libelle: 'L’institut et l’approche', lien: '/institut' },
       { libelle: 'Nos soins', lien: '/soins' },
       { libelle: 'Tarifs', lien: '/tarifs' },
       { libelle: 'Cartes cadeaux', lien: '/cartes-cadeaux' },
@@ -24,7 +24,7 @@ export const MENU_PRINCIPAL: readonly MenuNav[] = [
       { libelle: 'La formatrice', lien: '/formatrice' },
       { libelle: 'Financement', lien: '/financement' },
       { libelle: 'Calendrier des sessions', lien: '/calendrier' },
-      { libelle: "S'inscrire", lien: '/inscription' },
+      { libelle: 'S’inscrire', lien: '/inscription' },
     ],
   },
   { libelle: 'Contact', lien: '/contact' },

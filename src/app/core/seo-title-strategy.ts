@@ -8,6 +8,8 @@ import { SITE_INFO } from '../data/site-info';
 export interface DonneesSeo {
   /** Meta description de la page (150 à 160 caractères conseillés). */
   description: string;
+  /** Si vrai, la page n’est pas indexée par les moteurs (ex. page 404). */
+  noindex?: boolean;
 }
 
 /**
@@ -26,7 +28,13 @@ export class SeoTitleStrategy extends TitleStrategy {
 
     let route = snapshot.root;
     while (route.firstChild) route = route.firstChild;
-    const description = (route.data as Partial<DonneesSeo>).description;
+    const { description, noindex } = route.data as Partial<DonneesSeo>;
+
+    if (noindex) {
+      this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
+    } else {
+      this.meta.removeTag("name='robots'");
+    }
 
     if (description) {
       this.meta.updateTag({ name: 'description', content: description });

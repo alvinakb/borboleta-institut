@@ -5,8 +5,10 @@
       Une note de <em>{{ info.avis.note }} sur {{ info.avis.noteMax }}</em>
     </h1>
     <p class="chapo">
-      Sur {{ info.avis.source }}, {{ info.avis.nombre }} avis saluent l'accueil, la propreté, le
-      cadre et la qualité des prestations de Borboleta Institut à Draveil.
+      <a [href]="info.avis.url" target="_blank" rel="noopener"
+        >Note de {{ info.avis.note }}/{{ info.avis.noteMax }} sur {{ info.avis.nombre }} avis
+        {{ info.avis.source }}<span class="visuellement-cache"> (nouvel onglet)</span></a
+      >
     </p>
     <div class="groupe-boutons">
       <a class="bouton" [href]="info.avis.url" target="_blank" rel="noopener"
@@ -20,11 +22,11 @@
 <section class="section">
   <div class="conteneur flux">
     <p class="surtitre">Avis vérifiés</p>
-    <h2 class="titre">Une sélection d'avis <em>vérifiés</em></h2>
+    <h2 class="titre">Une sélection d’avis <em>vérifiés</em></h2>
     <p>
       Les avis publiés ici sont repris tels quels depuis {{ info.avis.source }}. Une sélection sera
       ajoutée prochainement ; en attendant, vous pouvez tous les lire sur la page Planity de
-      l'institut.
+      l’institut.
     </p>
   </div>
 </section>
@@ -34,7 +36,7 @@
     <p class="surtitre">Centre de formation</p>
     <h2 class="titre">Les retours des <em>stagiaires</em></h2>
     <p>
-      Cet espace accueillera les retours des stagiaires dès les premières sessions de formation.
+      Cet espace accueillera prochainement les retours des stagiaires formées à Borboleta Institut.
     </p>
   </div>
 </section>
@@ -56,7 +58,7 @@
 <app-bloc-cta
   surtitre="À votre tour"
   titre="Venez vivre"
-  motCle="l'expérience Borboleta"
+  motCle="l’expérience Borboleta"
   [sombre]="true"
 >
   <app-bouton-reserver libelle="Réserver un soin" />

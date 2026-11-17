@@ -16,7 +16,7 @@
     {
       "id": "drainage-renata-franca",
       "titre": "Drainage lymphatique méthode Renata França",
-      "intro": "Le soin signature de l'institut, pour une vraie sensation de légèreté.",
+      "intro": "Le soin signature de l’institut, pour une vraie sensation de légèreté.",
       "soins": [
         {"nom": "Corps entier", "duree": "1h", "prix": 120},
         {"nom": "Le combo parfait : drainage lymphatique RF et Miracle Face", "duree": "1h30", "prix": 140},
@@ -60,9 +60,9 @@
     {
       "id": "visage-lcp",
       "titre": "Soins du visage sur mesure LCP",
-      "intro": "Soins professionnels LCP, 97 % d'origine naturelle, made in France et vegan, chacun complété par un drainage visage express. Tous en 1h, au tarif de 90 €.",
+      "intro": "Soins professionnels LCP, 97 % d’origine naturelle, made in France et vegan, chacun complété par un drainage visage express. Tous en 1h, au tarif de 90 €.",
       "soins": [
-        {"nom": "Pro Age+ : anti-âge, fermeté, nutrition, à l'extrait de caviar", "duree": "1h", "prix": 90},
+        {"nom": "Pro Age+ : anti-âge, fermeté, nutrition, à l’extrait de caviar", "duree": "1h", "prix": 90},
         {"nom": "Hydra Fresh : hydratation, repulpe, éclat", "duree": "1h", "prix": 90},
         {"nom": "Pollution Control : purifiant, détoxifiant, matifiant", "duree": "1h", "prix": 90},
         {"nom": "Boost Sculpt : tonicité, anti-fatigue, éclat, à la vitamine C", "duree": "1h", "prix": 90}
@@ -96,7 +96,7 @@
     {
       "id": "pressotherapie",
       "titre": "Pressothérapie",
-      "intro": "Des bottes de pression qui stimulent en douceur la circulation.",
+      "intro": "Des bottes de pression enveloppantes, pour un moment de détente et une agréable sensation de légèreté dans les jambes.",
       "soins": [
         {"nom": "Pressothérapie", "duree": "30min", "prix": 25}
       ]
@@ -104,7 +104,7 @@
     {
       "id": "post-operatoire",
       "titre": "Soins post-opératoires, chirurgie esthétique",
-      "intro": "Un drainage adapté pour accompagner la récupération après une chirurgie esthétique, avec l'accord et dans le respect des consignes du professionnel de santé qui assure le suivi.",
+      "intro": "Un drainage adapté pour accompagner la récupération après une chirurgie esthétique, avec l’accord et dans le respect des consignes du professionnel de santé qui assure le suivi.",
       "soins": [
         {"nom": "10 séances de drainage post-opératoire corps entier, méthode Renata França", "duree": "1h", "prix": 800},
         {"nom": "10 séances post-opératoires, méthode Dr Vodder, par zone", "duree": "35min", "prix": 450}

@@ -4,7 +4,7 @@
     <h1 class="titre-page">Une formation <em>finançable</em></h1>
     <p class="chapo">
       Borboleta Institut est un organisme de formation certifié Qualiopi. Vos formations peuvent
-      ainsi faire l'objet d'une prise en charge. Nous vous accompagnons dans le montage de votre
+      ainsi faire l’objet d’une prise en charge. Nous vous accompagnons dans le montage de votre
       dossier.
     </p>
   </div>
@@ -30,30 +30,25 @@
     <p class="surtitre">Qualité</p>
     <h2 class="titre">Certifié <em>Qualiopi</em></h2>
     <p>
-      Certificat Qualiopi :
-      @if (legal.certificatQualiopi) {
-        {{ legal.certificatQualiopi }}
-      } @else {
-        <span class="a-completer">{{ aCompleter }}</span>
-      }
+      La certification Qualiopi atteste de la qualité du processus mis en œuvre par Borboleta
+      Institut pour ses actions de formation. C’est elle qui ouvre l’accès aux financements publics
+      et mutualisés.
     </p>
-    <p>
-      Numéro de déclaration d'activité :
-      @if (legal.numeroDeclarationActivite) {
-        {{ legal.numeroDeclarationActivite }}
-      } @else {
-        <span class="a-completer">{{ aCompleter }}</span>
-      }
-    </p>
+    @if (legal.certificatQualiopi) {
+      <p>Certificat Qualiopi : {{ legal.certificatQualiopi }}</p>
+    }
+    @if (legal.numeroDeclarationActivite) {
+      <p>Numéro de déclaration d’activité : {{ legal.numeroDeclarationActivite }}</p>
+    }
   </div>
 </section>
 
 <app-bloc-cta
-  surtitre="On s'occupe de vous"
+  surtitre="On s’occupe de vous"
   titre="Parlons de votre"
   motCle="dossier"
   texte="Dites-nous quelle formation vous visez et votre situation : nous vous orientons vers le bon financement."
 >
-  <a class="bouton" routerLink="/inscription">S'inscrire</a>
+  <a class="bouton" routerLink="/inscription">S’inscrire</a>
   <a class="bouton bouton--contour" routerLink="/contact">Nous contacter</a>
 </app-bloc-cta>

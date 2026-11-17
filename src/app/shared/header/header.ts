@@ -7,7 +7,7 @@ import { MENU_PRINCIPAL } from '../../data/navigation';
 import { BoutonReserver } from '../bouton-reserver/bouton-reserver';
 
 /**
- * En-tête : logo, menu principal avec deux menus déroulants (L'institut, Centre de formation),
+ * En-tête : logo, menu principal avec deux menus déroulants (L’institut, Centre de formation),
  * menu burger sous 960 px. Accessible au clavier : boutons avec aria-expanded, Échap ferme.
  */
 @Component({
@@ -28,7 +28,7 @@ export class Header {
 
   private readonly hote = inject<ElementRef<HTMLElement>>(ElementRef);
 
-  /** Lien d'évitement : donne le focus au contenu sans changer de page (le <base href> ferait revenir à l'accueil). */
+  /** Lien d’évitement : donne le focus au contenu sans changer de page (le <base href> ferait revenir à l’accueil). */
   allerAuContenu(evenement: Event): void {
     evenement.preventDefault();
     const contenu = document.getElementById('contenu');

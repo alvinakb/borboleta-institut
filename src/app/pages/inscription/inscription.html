@@ -1,7 +1,7 @@
 <section class="entete-page">
   <div class="conteneur">
     <p class="surtitre">Centre de formation</p>
-    <h1 class="titre-page">S'inscrire à une <em>formation</em></h1>
+    <h1 class="titre-page">S’inscrire à une <em>formation</em></h1>
     <p class="chapo">
       Trois façons de réserver votre place. Dans tous les cas, nous revenons vers vous pour
       confirmer la session, les modalités et le financement.
@@ -18,21 +18,26 @@
         <p>Remplissez le formulaire de contact en précisant la formation visée.</p>
         <a class="bouton" routerLink="/contact">Remplir le formulaire</a>
       </li>
+      <!-- Étape masquée tant que TELEPHONE et WHATSAPP_NUMERO sont vides (data/site-info.ts). -->
+      @if (telephone || whatsapp) {
+        <li class="flux">
+          <p class="surtitre">2 · Par téléphone ou WhatsApp</p>
+          <h2 class="titre">Échanger de <em>vive voix</em></h2>
+          <p>Une question avant de vous lancer ? Échangeons directement.</p>
+          <div class="groupe-boutons">
+            @if (telephone) {
+              <a class="bouton bouton--contour" [href]="telephone">Appeler le {{ numero }}</a>
+            }
+            @if (whatsapp) {
+              <a class="bouton bouton--contour" [href]="whatsapp" target="_blank" rel="noopener"
+                >Écrire sur WhatsApp<span class="visuellement-cache"> (nouvel onglet)</span></a
+              >
+            }
+          </div>
+        </li>
+      }
       <li class="flux">
-        <p class="surtitre">2 · Par téléphone ou WhatsApp</p>
-        <h2 class="titre">Échanger de <em>vive voix</em></h2>
-        <p>Une question avant de vous lancer ? Échangeons directement.</p>
-        @if (whatsapp) {
-          <a class="bouton bouton--contour" [href]="whatsapp" target="_blank" rel="noopener"
-            >Écrire sur WhatsApp<span class="visuellement-cache"> (nouvel onglet)</span></a
-          >
-        } @else {
-          <!-- À COMPLÉTER : numéro WhatsApp dans src/app/data/site-info.ts (WHATSAPP_NUMERO). -->
-          <p><span class="a-completer">Numéro WhatsApp à compléter</span></p>
-        }
-      </li>
-      <li class="flux">
-        <p class="surtitre">3 · Mon Compte Formation</p>
+        <p class="surtitre">{{ telephone || whatsapp ? 3 : 2 }} · Mon Compte Formation</p>
         <h2 class="titre">Via le <em>CPF</em></h2>
         <p>Vous pouvez mobiliser vos droits à la formation via Mon Compte Formation.</p>
         <a class="bouton bouton--contour" routerLink="/financement">Le financement</a>

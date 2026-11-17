@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 
 /**
- * Bloc d'appel à l'action, répété après les sections.
+ * Bloc d’appel à l’action, répété après les sections.
  * Les boutons sont passés en contenu : <app-bloc-cta ...><a class="bouton">...</a></app-bloc-cta>
  */
 @Component({

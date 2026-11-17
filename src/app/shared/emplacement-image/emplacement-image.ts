@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 
 /**
- * Emplacement d'image en attendant les photos : fond dégradé élégant et nom du fichier attendu.
+ * Emplacement d’image en attendant les photos : fond dégradé élégant et nom du fichier attendu.
  * Pour remplacer : déposer le fichier au chemin indiqué (src/assets/images/...) puis remplacer
  * ce composant par une balise <img>.
  */
@@ -59,7 +59,7 @@ import { Component, input } from '@angular/core';
 export class EmplacementImage {
   /** Chemin attendu de la future photo, ex. « assets/images/accueil-hero.jpg ». */
   readonly fichier = input.required<string>();
-  /** Description de l'image (texte alternatif). */
+  /** Description de l’image (texte alternatif). */
   readonly description = input('');
   /** Rapport largeur / hauteur, ex. « 4 / 3 ». */
   readonly ratio = input('4 / 3');

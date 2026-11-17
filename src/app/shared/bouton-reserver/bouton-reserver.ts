@@ -25,7 +25,7 @@ import { SITE_INFO } from '../../data/site-info';
 })
 export class BoutonReserver {
   readonly libelle = input('Réserver');
-  /** Texte complet pour les lecteurs d'écran (ex. « Réserver Miracle Face »). */
+  /** Texte complet pour les lecteurs d’écran (ex. « Réserver Miracle Face »). */
   readonly aideAcces = input('');
   readonly variante = input<'plein' | 'contour' | 'clair'>('plein');
   protected readonly lien = SITE_INFO.planity;

@@ -1,6 +1,6 @@
 // Les cinq formations du centre de formation.
-// Durées et prix des formations 2 à 5 : « nous consulter » tant qu'ils ne sont pas fournis
-// (valeur null). La formation drainage corps fait 21 h sur 3 jours ; son prix n'est pas encore
+// Durées et prix des formations 2 à 5 : « nous consulter » tant qu’ils ne sont pas fournis
+// (valeur null). La formation drainage corps fait 21 h sur 3 jours ; son prix n’est pas encore
 // fourni non plus.
 
 import { formaterPrix } from './tarifs';

@@ -1,7 +1,7 @@
 // Types des données du site. Les valeurs viennent de contenu/tarifs.json (via le script
 // scripts/generer-donnees.mjs) et des fichiers site-info.ts et formations.ts.
 
-/** Un soin tel qu'il apparaît sur Planity. Prix en euros TTC. */
+/** Un soin tel qu’il apparaît sur Planity. Prix en euros TTC. */
 export interface Soin {
   readonly nom: string;
   readonly duree: string;
@@ -23,7 +23,7 @@ export interface Formation {
   readonly titre: string;
   readonly surtitre: string;
   readonly accroche: string;
-  /** Durée en heures, ou null si elle n'est pas encore fixée (« nous consulter »). */
+  /** Durée en heures, ou null si elle n’est pas encore fixée (« nous consulter »). */
   readonly dureeHeures: number | null;
   /** Nombre de jours, ou null si non fixé. */
   readonly jours: number | null;
@@ -31,7 +31,7 @@ export interface Formation {
   readonly niveau: string;
   readonly groupe: string;
   readonly programme: string;
-  /** Prix en euros, ou null tant qu'il n'est pas fourni (« nous consulter »). */
+  /** Prix en euros, ou null tant qu’il n’est pas fourni (« nous consulter »). */
   readonly prix: number | null;
 }
 

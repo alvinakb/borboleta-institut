@@ -21,15 +21,20 @@
       </ul>
       <p>
         Pour les soins, réservation en ligne via Planity. Pour les formations, inscription par le
-        formulaire, par téléphone ou WhatsApp, ou via Mon Compte Formation. Vous pouvez aussi nous
-        écrire sur Instagram,
+        formulaire{{ telephone || whatsapp ? ', par téléphone ou WhatsApp' : '' }}, ou via Mon
+        Compte Formation. Vous pouvez aussi nous écrire sur Instagram,
         <a [href]="info.instagram.url" target="_blank" rel="noopener"
           >{{ info.instagram.compte }}<span class="visuellement-cache"> (nouvel onglet)</span></a
         >.
       </p>
+      @if (telephone) {
+        <p>
+          Téléphone : <a [href]="telephone">{{ info.telephone }}</a>
+        </p>
+      }
       <div class="groupe-boutons">
         <app-bouton-reserver libelle="Réserver un soin" />
-        <a class="bouton bouton--contour" routerLink="/inscription">S'inscrire à une formation</a>
+        <a class="bouton bouton--contour" routerLink="/inscription">S’inscrire à une formation</a>
         <a class="bouton bouton--contour" [href]="itineraire" target="_blank" rel="noopener"
           >Itinéraire<span class="visuellement-cache"> (nouvel onglet)</span></a
         >
@@ -41,14 +46,12 @@
       <h2 class="titre">Nous <em>écrire</em></h2>
       <p>
         Le formulaire de contact (nom, e-mail, téléphone, objet, formation visée, message) sera
-        ajouté à l'étape suivante.
+        ajouté à l’étape suivante.
       </p>
       @if (whatsapp) {
         <a class="bouton bouton--contour" [href]="whatsapp" target="_blank" rel="noopener"
           >WhatsApp<span class="visuellement-cache"> (nouvel onglet)</span></a
         >
-      } @else {
-        <p><span class="a-completer">Bouton WhatsApp : numéro à compléter</span></p>
       }
     </div>
   </div>

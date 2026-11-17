@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { A_COMPLETER, SITE_INFO } from '../../data/site-info';
+import { SITE_INFO } from '../../data/site-info';
 import { BlocCta } from '../../shared/bloc-cta/bloc-cta';
 
 @Component({
@@ -11,7 +11,6 @@ import { BlocCta } from '../../shared/bloc-cta/bloc-cta';
 })
 export class Financement {
   protected readonly legal = SITE_INFO.legal;
-  protected readonly aCompleter = A_COMPLETER;
   protected readonly dispositifs = [
     { nom: 'CPF', texte: 'Mon Compte Formation, pour mobiliser vos droits à la formation.' },
     {

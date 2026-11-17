@@ -6,7 +6,7 @@ import type { CategorieSoins } from '../../data/types';
 import { BoutonReserver } from '../bouton-reserver/bouton-reserver';
 import { EmplacementImage } from '../emplacement-image/emplacement-image';
 
-/** Carte d'une catégorie de soins : « à partir de X € » calculé depuis les données + Réserver. */
+/** Carte d’une catégorie de soins : « à partir de X € » calculé depuis les données + Réserver. */
 @Component({
   selector: 'app-carte-soin',
   imports: [RouterLink, BoutonReserver, EmplacementImage],

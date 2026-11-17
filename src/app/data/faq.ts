@@ -1,5 +1,5 @@
-// Questions fréquentes (fusion du document Word validé et du texte SEO d'accueil).
-// Règles : pas d'allégation médicale, toujours rappeler l'accord du professionnel de santé
+// Questions fréquentes (fusion du document Word validé et du texte SEO d’accueil).
+// Règles : pas d’allégation médicale, toujours rappeler l’accord du professionnel de santé
 // pour le post-opératoire.
 
 export interface QuestionFaq {
