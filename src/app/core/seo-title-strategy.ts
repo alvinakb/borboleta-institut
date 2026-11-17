@@ -8,15 +8,19 @@ import {
   TitleStrategy,
 } from '@angular/router';
 
+import type { QuestionFaq } from '../data/faq';
 import { SITE_INFO } from '../data/site-info';
 import { SUFFIXE_TITRE, aUnePageSoin, detailSoin } from '../data/soins-detail';
+import { DonneesStructurees } from './donnees-structurees';
 
 /** Données SEO à placer dans `data` de chaque route. */
 export interface DonneesSeo {
-  /** Meta description de la page (150 à 160 caractères conseillés). */
+  /** Meta description de la page (155 caractères maximum). */
   description: string;
   /** Si vrai, la page n’est pas indexée par les moteurs (ex. page 404). */
   noindex?: boolean;
+  /** Questions affichées sur la page : données structurées FAQPage (JSON-LD). */
+  faq?: readonly QuestionFaq[];
 }
 
 /**
@@ -31,6 +35,7 @@ export interface DonneesSeo {
 export class SeoTitleStrategy extends TitleStrategy {
   private readonly title = inject(Title);
   private readonly meta = inject(Meta);
+  private readonly donneesStructurees = inject(DonneesStructurees);
 
   override updateTitle(snapshot: RouterStateSnapshot): void {
     const titrePage = this.buildTitle(snapshot);
@@ -39,7 +44,12 @@ export class SeoTitleStrategy extends TitleStrategy {
 
     let route = snapshot.root;
     while (route.firstChild) route = route.firstChild;
-    const { description, noindex } = route.data as Partial<DonneesSeo>;
+    const { description, noindex, faq } = route.data as Partial<DonneesSeo>;
+
+    // JSON-LD : fiche établissement sur toutes les pages, FAQPage seulement là où une FAQ
+    // est affichée (balises remplacées à chaque navigation, jamais accumulées).
+    this.donneesStructurees.definirEtablissement();
+    this.donneesStructurees.definirFaq(noindex ? undefined : faq);
 
     if (noindex) {
       this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
@@ -67,3 +77,7 @@ export const titreSoin: ResolveFn<string> = (route: ActivatedRouteSnapshot) =>
 /** Meta description du soin (155 caractères maximum). */
 export const descriptionSoin: ResolveFn<string> = (route: ActivatedRouteSnapshot) =>
   detailSoin(route.paramMap.get('id'))?.seoDescription ?? '';
+
+/** Questions fréquentes du soin, pour les données structurées FAQPage. */
+export const faqSoin: ResolveFn<readonly QuestionFaq[]> = (route: ActivatedRouteSnapshot) =>
+  detailSoin(route.paramMap.get('id'))?.faq ?? [];

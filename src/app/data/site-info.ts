@@ -85,6 +85,20 @@ export const SITE_INFO = {
   },
 } as const;
 
+/**
+ * Horaires au format schema.org (données structurées de core/donnees-structurees.ts).
+ * À tenir identiques à SITE_INFO.horaires ci-dessus. Dimanche : fermé (absent de la liste).
+ */
+export const HORAIRES_SCHEMA: readonly {
+  readonly jours: readonly string[];
+  readonly ouverture: string;
+  readonly fermeture: string;
+}[] = [
+  { jours: ['Monday', 'Tuesday', 'Thursday', 'Friday'], ouverture: '09:00', fermeture: '19:30' },
+  { jours: ['Wednesday'], ouverture: '10:00', fermeture: '19:30' },
+  { jours: ['Saturday'], ouverture: '09:00', fermeture: '14:00' },
+];
+
 /** Adresse sur une ligne : « 10 allée des Grandes Pièces, 91210 Draveil ». */
 export const ADRESSE_COMPLETE = `${SITE_INFO.adresse.rue}, ${SITE_INFO.adresse.codePostal} ${SITE_INFO.adresse.ville}`;
 

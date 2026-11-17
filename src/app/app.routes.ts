@@ -1,9 +1,11 @@
 import { Routes } from '@angular/router';
 
-import { descriptionSoin, soinExiste, titreSoin } from './core/seo-title-strategy';
+import { descriptionSoin, faqSoin, soinExiste, titreSoin } from './core/seo-title-strategy';
+import { FAQ } from './data/faq';
 
 // Une route par page. Titre (title) et meta description (data.description) par page,
 // appliqués par core/seo-title-strategy.ts. Mot clé principal : drainage lymphatique à Draveil (91).
+// data.faq : questions affichées sur la page, publiées en JSON-LD FAQPage.
 
 const SUFFIXE = ' | Borboleta Institut';
 
@@ -43,7 +45,7 @@ export const routes: Routes = [
     canMatch: [soinExiste],
     loadComponent: () => import('./pages/soin-detail/soin-detail').then((m) => m.SoinDetail),
     title: titreSoin,
-    resolve: { description: descriptionSoin },
+    resolve: { description: descriptionSoin, faq: faqSoin },
   },
   {
     path: 'tarifs',
@@ -143,6 +145,7 @@ export const routes: Routes = [
     data: {
       description:
         'Vos questions sur le drainage lymphatique à Draveil (91) et nos formations : déroulement des soins, réservation, financement et inscription.',
+      faq: FAQ.flatMap((groupe) => groupe.questions),
     },
   },
   {

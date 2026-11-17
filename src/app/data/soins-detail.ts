@@ -46,8 +46,9 @@ export interface DetailSoin {
 }
 
 /** Prix d’un soin lu dans les données, formaté (« 90 € »), ou chaîne vide s’il n’existe plus. */
-function prix(categorie: string, index: number): string {
-  const soin = categorieParId(categorie)?.soins[index];
+/** Prix d’un soin retrouvé par son nom exact dans contenu/tarifs.json (jamais par sa position). */
+function prix(categorie: string, nom: string): string {
+  const soin = categorieParId(categorie)?.soins.find((s) => s.nom === nom);
   return soin ? formaterPrix(soin.prix) : '';
 }
 
@@ -65,7 +66,10 @@ const RESERVER: QuestionFaq = {
   reponse: 'La réservation se fait en ligne, à tout moment, via notre page Planity.',
 };
 
-const premiereSeance = prix('offres-decouverte', 0);
+const premiereSeance = prix(
+  'offres-decouverte',
+  'Première séance de drainage lymphatique méthode Renata França',
+);
 
 export const SOINS_DETAIL: readonly DetailSoin[] = [
   {
