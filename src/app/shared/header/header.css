@@ -1,3 +1,6 @@
+/* En-tête (docs/DESIGN-SYSTEM.md, parties 5 et 10) : 72 px, fond --fond à 95 % avec flou,
+   ligne fine en bas seulement au défilement. Logo centré ; menu à gauche et « Réserver » à
+   droite sur ordinateur ; burger à gauche, logo au centre, « Réserver » à droite sur mobile. */
 :host {
   display: block;
   position: sticky;
@@ -11,82 +14,109 @@
   top: -4rem;
   z-index: 200;
   padding: 0.75rem 1rem;
-  background: var(--noir);
-  color: var(--creme);
+  border-radius: var(--rayon-champ);
+  background: var(--espresso);
+  color: var(--fond);
+  font-weight: 600;
 }
 .lien-evitement:focus {
-  top: 0.5rem;
+  top: 0.75rem;
 }
 
 .entete {
   position: relative;
-  background: rgba(244, 241, 235, 0.97);
-  border-bottom: 1px solid var(--beige);
-  transition: box-shadow var(--transition);
-}
-:host(.defile) .entete {
-  box-shadow: 0 10px 30px -22px rgba(14, 14, 14, 0.45);
+  background: rgba(251, 247, 244, 0.95);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition);
 }
 @supports (backdrop-filter: blur(8px)) {
   .entete {
-    background: rgba(244, 241, 235, 0.9);
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+:host(.defile) .entete,
+:host(.menu-ouvert) .entete {
+  border-bottom-color: var(--ligne);
+}
+
+/* Trois colonnes : les deux côtés de même largeur gardent le logo au centre exact. */
+.entete__barre {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--esp-2);
+  height: var(--hauteur-entete);
+}
+@media (max-width: 1179px) {
+  .entete__barre {
+    padding-inline: 12px;
+    gap: 0;
   }
 }
 
-.entete__barre {
+.entete__gauche {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  min-height: var(--hauteur-entete);
+  min-width: 0;
 }
 
-/* Logo PNG transparent (public/images/logo-borboleta.png) : plus besoin de mix-blend-mode. */
+.entete__droite {
+  display: flex;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+/* Logo horizontal (papillon + nom resserré, public/images/logo-borboleta-horizontal.png) :
+   44 px sur ordinateur ; 36 px sur mobile pour tenir entre le burger et « Réserver »
+   (le nom y reste plus grand qu’avec le logo empilé à 44 px). */
 .entete__logo {
-  flex-shrink: 0;
+  display: block;
+  border-radius: var(--rayon-champ);
 }
 .entete__logo img {
   display: block;
-  height: 3.1rem;
+  height: 36px;
   width: auto;
 }
-
-.entete__actions-mobile {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.entete__reserver-mobile ::ng-deep .bouton {
-  min-height: 2.5rem;
-  padding: 0.5rem 0.9rem;
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
+@media (max-width: 374px) {
+  .entete__logo img {
+    height: 30px;
+  }
 }
 
-/* Burger (mobile) */
+/* Bouton « Réserver » compact sur mobile (zone tactile de 44 px). */
+.entete__reserver ::ng-deep .bouton {
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9375rem;
+}
+
+/* ---------- Burger (mobile) ---------- */
 .burger {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 44px;
+  height: 44px;
+  margin-left: -6px;
   background: none;
   border: 0;
+  border-radius: var(--rayon-champ);
   cursor: pointer;
-  color: var(--anthracite);
+  color: var(--espresso);
 }
 .burger__barres,
 .burger__barres::before,
 .burger__barres::after {
   display: block;
-  width: 1.5rem;
+  width: 22px;
   height: 1.5px;
   background: currentColor;
   position: relative;
   transition:
-    transform 0.25s ease,
-    background-color 0.25s ease;
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 .burger__barres::before,
 .burger__barres::after {
@@ -110,7 +140,7 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Navigation : version mobile par défaut (panneau sous la barre) */
+/* ---------- Navigation : panneau sous la barre (mobile) ---------- */
 .nav {
   display: none;
   position: absolute;
@@ -121,20 +151,12 @@
   max-height: calc(100dvh - var(--hauteur-entete));
   overflow-y: auto;
   overscroll-behavior: contain;
-  background: var(--creme);
-  border-bottom: 1px solid var(--beige);
-  box-shadow: 0 24px 40px -30px rgba(14, 14, 14, 0.5);
-  padding: 0.5rem var(--marge-laterale) 2rem;
+  background: var(--fond);
+  border-bottom: 1px solid var(--ligne);
+  padding: var(--esp-2) 20px var(--esp-7);
 }
 .nav--ouverte {
   display: block;
-  animation: deroule 0.25s ease;
-}
-@keyframes deroule {
-  from {
-    opacity: 0;
-    transform: translateY(-0.5rem);
-  }
 }
 
 .nav__liste {
@@ -142,33 +164,36 @@
   margin: 0;
   padding: 0;
 }
+.nav__liste > li {
+  max-width: none;
+}
 
 .nav__lien {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.6rem;
+  gap: var(--esp-2);
   width: 100%;
-  min-height: 3.25rem;
-  padding: 0.85rem 0;
+  min-height: 56px;
+  padding: var(--esp-3) 0;
   font-family: var(--police-titre);
-  font-size: 1.45rem;
-  font-weight: 500;
+  font-optical-sizing: auto;
+  font-size: 1.375rem;
+  font-weight: 400;
   line-height: 1.2;
-  color: var(--anthracite);
+  color: var(--espresso);
   text-decoration: none;
   background: none;
   border: 0;
-  border-bottom: 1px solid var(--beige);
+  border-bottom: 1px solid var(--ligne);
   cursor: pointer;
   text-align: left;
-  transition: color var(--transition);
 }
-/* Doré foncé : 5,48:1 sur crème. */
+/* Brun : 6,4:1 sur --fond. */
 .nav__lien.actif,
 .nav__lien:hover,
 .nav__item--ouvert > .nav__lien {
-  color: var(--dore-texte);
+  color: var(--brun);
 }
 
 .nav__chevron {
@@ -178,7 +203,7 @@
   border-right: 1.5px solid currentColor;
   border-bottom: 1.5px solid currentColor;
   transform: rotate(45deg) translateY(-2px);
-  transition: transform 0.25s ease;
+  transition: transform 0.2s ease;
 }
 .nav__bouton[aria-expanded='true'] .nav__chevron {
   transform: rotate(-135deg) translateY(-1px);
@@ -187,95 +212,83 @@
 .sous-menu {
   display: none;
   list-style: none;
-  margin: 0;
-  padding: 0.5rem 0 0.75rem 1rem;
-  border-left: 1px solid var(--dore-fonce);
-  margin-block: 0.5rem;
+  margin: var(--esp-2) 0;
+  padding: 0 0 0 var(--esp-4);
+  border-left: 1px solid var(--taupe);
 }
 .sous-menu--ouvert {
   display: block;
 }
+.sous-menu li {
+  max-width: none;
+}
 .sous-menu__lien {
-  display: block;
-  padding: 0.6rem 0;
-  font-size: 0.98rem;
-  font-weight: 400;
-  color: var(--anthracite);
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: var(--esp-1) 0;
+  font-size: 1.0625rem;
+  color: var(--espresso);
   text-decoration: none;
-  transition: color var(--transition);
 }
 .sous-menu__lien:hover,
 .sous-menu__lien.actif {
-  color: var(--dore-texte);
+  color: var(--brun);
+}
+.sous-menu__lien.actif {
+  font-weight: 600;
 }
 
-.nav__reserver {
-  display: block;
-  margin-top: 1.75rem;
-}
-
-/* Ordinateur */
-@media (min-width: 960px) {
+/* ---------- Ordinateur ---------- */
+@media (min-width: 1180px) {
   .entete__logo img {
-    height: 4.1rem;
+    height: 44px;
   }
-  .entete__actions-mobile {
+  .entete__reserver ::ng-deep .bouton {
+    min-height: 48px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+  .burger {
     display: none;
   }
   .nav {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+    display: block;
     position: static;
     max-height: none;
     overflow: visible;
     padding: 0;
     border: 0;
-    box-shadow: none;
     background: none;
-    animation: none;
   }
   .nav__liste {
     display: flex;
     align-items: center;
-    gap: clamp(1.25rem, 2.2vw, 2.25rem);
+    gap: var(--esp-5);
   }
   .nav__item {
     position: relative;
   }
   .nav__lien {
-    position: relative;
     width: auto;
-    min-height: 0;
-    padding: 0.6rem 0;
+    min-height: 44px;
+    padding: 0;
+    gap: var(--esp-2);
     font-family: var(--police-texte);
-    font-size: 0.78rem;
-    font-weight: 400;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 600;
     border-bottom: 0;
     white-space: nowrap;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 0.45em;
+    transition:
+      color var(--transition),
+      text-decoration-color var(--transition);
   }
-  /* Filet doré sous la rubrique survolée ou active. */
-  .nav__lien::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0.2rem;
-    height: 1px;
-    background: var(--degrade-dore);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-  }
-  .nav__bouton::after {
-    right: 1.05rem;
-  }
-  .nav__lien.actif::after,
-  .nav__lien:hover::after,
-  .nav__item--ouvert > .nav__lien::after {
-    transform: scaleX(1);
+  .nav__lien.actif,
+  .nav__lien:hover {
+    text-decoration-color: currentColor;
   }
 
   /* Sous-menu en panneau flottant. Le pont invisible (::before) garde le survol actif
@@ -284,17 +297,17 @@
     display: block;
     position: absolute;
     top: 100%;
-    left: -1.5rem;
-    min-width: 17.5rem;
+    left: calc(-1 * var(--esp-5));
+    min-width: 18rem;
     margin: 0;
-    padding: 0.9rem 1.5rem 1rem;
-    background: var(--creme);
-    border: 1px solid var(--beige);
-    border-top: 2px solid var(--dore-fonce);
-    box-shadow: 0 24px 40px -24px rgba(14, 14, 14, 0.35);
+    padding: var(--esp-3) var(--esp-5);
+    background: var(--fond);
+    border: 1px solid var(--ligne);
+    border-radius: var(--rayon-carte);
+    box-shadow: var(--ombre);
     opacity: 0;
     visibility: hidden;
-    transform: translateY(0.75rem);
+    transform: translateY(8px);
     transition:
       opacity 0.2s ease,
       transform 0.2s ease,
@@ -306,26 +319,22 @@
     left: 0;
     right: 0;
     bottom: 100%;
-    height: 1rem;
+    height: 14px;
   }
   .sous-menu--ouvert {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0.35rem);
+    transform: translateY(12px);
     transition:
       opacity 0.2s ease,
       transform 0.2s ease,
       visibility 0s;
   }
   .sous-menu__lien {
-    padding: 0.5rem 0;
-    font-size: 0.92rem;
-    border-bottom: 1px solid rgba(232, 220, 200, 0.7);
+    font-size: 1rem;
+    border-bottom: 1px solid var(--ligne);
   }
   .sous-menu li:last-child .sous-menu__lien {
     border-bottom: 0;
-  }
-  .nav__reserver {
-    margin-top: 0;
   }
 }

@@ -1,12 +1,12 @@
 <section class="entete-page">
   <div class="conteneur">
     <p class="surtitre">L’institut</p>
-    <h1 class="titre-page">Nos <em>tarifs</em></h1>
+    <h1 class="titre-page">Nos tarifs</h1>
     <p class="chapo">
       Le détail de tous les soins de Borboleta Institut à Draveil (91), en séance et en cure. Les
       tarifs sont identiques à ceux affichés sur Planity, où vous pouvez réserver à tout moment.
     </p>
-    <nav class="groupe-boutons" aria-label="Catégories de soins">
+    <nav class="sommaire" aria-label="Catégories de soins">
       @for (categorie of categories; track categorie.id) {
         <a class="lien-fleche" [routerLink]="[]" [fragment]="categorie.id">{{ categorie.titre }}</a>
       }
@@ -41,6 +41,7 @@
 </section>
 
 <app-bloc-cta
+  [alt]="true"
   surtitre="Offrir"
   titre="Une envie de faire plaisir ?"
   motCle="Les cartes cadeaux"

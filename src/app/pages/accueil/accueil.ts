@@ -2,52 +2,43 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { FAQ } from '../../data/faq';
-import { NIVEAUX_FORMATION, texteDuree } from '../../data/formations';
-import { SITE_INFO } from '../../data/site-info';
+import { FORMATIONS, texteDuree } from '../../data/formations';
+import { ADRESSE_COMPLETE, LIEN_ITINERAIRE, SITE_INFO } from '../../data/site-info';
 import { categorieParId } from '../../data/tarifs';
-import type { CategorieSoins } from '../../data/types';
+import { Accordeon } from '../../shared/accordeon/accordeon';
 import { Apparition } from '../../shared/apparition/apparition';
 import { BlocCta } from '../../shared/bloc-cta/bloc-cta';
 import { BoutonReserver } from '../../shared/bouton-reserver/bouton-reserver';
-import { CarteSoin } from '../../shared/carte-soin/carte-soin';
 import { EmplacementImage } from '../../shared/emplacement-image/emplacement-image';
 
-const SOINS_A_LA_UNE = ['drainage-renata-franca', 'miracle-face', 'remodelage'];
-
-/** Les piliers de la technique (section « La méthode »). */
-const PILIERS = [
-  {
-    titre: 'La pression',
-    texte: 'Des pressions fermes et dosées, adaptées à chaque zone du corps et du visage.',
-  },
-  {
-    titre: 'Le rythme',
-    texte: 'Un rythme soutenu, qui fait de chaque séance un soin tonique et enveloppant.',
-  },
-  {
-    titre: 'La précision',
-    texte: 'Des gestes précis, répétés jusqu’à être parfaitement maîtrisés.',
-  },
-  {
-    titre: 'L’écoute',
-    texte:
-      'Chaque rendez-vous commence par une écoute de vos attentes, pour vous orienter vers le soin le plus adapté.',
-  },
+/**
+ * Bandeau des soins en colonnes verticales : une colonne par famille (identifiants de
+ * contenu/tarifs.json). Les pages /soins/<id> arrivent en passe 2 : en attendant, chaque
+ * colonne mène à la carte correspondante de la page Soins (/soins#<id>).
+ */
+const FAMILLES_SOINS = [
+  { id: 'drainage-renata-franca', nom: 'Drainage Renata França' },
+  { id: 'miracle-face', nom: 'Miracle Face' },
+  { id: 'remodelage', nom: 'Remodelage' },
+  { id: 'kobido', nom: 'Kobido' },
+  { id: 'radiofrequence', nom: 'Radiofréquence' },
+  { id: 'post-operatoire', nom: 'Post-opératoire' },
+  { id: 'femme-enceinte', nom: 'Femme enceinte' },
 ] as const;
 
 @Component({
   selector: 'app-accueil',
-  imports: [RouterLink, Apparition, BlocCta, BoutonReserver, CarteSoin, EmplacementImage],
+  imports: [RouterLink, Accordeon, Apparition, BlocCta, BoutonReserver, EmplacementImage],
   templateUrl: './accueil.html',
   styleUrl: './accueil.css',
 })
 export class Accueil {
   protected readonly info = SITE_INFO;
-  protected readonly soins = SOINS_A_LA_UNE.map(categorieParId).filter(
-    (c): c is CategorieSoins => !!c,
-  );
-  protected readonly piliers = PILIERS;
-  protected readonly niveaux = NIVEAUX_FORMATION;
+  protected readonly itineraire = LIEN_ITINERAIRE;
+  protected readonly adresse = ADRESSE_COMPLETE;
+  protected readonly familles = FAMILLES_SOINS.filter((f) => !!categorieParId(f.id));
+  protected readonly formationSocle = FORMATIONS[0];
+  protected readonly nombreFormations = FORMATIONS.length;
   protected readonly texteDuree = texteDuree;
   protected readonly questions = FAQ[0].questions;
   protected readonly vignettesInstagram = [1, 2, 3, 4];

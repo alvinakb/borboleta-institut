@@ -2,14 +2,13 @@ import { Component, input } from '@angular/core';
 
 import { SITE_INFO } from '../../data/site-info';
 
-/** Bouton « Réserver » vers Planity (nouvel onglet). */
+/** Bouton « Réserver » vers Planity (nouvel onglet). Principal par défaut, ou contour. */
 @Component({
   selector: 'app-bouton-reserver',
   template: `
     <a
       class="bouton"
       [class.bouton--contour]="variante() === 'contour'"
-      [class.bouton--clair]="variante() === 'clair'"
       [href]="lien"
       target="_blank"
       rel="noopener"
@@ -27,6 +26,6 @@ export class BoutonReserver {
   readonly libelle = input('Réserver');
   /** Texte complet pour les lecteurs d’écran (ex. « Réserver Miracle Face »). */
   readonly aideAcces = input('');
-  readonly variante = input<'plein' | 'contour' | 'clair'>('plein');
+  readonly variante = input<'plein' | 'contour'>('plein');
   protected readonly lien = SITE_INFO.planity;
 }

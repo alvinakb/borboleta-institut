@@ -23,11 +23,9 @@ import { EmplacementImage } from '../../shared/emplacement-image/emplacement-ima
       margin: 1.5rem 0 0;
     }
     .fiche dt {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--dore-texte);
+      font-size: var(--taille-petit);
+      font-weight: 600;
+      color: var(--brun);
     }
   `,
 })

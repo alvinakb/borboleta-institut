@@ -35,3 +35,22 @@ export const LIENS_FOOTER: readonly LienNav[] = [
   { libelle: 'Mentions légales', lien: '/mentions-legales' },
   { libelle: 'Politique de confidentialité', lien: '/confidentialite' },
 ];
+
+/** Pages du centre de formation : la barre fixe mobile y propose « Demander une formation ». */
+export const ROUTES_FORMATION: readonly string[] = [
+  '/formations',
+  '/parcours',
+  '/formatrice',
+  '/financement',
+  '/calendrier',
+  '/inscription',
+];
+
+/**
+ * Cible du bouton « Demander une formation » (barre fixe mobile).
+ * Passe 2 : quand la section « Prochaines sessions » existera sur /formations avec
+ * id="sessions", remplacer par { lien: '/formations', fragment: 'sessions' }.
+ */
+export const DEMANDE_FORMATION: { readonly lien: string; readonly fragment?: string } = {
+  lien: '/inscription',
+};

@@ -24,6 +24,6 @@ export const appConfig: ApplicationConfig = {
     { provide: TitleStrategy, useClass: SeoTitleStrategy },
     { provide: LOCALE_ID, useValue: 'fr' },
     // Décalage pour que les ancres ne passent pas sous le header collant.
-    provideAppInitializer(() => inject(ViewportScroller).setOffset([0, 96])),
+    provideAppInitializer(() => inject(ViewportScroller).setOffset([0, 88])),
   ],
 };

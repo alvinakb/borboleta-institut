@@ -1,104 +1,88 @@
-/* Polices hébergées sur le site (public/fonts/, licence SIL OFL) : aucun appel à Google Fonts. */
+/* Polices hébergées sur le site (public/fonts/, licence SIL OFL) : aucun appel à Google Fonts.
+   Fraunces : police variable (graisse et taille optique), Nunito Sans : 400 et 600. */
 @font-face {
-  font-family: 'Cormorant Garamond';
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src:
+    url('/fonts/fraunces-latin-opsz-normal.woff2') format('woff2-variations'),
+    url('/fonts/fraunces-latin-opsz-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Nunito Sans';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/cormorant-garamond-latin-400-normal.woff2') format('woff2');
+  src: url('/fonts/nunito-sans-latin-400-normal.woff2') format('woff2');
 }
 @font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('/fonts/cormorant-garamond-latin-500-normal.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Cormorant Garamond';
+  font-family: 'Nunito Sans';
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('/fonts/cormorant-garamond-latin-600-normal.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/cormorant-garamond-latin-400-italic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Cormorant Garamond';
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
-  src: url('/fonts/cormorant-garamond-latin-500-italic.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Jost';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url('/fonts/jost-latin-300-normal.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Jost';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/jost-latin-400-normal.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Jost';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('/fonts/jost-latin-500-normal.woff2') format('woff2');
-}
-@font-face {
-  font-family: 'Jost';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('/fonts/jost-latin-600-normal.woff2') format('woff2');
+  src: url('/fonts/nunito-sans-latin-600-normal.woff2') format('woff2');
 }
 
-/* Styles globaux de Borboleta Institut : charte, reset léger, typographie, boutons, mise en page.
+/* Styles globaux de Borboleta Institut. Référence : docs/DESIGN-SYSTEM.md.
+   Tokens, typographie, mise en page, boutons, animation unique.
    Les styles propres à un composant sont dans le fichier CSS de ce composant. */
 
-/* ---------- Charte ---------- */
+/* ---------- 2. Couleurs (tokens) ---------- */
 :root {
-  --creme: #f4f1eb;
-  --beige: #e8dcc8;
-  --beige-clair: #efe7da;
-  --dore-clair: #e9cb86;
-  --dore-fonce: #a97b3f;
-  /* Doré foncé pour les petits textes (surtitres, liens, prix, menu actif).
-     Contraste WCAG : 5,48:1 sur crème #F4F1EB, 4,56:1 sur beige #E8DCC8, 6,18:1 sur blanc. */
-  --dore-texte: #7f5a2b;
-  /* Dégradé du logo : boutons, filets, grands titres sur fond sombre. */
-  --degrade-dore: linear-gradient(135deg, #e9cb86 0%, #a97b3f 100%);
-  /* Dégradé assombri pour les grands mots en italique sur fond clair :
-     #946B35 → #7F5A2B, contraste ≥ 3,5:1 sur beige et ≥ 4,2:1 sur crème (grand texte : 3:1 requis). */
-  --degrade-dore-texte: linear-gradient(120deg, #946b35 0%, #7f5a2b 100%);
-  --anthracite: #2c2c2c;
-  --anthracite-doux: #4a4744;
-  --noir: #0e0e0e;
-  --blanc: #ffffff;
+  --fond: #fbf7f4; /* fond principal, presque blanc chaud */
+  --fond-alt: #f4e9e1; /* sections alternées */
+  --nude: #ebd3c4; /* aplats, boutons secondaires, survols */
+  --taupe: #a38b7e; /* décor uniquement (bordures, icônes) : jamais pour du texte */
+  --brun: #7a513f; /* liens, prix, petits titres */
+  --espresso: #2a211c; /* texte principal, fonds sombres, bouton principal */
+  --texte-doux: #5c4b43; /* paragraphes secondaires */
+  --ligne: #e6d6cb; /* bordures fines */
+  --or: #c8a160; /* logo et un seul détail par écran maximum, jamais pour du texte */
+  --succes: #3f6b4f;
+  --erreur: #a23b2e;
 
-  --police-titre: 'Cormorant Garamond', 'Cormorant', Garamond, 'Times New Roman', serif;
-  --police-texte: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+  /* Contrastes vérifiés (WCAG) :
+     espresso sur fond 14,8 ; sur fond-alt 13,2 ; sur nude 11,0.
+     texte-doux sur fond 7,8 ; sur fond-alt 6,9.
+     brun sur fond 6,4 ; sur fond-alt 5,7 ; sur le panneau des colonnes 5,7.
+     fond sur espresso 14,8 ; nude sur espresso 11,0.
+     taupe (3,0) et or (2,3) : décor uniquement, jamais de texte. */
 
-  --largeur-max: 1200px;
-  --marge-laterale: clamp(1.25rem, 4vw, 2.5rem);
-  --espace-section: clamp(4rem, 10vw, 7.5rem);
-  --hauteur-entete: 4.5rem;
-  --ombre-douce: 0 18px 40px -24px rgba(14, 14, 14, 0.35);
-  --transition: 0.25s ease;
+  /* ---------- 3. Typographie ---------- */
+  --police-titre: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --police-texte: 'Nunito Sans', 'Segoe UI', Roboto, Arial, sans-serif;
+  /* Échelle fluide de 390 px (mobile) à 1280 px (ordinateur). */
+  --taille-h1: clamp(2.125rem, 1.52rem + 2.47vw, 3.5rem); /* 34 → 56 px */
+  --taille-h2: clamp(1.75rem, 1.42rem + 1.35vw, 2.5rem); /* 28 → 40 px */
+  --taille-h3: clamp(1.3125rem, 1.23rem + 0.34vw, 1.5rem); /* 21 → 24 px */
+  --taille-texte: clamp(1.0625rem, 1.035rem + 0.11vw, 1.125rem); /* 17 → 18 px */
+  --taille-petit: clamp(0.875rem, 0.848rem + 0.11vw, 0.9375rem); /* 14 → 15 px */
+
+  /* ---------- 4. Espacements, grille, rayons, ombre ---------- */
+  --esp-1: 0.25rem; /* 4 */
+  --esp-2: 0.5rem; /* 8 */
+  --esp-3: 0.75rem; /* 12 */
+  --esp-4: 1rem; /* 16 */
+  --esp-5: 1.5rem; /* 24 */
+  --esp-6: 2rem; /* 32 */
+  --esp-7: 3rem; /* 48 */
+  --esp-8: 4rem; /* 64 */
+  --esp-9: 6rem; /* 96 */
+  --esp-10: 8rem; /* 128 */
+  --espace-section: clamp(4rem, 2.69rem + 5.39vw, 7rem); /* 64 → 112 px */
+  --largeur-max: 1160px;
+  --marge-laterale: 20px;
+  --hauteur-entete: 72px;
+  --rayon-bouton: 999px;
+  --rayon-carte: 16px;
+  --rayon-champ: 8px;
+  --ombre: 0 12px 32px -18px rgba(42, 33, 28, 0.25);
+  --transition: 0.2s ease;
 }
 @media (min-width: 960px) {
   :root {
-    --hauteur-entete: 5.25rem;
+    --marge-laterale: 32px;
   }
 }
 
@@ -118,11 +102,11 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: var(--police-texte);
-  font-weight: 300;
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  color: var(--anthracite);
-  background: var(--creme);
+  font-weight: 400;
+  font-size: var(--taille-texte);
+  line-height: 1.6;
+  color: var(--espresso);
+  background: var(--fond);
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
@@ -139,12 +123,32 @@ dd {
   margin: 0;
 }
 
+h1,
+h2,
 h3,
 h4 {
   font-family: var(--police-titre);
+  font-optical-sizing: auto;
+  font-style: normal;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+h1,
+h2 {
+  font-weight: 400;
+  line-height: 1.12;
+}
+h3,
+h4 {
   font-weight: 500;
-  font-size: 1.5rem;
+  font-size: var(--taille-h3);
   line-height: 1.2;
+}
+
+p,
+li,
+dd {
+  max-width: 65ch;
 }
 
 img,
@@ -156,13 +160,13 @@ video {
 }
 
 a {
-  color: var(--dore-texte);
+  color: var(--brun);
   text-underline-offset: 0.2em;
   text-decoration-thickness: 1px;
   transition: color var(--transition);
 }
 a:hover {
-  color: var(--anthracite);
+  color: var(--espresso);
 }
 
 button,
@@ -174,13 +178,13 @@ textarea {
 }
 
 :focus-visible {
-  outline: 2px solid var(--dore-texte);
-  outline-offset: 3px;
+  outline: 2px solid var(--brun);
+  outline-offset: 2px;
 }
 
 ::selection {
-  background: var(--dore-clair);
-  color: var(--noir);
+  background: var(--nude);
+  color: var(--espresso);
 }
 
 /* ---------- Mise en page ---------- */
@@ -194,225 +198,294 @@ textarea {
 .section {
   padding-block: var(--espace-section);
 }
-.section--beige {
-  background: var(--beige);
-}
-.section--blanche {
-  background: var(--blanc);
-}
-.section--sombre {
-  background: var(--noir);
-  color: var(--creme);
-}
-.section--sombre a:not(.bouton) {
-  color: var(--dore-clair);
-}
-.section--sombre a:not(.bouton):hover {
-  color: var(--creme);
+.section--alt {
+  background: var(--fond-alt);
 }
 
+/* Fond sombre (en-têtes de pages formation, piliers, appel à l’action final).
+   Jamais deux sections sombres à la suite. */
+.section--sombre,
+.fond-sombre {
+  background: var(--espresso);
+  color: var(--fond);
+}
+.section--sombre a:not(.bouton),
+.fond-sombre a:not(.bouton) {
+  color: var(--fond);
+}
+.section--sombre a:not(.bouton):hover,
+.fond-sombre a:not(.bouton):hover {
+  color: var(--nude);
+}
+.section--sombre :focus-visible,
+.fond-sombre :focus-visible {
+  outline-color: var(--nude);
+}
+
+/* Cartes : 3 par ligne sur ordinateur, 2 sur tablette, 1 sur mobile. */
 .grille {
   display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+  gap: var(--esp-6);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .grille {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .grille {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .deux-colonnes {
   display: grid;
-  gap: 2.5rem;
+  gap: var(--esp-6);
   align-items: center;
 }
 @media (min-width: 900px) {
   .deux-colonnes {
     grid-template-columns: 1fr 1fr;
-    gap: 4.5rem;
+    gap: var(--esp-8);
   }
 }
 
 .texte-centre {
   text-align: center;
 }
+.texte-centre p,
 .texte-centre .chapo {
   margin-inline: auto;
 }
 .texte-centre .groupe-boutons {
   justify-content: center;
+  align-items: center;
 }
 
 .flux > * + * {
-  margin-top: 1rem;
+  margin-top: var(--esp-4);
 }
 
 /* ---------- Typographie ---------- */
+/* Surtitre : Nunito 600 en écriture normale, brun (5,7:1 sur fond-alt). */
 .surtitre {
   font-family: var(--police-texte);
-  font-size: 0.75rem;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--dore-texte);
+  font-size: var(--taille-petit);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--brun);
 }
-.section--sombre .surtitre {
-  color: var(--dore-clair);
+.section--sombre .surtitre,
+.fond-sombre .surtitre {
+  color: var(--nude);
 }
 
+.titre-page,
+h1 {
+  font-size: var(--taille-h1);
+  letter-spacing: -0.01em;
+}
+.titre,
+h2 {
+  font-size: var(--taille-h2);
+}
 .titre,
 .titre-page {
-  font-family: var(--police-titre);
-  font-weight: 500;
-  line-height: 1.1;
   color: inherit;
-  overflow-wrap: break-word;
-  text-wrap: balance;
-}
-.titre-page {
-  font-size: clamp(2.5rem, 7.5vw, 4.5rem);
-}
-.titre {
-  font-size: clamp(2.1rem, 5vw, 3.25rem);
-}
-.titre em,
-.titre-page em {
-  font-style: italic;
-  font-weight: 400;
-  /* Sur fond clair : dégradé doré assombri (contraste suffisant pour un grand titre). */
-  background: var(--degrade-dore-texte);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: var(--dore-texte);
-  -webkit-text-fill-color: transparent;
-  /* Évite que l’italique soit rogné à droite par le clip. */
-  padding-right: 0.06em;
-}
-/* Sur fond sombre : dégradé du logo, lisible sur le noir. */
-.section--sombre .titre em,
-.section--sombre .titre-page em,
-.fond-sombre .titre em,
-.fond-sombre .titre-page em {
-  background-image: var(--degrade-dore);
-  color: var(--dore-clair);
 }
 
 .chapo {
-  font-size: clamp(1.05rem, 2.2vw, 1.2rem);
-  max-width: 44rem;
+  font-size: var(--taille-texte);
+  color: var(--texte-doux);
+  max-width: 65ch;
+}
+.section--sombre .chapo,
+.fond-sombre .chapo {
+  color: var(--fond);
 }
 
-/* Petit filet doré sous un titre. */
-.filet {
-  display: block;
-  width: 3.5rem;
-  height: 1px;
-  background: var(--degrade-dore);
-  border: 0;
-}
-.texte-centre .filet {
-  margin-inline: auto;
+.petit {
+  font-size: var(--taille-petit);
 }
 
-/* ---------- En-tête de page ---------- */
+/* ---------- En-tête de page simple ---------- */
 .entete-page {
-  padding-block: clamp(3rem, 8vw, 5.5rem);
-  background: var(--beige);
+  padding-block: clamp(3rem, 2rem + 4vw, 5rem);
+  background: var(--fond-alt);
 }
 .entete-page .conteneur > * + * {
-  margin-top: 1rem;
+  margin-top: var(--esp-4);
 }
 
-/* ---------- Boutons ---------- */
+/* ---------- 5. Boutons ---------- */
 .bouton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 3rem;
-  padding: 0.8rem 1.75rem;
+  gap: var(--esp-2);
+  min-height: 48px;
+  padding: 0.75rem 1.5rem;
   font-family: var(--police-texte);
-  font-size: 0.78rem;
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
   text-align: center;
   text-decoration: none;
-  /* Texte noir sur dégradé doré : contraste ≥ 5,1:1 sur toute la largeur. */
-  color: var(--noir);
-  background: var(--degrade-dore);
-  background-size: 140% 100%;
-  background-position: 0% 50%;
-  border: 1px solid var(--dore-fonce);
-  border-radius: 0;
+  color: var(--fond);
+  background: var(--espresso);
+  border: 1.5px solid var(--espresso);
+  border-radius: var(--rayon-bouton);
   cursor: pointer;
   transition:
-    background-position 0.4s ease,
     background-color var(--transition),
-    color var(--transition),
-    box-shadow var(--transition);
+    border-color var(--transition),
+    color var(--transition);
 }
 .bouton:hover {
-  color: var(--noir);
-  background-position: 100% 50%;
-  box-shadow: var(--ombre-douce);
+  color: var(--fond);
+  background: #000;
+  border-color: #000;
 }
-.bouton--contour {
-  background: transparent;
-  color: var(--anthracite);
+.bouton:focus-visible {
+  outline: 2px solid var(--brun);
+  outline-offset: 2px;
 }
-.bouton--contour:hover {
-  background: var(--anthracite);
-  border-color: var(--anthracite);
-  color: var(--creme);
+.bouton:disabled,
+.bouton[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
+
+/* Secondaire : contour espresso, fond transparent, survol nude. */
+.bouton--contour,
 .bouton--clair {
+  color: var(--espresso);
   background: transparent;
-  color: var(--creme);
-  border-color: var(--dore-clair);
 }
+.bouton--contour:hover,
 .bouton--clair:hover {
-  background: var(--dore-clair);
-  color: var(--noir);
+  color: var(--espresso);
+  background: var(--nude);
+  border-color: var(--espresso);
+}
+
+/* Sur fond sombre : on inverse. */
+.section--sombre .bouton,
+.fond-sombre .bouton {
+  color: var(--espresso);
+  background: var(--fond);
+  border-color: var(--fond);
+}
+.section--sombre .bouton:hover,
+.fond-sombre .bouton:hover {
+  background: var(--nude);
+  border-color: var(--nude);
+}
+.section--sombre .bouton--contour,
+.section--sombre .bouton--clair,
+.fond-sombre .bouton--contour,
+.fond-sombre .bouton--clair {
+  color: var(--fond);
+  background: transparent;
+  border-color: var(--fond);
+}
+.section--sombre .bouton--contour:hover,
+.section--sombre .bouton--clair:hover,
+.fond-sombre .bouton--contour:hover,
+.fond-sombre .bouton--clair:hover {
+  color: var(--espresso);
+  background: var(--fond);
+}
+.section--sombre .bouton:focus-visible,
+.fond-sombre .bouton:focus-visible {
+  outline-color: var(--nude);
 }
 
 .groupe-boutons {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2rem;
+  align-items: center;
+  gap: var(--esp-4);
+  margin-top: var(--esp-6);
 }
 
+/* Lien texte : action secondaire discrète (zone tactile de 48 px). */
+.lien-texte {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  font-weight: 600;
+  color: var(--espresso);
+  text-decoration: underline;
+  text-decoration-color: var(--taupe);
+  text-underline-offset: 0.3em;
+}
+.lien-texte:hover {
+  color: var(--brun);
+  text-decoration-color: currentColor;
+}
+
+/* Mobile : le bouton secondaire placé après le principal devient un lien texte sous lui. */
+@media (max-width: 639px) {
+  .groupe-boutons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--esp-1);
+  }
+  .groupe-boutons > * + .bouton--contour,
+  .groupe-boutons > * + .bouton--clair,
+  .groupe-boutons > * + * .bouton--contour,
+  .groupe-boutons > * + * .bouton--clair {
+    min-height: 48px;
+    padding-inline: 0;
+    border-color: transparent;
+    background: transparent;
+    text-decoration: underline;
+    text-decoration-color: var(--taupe);
+    text-underline-offset: 0.3em;
+  }
+  .groupe-boutons > * + .bouton--contour:hover,
+  .groupe-boutons > * + .bouton--clair:hover,
+  .groupe-boutons > * + * .bouton--contour:hover,
+  .groupe-boutons > * + * .bouton--clair:hover {
+    background: transparent;
+    border-color: transparent;
+    color: inherit;
+  }
+}
+
+/* Lien simple avec flèche (sommaires, « En savoir plus »). */
 .lien-fleche {
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--dore-texte);
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 0.15rem;
+  font-weight: 600;
+  color: var(--brun);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
 }
 .lien-fleche::after {
-  content: ' →';
+  content: '\00a0→';
 }
 .lien-fleche:hover {
-  color: var(--anthracite);
+  color: var(--espresso);
 }
 
-/* ---------- Emplacements de formulaire (étape ultérieure) ---------- */
+/* ---------- Formulaires (passe 2) ---------- */
 .emplacement-formulaire {
-  padding: 2rem;
-  border: 1px dashed var(--dore-fonce);
-  background: rgba(255, 255, 255, 0.6);
+  padding: var(--esp-6);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon-carte);
+  background: var(--fond);
 }
 
-/* ---------- Apparition douce au défilement (directive appApparition) ----------
-   La classe « apparition » n’est posée que par la directive, et jamais si l’utilisatrice
-   préfère réduire les animations : sans JavaScript, tout reste visible. */
+/* ---------- 7. Mouvement : une seule apparition (directive appApparition) ----------
+   Opacité et 12 px de translation, 400 ms, déclenchée une fois. La classe « apparition »
+   n’est posée que par la directive, jamais si l’utilisatrice préfère réduire les animations. */
 .apparition {
   opacity: 0;
-  transform: translateY(1.5rem);
+  transform: translateY(12px);
   transition:
-    opacity 0.9s ease,
-    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+    opacity 400ms ease,
+    transform 400ms ease;
   transition-delay: var(--delai-apparition, 0s);
 }
 .apparition.apparition--visible {
@@ -445,13 +518,4 @@ textarea {
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
   border: 0 !important;
-}
-
-.a-completer {
-  display: inline-block;
-  padding: 0 0.4rem;
-  background: #fff3cd;
-  color: #6b4e00;
-  border: 1px dashed #a97b3f;
-  font-weight: 500;
 }

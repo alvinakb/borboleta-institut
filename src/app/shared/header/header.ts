@@ -12,9 +12,9 @@ const DELAI_FERMETURE_SURVOL = 250;
 
 /**
  * En-tête : logo, menu principal avec deux menus déroulants (L’institut, Centre de formation),
- * menu burger sous 960 px.
+ * menu burger sous 1180 px.
  *
- * - Ordinateur (souris, 960 px et plus) : le sous-menu s’ouvre au survol, se referme avec un
+ * - Ordinateur (souris, 1180 px et plus) : le sous-menu s’ouvre au survol, se referme avec un
  *   petit délai quand la souris s’en va ; il s’ouvre aussi au clic et au clavier.
  * - Mobile / tactile : ouverture au toucher dans le menu burger.
  * - Clavier : Entrée ou Espace sur le bouton ouvre/ferme, Échap ferme et rend le focus au
@@ -31,6 +31,7 @@ const DELAI_FERMETURE_SURVOL = 250;
     '(keydown.escape)': 'echap()',
     '(window:scroll)': 'surDefilement()',
     '[class.defile]': 'defile()',
+    '[class.menu-ouvert]': 'menuMobileOuvert()',
   },
 })
 export class Header {
@@ -71,7 +72,7 @@ export class Header {
 
   /** Survol possible et menu horizontal affiché (ordinateur). */
   private survolActif(): boolean {
-    return window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 960px)').matches;
+    return window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 1180px)').matches;
   }
 
   protected entreeSurvol(index: number): void {

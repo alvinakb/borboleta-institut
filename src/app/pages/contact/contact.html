@@ -1,7 +1,7 @@
 <section class="entete-page">
   <div class="conteneur">
     <p class="surtitre">Nous trouver</p>
-    <h1 class="titre-page">Venez nous <em>rencontrer</em></h1>
+    <h1 class="titre-page">Venez nous rencontrer</h1>
     <p class="chapo">
       {{ info.nom }}, {{ adresse }}. {{ info.adresse.complement }}, en
       {{ info.adresse.departement }}.
@@ -12,7 +12,7 @@
 <section class="section">
   <div class="conteneur deux-colonnes" style="align-items: start">
     <div class="flux">
-      <h2 class="titre">Infos <em>pratiques</em></h2>
+      <h2 class="titre">Infos pratiques</h2>
       <h3>Horaires</h3>
       <ul>
         @for (h of info.horaires; track h.jours) {
@@ -35,15 +35,17 @@
       <div class="groupe-boutons">
         <app-bouton-reserver libelle="Réserver un soin" />
         <a class="bouton bouton--contour" routerLink="/inscription">S’inscrire à une formation</a>
-        <a class="bouton bouton--contour" [href]="itineraire" target="_blank" rel="noopener"
+      </div>
+      <p>
+        <a class="lien-fleche" [href]="itineraire" target="_blank" rel="noopener"
           >Itinéraire<span class="visuellement-cache"> (nouvel onglet)</span></a
         >
-      </div>
+      </p>
     </div>
 
     <!-- Emplacement du formulaire de contact et du bouton WhatsApp (étape contact-o2switch). -->
     <div class="emplacement-formulaire flux" id="formulaire-contact">
-      <h2 class="titre">Nous <em>écrire</em></h2>
+      <h2 class="titre">Nous écrire</h2>
       <p>
         Le formulaire de contact (nom, e-mail, téléphone, objet, formation visée, message) sera
         ajouté à l’étape suivante.

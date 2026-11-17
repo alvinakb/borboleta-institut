@@ -20,7 +20,7 @@ import { BoutonReserver } from '../../shared/bouton-reserver/bouton-reserver';
       list-style: none;
       margin: 1.5rem 0 0;
       padding: 0;
-      border-top: 1px solid var(--beige);
+      border-top: 1px solid var(--ligne);
     }
     .ligne {
       display: flex;
@@ -28,22 +28,28 @@ import { BoutonReserver } from '../../shared/bouton-reserver/bouton-reserver';
       align-items: center;
       gap: 0.5rem 1.5rem;
       padding: 1rem 0;
-      border-bottom: 1px solid var(--beige);
+      border-bottom: 1px solid var(--ligne);
     }
     .ligne__nom {
       flex: 1 1 16rem;
       min-width: 0;
     }
     .ligne__duree {
-      font-size: 0.9rem;
-      opacity: 0.75;
+      font-size: var(--taille-petit);
+      color: var(--texte-doux);
     }
+    /* Prix : brun 600, chiffres tabulaires (6,4:1 sur --fond). */
     .ligne__prix {
-      font-family: var(--police-titre);
-      font-size: 1.35rem;
-      font-weight: 500;
-      color: var(--dore-texte);
+      font-weight: 600;
+      color: var(--brun);
+      font-variant-numeric: tabular-nums;
       white-space: nowrap;
+    }
+    .sommaire {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--esp-2) var(--esp-5);
+      margin-top: var(--esp-5);
     }
   `,
 })

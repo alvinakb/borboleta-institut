@@ -5,53 +5,41 @@
 .emplacement {
   position: relative;
   width: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 1rem;
+  display: grid;
+  place-items: center;
   overflow: hidden;
-  background:
-    radial-gradient(ellipse at 22% 18%, rgba(233, 203, 134, 0.5), transparent 55%),
-    radial-gradient(ellipse at 85% 90%, rgba(169, 123, 63, 0.28), transparent 50%),
-    linear-gradient(140deg, var(--beige) 0%, var(--creme) 48%, #dcc7a1 100%);
+  border-radius: var(--rayon-carte);
+  background: var(--fond-alt);
 }
 
-/* Fin cadre doré intérieur, discret. */
-.emplacement::before {
-  content: '';
-  position: absolute;
-  inset: 0.75rem;
-  border: 1px solid rgba(169, 123, 63, 0.28);
+/* Papillon du logo en filigrane très léger. */
+.emplacement__papillon {
+  width: min(40%, 11rem);
+  height: auto;
+  opacity: 0.14;
   pointer-events: none;
+  user-select: none;
 }
 
 .emplacement--sombre {
-  background:
-    radial-gradient(ellipse at 72% 28%, rgba(233, 203, 134, 0.22), transparent 55%),
-    radial-gradient(ellipse at 15% 85%, rgba(169, 123, 63, 0.18), transparent 50%),
-    linear-gradient(150deg, #1b1916 0%, var(--noir) 55%, #2a241c 100%);
+  background: var(--espresso);
 }
-.emplacement--sombre::before {
-  border-color: rgba(233, 203, 134, 0.18);
+/* Voile : garantit le contraste du texte posé dessus, avec ou sans photo. */
+.emplacement--sombre::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(42, 33, 28, 0.35) 0%, rgba(42, 33, 28, 0.6) 100%);
+}
+.emplacement--sombre .emplacement__papillon {
+  opacity: 0.08;
 }
 
 .emplacement--plein-ecran {
   height: 100%;
   min-height: inherit;
-  justify-content: flex-end;
+  border-radius: 0;
 }
-.emplacement--plein-ecran::before {
-  display: none;
-}
-
-.emplacement__fichier {
-  position: relative;
-  font-family: var(--police-texte);
-  font-size: 0.7rem;
-  letter-spacing: 0.05em;
-  color: var(--anthracite);
-  background: rgba(244, 241, 235, 0.85);
-  padding: 0.25rem 0.5rem;
-  max-width: 100%;
-  overflow-wrap: break-word;
+.emplacement--plein-ecran .emplacement__papillon {
+  width: min(55%, 26rem);
 }

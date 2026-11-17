@@ -3,48 +3,105 @@
 }
 
 .carte {
+  position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
-  background: var(--blanc);
-  border: 1px solid var(--beige);
-  transition:
-    box-shadow var(--transition),
-    transform var(--transition);
+  gap: var(--esp-4);
+  padding: var(--esp-3);
+  background: var(--fond);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon-carte);
+  transition: box-shadow var(--transition);
 }
 .carte:hover {
-  box-shadow: var(--ombre-douce);
-  transform: translateY(-3px);
+  box-shadow: var(--ombre);
+}
+.carte:has(.carte__lien:focus-visible) {
+  outline: 2px solid var(--brun);
+  outline-offset: 2px;
 }
 
 .carte__corps {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  padding: 1.75rem 1.5rem;
+  gap: var(--esp-2);
+  padding: 0 var(--esp-2) var(--esp-2);
   flex: 1;
 }
 
 .carte__titre {
-  font-family: var(--police-titre);
-  font-size: 1.6rem;
-  font-weight: 500;
-  line-height: 1.2;
+  font-size: var(--taille-h3);
+}
+.carte__lien {
+  color: var(--espresso);
+  text-decoration: none;
+}
+.carte__lien:focus-visible {
+  outline: none;
+}
+/* Toute la carte est cliquable. */
+.carte__lien::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--rayon-carte);
+}
+.carte:hover .carte__lien {
+  text-decoration: underline;
+  text-decoration-color: var(--taupe);
 }
 
-/* « à partir de X € » : doré foncé lisible (5,48:1 sur crème, 6,18:1 sur blanc). */
-.carte__prix {
-  font-family: var(--police-titre);
-  font-style: italic;
-  font-size: 1.3rem;
-  color: var(--dore-texte);
+.carte__intro {
+  color: var(--texte-doux);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.carte__actions {
+.carte__bas {
   margin-top: auto;
-  padding-top: 0.5rem;
+  padding-top: var(--esp-3);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 1rem 1.5rem;
+  justify-content: space-between;
+  gap: var(--esp-2) var(--esp-4);
+  border-top: 1px solid var(--ligne);
+}
+
+.carte__infos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 var(--esp-3);
+}
+.carte__duree {
+  font-size: var(--taille-petit);
+  color: var(--texte-doux);
+}
+/* Prix en brun 600 : 6,4:1 sur --fond. */
+.carte__prix {
+  font-weight: 600;
+  color: var(--brun);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Lien « Réserver » discret, au-dessus du lien étendu de la carte. */
+.carte__reserver {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  color: var(--espresso);
+  text-decoration: underline;
+  text-decoration-color: var(--taupe);
+  text-underline-offset: 0.3em;
+}
+.carte__reserver:hover {
+  color: var(--brun);
 }

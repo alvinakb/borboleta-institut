@@ -3,11 +3,10 @@ import { RouterLink } from '@angular/router';
 
 import { LIENS_FOOTER } from '../../data/navigation';
 import { ADRESSE_COMPLETE, LIEN_ITINERAIRE, SITE_INFO } from '../../data/site-info';
-import { BoutonReserver } from '../bouton-reserver/bouton-reserver';
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink, BoutonReserver],
+  imports: [RouterLink],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })

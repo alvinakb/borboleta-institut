@@ -1,0 +1,89 @@
+:host {
+  display: contents;
+}
+
+/* ---------- Barre fixe mobile ---------- */
+.barre {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  gap: var(--esp-3);
+  padding: var(--esp-3) 20px calc(var(--esp-3) + env(safe-area-inset-bottom, 0px));
+  background: rgba(251, 247, 244, 0.95);
+  border-top: 1px solid var(--ligne);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.2s ease,
+    visibility 0s linear 0.2s;
+}
+@supports (backdrop-filter: blur(8px)) {
+  .barre {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+.barre--visible {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.2s ease,
+    visibility 0s;
+}
+@media (min-width: 960px) {
+  .barre {
+    display: none;
+  }
+}
+
+.barre__principal {
+  flex: 1;
+}
+
+.barre__whatsapp,
+.whatsapp-flottant {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  text-decoration: none;
+}
+
+/* Contour espresso, icône espresso (14,8:1 sur --fond). */
+.barre__whatsapp {
+  width: 48px;
+  height: 48px;
+  color: var(--espresso);
+  border: 1.5px solid var(--espresso);
+}
+.barre__whatsapp:hover {
+  background: var(--nude);
+  color: var(--espresso);
+}
+
+/* ---------- Bouton WhatsApp flottant ---------- */
+.whatsapp-flottant {
+  position: fixed;
+  right: 20px;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  z-index: 90;
+  width: 56px;
+  height: 56px;
+  color: var(--fond);
+  background: var(--espresso);
+  box-shadow: var(--ombre);
+}
+.whatsapp-flottant:hover {
+  color: var(--fond);
+  background: #000;
+}
+@media (max-width: 959px) {
+  .whatsapp-flottant--masque-mobile {
+    display: none;
+  }
+}

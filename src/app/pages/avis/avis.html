@@ -1,9 +1,7 @@
 <section class="entete-page">
   <div class="conteneur">
     <p class="surtitre">Elles en parlent</p>
-    <h1 class="titre-page">
-      Une note de <em>{{ info.avis.note }} sur {{ info.avis.noteMax }}</em>
-    </h1>
+    <h1 class="titre-page">Une note de {{ info.avis.note }} sur {{ info.avis.noteMax }}</h1>
     <p class="chapo">
       <a [href]="info.avis.url" target="_blank" rel="noopener"
         >Note de {{ info.avis.note }}/{{ info.avis.noteMax }} sur {{ info.avis.nombre }} avis
@@ -22,7 +20,7 @@
 <section class="section">
   <div class="conteneur flux">
     <p class="surtitre">Avis vérifiés</p>
-    <h2 class="titre">Une sélection d’avis <em>vérifiés</em></h2>
+    <h2 class="titre">Une sélection d’avis vérifiés</h2>
     <p>
       Les avis publiés ici sont repris tels quels depuis {{ info.avis.source }}. Une sélection sera
       ajoutée prochainement ; en attendant, vous pouvez tous les lire sur la page Planity de
@@ -31,24 +29,22 @@
   </div>
 </section>
 
-<section class="section section--blanche">
+<section class="section section--alt">
   <div class="conteneur flux">
     <p class="surtitre">Centre de formation</p>
-    <h2 class="titre">Les retours des <em>stagiaires</em></h2>
+    <h2 class="titre">Les retours des stagiaires</h2>
     <p>
       Cet espace accueillera prochainement les retours des stagiaires formées à Borboleta Institut.
     </p>
   </div>
 </section>
 
-<section class="section section--beige texte-centre">
+<section class="section texte-centre">
   <div class="conteneur flux">
     <p class="surtitre">Instagram</p>
-    <h2 class="titre">
-      Suivez <em>{{ info.instagram.compte }}</em>
-    </h2>
-    <div class="groupe-boutons" style="justify-content: center">
-      <a class="bouton bouton--contour" [href]="info.instagram.url" target="_blank" rel="noopener"
+    <h2 class="titre">Suivez {{ info.instagram.compte }}</h2>
+    <div class="groupe-boutons">
+      <a class="bouton" [href]="info.instagram.url" target="_blank" rel="noopener"
         >Voir le compte Instagram<span class="visuellement-cache"> (nouvel onglet)</span></a
       >
     </div>

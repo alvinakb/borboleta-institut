@@ -1,6 +1,7 @@
 <footer class="pied">
-  <div class="conteneur pied__haut">
-    <div class="pied__marque">
+  <div class="conteneur pied__grille">
+    <div class="pied__bloc pied__bloc--marque">
+      <h2 class="visuellement-cache">L’institut</h2>
       <a routerLink="/" class="pied__logo-lien" aria-label="Borboleta Institut, retour à l’accueil">
         <img
           class="pied__logo"
@@ -11,75 +12,64 @@
           loading="lazy"
         />
       </a>
-      <p class="pied__signature">{{ info.signature }}</p>
       <p class="pied__mention">
         Drainage lymphatique à Draveil (91) et centre de formation certifié Qualiopi.
       </p>
-      <div class="pied__boutons">
-        <app-bouton-reserver libelle="Réserver un soin" />
-        <a class="bouton bouton--clair" routerLink="/contact">Nous contacter</a>
-      </div>
+      <a class="pied__instagram" [href]="info.instagram.url" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+          <rect
+            x="3"
+            y="3"
+            width="18"
+            height="18"
+            rx="5"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          />
+          <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.5" />
+          <circle cx="17.4" cy="6.6" r="1" fill="currentColor" />
+        </svg>
+        <span>Instagram {{ info.instagram.compte }}</span
+        ><span class="visuellement-cache"> (nouvel onglet)</span>
+      </a>
     </div>
 
-    <div class="pied__grille">
-      <div class="pied__bloc">
-        <h2 class="pied__titre">Nous trouver</h2>
-        <address>
-          {{ info.nom }}<br />
-          {{ info.adresse.rue }}<br />
-          {{ info.adresse.codePostal }} {{ info.adresse.ville }}
-        </address>
-        <a class="pied__lien-souligne" [href]="itineraire" target="_blank" rel="noopener"
-          >Itinéraire<span class="visuellement-cache"> vers {{ adresse }} (nouvel onglet)</span></a
-        >
-      </div>
+    <div class="pied__bloc">
+      <h2 class="pied__titre">Nous trouver</h2>
+      <address>
+        {{ info.adresse.rue }}<br />
+        {{ info.adresse.codePostal }} {{ info.adresse.ville }}
+      </address>
+      <a class="pied__lien" [href]="itineraire" target="_blank" rel="noopener"
+        >Itinéraire<span class="visuellement-cache"> vers {{ adresse }} (nouvel onglet)</span></a
+      >
+    </div>
 
-      <div class="pied__bloc">
-        <h2 class="pied__titre">Horaires</h2>
-        <dl class="pied__horaires">
-          @for (h of info.horaires; track h.jours) {
-            <div>
-              <dt>{{ h.jours }}</dt>
-              <dd>{{ h.heures }}</dd>
-            </div>
-          }
-        </dl>
-      </div>
+    <div class="pied__bloc">
+      <h2 class="pied__titre">Horaires</h2>
+      <dl class="pied__horaires">
+        @for (h of info.horaires; track h.jours) {
+          <div>
+            <dt>{{ h.jours }}</dt>
+            <dd>{{ h.heures }}</dd>
+          </div>
+        }
+      </dl>
+    </div>
 
-      <div class="pied__bloc">
-        <h2 class="pied__titre">Suivez-nous</h2>
-        <a class="pied__instagram" [href]="info.instagram.url" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
-            <rect
-              x="3"
-              y="3"
-              width="18"
-              height="18"
-              rx="5"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
-            <circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.5" />
-            <circle cx="17.4" cy="6.6" r="1" fill="currentColor" />
-          </svg>
-          <span>Instagram {{ info.instagram.compte }}</span
-          ><span class="visuellement-cache"> (nouvel onglet)</span>
-        </a>
-        <h2 class="pied__titre pied__titre--suite">Informations</h2>
-        <ul class="pied__liens">
-          @for (lien of liens; track lien.lien) {
-            <li>
-              <a [routerLink]="lien.lien">{{ lien.libelle }}</a>
-            </li>
-          }
-        </ul>
-      </div>
+    <div class="pied__bloc">
+      <h2 class="pied__titre">Liens utiles</h2>
+      <ul class="pied__liens">
+        @for (lien of liens; track lien.lien) {
+          <li>
+            <a class="pied__lien" [routerLink]="lien.lien">{{ lien.libelle }}</a>
+          </li>
+        }
+      </ul>
     </div>
   </div>
   <div class="pied__bas">
-    <p class="conteneur">
-      © {{ annee }} {{ info.nom }}, Draveil (91). Organisme de formation certifié Qualiopi.
-    </p>
+    <p class="conteneur">© {{ annee }} {{ info.nom }}, Draveil (91)</p>
   </div>
 </footer>
