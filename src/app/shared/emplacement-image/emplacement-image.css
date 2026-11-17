@@ -21,10 +21,19 @@
   user-select: none;
 }
 
+/* Vraie photo (ou vidéo) : remplit l’emplacement, même ratio et même rayon. */
+.emplacement__photo,
+.emplacement__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .emplacement--sombre {
   background: var(--espresso);
 }
-/* Voile : garantit le contraste du texte posé dessus, avec ou sans photo. */
+/* Voile : garantit le contraste du texte posé dessus, avec photo, vidéo ou aplat. */
 .emplacement--sombre::after {
   content: '';
   position: absolute;
@@ -42,4 +51,50 @@
 }
 .emplacement--plein-ecran .emplacement__papillon {
   width: min(55%, 26rem);
+}
+
+/* Zoom très lent sur la photo du grand visuel (une seule fois). Jamais si l’utilisatrice préfère
+   réduire les animations. Règle hors @media : Angular ne renomme le nom d’animation encapsulé
+   qu’au premier niveau. */
+.emplacement--zoom-lent .emplacement__photo {
+  animation: zoom-lent 26s ease-in-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .emplacement--zoom-lent .emplacement__photo {
+    animation: none;
+  }
+}
+@keyframes zoom-lent {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+/* Pause de la vidéo de fond (WCAG 2.2.2) : bouton rond discret en bas à gauche du visuel. */
+.emplacement__pause {
+  position: absolute;
+  z-index: 2;
+  left: var(--marge-laterale);
+  bottom: var(--esp-5);
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(251, 247, 244, 0.7);
+  border-radius: var(--rayon-bouton);
+  background: rgba(42, 33, 28, 0.55);
+  color: var(--fond);
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+.emplacement__pause:hover {
+  background: rgba(42, 33, 28, 0.85);
+}
+.emplacement__pause:focus-visible {
+  outline: 2px solid var(--nude);
+  outline-offset: 2px;
 }

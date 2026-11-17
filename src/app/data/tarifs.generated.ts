@@ -17,6 +17,12 @@ export const LOGO_QUALIOPI_PRESENT = false;
  */
 export const PREVISUALISATION = false;
 
+/**
+ * Photos et vidéos présentes dans src/assets/images/ au moment du build (chemins publiés).
+ * Une photo listée ici remplace automatiquement son emplacement (composant emplacement-image).
+ */
+export const MEDIAS_PRESENTS: readonly string[] = [];
+
 export const CATEGORIES_SOINS: readonly CategorieSoins[] = [
   {
     id: 'offres-decouverte',
