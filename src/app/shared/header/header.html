@@ -1,36 +1,52 @@
 <a class="lien-evitement" href="#contenu" (click)="allerAuContenu($event)">Aller au contenu</a>
 <header class="entete">
   <div class="conteneur entete__barre">
-    <a class="entete__logo" routerLink="/" aria-label="Borboleta Institut, retour à l’accueil">
-      <img src="images/logo-fond-clair.jpg" alt="Borboleta Institut" width="2048" height="1366" />
+    <a
+      class="entete__logo"
+      routerLink="/"
+      aria-label="Borboleta Institut, retour à l’accueil"
+      (click)="toutFermer()"
+    >
+      <img src="images/logo-borboleta.png" alt="Borboleta Institut" width="600" height="364" />
     </a>
 
-    <button
-      type="button"
-      class="burger"
-      [attr.aria-expanded]="menuMobileOuvert()"
-      aria-controls="menu-principal"
-      (click)="basculerMenuMobile()"
-    >
-      <span class="burger__barres" aria-hidden="true"></span>
-      <span class="visuellement-cache">{{
-        menuMobileOuvert() ? 'Fermer le menu' : 'Ouvrir le menu'
-      }}</span>
-    </button>
+    <div class="entete__actions-mobile">
+      <app-bouton-reserver class="entete__reserver-mobile" libelle="Réserver" />
+      <button
+        type="button"
+        class="burger"
+        [attr.aria-expanded]="menuMobileOuvert()"
+        aria-controls="menu-principal"
+        (click)="basculerMenuMobile()"
+      >
+        <span class="burger__barres" aria-hidden="true"></span>
+        <span class="visuellement-cache">{{
+          menuMobileOuvert() ? 'Fermer le menu' : 'Ouvrir le menu'
+        }}</span>
+      </button>
+    </div>
 
     <nav
       id="menu-principal"
       class="nav"
       [class.nav--ouverte]="menuMobileOuvert()"
       aria-label="Menu principal"
+      (click)="clicMenu($event)"
     >
       <ul class="nav__liste">
         @for (entree of menu; track entree.libelle; let i = $index) {
           @if (entree.sousMenu) {
-            <li class="nav__item nav__item--deroulant" (focusout)="focusSorti($event, i)">
+            <li
+              class="nav__item nav__item--deroulant"
+              [class.nav__item--ouvert]="sousMenuOuvert() === i"
+              (focusout)="focusSorti($event, i)"
+              (mouseenter)="entreeSurvol(i)"
+              (mouseleave)="sortieSurvol(i)"
+            >
               <button
                 type="button"
                 class="nav__lien nav__bouton"
+                [class.actif]="rubriqueActive(entree)"
                 [id]="'bouton-sous-menu-' + i"
                 [attr.aria-expanded]="sousMenuOuvert() === i"
                 [attr.aria-controls]="'sous-menu-' + i"

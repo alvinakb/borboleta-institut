@@ -30,44 +30,7 @@ import { EmplacementImage } from '../emplacement-image/emplacement-image';
       </div>
     </article>
   `,
-  styles: `
-    :host {
-      display: block;
-    }
-    .carte {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      background: #fff;
-      border: 1px solid var(--beige);
-    }
-    .carte__corps {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      padding: 1.5rem;
-      flex: 1;
-    }
-    .carte__titre {
-      font-family: var(--police-titre);
-      font-size: 1.5rem;
-      font-weight: 500;
-      line-height: 1.2;
-    }
-    .carte__prix {
-      font-family: var(--police-titre);
-      font-style: italic;
-      font-size: 1.25rem;
-      color: var(--dore-fonce);
-    }
-    .carte__actions {
-      margin-top: auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1rem;
-    }
-  `,
+  styleUrl: './carte-soin.css',
 })
 export class CarteSoin {
   readonly categorie = input.required<CategorieSoins>();

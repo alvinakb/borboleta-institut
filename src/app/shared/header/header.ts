@@ -4,11 +4,22 @@ import { NavigationEnd, Router, RouterLink, RouterLinkActive } from '@angular/ro
 import { filter } from 'rxjs';
 
 import { MENU_PRINCIPAL } from '../../data/navigation';
+import type { MenuNav } from '../../data/types';
 import { BoutonReserver } from '../bouton-reserver/bouton-reserver';
+
+/** Délai avant fermeture quand la souris quitte un menu déroulant (ms). */
+const DELAI_FERMETURE_SURVOL = 250;
 
 /**
  * En-tête : logo, menu principal avec deux menus déroulants (L’institut, Centre de formation),
- * menu burger sous 960 px. Accessible au clavier : boutons avec aria-expanded, Échap ferme.
+ * menu burger sous 960 px.
+ *
+ * - Ordinateur (souris, 960 px et plus) : le sous-menu s’ouvre au survol, se referme avec un
+ *   petit délai quand la souris s’en va ; il s’ouvre aussi au clic et au clavier.
+ * - Mobile / tactile : ouverture au toucher dans le menu burger.
+ * - Clavier : Entrée ou Espace sur le bouton ouvre/ferme, Échap ferme et rend le focus au
+ *   bouton, aria-expanded est tenu à jour. Le sous-menu se ferme quand le focus en sort.
+ * - Tout clic sur un lien du menu (y compris celui de la page en cours) ferme tout.
  */
 @Component({
   selector: 'app-header',
@@ -18,6 +29,8 @@ import { BoutonReserver } from '../bouton-reserver/bouton-reserver';
   host: {
     '(document:click)': 'clicDocument($event)',
     '(keydown.escape)': 'echap()',
+    '(window:scroll)': 'surDefilement()',
+    '[class.defile]': 'defile()',
   },
 })
 export class Header {
@@ -25,8 +38,28 @@ export class Header {
   /** Index du sous-menu ouvert, ou null. */
   protected readonly sousMenuOuvert = signal<number | null>(null);
   protected readonly menuMobileOuvert = signal(false);
+  /** Adresse de la page en cours, pour marquer la rubrique active du menu. */
+  private readonly url = signal('');
+  /** Vrai dès que la page a défilé : ombre légère sous l’en-tête. */
+  protected readonly defile = signal(false);
 
   private readonly hote = inject<ElementRef<HTMLElement>>(ElementRef);
+  /** Le sous-menu ouvert l’a été par survol (et non par clic ou clavier). */
+  private ouvertParSurvol = false;
+  private minuteurFermeture: ReturnType<typeof setTimeout> | undefined;
+
+  constructor() {
+    inject(Router)
+      .events.pipe(
+        filter((e) => e instanceof NavigationEnd),
+        takeUntilDestroyed(inject(DestroyRef)),
+      )
+      .subscribe((e) => {
+        this.url.set(e.urlAfterRedirects);
+        this.toutFermer();
+      });
+    inject(DestroyRef).onDestroy(() => clearTimeout(this.minuteurFermeture));
+  }
 
   /** Lien d’évitement : donne le focus au contenu sans changer de page (le <base href> ferait revenir à l’accueil). */
   allerAuContenu(evenement: Event): void {
@@ -36,16 +69,36 @@ export class Header {
     contenu?.scrollIntoView();
   }
 
-  constructor() {
-    inject(Router)
-      .events.pipe(
-        filter((e) => e instanceof NavigationEnd),
-        takeUntilDestroyed(inject(DestroyRef)),
-      )
-      .subscribe(() => this.toutFermer());
+  /** Survol possible et menu horizontal affiché (ordinateur). */
+  private survolActif(): boolean {
+    return window.matchMedia('(hover: hover) and (pointer: fine) and (min-width: 960px)').matches;
+  }
+
+  protected entreeSurvol(index: number): void {
+    if (!this.survolActif()) return;
+    clearTimeout(this.minuteurFermeture);
+    if (this.sousMenuOuvert() !== index) {
+      this.sousMenuOuvert.set(index);
+      this.ouvertParSurvol = true;
+    }
+  }
+
+  protected sortieSurvol(index: number): void {
+    if (!this.survolActif()) return;
+    clearTimeout(this.minuteurFermeture);
+    this.minuteurFermeture = setTimeout(() => {
+      if (this.sousMenuOuvert() === index) this.sousMenuOuvert.set(null);
+    }, DELAI_FERMETURE_SURVOL);
   }
 
   protected basculerSousMenu(index: number): void {
+    clearTimeout(this.minuteurFermeture);
+    // Sur ordinateur, le survol a déjà ouvert le menu : le clic le garde ouvert au lieu de le refermer.
+    if (this.sousMenuOuvert() === index && this.ouvertParSurvol) {
+      this.ouvertParSurvol = false;
+      return;
+    }
+    this.ouvertParSurvol = false;
     this.sousMenuOuvert.update((actuel) => (actuel === index ? null : index));
   }
 
@@ -55,13 +108,22 @@ export class Header {
   }
 
   protected toutFermer(): void {
+    clearTimeout(this.minuteurFermeture);
+    this.ouvertParSurvol = false;
     this.sousMenuOuvert.set(null);
     this.menuMobileOuvert.set(false);
   }
 
+  /** Clic dans le menu : tout lien (interne, externe, page en cours) referme les menus. */
+  protected clicMenu(event: MouseEvent): void {
+    if ((event.target as HTMLElement).closest('a')) {
+      this.toutFermer();
+    }
+  }
+
   protected clicDocument(event: MouseEvent): void {
     if (!this.hote.nativeElement.contains(event.target as Node)) {
-      this.sousMenuOuvert.set(null);
+      this.toutFermer();
     }
   }
 
@@ -69,6 +131,7 @@ export class Header {
     const index = this.sousMenuOuvert();
     if (index !== null) {
       this.sousMenuOuvert.set(null);
+      this.ouvertParSurvol = false;
       this.hote.nativeElement.querySelector<HTMLElement>(`#bouton-sous-menu-${index}`)?.focus();
     } else if (this.menuMobileOuvert()) {
       this.menuMobileOuvert.set(false);
@@ -83,5 +146,16 @@ export class Header {
     if (suivant && !conteneur.contains(suivant) && this.sousMenuOuvert() === index) {
       this.sousMenuOuvert.set(null);
     }
+  }
+
+  /** Une page du sous-menu est la page en cours : la rubrique est marquée active. */
+  protected rubriqueActive(entree: MenuNav): boolean {
+    const chemin = this.url().split(/[?#]/)[0];
+    return !!entree.sousMenu?.some((lien) => !lien.externe && lien.lien === chemin);
+  }
+
+  protected surDefilement(): void {
+    const defile = window.scrollY > 8;
+    if (defile !== this.defile()) this.defile.set(defile);
   }
 }

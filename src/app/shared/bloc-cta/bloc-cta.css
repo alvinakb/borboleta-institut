@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+
+.cta {
+  padding-block: var(--espace-section);
+  background: var(--beige);
+  text-align: center;
+}
+
+.cta--sombre {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(233, 203, 134, 0.14), transparent 60%), var(--noir);
+  color: var(--creme);
+}
+.cta--sombre .surtitre {
+  color: var(--dore-clair);
+}
+
+.cta__contenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.cta__texte {
+  max-width: 40rem;
+}
+
+.groupe-boutons {
+  justify-content: center;
+  margin-top: 1rem;
+}

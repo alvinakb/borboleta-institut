@@ -27,7 +27,7 @@ import { EmplacementImage } from '../../shared/emplacement-image/emplacement-ima
       font-weight: 500;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--dore-fonce);
+      color: var(--dore-texte);
     }
   `,
 })

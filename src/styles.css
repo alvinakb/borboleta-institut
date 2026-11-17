@@ -63,17 +63,26 @@
   src: url('/fonts/jost-latin-600-normal.woff2') format('woff2');
 }
 
-/* Styles globaux de Borboleta Institut : charte, reset léger et classes de base.
-   Le design détaillé des pages vient à l’étape suivante. */
+/* Styles globaux de Borboleta Institut : charte, reset léger, typographie, boutons, mise en page.
+   Les styles propres à un composant sont dans le fichier CSS de ce composant. */
 
 /* ---------- Charte ---------- */
 :root {
   --creme: #f4f1eb;
   --beige: #e8dcc8;
+  --beige-clair: #efe7da;
   --dore-clair: #e9cb86;
   --dore-fonce: #a97b3f;
+  /* Doré foncé pour les petits textes (surtitres, liens, prix, menu actif).
+     Contraste WCAG : 5,48:1 sur crème #F4F1EB, 4,56:1 sur beige #E8DCC8, 6,18:1 sur blanc. */
+  --dore-texte: #7f5a2b;
+  /* Dégradé du logo : boutons, filets, grands titres sur fond sombre. */
   --degrade-dore: linear-gradient(135deg, #e9cb86 0%, #a97b3f 100%);
+  /* Dégradé assombri pour les grands mots en italique sur fond clair :
+     #946B35 → #7F5A2B, contraste ≥ 3,5:1 sur beige et ≥ 4,2:1 sur crème (grand texte : 3:1 requis). */
+  --degrade-dore-texte: linear-gradient(120deg, #946b35 0%, #7f5a2b 100%);
   --anthracite: #2c2c2c;
+  --anthracite-doux: #4a4744;
   --noir: #0e0e0e;
   --blanc: #ffffff;
 
@@ -82,7 +91,15 @@
 
   --largeur-max: 1200px;
   --marge-laterale: clamp(1.25rem, 4vw, 2.5rem);
-  --espace-section: clamp(3.5rem, 8vw, 6.5rem);
+  --espace-section: clamp(4rem, 10vw, 7.5rem);
+  --hauteur-entete: 4.5rem;
+  --ombre-douce: 0 18px 40px -24px rgba(14, 14, 14, 0.35);
+  --transition: 0.25s ease;
+}
+@media (min-width: 960px) {
+  :root {
+    --hauteur-entete: 5.25rem;
+  }
 }
 
 /* ---------- Reset léger ---------- */
@@ -107,6 +124,7 @@ body {
   color: var(--anthracite);
   background: var(--creme);
   overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,
@@ -121,6 +139,14 @@ dd {
   margin: 0;
 }
 
+h3,
+h4 {
+  font-family: var(--police-titre);
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
 img,
 svg,
 video {
@@ -130,8 +156,13 @@ video {
 }
 
 a {
-  color: var(--dore-fonce);
+  color: var(--dore-texte);
   text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  transition: color var(--transition);
+}
+a:hover {
+  color: var(--anthracite);
 }
 
 button,
@@ -143,18 +174,13 @@ textarea {
 }
 
 :focus-visible {
-  outline: 2px solid var(--dore-fonce);
+  outline: 2px solid var(--dore-texte);
   outline-offset: 3px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    transition: none !important;
-    animation: none !important;
-    scroll-behavior: auto !important;
-  }
+::selection {
+  background: var(--dore-clair);
+  color: var(--noir);
 }
 
 /* ---------- Mise en page ---------- */
@@ -178,6 +204,12 @@ textarea {
   background: var(--noir);
   color: var(--creme);
 }
+.section--sombre a:not(.bouton) {
+  color: var(--dore-clair);
+}
+.section--sombre a:not(.bouton):hover {
+  color: var(--creme);
+}
 
 .grille {
   display: grid;
@@ -193,12 +225,18 @@ textarea {
 @media (min-width: 900px) {
   .deux-colonnes {
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 4.5rem;
   }
 }
 
 .texte-centre {
   text-align: center;
+}
+.texte-centre .chapo {
+  margin-inline: auto;
+}
+.texte-centre .groupe-boutons {
+  justify-content: center;
 }
 
 .flux > * + * {
@@ -210,9 +248,10 @@ textarea {
   font-family: var(--police-texte);
   font-size: 0.75rem;
   font-weight: 500;
+  line-height: 1.5;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--dore-fonce);
+  color: var(--dore-texte);
 }
 .section--sombre .surtitre {
   color: var(--dore-clair);
@@ -225,27 +264,51 @@ textarea {
   line-height: 1.1;
   color: inherit;
   overflow-wrap: break-word;
+  text-wrap: balance;
 }
 .titre-page {
-  font-size: clamp(2.4rem, 7vw, 4.25rem);
+  font-size: clamp(2.5rem, 7.5vw, 4.5rem);
 }
 .titre {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2.1rem, 5vw, 3.25rem);
 }
 .titre em,
 .titre-page em {
   font-style: italic;
   font-weight: 400;
-  background: var(--degrade-dore);
+  /* Sur fond clair : dégradé doré assombri (contraste suffisant pour un grand titre). */
+  background: var(--degrade-dore-texte);
   -webkit-background-clip: text;
   background-clip: text;
-  color: var(--dore-fonce);
+  color: var(--dore-texte);
   -webkit-text-fill-color: transparent;
+  /* Évite que l’italique soit rogné à droite par le clip. */
+  padding-right: 0.06em;
+}
+/* Sur fond sombre : dégradé du logo, lisible sur le noir. */
+.section--sombre .titre em,
+.section--sombre .titre-page em,
+.fond-sombre .titre em,
+.fond-sombre .titre-page em {
+  background-image: var(--degrade-dore);
+  color: var(--dore-clair);
 }
 
 .chapo {
-  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  font-size: clamp(1.05rem, 2.2vw, 1.2rem);
   max-width: 44rem;
+}
+
+/* Petit filet doré sous un titre. */
+.filet {
+  display: block;
+  width: 3.5rem;
+  height: 1px;
+  background: var(--degrade-dore);
+  border: 0;
+}
+.texte-centre .filet {
+  margin-inline: auto;
 }
 
 /* ---------- En-tête de page ---------- */
@@ -262,33 +325,43 @@ textarea {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.9rem;
-  padding: 0.75rem 1.6rem;
+  min-height: 3rem;
+  padding: 0.8rem 1.75rem;
   font-family: var(--police-texte);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 500;
+  line-height: 1.3;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-align: center;
   text-decoration: none;
+  /* Texte noir sur dégradé doré : contraste ≥ 5,1:1 sur toute la largeur. */
   color: var(--noir);
   background: var(--degrade-dore);
+  background-size: 140% 100%;
+  background-position: 0% 50%;
   border: 1px solid var(--dore-fonce);
   border-radius: 0;
   cursor: pointer;
   transition:
-    filter 0.2s ease,
-    background-color 0.2s ease;
+    background-position 0.4s ease,
+    background-color var(--transition),
+    color var(--transition),
+    box-shadow var(--transition);
 }
 .bouton:hover {
-  filter: brightness(1.05);
+  color: var(--noir);
+  background-position: 100% 50%;
+  box-shadow: var(--ombre-douce);
 }
 .bouton--contour {
   background: transparent;
   color: var(--anthracite);
 }
 .bouton--contour:hover {
-  background: var(--beige);
+  background: var(--anthracite);
+  border-color: var(--anthracite);
+  color: var(--creme);
 }
 .bouton--clair {
   background: transparent;
@@ -296,23 +369,32 @@ textarea {
   border-color: var(--dore-clair);
 }
 .bouton--clair:hover {
-  background: rgba(233, 203, 134, 0.15);
+  background: var(--dore-clair);
+  color: var(--noir);
 }
 
 .groupe-boutons {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-top: 1.75rem;
+  margin-top: 2rem;
 }
 
 .lien-fleche {
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  color: var(--anthracite);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--dore-texte);
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 0.15rem;
 }
 .lien-fleche::after {
   content: ' →';
+}
+.lien-fleche:hover {
+  color: var(--anthracite);
 }
 
 /* ---------- Emplacements de formulaire (étape ultérieure) ---------- */
@@ -320,6 +402,36 @@ textarea {
   padding: 2rem;
   border: 1px dashed var(--dore-fonce);
   background: rgba(255, 255, 255, 0.6);
+}
+
+/* ---------- Apparition douce au défilement (directive appApparition) ----------
+   La classe « apparition » n’est posée que par la directive, et jamais si l’utilisatrice
+   préfère réduire les animations : sans JavaScript, tout reste visible. */
+.apparition {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--delai-apparition, 0s);
+}
+.apparition.apparition--visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+  .apparition {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ---------- Accessibilité ---------- */
@@ -342,22 +454,4 @@ textarea {
   color: #6b4e00;
   border: 1px dashed #a97b3f;
   font-weight: 500;
-}
-
-/* ---------- Héros (accueil) ---------- */
-.hero {
-  position: relative;
-  display: grid;
-}
-.hero > * {
-  grid-area: 1 / 1;
-}
-.hero__texte {
-  align-self: center;
-  padding-block: 4rem;
-  position: relative;
-  z-index: 1;
-}
-.hero__texte > * + * {
-  margin-top: 1.25rem;
 }

@@ -1,14 +1,22 @@
 import { Component, input } from '@angular/core';
 
+import { Apparition } from '../apparition/apparition';
+
 /**
  * Bloc d’appel à l’action, répété après les sections.
  * Les boutons sont passés en contenu : <app-bloc-cta ...><a class="bouton">...</a></app-bloc-cta>
  */
 @Component({
   selector: 'app-bloc-cta',
+  imports: [Apparition],
   template: `
-    <section class="cta" [class.cta--sombre]="sombre()" [attr.aria-label]="titre()">
-      <div class="conteneur cta__contenu">
+    <section
+      class="cta"
+      [class.cta--sombre]="sombre()"
+      [class.fond-sombre]="sombre()"
+      [attr.aria-label]="titre()"
+    >
+      <div class="conteneur cta__contenu" appApparition>
         @if (surtitre()) {
           <p class="surtitre">{{ surtitre() }}</p>
         }
@@ -27,29 +35,7 @@ import { Component, input } from '@angular/core';
       </div>
     </section>
   `,
-  styles: `
-    .cta {
-      padding-block: var(--espace-section);
-      background: var(--beige);
-      text-align: center;
-    }
-    .cta--sombre {
-      background: var(--noir);
-      color: var(--creme);
-    }
-    .cta__contenu {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-    .cta__texte {
-      max-width: 40rem;
-    }
-    .groupe-boutons {
-      justify-content: center;
-    }
-  `,
+  styleUrl: './bloc-cta.css',
 })
 export class BlocCta {
   readonly surtitre = input('');

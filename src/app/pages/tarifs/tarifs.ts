@@ -42,7 +42,7 @@ import { BoutonReserver } from '../../shared/bouton-reserver/bouton-reserver';
       font-family: var(--police-titre);
       font-size: 1.35rem;
       font-weight: 500;
-      color: var(--dore-fonce);
+      color: var(--dore-texte);
       white-space: nowrap;
     }
   `,

@@ -1,18 +1,8 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { FORMATIONS } from '../../data/formations';
-import type { Formation } from '../../data/types';
+import { NIVEAUX_FORMATION } from '../../data/formations';
 import { BlocCta } from '../../shared/bloc-cta/bloc-cta';
-
-interface Niveau {
-  readonly numero: number;
-  readonly titre: string;
-  readonly texte: string;
-  readonly formations: readonly Formation[];
-}
-
-const parId = (...ids: string[]) => FORMATIONS.filter((f) => ids.includes(f.id));
 
 @Component({
   selector: 'app-parcours',
@@ -20,27 +10,7 @@ const parId = (...ids: string[]) => FORMATIONS.filter((f) => ids.includes(f.id))
   templateUrl: './parcours.html',
 })
 export class Parcours {
-  protected readonly niveaux: readonly Niveau[] = [
-    {
-      numero: 1,
-      titre: 'Le socle',
-      texte: 'La formation à suivre en premier, ouverte aux débutantes.',
-      formations: parId('drainage-corps'),
-    },
-    {
-      numero: 2,
-      titre: 'Les spécialisations',
-      texte:
-        'Une fois le drainage corps acquis, vous choisissez les techniques à ajouter à votre carte.',
-      formations: parId('drainage-visage', 'remodelage', 'kobido'),
-    },
-    {
-      numero: 3,
-      titre: 'L’expertise',
-      texte: 'Le post-opératoire demande le drainage corps et visage en prérequis.',
-      formations: parId('post-operatoire'),
-    },
-  ];
+  protected readonly niveaux = NIVEAUX_FORMATION;
 
   protected readonly etapes = [
     {

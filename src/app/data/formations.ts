@@ -101,3 +101,36 @@ export function texteDuree(f: Formation): string {
 export function textePrixFormation(f: Formation): string {
   return f.prix === null ? NOUS_CONSULTER : formaterPrix(f.prix);
 }
+
+/** Un niveau du parcours de formation (page Parcours et accueil). */
+export interface NiveauFormation {
+  readonly numero: number;
+  readonly titre: string;
+  readonly texte: string;
+  readonly formations: readonly Formation[];
+}
+
+const formationsParId = (...ids: string[]) => FORMATIONS.filter((f) => ids.includes(f.id));
+
+/** Parcours par niveaux : le socle, les spécialisations, l’expertise. */
+export const NIVEAUX_FORMATION: readonly NiveauFormation[] = [
+  {
+    numero: 1,
+    titre: 'Le socle',
+    texte: 'La formation à suivre en premier, ouverte aux débutantes.',
+    formations: formationsParId('drainage-corps'),
+  },
+  {
+    numero: 2,
+    titre: 'Les spécialisations',
+    texte:
+      'Une fois le drainage corps acquis, vous choisissez les techniques à ajouter à votre carte.',
+    formations: formationsParId('drainage-visage', 'remodelage', 'kobido'),
+  },
+  {
+    numero: 3,
+    titre: 'L’expertise',
+    texte: 'Le post-opératoire demande le drainage corps et visage en prérequis.',
+    formations: formationsParId('post-operatoire'),
+  },
+];
