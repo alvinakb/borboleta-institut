@@ -1,0 +1,114 @@
+<a class="lien-evitement" href="#contenu" (click)="allerAuContenu($event)">Aller au contenu</a>
+<header class="entete">
+  <div class="conteneur entete__barre">
+    <div class="entete__gauche">
+      <button
+        type="button"
+        class="burger"
+        [attr.aria-expanded]="menuMobileOuvert()"
+        aria-controls="menu-principal"
+        (click)="basculerMenuMobile()"
+      >
+        <span class="burger__barres" aria-hidden="true"></span>
+        <span class="visuellement-cache">{{
+          menuMobileOuvert() ? 'Fermer le menu' : 'Ouvrir le menu'
+        }}</span>
+      </button>
+
+      <nav
+        id="menu-principal"
+        class="nav"
+        [class.nav--ouverte]="menuMobileOuvert()"
+        aria-label="Menu principal"
+        (click)="clicMenu($event)"
+      >
+        <ul class="nav__liste">
+          @for (entree of menu; track entree.libelle; let i = $index) {
+            @if (entree.sousMenu) {
+              <li
+                class="nav__item nav__item--deroulant"
+                [class.nav__item--ouvert]="sousMenuOuvert() === i"
+                (focusout)="focusSorti($event, i)"
+                (mouseenter)="entreeSurvol(i)"
+                (mouseleave)="sortieSurvol(i)"
+              >
+                <button
+                  type="button"
+                  class="nav__lien nav__bouton"
+                  [class.actif]="rubriqueActive(entree)"
+                  [id]="'bouton-sous-menu-' + i"
+                  [attr.aria-expanded]="sousMenuOuvert() === i"
+                  [attr.aria-controls]="'sous-menu-' + i"
+                  (click)="basculerSousMenu(i)"
+                >
+                  {{ entree.libelle }}
+                  <span class="nav__chevron" aria-hidden="true"></span>
+                </button>
+                <ul
+                  class="sous-menu"
+                  [id]="'sous-menu-' + i"
+                  [class.sous-menu--ouvert]="sousMenuOuvert() === i"
+                >
+                  @for (lien of entree.sousMenu; track lien.lien) {
+                    <li>
+                      @if (lien.externe) {
+                        <a class="sous-menu__lien" [href]="lien.lien" target="_blank" rel="noopener"
+                          >{{ lien.libelle
+                          }}<span class="visuellement-cache"> (nouvel onglet)</span></a
+                        >
+                      } @else {
+                        <a
+                          class="sous-menu__lien"
+                          [routerLink]="lien.lien"
+                          routerLinkActive="actif"
+                          ariaCurrentWhenActive="page"
+                          >{{ lien.libelle }}</a
+                        >
+                      }
+                    </li>
+                  }
+                </ul>
+              </li>
+            } @else {
+              <li class="nav__item">
+                <a
+                  class="nav__lien"
+                  [routerLink]="entree.lien"
+                  routerLinkActive="actif"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  ariaCurrentWhenActive="page"
+                  >{{ entree.libelle }}</a
+                >
+              </li>
+            }
+          }
+        </ul>
+      </nav>
+    </div>
+
+    <a
+      class="entete__logo"
+      routerLink="/"
+      aria-label="Borboleta Institut, retour à l’accueil"
+      (click)="toutFermer()"
+    >
+      <picture>
+        <source media="(max-width: 349px)" srcset="images/papillon.png" width="400" height="243" />
+        <img
+          src="images/logo-borboleta-horizontal.png"
+          alt="Borboleta Institut"
+          width="668"
+          height="132"
+        />
+      </picture>
+    </a>
+
+    <div class="entete__droite">
+      <app-bouton-reserver
+        class="entete__reserver"
+        libelle="Réserver"
+        aideAcces="Réserver un soin"
+      />
+    </div>
+  </div>
+</header>

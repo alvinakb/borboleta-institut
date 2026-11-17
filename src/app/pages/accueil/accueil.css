@@ -1,0 +1,69 @@
+:host {
+  display: block;
+}
+
+/* ---------- 3 et 4. Blocs partagés ---------- */
+.institut__adresse {
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* Image à gauche sur ordinateur, au-dessus du texte sur mobile. */
+@media (max-width: 899px) {
+  .formation__image {
+    order: -1;
+  }
+}
+
+/* ---------- 5. Bande confiance ---------- */
+.confiance {
+  padding-block: var(--esp-7);
+}
+.confiance__grille {
+  display: grid;
+  gap: var(--esp-6);
+  text-align: center;
+}
+@media (min-width: 640px) {
+  .confiance__grille {
+    grid-template-columns: 1fr 1fr;
+  }
+  .confiance__item + .confiance__item {
+    border-left: 1px solid var(--ligne);
+  }
+}
+.confiance__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-2);
+}
+.confiance__note {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-1);
+}
+/* Étoiles en brun (icônes : 5,7:1 sur --fond-alt), seulement dans le bloc avis. */
+.confiance__etoiles {
+  color: var(--brun);
+}
+.confiance__chiffre {
+  font-family: var(--police-titre);
+  font-optical-sizing: auto;
+  font-size: var(--taille-h2);
+  line-height: 1.1;
+}
+
+/* ---------- FAQ ---------- */
+.faq {
+  display: grid;
+  gap: var(--esp-6);
+}
+@media (min-width: 900px) {
+  .faq {
+    grid-template-columns: 1fr 1.6fr;
+    gap: var(--esp-8);
+    align-items: start;
+  }
+}

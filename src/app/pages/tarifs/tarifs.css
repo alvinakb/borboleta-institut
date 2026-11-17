@@ -1,0 +1,169 @@
+:host {
+  display: block;
+}
+
+/* ---------- En-tête et sommaire d’ancres ----------
+   Étiquettes arrondies, zone tactile de 44 px. Sur mobile, une seule rangée qui défile au
+   doigt dans sa bande (jamais la page) ; sur ordinateur, les étiquettes passent à la ligne. */
+.entete-tarifs {
+  padding-bottom: var(--esp-6);
+}
+/* Les prix arrivent vite sous l’en-tête : marge haute réduite pour la liste. */
+.entete-tarifs + .section {
+  padding-top: var(--esp-7);
+}
+.sommaire {
+  margin-top: var(--esp-6);
+}
+.sommaire__liste {
+  list-style: none;
+  margin: 0 auto;
+  /* 4 px en haut et en bas : l’anneau de focus n’est pas rogné. */
+  padding: 4px var(--marge-laterale) var(--esp-2);
+  display: flex;
+  gap: var(--esp-2);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--marge-laterale);
+  scrollbar-width: none;
+  max-width: calc(var(--largeur-max) + 2 * var(--marge-laterale));
+}
+.sommaire__liste::-webkit-scrollbar {
+  display: none;
+}
+.sommaire__liste li {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+@media (min-width: 960px) {
+  .sommaire__liste {
+    flex-wrap: wrap;
+    overflow: visible;
+    padding-bottom: 4px;
+  }
+}
+.sommaire a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  font-size: var(--taille-petit);
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--espresso);
+  text-decoration: none;
+  background: var(--fond);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon-bouton);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+.sommaire a:hover {
+  background: var(--nude);
+  border-color: var(--nude);
+}
+
+.categorie {
+  scroll-margin-top: calc(var(--hauteur-entete) + var(--esp-4));
+  max-width: 52rem;
+}
+.categorie + .categorie {
+  margin-top: var(--esp-7);
+}
+.categorie__titre {
+  font-size: var(--taille-h2);
+}
+.categorie__intro {
+  margin: var(--esp-3) 0 var(--esp-5);
+  color: var(--texte-doux);
+}
+.categorie__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--esp-3) var(--esp-6);
+  margin-top: var(--esp-5);
+}
+
+/* ---------- Mobile : catégories repliables ---------- */
+@media (max-width: 959px) {
+  .categorie + .categorie {
+    margin-top: 0;
+  }
+  .categorie {
+    border-bottom: 1px solid var(--ligne);
+  }
+  .categorie:first-child {
+    border-top: 1px solid var(--ligne);
+  }
+  .categorie__titre {
+    font-size: var(--taille-h3);
+  }
+  .categorie__contenu {
+    padding-bottom: var(--esp-6);
+  }
+  .categorie__contenu .liste-tarifs {
+    border-top: 0;
+  }
+  .categorie__contenu .ligne-tarif:last-child {
+    border-bottom: 0;
+  }
+}
+.categorie__bouton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-4);
+  width: 100%;
+  min-height: 64px;
+  padding: var(--esp-4) 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: var(--espresso);
+  text-align: left;
+  cursor: pointer;
+  border-radius: 16px;
+  padding-inline: var(--esp-4);
+  margin-inline: calc(-1 * var(--esp-4));
+  width: calc(100% + 2 * var(--esp-4));
+  transition: background-color var(--transition);
+}
+.categorie__bouton:hover {
+  background: color-mix(in srgb, var(--nude) 45%, transparent);
+}
+.categorie__nom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-1);
+}
+.categorie__min {
+  font-family: var(--police-texte);
+  font-size: var(--taille-petit);
+  font-weight: 600;
+  color: var(--brun);
+}
+.categorie__icone {
+  position: relative;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+}
+.categorie__icone::before,
+.categorie__icone::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 14px;
+  height: 2px;
+  background: var(--brun);
+  transition: transform var(--transition);
+}
+.categorie__icone::after {
+  transform: rotate(90deg);
+}
+.categorie__bouton[aria-expanded='true'] .categorie__icone::after {
+  transform: rotate(0deg);
+}

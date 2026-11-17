@@ -1,0 +1,87 @@
+<section class="entete-page entete-tarifs">
+  <div class="conteneur">
+    <p class="surtitre">L’institut</p>
+    <h1 class="titre-page">Nos tarifs</h1>
+    <p class="chapo">
+      Le détail de tous les soins de Borboleta Institut à Draveil (91), en séance et en cure. Les
+      tarifs sont identiques à ceux affichés sur Planity, où vous pouvez réserver à tout moment.
+    </p>
+    <div class="groupe-boutons">
+      <app-bouton-reserver libelle="Réserver sur Planity" />
+    </div>
+  </div>
+  <nav class="sommaire" aria-label="Catégories de soins">
+    <ul class="sommaire__liste">
+      @for (c of categories; track c.id) {
+        <li>
+          <a [routerLink]="[]" [fragment]="c.id">{{ c.titre }}</a>
+        </li>
+      }
+    </ul>
+  </nav>
+</section>
+
+<section class="section">
+  <div class="conteneur">
+    @for (c of categories; track c.id) {
+      @let ouverte = estOuverte(c.id);
+      <section class="categorie" [id]="c.id" [attr.aria-labelledby]="'titre-' + c.id">
+        <h2 class="categorie__titre" [id]="'titre-' + c.id">
+          @if (ordinateur()) {
+            {{ c.titre }}
+          } @else {
+            <button
+              type="button"
+              class="categorie__bouton"
+              [attr.aria-expanded]="ouverte"
+              [attr.aria-controls]="'contenu-' + c.id"
+              (click)="basculer(c.id)"
+            >
+              <span class="categorie__nom">
+                {{ c.titre }}
+                @if (aPartirDe(c); as min) {
+                  <span class="categorie__min">{{ min }}</span>
+                }
+              </span>
+              <span class="categorie__icone" aria-hidden="true"></span>
+            </button>
+          }
+        </h2>
+        <div class="categorie__contenu" [id]="'contenu-' + c.id" [hidden]="!ouverte">
+          <p class="categorie__intro">{{ c.intro }}</p>
+          @if (c.soins.length) {
+            <ul class="liste-tarifs">
+              @for (s of c.soins; track s.nom) {
+                <li appLigneTarif [soin]="s"></li>
+              }
+            </ul>
+            <div class="categorie__actions">
+              <app-bouton-reserver [aideAcces]="'Réserver : ' + c.titre" />
+              @if (aUnePage(c.id)) {
+                <a class="lien-fleche" [routerLink]="['/soins', c.id]"
+                  >Découvrir le soin<span class="visuellement-cache"> : {{ c.titre }}</span></a
+                >
+              }
+            </div>
+          } @else {
+            <!-- Catégorie sans soin tarifé (cartes cadeaux) : renvoi vers sa page. -->
+            <div class="categorie__actions">
+              @let renvoi = renvoiSansTarif(c.id);
+              <a class="bouton" [routerLink]="renvoi.lien">{{ renvoi.libelle }}</a>
+            </div>
+          }
+        </div>
+      </section>
+    }
+  </div>
+</section>
+
+<app-bloc-cta
+  [alt]="true"
+  surtitre="Offrir"
+  titre="Une envie de faire plaisir ?"
+  texte="Les cartes cadeaux sont disponibles en institut, pour un soin, une cure ou un montant libre."
+>
+  <a class="bouton" routerLink="/cartes-cadeaux">Les cartes cadeaux</a>
+  <app-bouton-reserver libelle="Réserver un soin" variante="contour" />
+</app-bloc-cta>

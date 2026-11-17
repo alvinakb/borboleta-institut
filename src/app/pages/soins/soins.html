@@ -1,0 +1,76 @@
+<!-- 1. Grand visuel plein écran (sombre) -->
+<section class="hero fond-sombre" aria-labelledby="titre-soins">
+  <app-emplacement-image
+    class="hero__image"
+    fichier="assets/images/soins-hero.jpg"
+    [pleinEcran]="true"
+    [sombre]="true"
+    [prioritaire]="true"
+  />
+  <div class="conteneur hero__texte">
+    <p class="surtitre">Prendre soin de soi</p>
+    <h1 class="titre-page" id="titre-soins">Nos soins à Draveil</h1>
+    <p class="hero__phrase">
+      Tous nos soins reposent sur la méthode Renata França et sur des techniques douces, sans
+      chirurgie.
+    </p>
+    <div class="groupe-boutons">
+      <app-bouton-reserver libelle="Réserver en ligne" />
+      <a class="lien-texte" [routerLink]="[]" fragment="liste-soins" (click)="allerALaListe()"
+        >Voir les soins</a
+      >
+    </div>
+  </div>
+</section>
+
+<!-- 2. Les cartes de soins -->
+<section class="section liste" id="liste-soins" aria-labelledby="titre-liste">
+  <div class="conteneur">
+    <div class="flux" appApparition>
+      <p class="surtitre">Les soins de l’institut</p>
+      <h2 class="titre" id="titre-liste">Les catégories de soins</h2>
+      <p class="chapo">
+        Le drainage et le remodelage du corps sont exclusivement réservés aux femmes. Le drainage du
+        visage, Miracle Face, est ouvert aux femmes et aux hommes. La plupart des soins existent en
+        séance et en cure, à tarif dégressif.
+      </p>
+    </div>
+    <div class="grille liste__grille">
+      @for (categorie of categories; track categorie.id; let i = $index) {
+        <app-carte-soin [categorie]="categorie" appApparition [delaiApparition]="(i % 3) * 0.06" />
+      }
+    </div>
+    <div class="groupe-boutons groupe-boutons--centre">
+      <app-bouton-reserver libelle="Réserver un soin" />
+      <a class="lien-texte" routerLink="/tarifs">Tous les tarifs</a>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Post-opératoire -->
+<section class="section section--alt" aria-labelledby="titre-post-op">
+  <div class="conteneur deux-colonnes post-op">
+    <div class="flux" appApparition>
+      <p class="surtitre">Soins post-opératoires</p>
+      <h2 class="titre" id="titre-post-op">Avec l’accord de votre professionnel de santé</h2>
+    </div>
+    <div class="flux" appApparition>
+      <p>
+        Après une chirurgie esthétique, les séances de drainage se font toujours avec l’accord du
+        professionnel de santé qui assure votre suivi, et dans le respect de ses consignes.
+      </p>
+      <p><a class="lien-fleche" routerLink="/soins/post-operatoire">Le soin post-opératoire</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Appel à l’action -->
+<app-bloc-cta
+  surtitre="Réservation en ligne"
+  titre="Choisissez votre soin et"
+  motCle="réservez"
+  texte="Les disponibilités sont à jour en temps réel sur Planity."
+>
+  <app-bouton-reserver libelle="Réserver sur Planity" />
+  <a class="lien-texte" routerLink="/cartes-cadeaux">Offrir une carte cadeau</a>
+</app-bloc-cta>

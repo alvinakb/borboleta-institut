@@ -1,0 +1,276 @@
+<!-- 1. En-tête plein écran sombre -->
+<section class="hero fond-sombre" aria-labelledby="titre-formations">
+  <app-emplacement-image
+    class="hero__image"
+    fichier="assets/images/formation-hero.jpg"
+    [pleinEcran]="true"
+    [sombre]="true"
+    [prioritaire]="true"
+  />
+  <div class="conteneur hero__texte">
+    <p class="surtitre">Centre de formation certifié Qualiopi</p>
+    <h1 class="titre-page" id="titre-formations">Le drainage lymphatique, transmis avec soin</h1>
+    <img
+      class="signature"
+      src="images/logo-borboleta-clair.png"
+      alt="Borboleta Institut"
+      width="600"
+      height="362"
+    />
+    <p class="hero__phrase">
+      Cinq formations pour maîtriser le drainage lymphatique méthode Renata França et ses techniques
+      sœurs, en présentiel et en petit groupe. On commence par le drainage corps, le socle, puis on
+      choisit ses spécialisations.
+    </p>
+    <div class="groupe-boutons">
+      <a class="bouton" routerLink="/formations" fragment="sessions" (click)="allerAuxSessions()"
+        >Je veux me former</a
+      >
+    </div>
+  </div>
+</section>
+
+<!-- 2. Les piliers de la technique (bandeau espresso dans une section claire) -->
+<section class="section piliers" aria-labelledby="titre-piliers">
+  <div class="conteneur">
+    <div class="flux texte-centre" appApparition>
+      <p class="surtitre">La technique</p>
+      <h2 class="titre" id="titre-piliers">Les piliers du geste</h2>
+    </div>
+    <ul class="piliers__bandeau fond-sombre" appApparition>
+      @for (p of piliers; track p.titre) {
+        <li class="pilier">
+          <h3 class="pilier__titre">{{ p.titre }}</h3>
+          <p>{{ p.texte }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- 3. Pédagogie : photo et texte -->
+<section class="section section--alt" aria-labelledby="titre-pedagogie">
+  <div class="conteneur deux-colonnes">
+    <app-emplacement-image
+      class="image-gauche"
+      fichier="assets/images/formation-pedagogie.jpg"
+      description="La formatrice corrige le geste d’une stagiaire, mains sur ses mains"
+      ratio="4 / 3"
+      appApparition
+    />
+    <div class="flux" appApparition>
+      <p class="surtitre">Notre approche</p>
+      <h2 class="titre" id="titre-pedagogie">Une pédagogie pensée pour apprendre avec ses mains</h2>
+      <p>
+        Pas d’esbroufe ni de diaporamas interminables. On montre, on fait faire, on corrige, on
+        recommence, jusqu’à ce que le geste soit vraiment ancré.
+      </p>
+      <p>
+        La technique s’ancre dans le geste répété, dans un espace de confiance et sans jugement.
+        Chacune repart avec des bases solides, pas juste des notes à relire.
+      </p>
+      <div class="groupe-boutons">
+        <a class="bouton" routerLink="/formations" fragment="sessions" (click)="allerAuxSessions()"
+          >Je veux me former</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. Une journée de formation -->
+<section class="section" aria-labelledby="titre-journee">
+  <div class="conteneur">
+    <div class="flux" appApparition>
+      <p class="surtitre">Le déroulement</p>
+      <h2 class="titre" id="titre-journee">À quoi ressemble une journée de formation ?</h2>
+    </div>
+    <ol class="etapes">
+      @for (e of journee; track e.titre; let i = $index) {
+        <li class="etape" appApparition [delaiApparition]="i * 0.08">
+          <app-emplacement-image
+            [fichier]="'assets/images/' + e.photo + '.jpg'"
+            [description]="e.description"
+            ratio="3 / 2"
+          />
+          <span class="etape__numero" aria-hidden="true">{{ i + 1 }}</span>
+          <h3>{{ e.titre }}</h3>
+          <p>{{ e.texte }}</p>
+        </li>
+      }
+    </ol>
+  </div>
+</section>
+
+<!-- 5. Le parcours par niveaux -->
+<section class="section section--alt" id="parcours" aria-labelledby="titre-parcours">
+  <div class="conteneur">
+    <div class="flux" appApparition>
+      <p class="surtitre">Le parcours</p>
+      <h2 class="titre" id="titre-parcours">Du socle à l’expertise</h2>
+      <p class="chapo">
+        Toutes les formations se vivent en présentiel, en région parisienne, en petit groupe.
+      </p>
+    </div>
+
+    @for (niveau of niveaux; track niveau.libelle) {
+      <div class="niveau" appApparition>
+        <div class="niveau__entete">
+          <p class="surtitre">{{ niveau.libelle }}</p>
+          <h3 class="niveau__titre">{{ niveau.titre }}</h3>
+          <p class="niveau__texte">{{ niveau.texte }}</p>
+        </div>
+        <ul class="niveau__cartes">
+          @for (f of niveau.formations; track f.id) {
+            @let ouvert = programmesOuverts().has(f.id);
+            <li class="formation" [id]="f.id">
+              <app-emplacement-image
+                [fichier]="'assets/images/formation-' + f.id + '.jpg'"
+                [description]="'Formation ' + f.titre + ' : pratique en binôme'"
+              />
+              <div class="formation__corps">
+                <h4 class="formation__titre">{{ f.titre }}</h4>
+                <p>{{ f.accroche }}</p>
+                <dl class="formation__fiche">
+                  <div>
+                    <dt>Durée</dt>
+                    <dd>{{ texteDuree(f) }}</dd>
+                  </div>
+                  <div>
+                    <dt>Prérequis</dt>
+                    <dd>{{ f.prerequis }}</dd>
+                  </div>
+                </dl>
+                <button
+                  type="button"
+                  class="formation__programme-bouton"
+                  [attr.aria-expanded]="ouvert"
+                  [attr.aria-controls]="'programme-' + f.id"
+                  (click)="basculerProgramme(f.id)"
+                >
+                  Programme détaillé<span class="visuellement-cache"> : {{ f.titre }}</span>
+                  <span class="formation__icone" aria-hidden="true"></span>
+                </button>
+                <div class="formation__programme" [id]="'programme-' + f.id" [hidden]="!ouvert">
+                  <p>{{ f.programme }}</p>
+                  <p class="petit">Format : {{ f.format }}. Groupe : {{ f.groupe | lowercase }}.</p>
+                </div>
+                <a
+                  class="bouton bouton--contour formation__consulter"
+                  routerLink="/formations"
+                  [fragment]="prefixeSession + f.id"
+                  >Nous consulter<span class="visuellement-cache"> : {{ f.titre }}</span></a
+                >
+              </div>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+
+    <div class="groupe-boutons groupe-boutons--centre">
+      <a class="bouton" routerLink="/formations" fragment="sessions" (click)="allerAuxSessions()"
+        >Je veux me former</a
+      >
+    </div>
+  </div>
+</section>
+
+<!-- 6. Les avantages -->
+<section class="section" aria-labelledby="titre-avantages">
+  <div class="conteneur">
+    <div class="flux texte-centre" appApparition>
+      <p class="surtitre">Pourquoi Borboleta</p>
+      <h2 class="titre" id="titre-avantages">Se former dans de bonnes conditions</h2>
+    </div>
+    <ul class="avantages">
+      @for (a of avantages; track a.titre; let i = $index) {
+        <li class="avantage" appApparition [delaiApparition]="i * 0.08">
+          <h3>{{ a.titre }}</h3>
+          <p>{{ a.texte }}</p>
+        </li>
+      }
+    </ul>
+    <div class="groupe-boutons groupe-boutons--centre">
+      <a class="bouton" routerLink="/formations" fragment="sessions" (click)="allerAuxSessions()"
+        >Je veux me former</a
+      >
+    </div>
+  </div>
+</section>
+
+<!-- 7. La formatrice -->
+<section class="section section--alt" aria-labelledby="titre-formatrice">
+  <div class="conteneur deux-colonnes formatrice">
+    <app-emplacement-image
+      class="image-gauche"
+      fichier="assets/images/formatrice-portrait-mains.jpg"
+      description="Les mains de la formatrice pendant une démonstration"
+      ratio="4 / 5"
+      appApparition
+    />
+    <div class="flux" appApparition>
+      <p class="surtitre">Votre formatrice</p>
+      <h2 class="titre" id="titre-formatrice">{{ formatrice }}</h2>
+      <p>
+        Praticienne et formatrice spécialisée en techniques de bien-être, fondatrice de Borboleta
+        Institut, elle transmet son savoir avec exigence et bienveillance, bien au-delà du simple
+        protocole.
+      </p>
+      <ul class="formatrice__parcours">
+        @for (e of parcours; track e.texte) {
+          <li>
+            <span class="formatrice__annee">{{ e.annee }}</span>
+            <span>{{ e.texte }}</span>
+          </li>
+        }
+      </ul>
+      <p>Langues : {{ langues }}.</p>
+      <p><a class="lien-fleche" routerLink="/formatrice">Découvrir la formatrice</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Prochaines sessions -->
+<section class="section sessions" id="sessions" aria-labelledby="titre-sessions">
+  <div class="conteneur">
+    <div class="flux" appApparition>
+      <p class="surtitre">Les dates</p>
+      <h2 class="titre" id="titre-sessions">Prochaines sessions</h2>
+      <p class="chapo">
+        Les dates sont fixées au fil de l’année, en petit groupe. Choisissez une formation et
+        laissez-nous vos coordonnées : nous vous prévenons dès qu’une session est ouverte.
+      </p>
+    </div>
+    <app-demande-formation class="sessions__cartes" />
+  </div>
+</section>
+
+<!-- 9. Financement -->
+<section class="section section--alt" aria-labelledby="titre-financement">
+  <div class="conteneur">
+    <div class="flux" appApparition>
+      <p class="surtitre">Prise en charge</p>
+      <h2 class="titre" id="titre-financement">Une formation finançable</h2>
+      <p class="chapo">
+        Borboleta Institut est un organisme de formation certifié Qualiopi. Vos formations peuvent
+        faire l’objet d’une prise en charge, et nous vous accompagnons dans le montage de votre
+        dossier.
+      </p>
+    </div>
+    <ul class="financements">
+      @for (d of financements; track d.nom; let i = $index) {
+        <li class="financement" appApparition [delaiApparition]="i * 0.06">
+          <h3>{{ d.nom }}</h3>
+          <p>{{ d.texte }}</p>
+        </li>
+      }
+    </ul>
+    <div class="groupe-boutons">
+      <a class="bouton" routerLink="/formations" fragment="sessions" (click)="allerAuxSessions()"
+        >Je veux me former</a
+      >
+      <a class="lien-texte" routerLink="/financement">En savoir plus sur le financement</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,168 @@
+:host {
+  display: block;
+}
+
+/* Cartes : 3 par ligne sur ordinateur, 2 sur tablette, 1 sur mobile.
+   La carte ouverte occupe toute la largeur pour laisser la place au formulaire. */
+.sessions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--esp-5);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .sessions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .sessions {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.session {
+  max-width: none;
+  display: grid;
+  gap: var(--esp-5);
+  padding: var(--esp-5);
+  background: var(--fond);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon-carte);
+  scroll-margin-top: calc(var(--hauteur-entete) + var(--esp-4));
+  transition: box-shadow var(--transition);
+}
+.session:hover {
+  box-shadow: var(--ombre);
+}
+.session--ouverte {
+  grid-column: 1 / -1;
+}
+@media (min-width: 900px) {
+  .session--ouverte {
+    grid-template-columns: 1fr 1.6fr;
+    gap: var(--esp-8);
+    padding: var(--esp-6);
+  }
+}
+
+.session__entete {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--esp-2);
+}
+.session__niveau {
+  font-size: var(--taille-petit);
+  color: var(--texte-doux);
+}
+.session__titre {
+  font-size: var(--taille-h3);
+}
+.session__statut {
+  font-weight: 600;
+  color: var(--brun);
+}
+.session__bouton {
+  margin-top: var(--esp-3);
+}
+
+/* ---------- Formulaire ---------- */
+.formulaire {
+  display: grid;
+  gap: var(--esp-5);
+}
+.formulaire__aide {
+  font-size: var(--taille-petit);
+  color: var(--texte-doux);
+}
+.champ {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+}
+.champ label {
+  font-weight: 600;
+}
+.champ input:not([type='checkbox']),
+.champ select {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.625rem 0.875rem;
+  background: var(--fond);
+  border: 1px solid var(--texte-doux);
+  border-radius: var(--rayon-champ);
+}
+.champ input[aria-invalid='true'],
+.champ select[aria-invalid='true'] {
+  border-color: var(--erreur);
+  border-width: 2px;
+}
+.champ__erreur {
+  font-size: var(--taille-petit);
+  font-weight: 600;
+  color: var(--erreur);
+}
+
+/* Case RGPD : case de 24 px, libellé à côté. */
+.champ--case {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  align-items: start;
+  column-gap: var(--esp-3);
+}
+.champ--case input {
+  width: 24px;
+  height: 24px;
+  margin: 2px 0 0;
+  accent-color: var(--espresso);
+}
+.champ--case label {
+  font-weight: 400;
+}
+.champ--case .champ__erreur {
+  grid-column: 1 / -1;
+}
+
+/* Champ piège : hors de l’écran (pas display:none, que certains robots repèrent). */
+.champ-piege {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.formulaire__echec {
+  padding: var(--esp-3) var(--esp-4);
+  border-left: 3px solid var(--erreur);
+  background: var(--fond-alt);
+  color: var(--erreur);
+  font-weight: 600;
+}
+.formulaire .bouton {
+  justify-self: start;
+}
+
+/* ---------- Confirmation ---------- */
+.resultat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
+  padding: var(--esp-5);
+  background: var(--fond-alt);
+  border-left: 3px solid var(--succes);
+  border-radius: var(--rayon-champ);
+}
+.resultat--test {
+  border-left-color: var(--brun);
+}
+.resultat:focus-visible {
+  outline: 2px solid var(--brun);
+  outline-offset: 2px;
+}
+.resultat__titre {
+  font-weight: 600;
+}

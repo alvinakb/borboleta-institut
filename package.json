@@ -1,24 +1,33 @@
 {
-  "name": "borboleta-institut",
-  "version": "1.0.0",
-  "description": "Borboleta Institut - Drainage Linfático e Formações Profissionais",
-  "main": "index.html",
+  "name": "borboleta-site",
+  "version": "0.0.0",
   "scripts": {
-    "start": "http-server",
-    "build": "echo 'Build complete'",
-    "deploy": "echo 'Ready for GitHub Pages'"
+    "ng": "ng",
+    "donnees": "node scripts/generer-donnees.mjs",
+    "prestart": "npm run donnees",
+    "start": "ng serve",
+    "prebuild": "npm run donnees",
+    "build": "ng build",
+    "build:previsualisation": "PREVISUALISATION=1 npm run build && node scripts/preparer-previsualisation.mjs",
+    "watch": "ng build --watch --configuration development"
   },
-  "keywords": [
-    "borboleta",
-    "institut",
-    "drenagem",
-    "formação",
-    "renata-franca"
-  ],
-  "author": "Borboleta Institut",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/borboleta-institut/borboleta-institut.git"
+  "private": true,
+  "packageManager": "npm@10.9.9",
+  "dependencies": {
+    "@angular/common": "^21.2.0",
+    "@angular/compiler": "^21.2.0",
+    "@angular/core": "^21.2.0",
+    "@angular/forms": "^21.2.0",
+    "@angular/platform-browser": "^21.2.0",
+    "@angular/router": "^21.2.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^21.2.30",
+    "@angular/cli": "^21.2.30",
+    "@angular/compiler-cli": "^21.2.0",
+    "prettier": "^3.8.1",
+    "typescript": "~5.9.2"
   }
 }

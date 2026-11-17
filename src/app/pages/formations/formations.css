@@ -1,0 +1,250 @@
+:host {
+  display: block;
+}
+
+/* Signature : logo clair (doré) sous le titre, le seul détail or de l’écran. */
+.signature {
+  width: clamp(7rem, 5rem + 8vw, 10rem);
+  height: auto;
+}
+
+/* ---------- 2. Piliers : bandeau espresso dans une section claire ---------- */
+.piliers__bandeau {
+  list-style: none;
+  margin: var(--esp-6) 0 0;
+  padding: var(--esp-6) var(--esp-5);
+  display: grid;
+  gap: var(--esp-6);
+  border-radius: var(--rayon-carte);
+}
+@media (min-width: 640px) {
+  .piliers__bandeau {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .piliers__bandeau {
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--esp-5);
+    padding: var(--esp-7) var(--esp-6);
+  }
+}
+.pilier {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+}
+/* Titre en nude sur espresso : 11,0:1. Texte en --fond : 14,8:1. */
+.pilier__titre {
+  color: var(--nude);
+}
+.pilier p {
+  font-size: var(--taille-petit);
+}
+
+/* Image à gauche sur ordinateur, au-dessus du texte sur mobile. */
+@media (max-width: 899px) {
+  .image-gauche {
+    order: -1;
+  }
+}
+
+/* ---------- 5. Parcours par niveaux ---------- */
+.niveau {
+  margin-top: var(--esp-7);
+  display: grid;
+  gap: var(--esp-5);
+}
+@media (min-width: 1024px) {
+  .niveau {
+    grid-template-columns: 16rem 1fr;
+    gap: var(--esp-7);
+    align-items: start;
+  }
+}
+.niveau__entete > * + * {
+  margin-top: var(--esp-2);
+}
+.niveau__texte {
+  color: var(--texte-doux);
+}
+.niveau__cartes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--esp-5);
+}
+@media (min-width: 640px) {
+  .niveau__cartes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.formation {
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-4);
+  padding: var(--esp-3);
+  background: var(--fond);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon-carte);
+  scroll-margin-top: calc(var(--hauteur-entete) + var(--esp-4));
+}
+.formation__corps {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--esp-3);
+  padding: 0 var(--esp-2) var(--esp-2);
+  flex: 1;
+}
+.formation__titre {
+  font-size: var(--taille-h3);
+}
+.formation__fiche {
+  margin: 0;
+  display: grid;
+  gap: var(--esp-2);
+}
+.formation__fiche div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--esp-2);
+}
+.formation__fiche dt {
+  font-weight: 600;
+  color: var(--brun);
+}
+.formation__fiche dt::after {
+  content: ' :';
+}
+
+.formation__programme-bouton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--esp-3);
+  min-height: 44px;
+  padding: var(--esp-2) var(--esp-5, 20px);
+  background: transparent;
+  border: 1px solid var(--ligne);
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--espresso);
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+.formation__programme-bouton:hover {
+  background: var(--nude);
+  border-color: var(--nude);
+  color: var(--brun);
+}
+.formation__icone {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--brun);
+  border-bottom: 2px solid var(--brun);
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform var(--transition);
+}
+.formation__programme-bouton[aria-expanded='true'] .formation__icone {
+  transform: translateY(2px) rotate(-135deg);
+}
+.formation__programme {
+  padding: var(--esp-4);
+  background: var(--fond-alt);
+  border-radius: var(--rayon-champ);
+}
+.formation__programme > * + * {
+  margin-top: var(--esp-2);
+}
+.formation__consulter {
+  margin-top: auto;
+}
+
+/* .groupe-boutons--centre : dans src/styles.css (partagé). */
+
+/* ---------- 6. Avantages ---------- */
+.avantages {
+  list-style: none;
+  margin: var(--esp-7) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--esp-6);
+}
+@media (min-width: 900px) {
+  .avantages {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.avantage {
+  padding-top: var(--esp-5);
+  border-top: 1px solid var(--taupe);
+}
+.avantage > * + * {
+  margin-top: var(--esp-3);
+}
+.avantage p {
+  color: var(--texte-doux);
+}
+
+/* ---------- 7. Formatrice ---------- */
+.formatrice {
+  align-items: start;
+}
+.formatrice__parcours {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--ligne);
+}
+.formatrice__parcours li {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: var(--esp-3);
+  padding: var(--esp-3) 0;
+  border-bottom: 1px solid var(--ligne);
+}
+.formatrice__annee {
+  font-weight: 600;
+  color: var(--brun);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- 8. Sessions ---------- */
+.sessions {
+  scroll-margin-top: var(--hauteur-entete);
+}
+.sessions__cartes {
+  margin-top: var(--esp-6);
+}
+
+/* ---------- 9. Financement ---------- */
+.financements {
+  list-style: none;
+  margin: var(--esp-6) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--esp-5);
+}
+@media (min-width: 640px) {
+  .financements {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .financements {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.financement {
+  padding: var(--esp-5);
+  background: var(--fond);
+  border-radius: var(--rayon-carte);
+}
+.financement > * + * {
+  margin-top: var(--esp-2);
+}

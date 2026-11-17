@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+.horaires {
+  margin-top: var(--esp-6);
+}
+.horaires__liste {
+  width: 100%;
+}
+.horaires__liste li {
+  color: var(--espresso);
+}
+.horaires__heures {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}

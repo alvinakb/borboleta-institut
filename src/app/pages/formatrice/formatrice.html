@@ -1,0 +1,85 @@
+<!-- 1. Grand visuel plein écran (sombre) : les mains, jamais le visage, et le logo en signature -->
+<section class="hero fond-sombre" aria-labelledby="titre-formatrice">
+  <app-emplacement-image
+    class="hero__image"
+    fichier="assets/images/formatrice-hero.jpg"
+    [pleinEcran]="true"
+    [sombre]="true"
+    [prioritaire]="true"
+  />
+  <div class="conteneur hero__texte">
+    <p class="surtitre">Votre formatrice</p>
+    <h1 class="titre-page" id="titre-formatrice">
+      {{ info.responsable }}, praticienne et formatrice
+    </h1>
+    <img
+      class="signature"
+      src="images/logo-borboleta-clair.png"
+      alt="Borboleta Institut"
+      width="600"
+      height="362"
+    />
+    <p class="hero__phrase">
+      Praticienne et formatrice spécialisée en techniques de bien-être, Mariline transmet son savoir
+      avec exigence et bienveillance, bien au-delà du simple protocole.
+    </p>
+    <div class="groupe-boutons">
+      <a class="bouton" routerLink="/formations" fragment="sessions">Je veux me former</a>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Sa pédagogie : photo des mains et texte -->
+<section class="section" aria-labelledby="titre-pedagogie">
+  <div class="conteneur deux-colonnes">
+    <app-emplacement-image
+      fichier="assets/images/formatrice-mains.jpg"
+      description="Les mains de la formatrice pendant une démonstration"
+      appApparition
+    />
+    <div class="flux" appApparition>
+      <p class="surtitre">Sa pédagogie</p>
+      <h2 class="titre" id="titre-pedagogie">Montrer, faire faire, corriger</h2>
+      <p>
+        Sa pédagogie tient en quelques mots : montrer, faire faire, corriger, recommencer. Parce que
+        la technique s’ancre dans le geste répété, dans un espace de confiance et sans jugement.
+        Chacune repart avec des bases solides, pas juste des notes à relire.
+      </p>
+      <div class="groupe-boutons">
+        <a class="bouton" routerLink="/formations" fragment="sessions">Je veux me former</a>
+        <a class="lien-texte" routerLink="/parcours">Le parcours et le déroulement</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Son parcours -->
+<section class="section section--alt" aria-labelledby="titre-son-parcours">
+  <div class="conteneur deux-colonnes parcours">
+    <div class="flux" appApparition>
+      <p class="surtitre">Son parcours</p>
+      <h2 class="titre" id="titre-son-parcours">Formations et expérience</h2>
+      <p>Langues parlées : {{ langues.join(', ') }}.</p>
+      <p>
+        <a class="lien-texte" [href]="info.instagram.url" target="_blank" rel="noopener"
+          >{{ info.instagram.compte
+          }}<span class="visuellement-cache"> sur Instagram (nouvel onglet)</span></a
+        >
+      </p>
+    </div>
+    <ul class="parcours__liste" appApparition>
+      @for (etape of parcours; track etape.texte) {
+        <li>
+          <span class="parcours__annee">{{ etape.annee }}</span>
+          <span>{{ etape.texte }}</span>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- 4. Appel à l’action -->
+<app-bloc-cta surtitre="Se former" titre="Apprendre à ses" motCle="côtés">
+  <a class="bouton" routerLink="/formations" fragment="sessions">Je veux me former</a>
+  <a class="lien-texte" routerLink="/formations">Voir les formations</a>
+</app-bloc-cta>

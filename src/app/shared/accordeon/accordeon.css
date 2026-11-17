@@ -1,0 +1,74 @@
+:host {
+  display: block;
+}
+
+.accordeon {
+  border-top: 1px solid var(--ligne);
+}
+
+.accordeon__item {
+  border-bottom: 1px solid var(--ligne);
+}
+
+.accordeon__titre {
+  font-family: var(--police-texte);
+  font-size: var(--taille-texte);
+  font-weight: 600;
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.accordeon__bouton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--esp-4);
+  width: 100%;
+  min-height: 56px;
+  padding: var(--esp-4) 0;
+  background: none;
+  border: 0;
+  color: var(--espresso);
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 16px;
+  padding-inline: var(--esp-4);
+  margin-inline: calc(-1 * var(--esp-4));
+  width: calc(100% + 2 * var(--esp-4));
+  transition: background-color var(--transition);
+}
+.accordeon__bouton:hover {
+  color: var(--brun);
+  background: color-mix(in srgb, var(--nude) 45%, transparent);
+}
+
+/* Plus qui devient moins à l’ouverture (icône brun : 5,7:1 au minimum). */
+.accordeon__icone {
+  position: relative;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+}
+.accordeon__icone::before,
+.accordeon__icone::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 14px;
+  height: 2px;
+  background: var(--brun);
+  transition: transform var(--transition);
+}
+.accordeon__icone::after {
+  transform: rotate(90deg);
+}
+.accordeon__bouton[aria-expanded='true'] .accordeon__icone::after {
+  transform: rotate(0deg);
+}
+
+.accordeon__reponse {
+  padding-bottom: var(--esp-5);
+  color: var(--texte-doux);
+}

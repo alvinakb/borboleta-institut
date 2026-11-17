@@ -1,0 +1,181 @@
+<!-- 1. Grand visuel plein écran (sombre) -->
+<section class="hero fond-sombre" aria-labelledby="titre-accueil">
+  <app-emplacement-image
+    class="hero__image"
+    fichier="assets/images/accueil-hero.jpg"
+    video="assets/images/accueil-hero.mp4"
+    [pleinEcran]="true"
+    [sombre]="true"
+    [prioritaire]="true"
+    [zoomLent]="true"
+  />
+  <div class="conteneur hero__texte">
+    <h1 class="titre-page" id="titre-accueil">Drainage lymphatique à Draveil</h1>
+    <p class="hero__phrase">
+      Un institut dédié au drainage lymphatique méthode Renata França et aux soins du corps et du
+      visage, et un centre de formation certifié Qualiopi pour apprendre le geste.
+    </p>
+    <div class="groupe-boutons">
+      <app-bouton-reserver libelle="Réserver un soin" />
+      <a class="lien-texte" routerLink="/formations">Découvrir les formations</a>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Bandeau des soins en colonnes verticales -->
+<app-colonnes-soins surtitre="Les soins de l’institut" titre="Un soin pour chaque envie" />
+
+<!-- 3. L’institut à Draveil : texte et image -->
+<section class="section section--alt" aria-labelledby="titre-institut">
+  <div class="conteneur deux-colonnes">
+    <div class="flux" appApparition>
+      <p class="surtitre">L’institut à Draveil</p>
+      <h2 class="titre" id="titre-institut">Un lieu calme, dédié au drainage lymphatique</h2>
+      <p>
+        Bienvenue chez Borboleta Institut, votre institut spécialisé dans le drainage lymphatique à
+        Draveil, en Essonne (91).
+      </p>
+      <p>
+        Drainage lymphatique méthode Renata França, Miracle Face, remodelage, soins
+        post-opératoires, radiofréquence, pressothérapie et Kobido&nbsp;: des soins esthétiques du
+        corps et du visage, pour retrouver une sensation de légèreté et prendre soin de votre
+        silhouette, sans chirurgie.
+      </p>
+      <p>
+        Un bon drainage se reconnaît à la main&nbsp;: la pression, le rythme, la précision. Chaque
+        rendez-vous commence par une écoute de vos attentes, pour vous orienter vers le soin le plus
+        adapté.
+      </p>
+      <address class="institut__adresse">
+        {{ info.nom }}<br />{{ info.adresse.rue }}<br />{{ info.adresse.codePostal }}
+        {{ info.adresse.ville }}, en {{ info.adresse.departement }}
+      </address>
+      <div class="groupe-boutons">
+        <app-bouton-reserver libelle="Réserver" aideAcces="Réserver un soin" />
+      </div>
+    </div>
+    <app-emplacement-image
+      fichier="assets/images/accueil-institut.jpg"
+      description="Un soin de drainage lymphatique en cabine, à Draveil"
+      ratio="4 / 3"
+      appApparition
+    />
+  </div>
+</section>
+
+<!-- 4. Le centre de formation : image et texte -->
+<section class="section" aria-labelledby="titre-formation">
+  <div class="conteneur deux-colonnes formation">
+    <app-emplacement-image
+      class="formation__image"
+      fichier="assets/images/accueil-formation.jpg"
+      description="Les mains d’une stagiaire guidées pendant une formation au drainage"
+      ratio="4 / 3"
+      appApparition
+    />
+    <div class="flux" appApparition>
+      <p class="surtitre">Centre de formation</p>
+      <h2 class="titre" id="titre-formation">Apprendre le drainage lymphatique avec ses mains</h2>
+      <p>
+        {{ nombreFormations }} formations professionnelles, en présentiel et en petit groupe, dans
+        un centre certifié Qualiopi. On commence par le socle, le drainage lymphatique corps ({{
+          texteDuree(formationSocle)
+        }}), puis on choisit ses spécialisations. On y apprend en faisant, jusqu’à ce que le geste
+        soit vraiment à vous.
+      </p>
+      <p>
+        Votre formatrice, {{ info.responsable }}, praticienne et formatrice, accompagne chaque
+        stagiaire avec exigence et bienveillance.
+      </p>
+      <p>Une prise en charge est possible, notamment via le CPF ou les OPCO.</p>
+      <div class="groupe-boutons">
+        <a class="bouton" routerLink="/formations">Découvrir les formations</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Bande confiance -->
+<section class="confiance section--alt" aria-label="Avis et certification">
+  <div class="conteneur confiance__grille" appApparition>
+    <div class="confiance__item">
+      <p class="confiance__note">
+        <span class="confiance__etoiles" aria-hidden="true">★★★★★</span>
+        <span class="confiance__chiffre">{{ info.avis.note }}/{{ info.avis.noteMax }}</span>
+      </p>
+      <p>
+        <a [href]="info.avis.url" target="_blank" rel="noopener"
+          >Note de {{ info.avis.note }} sur {{ info.avis.noteMax }}, {{ info.avis.nombre }} avis
+          {{ info.avis.source }}<span class="visuellement-cache"> (nouvel onglet)</span></a
+        >
+      </p>
+    </div>
+    <div class="confiance__item">
+      <p class="confiance__chiffre">Qualiopi</p>
+      <p>Centre de formation certifié Qualiopi</p>
+      <app-mention-qualiopi [centre]="true" />
+    </div>
+  </div>
+</section>
+
+<!-- 6. Cartes cadeaux -->
+<section class="section" aria-labelledby="titre-cadeaux">
+  <div class="conteneur deux-colonnes">
+    <div class="flux" appApparition>
+      <p class="surtitre">Offrir</p>
+      <h2 class="titre" id="titre-cadeaux">Les cartes cadeaux</h2>
+      <p>
+        Un soin, une cure ou un montant libre&nbsp;: offrez un vrai moment pour soi. Les cartes
+        cadeaux sont disponibles en institut.
+      </p>
+      <div class="groupe-boutons">
+        <a class="bouton" routerLink="/cartes-cadeaux">Découvrir les cartes cadeaux</a>
+      </div>
+    </div>
+    <app-emplacement-image
+      fichier="assets/images/accueil-carte-cadeau.jpg"
+      description="Une carte cadeau Borboleta Institut posée sur une serviette blanche"
+      ratio="3 / 2"
+      appApparition
+    />
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--alt" aria-labelledby="titre-faq">
+  <div class="conteneur faq">
+    <div class="flux" appApparition>
+      <p class="surtitre">Questions fréquentes</p>
+      <h2 class="titre" id="titre-faq">Le drainage lymphatique à Draveil</h2>
+      <p><a class="lien-fleche" routerLink="/faq">Toutes les questions</a></p>
+    </div>
+    <app-accordeon [questions]="questions" appApparition />
+  </div>
+</section>
+
+<!-- Instagram -->
+<section class="section texte-centre" aria-labelledby="titre-instagram">
+  <div class="conteneur">
+    <div class="flux" appApparition>
+      <p class="surtitre">Instagram</p>
+      <h2 class="titre" id="titre-instagram">Suivez-nous sur Instagram</h2>
+      <p>Les soins, l’institut et les formations, au fil des jours.</p>
+    </div>
+    <div class="groupe-boutons">
+      <a class="bouton" [href]="info.instagram.url" target="_blank" rel="noopener"
+        >Voir {{ info.instagram.compte
+        }}<span class="visuellement-cache"> sur Instagram (nouvel onglet)</span></a
+      >
+    </div>
+  </div>
+</section>
+
+<!-- Appel à l’action final (sombre) -->
+<app-bloc-cta
+  titre="Prendre rendez-vous à Draveil"
+  texte="Réservez votre soin en ligne sur Planity, à tout moment. Pour une formation, écrivez-nous."
+  [sombre]="true"
+>
+  <app-bouton-reserver libelle="Réserver un soin" />
+  <a class="lien-texte" routerLink="/contact">Nous contacter</a>
+</app-bloc-cta>

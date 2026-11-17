@@ -12,12 +12,10 @@ Site de Borboleta Institut, institut de drainage lymphatique à Draveil (91) et 
 
 ## Design
 
-- Modèle de structure : le site Spa Renata França (sparenatafranca.com), pages Accueil, Formation et Drainage. On reprend : la structure des pages, le menu, les grands visuels plein écran, le parcours de formation par niveaux, les piliers de la technique, le formulaire « En savoir plus », le bouton d'action répété après les sections. On ne copie aucun texte ni image de ce site.
-- Palette Borboleta : crème `#F4F1EB`, beige `#E8DCC8`, doré (dégradé du logo, de `#E9CB86` à `#A97B3F`), anthracite `#2C2C2C`. Noir profond `#0E0E0E` possible pour des bandeaux, comme le logo sur fond noir.
-- Typo : titres en serif élégante (Cormorant Garamond ou équivalent), un mot clé en italique doré. Petits surtitres en capitales espacées dorées. Corps en sans-serif léger (Jost ou équivalent).
-- Logos : `public/images/logo-fond-clair.jpg` et `public/images/logo-fond-noir.jpg`. Les convertir en PNG transparent ou SVG propre si possible, sinon les utiliser tels quels sur un fond de la même couleur.
-- Pas de photos pour l'instant : prévoir des emplacements d'image avec un fond dégradé élégant et un nom de fichier attendu (ex. `assets/images/accueil-hero.jpg`), faciles à remplacer. Aucune photo du visage de Mariline.
-- 100 % responsive, menu burger sur mobile, contraste lisible.
+- **Toujours suivre `docs/DESIGN-SYSTEM.md`** : c'est la référence absolue pour tout le design (couleurs, typographie, espacements, composants, images, mouvement, accessibilité, structure des pages). Ce qui suit ne reprend que les demandes du brief de la cliente.
+- Modèle de structure : le site Spa Renata França (sparenatafranca.com), pages Accueil, Formation et Drainage. On reprend la structure des pages, le menu, les grands visuels plein écran, le parcours de formation par niveaux, les piliers de la technique, le formulaire « En savoir plus » et le bouton d'action répété après les sections (détail dans la partie 10 du design system). On ne copie aucun texte ni image de ce site.
+- Logo papillon Borboleta : originaux `public/images/logo-fond-clair.jpg` et `public/images/logo-fond-noir.jpg`, versions transparentes `public/images/logo-borboleta.png` (fonds clairs) et `public/images/logo-borboleta-clair.png` (fonds sombres).
+- Aucune photo du visage de Mariline. Les photos attendues sont listées dans `docs/PHOTOS.md`.
 
 ## Menu (décidé)
 

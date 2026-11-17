@@ -1,0 +1,38 @@
+:host {
+  display: block;
+}
+
+.cta {
+  padding-block: var(--espace-section);
+  background: var(--fond);
+  text-align: center;
+}
+.cta--alt {
+  background: var(--fond-alt);
+}
+
+.cta__contenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-4);
+}
+
+.cta__texte {
+  max-width: 40rem;
+  color: var(--texte-doux);
+}
+.fond-sombre .cta__texte {
+  color: var(--fond);
+}
+
+.groupe-boutons {
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--esp-2);
+}
+
+.cta.fond-sombre {
+  background: var(--espresso);
+  color: var(--fond);
+}

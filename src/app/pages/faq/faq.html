@@ -1,0 +1,28 @@
+<section class="entete-page">
+  <div class="conteneur">
+    <p class="surtitre">Questions fréquentes</p>
+    <h1 class="titre-page">Vos questions</h1>
+    <p class="chapo">
+      Le drainage lymphatique à Draveil (91), les soins, la réservation et les formations : les
+      réponses aux questions que l’on nous pose le plus souvent.
+    </p>
+  </div>
+</section>
+
+<section class="section" aria-label="Questions par thème">
+  <div class="conteneur">
+    @for (groupe of groupes; track groupe.titre; let i = $index) {
+      <section class="groupe" [attr.aria-labelledby]="'groupe-' + i">
+        <h2 class="groupe__titre" [id]="'groupe-' + i">{{ groupe.titre }}</h2>
+        <app-accordeon [questions]="groupe.questions" />
+      </section>
+    }
+  </div>
+</section>
+
+<app-bloc-cta [alt]="true" surtitre="Une autre question ?" titre="Écrivez-nous" motCle="simplement">
+  <a class="bouton" routerLink="/contact">Nous contacter</a>
+  <a class="lien-texte" [href]="planity" target="_blank" rel="noopener"
+    >Réserver un soin<span class="visuellement-cache"> sur Planity (nouvel onglet)</span></a
+  >
+</app-bloc-cta>

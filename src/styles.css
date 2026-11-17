@@ -1,0 +1,744 @@
+/* Polices hébergées sur le site (public/fonts/, licence SIL OFL) : aucun appel à Google Fonts.
+   Fraunces : police variable (graisse et taille optique), Nunito Sans : 400 et 600. */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src:
+    url('/fonts/fraunces-latin-opsz-normal.woff2') format('woff2-variations'),
+    url('/fonts/fraunces-latin-opsz-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/nunito-sans-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/nunito-sans-latin-600-normal.woff2') format('woff2');
+}
+
+/* Styles globaux de Borboleta Institut. Référence : docs/DESIGN-SYSTEM.md.
+   Tokens, typographie, mise en page, boutons, animation unique.
+   Les styles propres à un composant sont dans le fichier CSS de ce composant. */
+
+/* ---------- 2. Couleurs (tokens) ---------- */
+:root {
+  --fond: #fbf7f4; /* fond principal, presque blanc chaud */
+  --fond-alt: #f4e9e1; /* sections alternées */
+  --nude: #ebd3c4; /* aplats, boutons secondaires, survols */
+  --taupe: #a38b7e; /* décor uniquement (bordures, icônes) : jamais pour du texte */
+  --brun: #7a513f; /* liens, prix, petits titres */
+  --espresso: #2a211c; /* texte principal, fonds sombres, bouton principal */
+  --texte-doux: #5c4b43; /* paragraphes secondaires */
+  --ligne: #e6d6cb; /* bordures fines */
+  --or: #c8a160; /* logo et un seul détail par écran maximum, jamais pour du texte */
+  --succes: #3f6b4f;
+  --erreur: #a23b2e;
+
+  /* Contrastes vérifiés (WCAG) :
+     espresso sur fond 14,8 ; sur fond-alt 13,2 ; sur nude 11,0.
+     texte-doux sur fond 7,8 ; sur fond-alt 6,9.
+     brun sur fond 6,4 ; sur fond-alt 5,7 ; sur le panneau des colonnes 5,7.
+     fond sur espresso 14,8 ; nude sur espresso 11,0.
+     taupe (3,0) et or (2,3) : décor uniquement, jamais de texte. */
+
+  /* ---------- 3. Typographie ---------- */
+  --police-titre: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --police-texte: 'Nunito Sans', 'Segoe UI', Roboto, Arial, sans-serif;
+  /* Échelle fluide de 390 px (mobile) à 1280 px (ordinateur). */
+  --taille-h1: clamp(2.125rem, 1.52rem + 2.47vw, 3.5rem); /* 34 → 56 px */
+  --taille-h2: clamp(1.75rem, 1.42rem + 1.35vw, 2.5rem); /* 28 → 40 px */
+  --taille-h3: clamp(1.3125rem, 1.23rem + 0.34vw, 1.5rem); /* 21 → 24 px */
+  --taille-texte: clamp(1.0625rem, 1.035rem + 0.11vw, 1.125rem); /* 17 → 18 px */
+  --taille-petit: clamp(0.875rem, 0.848rem + 0.11vw, 0.9375rem); /* 14 → 15 px */
+
+  /* ---------- 4. Espacements, grille, rayons, ombre ---------- */
+  --esp-1: 0.25rem; /* 4 */
+  --esp-2: 0.5rem; /* 8 */
+  --esp-3: 0.75rem; /* 12 */
+  --esp-4: 1rem; /* 16 */
+  --esp-5: 1.5rem; /* 24 */
+  --esp-6: 2rem; /* 32 */
+  --esp-7: 3rem; /* 48 */
+  --esp-8: 4rem; /* 64 */
+  --esp-9: 6rem; /* 96 */
+  --esp-10: 8rem; /* 128 */
+  --espace-section: clamp(4rem, 2.69rem + 5.39vw, 7rem); /* 64 → 112 px */
+  --largeur-max: 1160px;
+  --marge-laterale: 20px;
+  --hauteur-entete: 72px;
+  --rayon-bouton: 999px;
+  --rayon-carte: 16px;
+  --rayon-champ: 8px;
+  --ombre: 0 12px 32px -18px rgba(42, 33, 28, 0.25);
+  --transition: 0.2s ease;
+}
+@media (min-width: 960px) {
+  :root {
+    --marge-laterale: 32px;
+  }
+}
+
+/* ---------- Reset léger ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--police-texte);
+  font-weight: 400;
+  font-size: var(--taille-texte);
+  line-height: 1.6;
+  color: var(--espresso);
+  background: var(--fond);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--police-titre);
+  font-optical-sizing: auto;
+  font-style: normal;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+h1,
+h2 {
+  font-weight: 400;
+  line-height: 1.12;
+}
+h3,
+h4 {
+  font-weight: 500;
+  font-size: var(--taille-h3);
+  line-height: 1.2;
+}
+
+p,
+li,
+dd {
+  max-width: 65ch;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--brun);
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+  transition: color var(--transition);
+}
+a:hover {
+  color: var(--espresso);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brun);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--nude);
+  color: var(--espresso);
+}
+
+/* ---------- Mise en page ---------- */
+.conteneur {
+  width: 100%;
+  max-width: calc(var(--largeur-max) + 2 * var(--marge-laterale));
+  margin-inline: auto;
+  padding-inline: var(--marge-laterale);
+}
+
+.section {
+  padding-block: var(--espace-section);
+}
+.section--alt {
+  background: var(--fond-alt);
+}
+
+/* Fond sombre (en-têtes de pages formation, piliers, appel à l’action final).
+   Jamais deux sections sombres à la suite. */
+.section--sombre,
+.fond-sombre {
+  background: var(--espresso);
+  color: var(--fond);
+}
+.section--sombre a:not(.bouton),
+.fond-sombre a:not(.bouton) {
+  color: var(--fond);
+}
+.section--sombre a:not(.bouton):hover,
+.fond-sombre a:not(.bouton):hover {
+  color: var(--nude);
+}
+.section--sombre :focus-visible,
+.fond-sombre :focus-visible {
+  outline-color: var(--nude);
+}
+
+/* Cartes : 3 par ligne sur ordinateur, 2 sur tablette, 1 sur mobile. */
+.grille {
+  display: grid;
+  gap: var(--esp-6);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) {
+  .grille {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .grille {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.deux-colonnes {
+  display: grid;
+  gap: var(--esp-6);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .deux-colonnes {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--esp-8);
+  }
+}
+
+.texte-centre {
+  text-align: center;
+}
+.texte-centre p,
+.texte-centre .chapo {
+  margin-inline: auto;
+}
+.texte-centre .groupe-boutons {
+  justify-content: center;
+  align-items: center;
+}
+
+.flux > * + * {
+  margin-top: var(--esp-4);
+}
+
+/* ---------- Typographie ---------- */
+/* Surtitre : Nunito 600 en écriture normale, brun (5,7:1 sur fond-alt). */
+.surtitre {
+  font-family: var(--police-texte);
+  font-size: var(--taille-petit);
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--brun);
+}
+.section--sombre .surtitre,
+.fond-sombre .surtitre {
+  color: var(--nude);
+}
+
+.titre-page,
+h1 {
+  font-size: var(--taille-h1);
+  letter-spacing: -0.01em;
+}
+.titre,
+h2 {
+  font-size: var(--taille-h2);
+}
+.titre,
+.titre-page {
+  color: inherit;
+}
+
+.chapo {
+  font-size: var(--taille-texte);
+  color: var(--texte-doux);
+  max-width: 65ch;
+}
+.section--sombre .chapo,
+.fond-sombre .chapo {
+  color: var(--fond);
+}
+
+.petit {
+  font-size: var(--taille-petit);
+}
+
+/* ---------- En-tête de page simple ---------- */
+.entete-page {
+  padding-block: clamp(3rem, 2rem + 4vw, 5rem);
+  background: var(--fond-alt);
+}
+.entete-page .conteneur > * + * {
+  margin-top: var(--esp-4);
+}
+
+/* ---------- Grand visuel plein écran (accueil, pages de soin, centre de formation) ----------
+   Section sombre : emplacement-image [pleinEcran] [sombre] en fond (voile compris), texte en
+   --fond centré par-dessus (14,8:1 sur espresso voilé). */
+.hero {
+  position: relative;
+  display: grid;
+  min-height: calc(100vh - var(--hauteur-entete));
+  min-height: calc(100svh - var(--hauteur-entete));
+  overflow: hidden;
+}
+.hero > * {
+  grid-area: 1 / 1;
+}
+.hero__image {
+  min-height: inherit;
+}
+.hero__texte {
+  position: relative;
+  z-index: 1;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-5);
+  padding-block: var(--esp-8);
+  text-align: center;
+}
+.hero .titre-page {
+  max-width: 18ch;
+}
+.hero__phrase {
+  max-width: 38rem;
+  font-size: var(--taille-texte);
+}
+.hero .groupe-boutons {
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--esp-2);
+}
+
+/* Emplacement photo posé directement sur une section --fond-alt : aplat nude pour qu’il reste
+   visible (sinon même couleur que le fond). */
+.section--alt .deux-colonnes > app-emplacement-image .emplacement {
+  background: var(--nude);
+}
+
+/* ---------- Étapes numérotées (déroulé d’une séance, journée de formation) ---------- */
+.etapes {
+  list-style: none;
+  margin: var(--esp-6) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--esp-6);
+}
+@media (min-width: 900px) {
+  .etapes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.etape {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
+  max-width: none;
+}
+/* Numéro : Fraunces, brun (5,7:1 sur --fond-alt). */
+.etape__numero {
+  font-family: var(--police-titre);
+  font-optical-sizing: auto;
+  font-size: var(--taille-h2);
+  line-height: 1;
+  color: var(--brun);
+}
+.etape p {
+  color: var(--texte-doux);
+}
+/* Quatre étapes (parcours d’inscription) : 2 colonnes sur tablette, 4 sur ordinateur. */
+@media (min-width: 640px) {
+  .etapes--quatre {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .etapes--quatre {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------- Bloc de texte encadré (infos pratiques, dispositifs, options) ----------
+   Fond --fond sur une section --fond-alt, et l’inverse : la carte reste toujours visible. */
+.bloc {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--esp-3);
+  padding: var(--esp-5);
+  background: var(--fond-alt);
+  border-radius: var(--rayon-carte);
+  max-width: none;
+}
+.section--alt .bloc {
+  background: var(--fond);
+}
+.bloc p:not(.surtitre),
+.bloc li {
+  color: var(--texte-doux);
+}
+.bloc__titre {
+  font-size: var(--taille-h3);
+}
+/* Action du bloc calée en bas, pour aligner les blocs d’une même rangée. */
+.bloc > :last-child:is(.bouton, .lien-texte) {
+  margin-top: auto;
+}
+@media (min-width: 960px) {
+  .bloc {
+    padding: var(--esp-6);
+  }
+}
+
+/* Liste sans puces (horaires, parcours) : une ligne fine entre chaque élément. */
+.liste-lignes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--ligne);
+}
+.liste-lignes > li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0 var(--esp-4);
+  padding: var(--esp-3) 0;
+  border-bottom: 1px solid var(--ligne);
+  max-width: none;
+}
+.liste-lignes > li > :last-child {
+  flex-shrink: 0;
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* Bouton seul centré après une grande section (répété comme sur Spa Renata). */
+.groupe-boutons--centre {
+  justify-content: center;
+  margin-top: var(--esp-7);
+}
+@media (max-width: 639px) {
+  .groupe-boutons--centre {
+    align-items: center;
+  }
+}
+
+/* ---------- Pages de texte (mentions légales, confidentialité) : sobres, 65ch ---------- */
+.texte-legal {
+  max-width: 65ch;
+}
+.texte-legal h2 {
+  font-size: var(--taille-h3);
+  font-weight: 500;
+  margin-top: var(--esp-7);
+}
+.texte-legal h2:first-child {
+  margin-top: 0;
+}
+.texte-legal h2 + p {
+  margin-top: var(--esp-3);
+}
+.texte-legal p + p {
+  margin-top: var(--esp-4);
+}
+.texte-legal p,
+.texte-legal li {
+  color: var(--texte-doux);
+}
+.texte-legal ul {
+  margin-top: var(--esp-3);
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+.texte-legal li + li {
+  margin-top: var(--esp-2);
+}
+.texte-legal ul + p {
+  margin-top: var(--esp-4);
+}
+
+/* ---------- 5. Ligne de tarif (page Tarifs, pages de soin) ----------
+   Nom à gauche, durée en petit texte, prix à droite en brun 600 et chiffres tabulaires. */
+.liste-tarifs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--ligne);
+}
+.ligne-tarif {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--esp-4);
+  padding: var(--esp-4) 0;
+  border-bottom: 1px solid var(--ligne);
+  max-width: none;
+}
+.ligne-tarif__nom {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.ligne-tarif__duree {
+  font-size: var(--taille-petit);
+  color: var(--texte-doux);
+}
+/* Prix : brun 600 (6,4:1 sur --fond, 5,7:1 sur --fond-alt). */
+.ligne-tarif__prix {
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--brun);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* ---------- 5. Boutons ---------- */
+.bouton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--esp-2);
+  min-height: 48px;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--police-texte);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  color: var(--fond);
+  background: var(--espresso);
+  border: 1.5px solid var(--espresso);
+  border-radius: var(--rayon-bouton);
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+.bouton:hover {
+  color: var(--fond);
+  background: #000;
+  border-color: #000;
+}
+.bouton:focus-visible {
+  outline: 2px solid var(--brun);
+  outline-offset: 2px;
+}
+.bouton:disabled,
+.bouton[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Secondaire : contour espresso, fond transparent, survol nude. */
+.bouton--contour,
+.bouton--clair {
+  color: var(--espresso);
+  background: transparent;
+}
+.bouton--contour:hover,
+.bouton--clair:hover {
+  color: var(--espresso);
+  background: var(--nude);
+  border-color: var(--espresso);
+}
+
+/* Sur fond sombre : on inverse. */
+.section--sombre .bouton,
+.fond-sombre .bouton {
+  color: var(--espresso);
+  background: var(--fond);
+  border-color: var(--fond);
+}
+.section--sombre .bouton:hover,
+.fond-sombre .bouton:hover {
+  background: var(--nude);
+  border-color: var(--nude);
+}
+.section--sombre .bouton--contour,
+.section--sombre .bouton--clair,
+.fond-sombre .bouton--contour,
+.fond-sombre .bouton--clair {
+  color: var(--fond);
+  background: transparent;
+  border-color: var(--fond);
+}
+.section--sombre .bouton--contour:hover,
+.section--sombre .bouton--clair:hover,
+.fond-sombre .bouton--contour:hover,
+.fond-sombre .bouton--clair:hover {
+  color: var(--espresso);
+  background: var(--fond);
+}
+.section--sombre .bouton:focus-visible,
+.fond-sombre .bouton:focus-visible {
+  outline-color: var(--nude);
+}
+
+.groupe-boutons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--esp-4);
+  margin-top: var(--esp-6);
+}
+
+/* Lien texte : action secondaire discrète (zone tactile de 48 px). */
+.lien-texte {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  font-weight: 600;
+  color: var(--espresso);
+  text-decoration: underline;
+  text-decoration-color: var(--taupe);
+  text-underline-offset: 0.3em;
+}
+.lien-texte:hover {
+  color: var(--brun);
+  text-decoration-color: currentColor;
+}
+
+/* Mobile : le bouton secondaire placé après le principal devient un lien texte sous lui. */
+@media (max-width: 639px) {
+  .groupe-boutons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--esp-1);
+  }
+  .groupe-boutons > * + .bouton--contour,
+  .groupe-boutons > * + .bouton--clair,
+  .groupe-boutons > * + * .bouton--contour,
+  .groupe-boutons > * + * .bouton--clair {
+    min-height: 48px;
+    padding-inline: 0;
+    border-color: transparent;
+    background: transparent;
+    text-decoration: underline;
+    text-decoration-color: var(--taupe);
+    text-underline-offset: 0.3em;
+  }
+  .groupe-boutons > * + .bouton--contour:hover,
+  .groupe-boutons > * + .bouton--clair:hover,
+  .groupe-boutons > * + * .bouton--contour:hover,
+  .groupe-boutons > * + * .bouton--clair:hover {
+    background: transparent;
+    border-color: transparent;
+    color: inherit;
+  }
+}
+
+/* Lien simple avec flèche (sommaires, « En savoir plus »). */
+.lien-fleche {
+  font-weight: 600;
+  color: var(--brun);
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+.lien-fleche::after {
+  content: '\00a0→';
+}
+.lien-fleche:hover {
+  color: var(--espresso);
+}
+
+/* ---------- Formulaires (passe 2) ---------- */
+.emplacement-formulaire {
+  padding: var(--esp-6);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon-carte);
+  background: var(--fond);
+}
+
+/* ---------- 7. Mouvement : une seule apparition (directive appApparition) ----------
+   Opacité et 12 px de translation, 400 ms, déclenchée une fois. La classe « apparition »
+   n’est posée que par la directive, jamais si l’utilisatrice préfère réduire les animations. */
+.apparition {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 400ms ease,
+    transform 400ms ease;
+  transition-delay: var(--delai-apparition, 0s);
+}
+.apparition.apparition--visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+  .apparition {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Accessibilité ---------- */
+.visuellement-cache {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

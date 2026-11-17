@@ -1,0 +1,119 @@
+<!-- 1. Grand visuel plein écran (sombre) -->
+<section class="hero fond-sombre" aria-labelledby="titre-institut">
+  <app-emplacement-image
+    class="hero__image"
+    fichier="assets/images/institut-hero.jpg"
+    [pleinEcran]="true"
+    [sombre]="true"
+    [prioritaire]="true"
+  />
+  <div class="conteneur hero__texte">
+    <p class="surtitre">L’institut</p>
+    <h1 class="titre-page" id="titre-institut">Borboleta, prendre soin autrement</h1>
+    <p class="hero__phrase">
+      Prendre soin de votre silhouette sans chirurgie ni technique invasive : c’est tout l’objet de
+      Borboleta Institut, institut de drainage lymphatique à Draveil (91), au sud-est de Paris.
+      Mariline vous reçoit dans le calme et vous invite à vous déconnecter pour prendre enfin soin
+      de vous.
+    </p>
+    <div class="groupe-boutons">
+      <app-bouton-reserver libelle="Réserver un soin" />
+      <a class="lien-texte" routerLink="/soins">Découvrir les soins</a>
+    </div>
+  </div>
+</section>
+
+<!-- 2. La méthode : image et texte -->
+<section class="section" aria-labelledby="titre-methode">
+  <div class="conteneur deux-colonnes">
+    <app-emplacement-image
+      fichier="assets/images/institut-cabine.jpg"
+      description="La cabine de soin de l’institut"
+      appApparition
+    />
+    <div class="flux" appApparition>
+      <p class="surtitre">La méthode</p>
+      <h2 class="titre" id="titre-methode">Le drainage et le remodelage</h2>
+      <p>
+        Le drainage lymphatique méthode Renata França associe des pressions fermes à un rythme
+        soutenu : une séance tonique, qui laisse une vraie sensation de légèreté. Le remodelage, par
+        des mouvements vigoureux et précis, travaille la silhouette pour la redessiner joliment.
+      </p>
+      <p>
+        Le drainage lymphatique est au cœur de l’expertise de Borboleta Institut&nbsp;: drainage du
+        corps, des membres inférieurs, du visage avec le Miracle Face, et soins post-opératoires,
+        toujours avec l’accord du professionnel de santé qui assure votre suivi.
+      </p>
+      <div class="groupe-boutons">
+        <app-bouton-reserver libelle="Réserver un soin" />
+        <a class="lien-texte" routerLink="/tarifs">Voir les tarifs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. L’approche, et l’adresse -->
+<section class="section section--alt" aria-labelledby="titre-approche">
+  <div class="conteneur deux-colonnes approche">
+    <div class="flux" appApparition>
+      <p class="surtitre">Notre approche</p>
+      <h2 class="titre" id="titre-approche">Apprendre avec ses mains</h2>
+      <p>
+        Pas d’esbroufe ni de diaporamas interminables. On montre, on fait faire, on corrige, on
+        recommence, jusqu’à ce que le geste soit vraiment ancré. La même exigence vaut en cabine et
+        en formation.
+      </p>
+      <p class="approche__liens">
+        <a class="lien-fleche" routerLink="/formations">Le centre de formation</a>
+        <a class="lien-fleche" routerLink="/formatrice">La formatrice</a>
+      </p>
+    </div>
+    <div class="bloc" appApparition>
+      <h3 class="bloc__titre">Nous trouver</h3>
+      <address class="approche__adresse">
+        {{ info.nom }}<br />{{ info.adresse.rue }}<br />{{ info.adresse.codePostal }}
+        {{ info.adresse.ville }}, en {{ info.adresse.departement }}
+      </address>
+      <ul class="liste-lignes approche__horaires">
+        @for (h of info.horaires; track h.jours) {
+          <li>
+            <span>{{ h.jours }}</span><span class="approche__heures">{{ h.heures }}</span>
+          </li>
+        }
+      </ul>
+      <a class="lien-texte" [href]="itineraire" target="_blank" rel="noopener"
+        >Itinéraire<span class="visuellement-cache"> (nouvel onglet)</span></a
+      >
+    </div>
+  </div>
+</section>
+
+<!-- 4. L’institut en images : galerie (défilement au doigt et flèches, jamais automatique) -->
+<section class="section" aria-labelledby="titre-images">
+  <div class="conteneur">
+    <div class="flux images__entete" appApparition>
+      <h2 class="titre" id="titre-images">L’institut en images</h2>
+      <p>
+        Un lieu calme, pensé pour vous déconnecter et prendre enfin soin de vous&nbsp;: découvrez la
+        cabine et l’ambiance de Borboleta Institut, à Draveil.
+      </p>
+    </div>
+    <app-galerie-photos
+      [photos]="photos"
+      libelleBande="Photos de l’institut, faire défiler avec les flèches gauche et droite"
+      appApparition
+    />
+  </div>
+</section>
+
+<!-- 5. Appel à l’action -->
+<app-bloc-cta
+  [alt]="true"
+  surtitre="Réservation en ligne"
+  titre="Prête pour votre"
+  motCle="première séance ?"
+  texte="Réservez votre soin à Draveil en quelques clics sur Planity."
+>
+  <app-bouton-reserver libelle="Réserver un soin" />
+  <a class="lien-texte" routerLink="/cartes-cadeaux">Offrir une carte cadeau</a>
+</app-bloc-cta>

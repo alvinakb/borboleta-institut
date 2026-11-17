@@ -1,0 +1,46 @@
+<!-- 1. Grand visuel plein écran (sombre) -->
+<section class="hero fond-sombre" aria-labelledby="titre-calendrier">
+  <app-emplacement-image
+    class="hero__image"
+    fichier="assets/images/calendrier-hero.jpg"
+    [pleinEcran]="true"
+    [sombre]="true"
+    [prioritaire]="true"
+  />
+  <div class="conteneur hero__texte">
+    <p class="surtitre">Centre de formation</p>
+    <h1 class="titre-page" id="titre-calendrier">Calendrier des sessions</h1>
+    <p class="hero__phrase">
+      Prochaines sessions : nous consulter. Les dates sont fixées au fil de l’année, en petit
+      groupe. Choisissez une formation et laissez-nous vos coordonnées : nous vous prévenons dès
+      qu’une session est ouverte.
+    </p>
+    <div class="groupe-boutons">
+      <a class="bouton" [routerLink]="[]" fragment="dates" (click)="allerAuxDates()"
+        >Être informée des dates</a
+      >
+    </div>
+  </div>
+</section>
+
+<!-- 2. Une carte « Prochaines sessions : nous consulter » par formation, avec son formulaire -->
+<section class="section dates" id="dates" aria-labelledby="titre-dates">
+  <div class="conteneur">
+    <div class="flux" appApparition>
+      <p class="surtitre">Les dates</p>
+      <h2 class="titre" id="titre-dates">Être informée des prochaines dates</h2>
+    </div>
+    <app-demande-formation class="dates__cartes" />
+  </div>
+</section>
+
+<!-- 3. Appel à l’action -->
+<app-bloc-cta
+  [alt]="true"
+  surtitre="Prise en charge"
+  titre="Pensez au financement"
+  texte="Organisme certifié Qualiopi : CPF, OPCO, FAFCEA ou France Travail."
+>
+  <a class="bouton" routerLink="/financement">Le financement</a>
+  <a class="lien-texte" routerLink="/formations">Le centre de formation</a>
+</app-bloc-cta>

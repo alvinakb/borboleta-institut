@@ -1,0 +1,74 @@
+<!-- 1. Grand visuel plein écran (sombre) -->
+<section class="hero fond-sombre" aria-labelledby="titre-financement">
+  <app-emplacement-image
+    class="hero__image"
+    fichier="assets/images/financement-hero.jpg"
+    [pleinEcran]="true"
+    [sombre]="true"
+    [prioritaire]="true"
+  />
+  <div class="conteneur hero__texte">
+    <p class="surtitre">Prise en charge</p>
+    <h1 class="titre-page" id="titre-financement">Une formation finançable</h1>
+    <p class="hero__phrase">
+      Borboleta Institut est un organisme de formation certifié Qualiopi. Vos formations peuvent
+      ainsi faire l’objet d’une prise en charge. Nous vous accompagnons dans le montage de votre
+      dossier.
+    </p>
+    <div class="groupe-boutons">
+      <a class="bouton" routerLink="/formations" fragment="sessions">Je veux me former</a>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Les dispositifs -->
+<section class="section" aria-labelledby="titre-dispositifs">
+  <div class="conteneur">
+    <div class="flux" appApparition>
+      <p class="surtitre">Les dispositifs</p>
+      <h2 class="titre" id="titre-dispositifs">Les solutions de financement</h2>
+    </div>
+    <ul class="dispositifs">
+      @for (d of dispositifs; track d.nom; let i = $index) {
+        <li class="bloc" appApparition [delaiApparition]="i * 0.06">
+          <h3 class="bloc__titre">{{ d.nom }}</h3>
+          <p>{{ d.texte }}</p>
+        </li>
+      }
+    </ul>
+    <div class="groupe-boutons groupe-boutons--centre">
+      <a class="bouton" routerLink="/formations" fragment="sessions">Je veux me former</a>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Qualiopi -->
+<section class="section section--alt" aria-labelledby="titre-qualiopi">
+  <div class="conteneur flux" appApparition>
+    <p class="surtitre">Qualité</p>
+    <h2 class="titre" id="titre-qualiopi">Certifié Qualiopi</h2>
+    <p>
+      La certification Qualiopi atteste de la qualité du processus mis en œuvre par Borboleta
+      Institut pour ses actions de formation. C’est elle qui ouvre l’accès aux financements publics
+      et mutualisés.
+    </p>
+    <app-mention-qualiopi />
+    @if (legal.certificatQualiopi) {
+      <p>Certificat Qualiopi : {{ legal.certificatQualiopi }}</p>
+    }
+    @if (legal.numeroDeclarationActivite) {
+      <p>Numéro de déclaration d’activité : {{ legal.numeroDeclarationActivite }}</p>
+    }
+  </div>
+</section>
+
+<!-- 4. Appel à l’action -->
+<app-bloc-cta
+  surtitre="On s’occupe de vous"
+  titre="Parlons de votre"
+  motCle="dossier"
+  texte="Dites-nous quelle formation vous visez et votre situation : nous vous orientons vers le bon financement."
+>
+  <a class="bouton" routerLink="/formations" fragment="sessions">Demander une formation</a>
+  <a class="lien-texte" routerLink="/contact">Nous contacter</a>
+</app-bloc-cta>

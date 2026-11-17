@@ -1,0 +1,57 @@
+:host {
+  display: block;
+}
+
+/* Niveaux : 1 colonne sur mobile, 2 sur tablette, 4 sur ordinateur. */
+.niveaux {
+  list-style: none;
+  margin: var(--esp-6) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--esp-5);
+}
+@media (min-width: 640px) {
+  .niveaux {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .niveaux {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.niveau {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+  max-width: none;
+  padding: var(--esp-5);
+  background: var(--fond-alt);
+  border-radius: var(--rayon-carte);
+}
+.niveau .etape__numero {
+  margin-bottom: var(--esp-2);
+}
+.niveau__texte {
+  color: var(--texte-doux);
+}
+.niveau__formations {
+  list-style: none;
+  margin: auto 0 0;
+  padding: var(--esp-3) 0 0;
+}
+.niveau__formations li {
+  padding-block: var(--esp-2);
+}
+/* En ligne (et non en flex) : la flèche suit le texte quand le titre passe à la ligne. */
+.niveau__formations a {
+  display: inline;
+  line-height: 1.75;
+}
+.niveaux__suite {
+  margin-top: var(--esp-5);
+}
+
+.etapes__note {
+  margin-top: var(--esp-7);
+}

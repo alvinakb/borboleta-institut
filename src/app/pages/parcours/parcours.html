@@ -1,0 +1,82 @@
+<!-- 1. Grand visuel plein écran (sombre) -->
+<section class="hero fond-sombre" aria-labelledby="titre-parcours">
+  <app-emplacement-image
+    class="hero__image"
+    fichier="assets/images/parcours-hero.jpg"
+    [pleinEcran]="true"
+    [sombre]="true"
+    [prioritaire]="true"
+  />
+  <div class="conteneur hero__texte">
+    <p class="surtitre">Déroulement</p>
+    <h1 class="titre-page" id="titre-parcours">Le parcours et le déroulement</h1>
+    <p class="hero__phrase">
+      De l’inscription à la fin de la formation, chaque étape est pensée pour que tout soit simple
+      et clair. Vous n’avez qu’à vous concentrer sur l’apprentissage.
+    </p>
+    <div class="groupe-boutons">
+      <a class="bouton" routerLink="/formations" fragment="sessions">Je veux me former</a>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Le parcours par niveaux, en bref (le détail est sur /formations) -->
+<section class="section" aria-labelledby="titre-niveaux">
+  <div class="conteneur">
+    <div class="flux" appApparition>
+      <p class="surtitre">Un parcours par niveaux</p>
+      <h2 class="titre" id="titre-niveaux">Du socle à l’expertise</h2>
+    </div>
+    <ol class="niveaux">
+      @for (niveau of niveaux; track niveau.libelle; let i = $index) {
+        <li class="niveau" appApparition [delaiApparition]="i * 0.06">
+          <span class="etape__numero" aria-hidden="true">{{ niveau.numero ?? '+' }}</span>
+          <p class="surtitre">{{ niveau.libelle }}</p>
+          <h3>{{ niveau.titre }}</h3>
+          <p class="niveau__texte">{{ niveau.texte }}</p>
+          <ul class="niveau__formations">
+            @for (f of niveau.formations; track f.id) {
+              <li>
+                <a class="lien-fleche" routerLink="/formations" [fragment]="f.id">{{ f.titre }}</a>
+              </li>
+            }
+          </ul>
+        </li>
+      }
+    </ol>
+    <p class="niveaux__suite" appApparition>
+      <a class="lien-texte" routerLink="/formations" fragment="parcours"
+        >Durées, prérequis et programmes détaillés</a
+      >
+    </p>
+  </div>
+</section>
+
+<!-- 3. Le déroulement, de l’inscription à la fin de la formation -->
+<section class="section section--alt" aria-labelledby="titre-etapes">
+  <div class="conteneur">
+    <div class="flux" appApparition>
+      <p class="surtitre">Comment ça se passe ?</p>
+      <h2 class="titre" id="titre-etapes">Quatre étapes</h2>
+    </div>
+    <ol class="etapes etapes--quatre">
+      @for (etape of etapes; track etape.titre; let i = $index) {
+        <li class="etape" appApparition [delaiApparition]="i * 0.06">
+          <span class="etape__numero" aria-hidden="true">{{ i + 1 }}</span>
+          <h3>{{ etape.titre }}</h3>
+          <p>{{ etape.texte }}</p>
+        </li>
+      }
+    </ol>
+    <p class="chapo etapes__note" appApparition>
+      Toutes les formations se vivent en présentiel, en région parisienne, en petit groupe. La
+      pratique occupe l’essentiel du temps.
+    </p>
+  </div>
+</section>
+
+<!-- 4. Appel à l’action : la demande se fait sur /formations#sessions -->
+<app-bloc-cta surtitre="Prochaine étape" titre="Prête à vous" motCle="former ?">
+  <a class="bouton" routerLink="/formations" fragment="sessions">Je veux me former</a>
+  <a class="lien-texte" routerLink="/inscription">Les façons de s’inscrire</a>
+</app-bloc-cta>
