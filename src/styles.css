@@ -489,8 +489,20 @@ h2 {
 .texte-legal p + p {
   margin-top: var(--esp-4);
 }
-.texte-legal p {
+.texte-legal p,
+.texte-legal li {
   color: var(--texte-doux);
+}
+.texte-legal ul {
+  margin-top: var(--esp-3);
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+.texte-legal li + li {
+  margin-top: var(--esp-2);
+}
+.texte-legal ul + p {
+  margin-top: var(--esp-4);
 }
 
 /* ---------- 5. Ligne de tarif (page Tarifs, pages de soin) ----------

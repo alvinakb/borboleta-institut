@@ -35,9 +35,9 @@
 .formulaire {
   scroll-margin-top: var(--hauteur-entete);
 }
-.formulaire__carte {
+.formulaire__intro {
   max-width: 46rem;
-  margin-inline: auto;
+  margin-bottom: var(--esp-7);
 }
 .infos__actions {
   display: flex;

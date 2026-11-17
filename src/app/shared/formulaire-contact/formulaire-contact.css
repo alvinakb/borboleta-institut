@@ -1,0 +1,177 @@
+:host {
+  display: block;
+}
+
+/* Formulaire à gauche, e-mail et WhatsApp à côté sur ordinateur ; l’un sous l’autre sur mobile. */
+.contact {
+  display: grid;
+  gap: var(--esp-7);
+}
+@media (min-width: 900px) {
+  .contact {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: var(--esp-8);
+    align-items: start;
+  }
+}
+.contact__principal {
+  min-width: 0;
+}
+
+.contact__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--esp-3);
+  padding: var(--esp-5);
+  background: var(--fond);
+  border: 1px solid var(--ligne);
+  border-radius: var(--rayon-carte);
+}
+.contact__aside-titre {
+  font-weight: 600;
+  color: var(--espresso);
+}
+.contact__email {
+  overflow-wrap: anywhere;
+}
+.contact__whatsapp {
+  gap: var(--esp-2);
+}
+
+/* ---------- Formulaire (mêmes règles que shared/demande-formation) ---------- */
+.formulaire {
+  position: relative;
+  display: grid;
+  gap: var(--esp-5);
+}
+.formulaire__aide {
+  font-size: var(--taille-petit);
+  color: var(--texte-doux);
+}
+.formulaire__ligne {
+  display: grid;
+  gap: var(--esp-5);
+}
+@media (min-width: 640px) {
+  .formulaire__ligne {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.champ {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-2);
+  min-width: 0;
+}
+.champ label {
+  font-weight: 600;
+}
+.champ input:not([type='checkbox']),
+.champ select,
+.champ textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.625rem 0.875rem;
+  background: var(--fond);
+  border: 1px solid var(--texte-doux);
+  border-radius: var(--rayon-champ);
+}
+.champ textarea {
+  min-height: 9rem;
+  resize: vertical;
+  line-height: 1.5;
+}
+.champ input[aria-invalid='true'],
+.champ select[aria-invalid='true'],
+.champ textarea[aria-invalid='true'] {
+  border-color: var(--erreur);
+  border-width: 2px;
+}
+.champ__erreur {
+  font-size: var(--taille-petit);
+  font-weight: 600;
+  color: var(--erreur);
+}
+
+/* Case RGPD : case de 24 px, libellé à côté. */
+.champ--case {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  align-items: start;
+  column-gap: var(--esp-3);
+}
+.champ--case input {
+  width: 24px;
+  height: 24px;
+  margin: 2px 0 0;
+  accent-color: var(--espresso);
+}
+.champ--case label {
+  font-weight: 400;
+}
+.champ--case .champ__erreur {
+  grid-column: 1 / -1;
+}
+
+/* Champ piège : hors de l’écran (pas display:none, que certains robots repèrent). */
+.champ-piege {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.formulaire__echec {
+  padding: var(--esp-3) var(--esp-4);
+  border-left: 3px solid var(--erreur);
+  background: var(--fond);
+  color: var(--erreur);
+  font-weight: 600;
+}
+.formulaire__echec:focus-visible {
+  outline: 2px solid var(--brun);
+  outline-offset: 2px;
+}
+.formulaire .bouton {
+  justify-self: start;
+}
+
+/* ---------- Confirmation ---------- */
+.resultat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--esp-3);
+  padding: var(--esp-5);
+  background: var(--fond);
+  border-left: 3px solid var(--succes);
+  border-radius: var(--rayon-champ);
+}
+.resultat--test {
+  border-left-color: var(--brun);
+}
+.resultat:focus-visible {
+  outline: 2px solid var(--brun);
+  outline-offset: 2px;
+}
+.resultat__titre {
+  font-weight: 600;
+}
+.resultat__autre {
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+/* Focus sur un champ en erreur ou sur la confirmation : ne pas le cacher sous l’en-tête collant. */
+.champ input,
+.champ select,
+.champ textarea,
+.formulaire__echec,
+.resultat {
+  scroll-margin-top: calc(var(--hauteur-entete) + var(--esp-5));
+}

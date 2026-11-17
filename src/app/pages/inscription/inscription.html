@@ -28,6 +28,13 @@
         <h2 class="bloc__titre">Par le site</h2>
         <p>Ouvrez la carte de la formation qui vous intéresse et laissez vos coordonnées.</p>
         <a class="bouton" routerLink="/formations" fragment="sessions">Remplir le formulaire</a>
+        <a
+          class="lien-texte"
+          routerLink="/contact"
+          [queryParams]="{ objet: 'formation' }"
+          fragment="formulaire-contact"
+          >Ou nous écrire un message</a
+        >
       </li>
       <!-- Option masquée tant que TELEPHONE et WHATSAPP_NUMERO sont vides (data/site-info.ts). -->
       @if (telephone || whatsapp) {

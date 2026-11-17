@@ -84,7 +84,7 @@
   </div>
 </section>
 
-<!-- 3. Emplacement du formulaire de contact et du bouton WhatsApp (message 4, contact-o2switch).
+<!-- 3. Formulaire de contact et bouton WhatsApp (public/contact.php).
      Garder l’id « formulaire-contact » : /inscription et l’en-tête de cette page y renvoient. -->
 <section
   class="section section--alt formulaire"
@@ -92,16 +92,14 @@
   aria-labelledby="titre-ecrire"
 >
   <div class="conteneur">
-    <div class="emplacement-formulaire formulaire__carte flux" appApparition>
+    <div class="formulaire__intro flux" appApparition>
+      <p class="surtitre">Une question, une demande</p>
       <h2 class="titre" id="titre-ecrire">Nous écrire</h2>
       <p>
-        E-mail : <a [href]="'mailto:' + info.email">{{ info.email }}</a>
+        Un soin, une formation, une carte cadeau&nbsp;: laissez-nous un message, nous vous répondons
+        {{ delai }}. Pour réserver un soin, le plus simple reste Planity.
       </p>
-      @if (whatsapp) {
-        <a class="bouton bouton--contour" [href]="whatsapp" target="_blank" rel="noopener"
-          >WhatsApp<span class="visuellement-cache"> (nouvel onglet)</span></a
-        >
-      }
     </div>
+    <app-formulaire-contact />
   </div>
 </section>
