@@ -92,12 +92,15 @@
       aria-label="Borboleta Institut, retour à l’accueil"
       (click)="toutFermer()"
     >
-      <img
-        src="images/logo-borboleta-horizontal.png"
-        alt="Borboleta Institut"
-        width="668"
-        height="132"
-      />
+      <picture>
+        <source media="(max-width: 349px)" srcset="images/papillon.png" width="400" height="243" />
+        <img
+          src="images/logo-borboleta-horizontal.png"
+          alt="Borboleta Institut"
+          width="668"
+          height="132"
+        />
+      </picture>
     </a>
 
     <div class="entete__droite">

@@ -67,29 +67,34 @@
   min-width: 0;
 }
 
-/* Logo horizontal (papillon + nom resserré, public/images/logo-borboleta-horizontal.png) :
-   44 px sur ordinateur ; 36 px sur mobile pour tenir entre le burger et « Réserver »
-   (le nom y reste plus grand qu’avec le logo empilé à 44 px). */
+/* Logo horizontal (papillon + nom resserré, public/images/logo-borboleta-horizontal.png).
+   Ordinateur : 44 px de haut. Mobile : le logo prend toute la place laissée entre le burger et
+   « Réserver » (bouton de largeur fixe), avec au moins 12 px d’écart de chaque côté :
+   largeur = 100vw - 2 × (12 px de marge + 76 px de bouton + 12 px d’écart), plafonnée à 40 px de
+   haut. Sous 350 px, le nom deviendrait illisible : seul le papillon est affiché. */
 .entete__logo {
   display: block;
   border-radius: var(--rayon-champ);
 }
 .entete__logo img {
   display: block;
-  height: 36px;
-  width: auto;
+  width: min(203px, calc(100vw - 200px));
+  height: auto;
 }
-@media (max-width: 374px) {
+@media (max-width: 349px) {
   .entete__logo img {
-    height: 30px;
+    width: auto;
+    height: 36px;
   }
 }
 
-/* Bouton « Réserver » compact sur mobile (zone tactile de 44 px). */
+/* Bouton « Réserver » compact sur mobile, de largeur fixe (48 px de haut). */
 .entete__reserver ::ng-deep .bouton {
+  width: 76px;
   min-height: 48px;
-  padding: 0.5rem 0.75rem;
-  font-size: 0.9375rem;
+  padding: 0.5rem 0;
+  justify-content: center;
+  font-size: 0.875rem;
 }
 
 /* ---------- Burger (mobile) ---------- */
@@ -242,9 +247,11 @@
 /* ---------- Ordinateur ---------- */
 @media (min-width: 1180px) {
   .entete__logo img {
+    width: auto;
     height: 44px;
   }
   .entete__reserver ::ng-deep .bouton {
+    width: auto;
     min-height: 48px;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
