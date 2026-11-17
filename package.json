@@ -8,6 +8,7 @@
     "start": "ng serve",
     "prebuild": "npm run donnees",
     "build": "ng build",
+    "build:previsualisation": "PREVISUALISATION=1 npm run build && node scripts/preparer-previsualisation.mjs",
     "watch": "ng build --watch --configuration development"
   },
   "private": true,

@@ -11,6 +11,12 @@ export const RESERVATION_PLANITY = 'https://www.planity.com/borboleta-institut-9
 /** Vrai si le logo officiel Qualiopi a été déposé dans public/images/qualiopi.png. */
 export const LOGO_QUALIOPI_PRESENT = false;
 
+/**
+ * Vrai pour le build de prévisualisation (npm run build:previsualisation) : toutes les pages
+ * reçoivent « noindex, nofollow ». Toujours faux pour le build normal du site.
+ */
+export const PREVISUALISATION = false;
+
 export const CATEGORIES_SOINS: readonly CategorieSoins[] = [
   {
     id: 'offres-decouverte',

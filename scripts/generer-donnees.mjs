@@ -63,6 +63,12 @@ export const RESERVATION_PLANITY = ${JSON.stringify(brut.reservation_planity)};
 /** Vrai si le logo officiel Qualiopi a été déposé dans public/images/qualiopi.png. */
 export const LOGO_QUALIOPI_PRESENT = ${existsSync(resolve(racine, 'public/images/qualiopi.png'))};
 
+/**
+ * Vrai pour le build de prévisualisation (npm run build:previsualisation) : toutes les pages
+ * reçoivent « noindex, nofollow ». Toujours faux pour le build normal du site.
+ */
+export const PREVISUALISATION = ${process.env.PREVISUALISATION === '1'};
+
 export const CATEGORIES_SOINS: readonly CategorieSoins[] = ${JSON.stringify(categories, null, 2)};
 `;
 

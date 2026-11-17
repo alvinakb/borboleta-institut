@@ -9,6 +9,7 @@ import {
 } from '@angular/router';
 
 import type { QuestionFaq } from '../data/faq';
+import { PREVISUALISATION } from '../data/tarifs.generated';
 import { SITE_INFO } from '../data/site-info';
 import { SUFFIXE_TITRE, aUnePageSoin, detailSoin } from '../data/soins-detail';
 import { DonneesStructurees } from './donnees-structurees';
@@ -51,7 +52,10 @@ export class SeoTitleStrategy extends TitleStrategy {
     this.donneesStructurees.definirEtablissement();
     this.donneesStructurees.definirFaq(noindex ? undefined : faq);
 
-    if (noindex) {
+    if (PREVISUALISATION) {
+      // Version de test (sous-domaine de prévisualisation) : aucune page ne doit être indexée.
+      this.meta.updateTag({ name: 'robots', content: 'noindex, nofollow' });
+    } else if (noindex) {
       this.meta.updateTag({ name: 'robots', content: 'noindex, follow' });
     } else {
       this.meta.removeTag("name='robots'");

@@ -64,3 +64,6 @@ tmp/
 
 # Captures de contrôle (non versionnées)
 captures/
+
+# Dossier de livraison (prévisualisation, archives à envoyer chez o2switch)
+livraison/
