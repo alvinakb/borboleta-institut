@@ -2,7 +2,8 @@
 # Fonctionne à la racine (public_html) comme dans un sous-dossier : aucune RewriteBase absolue,
 # la règle est relative au dossier qui contient ce fichier.
 
-Options -MultiViews
+# Pas de liste des fichiers d’un dossier sans index.
+Options -MultiViews -Indexes
 DirectoryIndex index.html
 
 <IfModule mod_rewrite.c>
@@ -16,6 +17,13 @@ DirectoryIndex index.html
   # Toutes les autres routes sont renvoyées vers index.html du même dossier.
   RewriteRule ^ index.html [L]
 </IfModule>
+
+# contact.php (formulaire) est un fichier existant : il est exécuté, jamais réécrit vers index.html.
+# Le limiteur anti-spam de contact.php écrit dans le dossier temporaire du serveur, hors du site.
+# Par précaution, aucun fichier caché, journal ou fichier temporaire n’est servi.
+<FilesMatch "(^\.|\.(log|tmp|bak|sql|ini)$|~$)">
+  Require all denied
+</FilesMatch>
 
 # Pas de mise en cache de index.html (les autres fichiers ont un nom haché par ng build).
 <IfModule mod_headers.c>
