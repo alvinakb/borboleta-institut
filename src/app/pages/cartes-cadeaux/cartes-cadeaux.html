@@ -1,30 +1,59 @@
-<section class="entete-page">
-  <div class="conteneur">
+<!-- 1. Grand visuel plein écran (sombre) -->
+<section class="hero fond-sombre" aria-labelledby="titre-cadeaux">
+  <app-emplacement-image
+    class="hero__image"
+    fichier="assets/images/cartes-cadeaux-hero.jpg"
+    [pleinEcran]="true"
+    [sombre]="true"
+  />
+  <div class="conteneur hero__texte">
     <p class="surtitre">Offrir</p>
-    <h1 class="titre-page">Les cartes cadeaux</h1>
-    <p class="chapo">{{ intro }}</p>
+    <h1 class="titre-page" id="titre-cadeaux">Les cartes cadeaux</h1>
+    @if (intro) {
+      <p class="hero__phrase">{{ intro }}</p>
+    }
+    <div class="groupe-boutons">
+      <a class="bouton" routerLink="/contact">Nous contacter</a>
+      <a class="lien-texte" routerLink="/soins">Voir les soins</a>
+    </div>
   </div>
 </section>
 
-<section class="section">
+<!-- 2. Comment l’obtenir : image, texte, adresse et horaires -->
+<section class="section" aria-labelledby="titre-obtenir">
   <div class="conteneur deux-colonnes">
     <app-emplacement-image
       fichier="assets/images/cartes-cadeaux.jpg"
       description="Carte cadeau Borboleta Institut"
+      appApparition
     />
-    <div class="flux">
+    <div class="flux" appApparition>
       <p class="surtitre">Comment l’obtenir</p>
-      <h2 class="titre">Un moment de bien-être à offrir</h2>
+      <h2 class="titre" id="titre-obtenir">Un moment de bien-être à offrir</h2>
       <p>
         Drainage lymphatique, soin du visage, cure : choisissez le soin à offrir, ou laissez la
         personne choisir avec un montant libre. Les cartes cadeaux sont disponibles à l’institut, au
         {{ adresse }}.
       </p>
       <p>Pour toute question, contactez-nous avant votre passage.</p>
+      <div class="bloc horaires">
+        <h3 class="bloc__titre">Horaires de l’institut</h3>
+        <ul class="liste-lignes horaires__liste">
+          @for (h of info.horaires; track h.jours) {
+            <li>
+              <span>{{ h.jours }}</span><span class="horaires__heures">{{ h.heures }}</span>
+            </li>
+          }
+        </ul>
+        <a class="lien-texte" [href]="itineraire" target="_blank" rel="noopener"
+          >Itinéraire<span class="visuellement-cache"> (nouvel onglet)</span></a
+        >
+      </div>
     </div>
   </div>
 </section>
 
+<!-- 3. Appel à l’action -->
 <app-bloc-cta
   [alt]="true"
   surtitre="Une question ?"
@@ -33,5 +62,5 @@
   texte="Écrivez-nous ou passez nous voir aux horaires d’ouverture."
 >
   <a class="bouton" routerLink="/contact">Nous contacter</a>
-  <a class="bouton bouton--contour" routerLink="/soins">Voir les soins</a>
+  <a class="lien-texte" routerLink="/tarifs">Voir les tarifs</a>
 </app-bloc-cta>

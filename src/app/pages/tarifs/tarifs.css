@@ -2,14 +2,45 @@
   display: block;
 }
 
-/* Sommaire d’ancres : étiquettes arrondies, zone tactile de 44 px. */
-.sommaire ul {
+/* ---------- En-tête et sommaire d’ancres ----------
+   Étiquettes arrondies, zone tactile de 44 px. Sur mobile, une seule rangée qui défile au
+   doigt dans sa bande (jamais la page) ; sur ordinateur, les étiquettes passent à la ligne. */
+.entete-tarifs {
+  padding-bottom: var(--esp-6);
+}
+/* Les prix arrivent vite sous l’en-tête : marge haute réduite pour la liste. */
+.entete-tarifs + .section {
+  padding-top: var(--esp-7);
+}
+.sommaire {
+  margin-top: var(--esp-6);
+}
+.sommaire__liste {
   list-style: none;
-  margin: var(--esp-5) 0 0;
-  padding: 0;
+  margin: 0 auto;
+  /* 4 px en haut et en bas : l’anneau de focus n’est pas rogné. */
+  padding: 4px var(--marge-laterale) var(--esp-2);
   display: flex;
-  flex-wrap: wrap;
   gap: var(--esp-2);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--marge-laterale);
+  scrollbar-width: none;
+  max-width: calc(var(--largeur-max) + 2 * var(--marge-laterale));
+}
+.sommaire__liste::-webkit-scrollbar {
+  display: none;
+}
+.sommaire__liste li {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+@media (min-width: 960px) {
+  .sommaire__liste {
+    flex-wrap: wrap;
+    overflow: visible;
+    padding-bottom: 4px;
+  }
 }
 .sommaire a {
   display: inline-flex;
@@ -18,14 +49,19 @@
   padding: 0.5rem 1rem;
   font-size: var(--taille-petit);
   font-weight: 600;
+  white-space: nowrap;
   color: var(--espresso);
   text-decoration: none;
   background: var(--fond);
   border: 1px solid var(--ligne);
   border-radius: var(--rayon-bouton);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
 }
 .sommaire a:hover {
   background: var(--nude);
+  border-color: var(--nude);
 }
 
 .categorie {

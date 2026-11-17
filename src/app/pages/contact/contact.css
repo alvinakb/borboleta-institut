@@ -1,0 +1,47 @@
+:host {
+  display: block;
+}
+
+/* Infos pratiques : 1 colonne sur mobile, 3 sur ordinateur. */
+.infos {
+  display: grid;
+  gap: var(--esp-5);
+  margin-top: var(--esp-6);
+}
+@media (min-width: 900px) {
+  .infos {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--esp-6);
+  }
+}
+.infos__adresse {
+  font-style: normal;
+  color: var(--espresso);
+}
+.infos__horaires {
+  width: 100%;
+}
+.infos__horaires li {
+  color: var(--espresso);
+}
+.infos__heures {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.infos__texte {
+  margin-top: var(--esp-7);
+}
+
+.formulaire {
+  scroll-margin-top: var(--hauteur-entete);
+}
+.formulaire__carte {
+  max-width: 46rem;
+  margin-inline: auto;
+}
+.infos__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--esp-2);
+}

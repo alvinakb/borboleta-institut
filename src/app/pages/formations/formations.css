@@ -133,7 +133,9 @@
   font-weight: 600;
   color: var(--espresso);
   cursor: pointer;
-  transition: background-color var(--transition), border-color var(--transition);
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
 }
 .formation__programme-bouton:hover {
   background: var(--nude);
@@ -163,15 +165,7 @@
   margin-top: auto;
 }
 
-.groupe-boutons--centre {
-  justify-content: center;
-  margin-top: var(--esp-7);
-}
-@media (max-width: 639px) {
-  .groupe-boutons--centre {
-    align-items: center;
-  }
-}
+/* .groupe-boutons--centre : dans src/styles.css (partagé). */
 
 /* ---------- 6. Avantages ---------- */
 .avantages {

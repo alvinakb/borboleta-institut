@@ -3,7 +3,7 @@ import { ViewportScroller } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { NIVEAUX_FORMATION, texteDuree } from '../../data/formations';
+import { FINANCEMENTS, NIVEAUX_FORMATION, texteDuree } from '../../data/formations';
 import { LANGUES_FORMATRICE, PARCOURS_FORMATRICE } from '../../data/formatrice';
 import { SITE_INFO } from '../../data/site-info';
 import { Apparition } from '../../shared/apparition/apparition';
@@ -101,18 +101,7 @@ export class Formations {
     },
   ];
 
-  protected readonly financements = [
-    { nom: 'CPF', texte: 'Mon Compte Formation, pour mobiliser vos droits à la formation.' },
-    {
-      nom: 'OPCO',
-      texte: 'Pour les salariées, selon l’opérateur de compétences de votre branche.',
-    },
-    { nom: 'FAFCEA', texte: 'Pour les cheffes d’entreprise artisanale.' },
-    {
-      nom: 'France Travail',
-      texte: 'Pour les personnes en recherche d’emploi ou en reconversion.',
-    },
-  ];
+  protected readonly financements = FINANCEMENTS;
 
   private readonly defilement = inject(ViewportScroller);
 

@@ -1,30 +1,77 @@
-<section class="entete-page">
-  <div class="conteneur">
+<!-- 1. Grand visuel plein écran (sombre) : l’adresse dès le premier écran -->
+<section class="hero fond-sombre" aria-labelledby="titre-contact">
+  <app-emplacement-image
+    class="hero__image"
+    fichier="assets/images/contact-facade.jpg"
+    [pleinEcran]="true"
+    [sombre]="true"
+  />
+  <div class="conteneur hero__texte">
     <p class="surtitre">Nous trouver</p>
-    <h1 class="titre-page">Venez nous rencontrer</h1>
-    <p class="chapo">
+    <h1 class="titre-page" id="titre-contact">Venez nous rencontrer</h1>
+    <p class="hero__phrase">
       {{ info.nom }}, {{ adresse }}. {{ info.adresse.complement }}, en
       {{ info.adresse.departement }}.
     </p>
+    <div class="groupe-boutons">
+      <a class="bouton" [href]="itineraire" target="_blank" rel="noopener"
+        >Itinéraire<span class="visuellement-cache"> (nouvel onglet)</span></a
+      >
+      <a
+        class="lien-texte"
+        [routerLink]="[]"
+        fragment="formulaire-contact"
+        (click)="allerAuFormulaire()"
+        >Nous écrire</a
+      >
+    </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="conteneur deux-colonnes" style="align-items: start">
-    <div class="flux">
-      <h2 class="titre">Infos pratiques</h2>
+<!-- 2. Infos pratiques : adresse, horaires et réservation lisibles d’un coup d’œil -->
+<section class="section" aria-labelledby="titre-infos">
+  <div class="conteneur">
+    <h2 class="titre" id="titre-infos" appApparition>Infos pratiques</h2>
+    <div class="infos">
+      <div class="bloc" appApparition>
+        <h3 class="bloc__titre">Adresse</h3>
+        <address class="infos__adresse">
+          {{ info.nom }}<br />{{ info.adresse.rue }}<br />{{ info.adresse.codePostal }}
+          {{ info.adresse.ville }}
+        </address>
+        <a class="lien-texte" [href]="itineraire" target="_blank" rel="noopener"
+          >Itinéraire<span class="visuellement-cache"> (nouvel onglet)</span></a
+        >
+      </div>
+      <div class="bloc" appApparition [delaiApparition]="0.06">
+        <h3 class="bloc__titre">Horaires</h3>
+        <ul class="liste-lignes infos__horaires">
+          @for (h of info.horaires; track h.jours) {
+            <li>
+              <span>{{ h.jours }}</span><span class="infos__heures">{{ h.heures }}</span>
+            </li>
+          }
+        </ul>
+      </div>
+      <div class="bloc" appApparition [delaiApparition]="0.12">
+        <h3 class="bloc__titre">Réserver</h3>
+        @if (telephone) {
+          <p>
+            Téléphone : <a [href]="telephone">{{ info.telephone }}</a>
+          </p>
+        }
+        <div class="infos__actions">
+          <app-bouton-reserver libelle="Réserver un soin" />
+          <a class="lien-texte" routerLink="/inscription">S’inscrire à une formation</a>
+        </div>
+      </div>
+    </div>
+    <div class="infos__texte flux" appApparition>
       <p>
         Vous recherchez un drainage lymphatique à Draveil ou dans les environs&nbsp;? Borboleta
-        Institut accueille une clientèle de Draveil et des communes voisines de l’Essonne,
-        notamment Vigneux-sur-Seine, Montgeron, Juvisy-sur-Orge, Athis-Mons, Viry-Châtillon, Yerres
-        et Brunoy.
+        Institut accueille une clientèle de Draveil et des communes voisines de l’Essonne, notamment
+        Vigneux-sur-Seine, Montgeron, Juvisy-sur-Orge, Athis-Mons, Viry-Châtillon, Yerres et Brunoy.
       </p>
-      <h3>Horaires</h3>
-      <ul>
-        @for (h of info.horaires; track h.jours) {
-          <li>{{ h.jours }} : {{ h.heures }}</li>
-        }
-      </ul>
       <p>
         Pour les soins, réservation en ligne via Planity. Pour les formations, inscription par le
         formulaire{{ telephone || whatsapp ? ', par téléphone ou WhatsApp' : '' }}, ou via Mon
@@ -33,28 +80,22 @@
           >{{ info.instagram.compte }}<span class="visuellement-cache"> (nouvel onglet)</span></a
         >.
       </p>
-      @if (telephone) {
-        <p>
-          Téléphone : <a [href]="telephone">{{ info.telephone }}</a>
-        </p>
-      }
-      <div class="groupe-boutons">
-        <app-bouton-reserver libelle="Réserver un soin" />
-        <a class="bouton bouton--contour" routerLink="/inscription">S’inscrire à une formation</a>
-      </div>
-      <p>
-        <a class="lien-fleche" [href]="itineraire" target="_blank" rel="noopener"
-          >Itinéraire<span class="visuellement-cache"> (nouvel onglet)</span></a
-        >
-      </p>
     </div>
+  </div>
+</section>
 
-    <!-- Emplacement du formulaire de contact et du bouton WhatsApp (étape contact-o2switch). -->
-    <div class="emplacement-formulaire flux" id="formulaire-contact">
-      <h2 class="titre">Nous écrire</h2>
+<!-- 3. Emplacement du formulaire de contact et du bouton WhatsApp (message 4, contact-o2switch).
+     Garder l’id « formulaire-contact » : /inscription et l’en-tête de cette page y renvoient. -->
+<section
+  class="section section--alt formulaire"
+  id="formulaire-contact"
+  aria-labelledby="titre-ecrire"
+>
+  <div class="conteneur">
+    <div class="emplacement-formulaire formulaire__carte flux" appApparition>
+      <h2 class="titre" id="titre-ecrire">Nous écrire</h2>
       <p>
-        Le formulaire de contact (nom, e-mail, téléphone, objet, formation visée, message) sera
-        ajouté à l’étape suivante.
+        E-mail : <a [href]="'mailto:' + info.email">{{ info.email }}</a>
       </p>
       @if (whatsapp) {
         <a class="bouton bouton--contour" [href]="whatsapp" target="_blank" rel="noopener"

@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+
+/* Dispositifs : 1 colonne sur mobile, 2 sur tablette, 4 sur ordinateur. */
+.dispositifs {
+  list-style: none;
+  margin: var(--esp-6) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--esp-5);
+}
+@media (min-width: 640px) {
+  .dispositifs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .dispositifs {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

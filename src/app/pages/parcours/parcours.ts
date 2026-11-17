@@ -2,12 +2,20 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { NIVEAUX_FORMATION } from '../../data/formations';
+import { Apparition } from '../../shared/apparition/apparition';
 import { BlocCta } from '../../shared/bloc-cta/bloc-cta';
+import { EmplacementImage } from '../../shared/emplacement-image/emplacement-image';
 
+/**
+ * Le parcours et le déroulement : page courte, complémentaire de /formations. Les niveaux en
+ * bref (le détail, les durées et les programmes restent sur /formations) et les quatre étapes de
+ * l’inscription à la fin de la formation. La demande se fait sur /formations#sessions.
+ */
 @Component({
   selector: 'app-parcours',
-  imports: [RouterLink, BlocCta],
+  imports: [RouterLink, Apparition, BlocCta, EmplacementImage],
   templateUrl: './parcours.html',
+  styleUrl: './parcours.css',
 })
 export class Parcours {
   protected readonly niveaux = NIVEAUX_FORMATION;
@@ -21,7 +29,7 @@ export class Parcours {
     {
       titre: 'Réservez votre place',
       texte:
-        'Par le formulaire du site, par téléphone ou WhatsApp, ou via Mon Compte Formation (CPF). L’adresse du lieu vous est transmise une semaine avant la session.',
+        'Par le formulaire de demande du site, ou via Mon Compte Formation (CPF). L’adresse du lieu vous est transmise une semaine avant la session.',
     },
     {
       titre: 'Formez-vous en pratique',

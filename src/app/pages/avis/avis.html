@@ -1,8 +1,18 @@
-<section class="entete-page">
-  <div class="conteneur">
+<!-- 1. Grand visuel plein écran (sombre) avec le bloc confiance : note Planity et lien -->
+<section class="hero fond-sombre" aria-labelledby="titre-avis">
+  <app-emplacement-image
+    class="hero__image"
+    fichier="assets/images/avis-hero.jpg"
+    [pleinEcran]="true"
+    [sombre]="true"
+  />
+  <div class="conteneur hero__texte">
     <p class="surtitre">Elles en parlent</p>
-    <h1 class="titre-page">Une note de {{ info.avis.note }} sur {{ info.avis.noteMax }}</h1>
-    <p class="chapo">
+    <p class="etoiles" aria-hidden="true">★★★★★</p>
+    <h1 class="titre-page" id="titre-avis">
+      Une note de {{ info.avis.note }} sur {{ info.avis.noteMax }}
+    </h1>
+    <p class="hero__phrase">
       <a [href]="info.avis.url" target="_blank" rel="noopener"
         >Note de {{ info.avis.note }}/{{ info.avis.noteMax }} sur {{ info.avis.nombre }} avis
         {{ info.avis.source }}<span class="visuellement-cache"> (nouvel onglet)</span></a
@@ -17,45 +27,50 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="conteneur flux">
-    <p class="surtitre">Avis vérifiés</p>
-    <h2 class="titre">Une sélection d’avis vérifiés</h2>
-    <p>
-      Les avis publiés ici sont repris tels quels depuis {{ info.avis.source }}. Une sélection sera
-      ajoutée prochainement ; en attendant, vous pouvez tous les lire sur la page Planity de
-      l’institut.
-    </p>
+<!-- 2. Avis clientes et retours des stagiaires -->
+<section class="section" aria-label="Avis clientes et retours des stagiaires">
+  <div class="conteneur avis__grille">
+    <div class="bloc" appApparition>
+      <p class="surtitre">Avis vérifiés</p>
+      <h2 class="titre" id="titre-selection">Une sélection d’avis vérifiés</h2>
+      <p>
+        Tous les avis sont publiés sur {{ info.avis.source }} : vous pouvez les lire en intégralité
+        sur la page Planity de l’institut.
+      </p>
+      <a class="lien-texte" [href]="info.avis.url" target="_blank" rel="noopener"
+        >Lire les {{ info.avis.nombre }} avis<span class="visuellement-cache">
+          sur {{ info.avis.source }} (nouvel onglet)</span
+        ></a
+      >
+    </div>
+    <div class="bloc" appApparition [delaiApparition]="0.08">
+      <p class="surtitre">Centre de formation</p>
+      <h2 class="titre">Un centre de formation certifié Qualiopi</h2>
+      <p>
+        Cinq formations au drainage lymphatique et à ses techniques sœurs, en présentiel et en
+        petit groupe, pour apprendre le geste en pratiquant.
+        <a routerLink="/formations">Découvrir les formations</a>.
+      </p>
+      <app-mention-qualiopi />
+      <a class="lien-texte" routerLink="/formations">Découvrir les formations</a>
+    </div>
   </div>
 </section>
 
-<section class="section section--alt">
-  <div class="conteneur flux">
-    <p class="surtitre">Centre de formation</p>
-    <h2 class="titre">Les retours des stagiaires</h2>
-    <p>
-      Cet espace accueillera prochainement les retours des stagiaires formées à Borboleta Institut.
-    </p>
-  </div>
-</section>
-
-<section class="section texte-centre">
-  <div class="conteneur flux">
+<!-- 3. Instagram -->
+<section class="section section--alt texte-centre" aria-labelledby="titre-instagram">
+  <div class="conteneur flux" appApparition>
     <p class="surtitre">Instagram</p>
-    <h2 class="titre">Suivez {{ info.instagram.compte }}</h2>
+    <h2 class="titre" id="titre-instagram">Suivez {{ info.instagram.compte }}</h2>
     <div class="groupe-boutons">
-      <a class="bouton" [href]="info.instagram.url" target="_blank" rel="noopener"
+      <a class="bouton bouton--contour" [href]="info.instagram.url" target="_blank" rel="noopener"
         >Voir le compte Instagram<span class="visuellement-cache"> (nouvel onglet)</span></a
       >
     </div>
   </div>
 </section>
 
-<app-bloc-cta
-  surtitre="À votre tour"
-  titre="Venez vivre"
-  motCle="l’expérience Borboleta"
-  [sombre]="true"
->
+<!-- 4. Appel à l’action -->
+<app-bloc-cta surtitre="À votre tour" titre="Venez vivre" motCle="l’expérience Borboleta">
   <app-bouton-reserver libelle="Réserver un soin" />
 </app-bloc-cta>

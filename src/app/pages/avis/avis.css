@@ -1,0 +1,27 @@
+:host {
+  display: block;
+}
+
+/* Bloc confiance (docs/DESIGN-SYSTEM.md, partie 5) : étoiles seulement sur le bloc avis,
+   en nude sur le visuel sombre (11,0:1). La note est lue dans le titre et le lien Planity. */
+.etoiles {
+  color: var(--nude);
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: 0.15em;
+}
+
+.avis__grille {
+  display: grid;
+  gap: var(--esp-5);
+}
+@media (min-width: 900px) {
+  .avis__grille {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--esp-6);
+  }
+}
+.avis__grille .titre {
+  font-size: var(--taille-h3);
+  font-weight: 500;
+}

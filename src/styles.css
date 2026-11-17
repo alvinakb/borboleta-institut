@@ -394,6 +394,104 @@ h2 {
 .etape p {
   color: var(--texte-doux);
 }
+/* Quatre étapes (parcours d’inscription) : 2 colonnes sur tablette, 4 sur ordinateur. */
+@media (min-width: 640px) {
+  .etapes--quatre {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .etapes--quatre {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ---------- Bloc de texte encadré (infos pratiques, dispositifs, options) ----------
+   Fond --fond sur une section --fond-alt, et l’inverse : la carte reste toujours visible. */
+.bloc {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--esp-3);
+  padding: var(--esp-5);
+  background: var(--fond-alt);
+  border-radius: var(--rayon-carte);
+  max-width: none;
+}
+.section--alt .bloc {
+  background: var(--fond);
+}
+.bloc p:not(.surtitre),
+.bloc li {
+  color: var(--texte-doux);
+}
+.bloc__titre {
+  font-size: var(--taille-h3);
+}
+/* Action du bloc calée en bas, pour aligner les blocs d’une même rangée. */
+.bloc > :last-child:is(.bouton, .lien-texte) {
+  margin-top: auto;
+}
+@media (min-width: 960px) {
+  .bloc {
+    padding: var(--esp-6);
+  }
+}
+
+/* Liste sans puces (horaires, parcours) : une ligne fine entre chaque élément. */
+.liste-lignes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--ligne);
+}
+.liste-lignes > li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0 var(--esp-4);
+  padding: var(--esp-3) 0;
+  border-bottom: 1px solid var(--ligne);
+  max-width: none;
+}
+.liste-lignes > li > :last-child {
+  flex-shrink: 0;
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* Bouton seul centré après une grande section (répété comme sur Spa Renata). */
+.groupe-boutons--centre {
+  justify-content: center;
+  margin-top: var(--esp-7);
+}
+@media (max-width: 639px) {
+  .groupe-boutons--centre {
+    align-items: center;
+  }
+}
+
+/* ---------- Pages de texte (mentions légales, confidentialité) : sobres, 65ch ---------- */
+.texte-legal {
+  max-width: 65ch;
+}
+.texte-legal h2 {
+  font-size: var(--taille-h3);
+  font-weight: 500;
+  margin-top: var(--esp-7);
+}
+.texte-legal h2:first-child {
+  margin-top: 0;
+}
+.texte-legal h2 + p {
+  margin-top: var(--esp-3);
+}
+.texte-legal p + p {
+  margin-top: var(--esp-4);
+}
+.texte-legal p {
+  color: var(--texte-doux);
+}
 
 /* ---------- 5. Ligne de tarif (page Tarifs, pages de soin) ----------
    Nom à gauche, durée en petit texte, prix à droite en brun 600 et chiffres tabulaires. */

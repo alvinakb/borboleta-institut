@@ -1,52 +1,62 @@
-<section class="entete-page">
-  <div class="conteneur">
+<!-- 1. Grand visuel plein écran (sombre) -->
+<section class="hero fond-sombre" aria-labelledby="titre-inscription">
+  <app-emplacement-image
+    class="hero__image"
+    fichier="assets/images/inscription-hero.jpg"
+    [pleinEcran]="true"
+    [sombre]="true"
+  />
+  <div class="conteneur hero__texte">
     <p class="surtitre">Centre de formation</p>
-    <h1 class="titre-page">S’inscrire à une formation</h1>
-    <p class="chapo">
+    <h1 class="titre-page" id="titre-inscription">S’inscrire à une formation</h1>
+    <p class="hero__phrase">
       Plusieurs façons de réserver votre place. Dans tous les cas, nous revenons vers vous pour
       confirmer la session, les modalités et le financement.
     </p>
+    <div class="groupe-boutons">
+      <a class="bouton" routerLink="/formations" fragment="sessions">Demander une formation</a>
+    </div>
   </div>
 </section>
 
-<section class="section">
+<!-- 2. Les façons de s’inscrire -->
+<section class="section" aria-label="Les façons de s’inscrire">
   <div class="conteneur">
-    <ol class="grille" style="padding: 0; list-style: none">
-      <li class="flux">
+    <ul class="options">
+      <li class="bloc" appApparition>
         <p class="surtitre">Le formulaire</p>
-        <h2 class="titre">Par le site</h2>
-        <p>Remplissez le formulaire de contact en précisant la formation visée.</p>
-        <a class="bouton" routerLink="/contact">Remplir le formulaire</a>
+        <h2 class="bloc__titre">Par le site</h2>
+        <p>Ouvrez la carte de la formation qui vous intéresse et laissez vos coordonnées.</p>
+        <a class="bouton" routerLink="/formations" fragment="sessions">Remplir le formulaire</a>
       </li>
-      <!-- Étape masquée tant que TELEPHONE et WHATSAPP_NUMERO sont vides (data/site-info.ts). -->
+      <!-- Option masquée tant que TELEPHONE et WHATSAPP_NUMERO sont vides (data/site-info.ts). -->
       @if (telephone || whatsapp) {
-        <li class="flux">
+        <li class="bloc" appApparition [delaiApparition]="0.06">
           <p class="surtitre">Par téléphone ou WhatsApp</p>
-          <h2 class="titre">Échanger de vive voix</h2>
+          <h2 class="bloc__titre">Échanger de vive voix</h2>
           <p>Une question avant de vous lancer ? Échangeons directement.</p>
-          <div class="groupe-boutons">
-            @if (telephone) {
-              <a class="bouton bouton--contour" [href]="telephone">Appeler le {{ numero }}</a>
-            }
-            @if (whatsapp) {
-              <a class="bouton bouton--contour" [href]="whatsapp" target="_blank" rel="noopener"
-                >Écrire sur WhatsApp<span class="visuellement-cache"> (nouvel onglet)</span></a
-              >
-            }
-          </div>
+          @if (telephone) {
+            <a class="lien-texte" [href]="telephone">Appeler le {{ numero }}</a>
+          }
+          @if (whatsapp) {
+            <a class="lien-texte" [href]="whatsapp" target="_blank" rel="noopener"
+              >Écrire sur WhatsApp<span class="visuellement-cache"> (nouvel onglet)</span></a
+            >
+          }
         </li>
       }
-      <li class="flux">
+      <li class="bloc" appApparition [delaiApparition]="0.12">
         <p class="surtitre">Mon Compte Formation</p>
-        <h2 class="titre">Via le CPF</h2>
+        <h2 class="bloc__titre">Via le CPF</h2>
         <p>Vous pouvez mobiliser vos droits à la formation via Mon Compte Formation.</p>
-        <a class="bouton bouton--contour" routerLink="/financement">Le financement</a>
+        <a class="lien-texte" routerLink="/financement">Le financement</a>
       </li>
-    </ol>
+    </ul>
   </div>
 </section>
 
+<!-- 3. Appel à l’action -->
 <app-bloc-cta [alt]="true" surtitre="Les dates" titre="Consultez le" motCle="calendrier">
   <a class="bouton" routerLink="/calendrier">Calendrier des sessions</a>
-  <a class="bouton bouton--contour" routerLink="/formations">Les formations</a>
+  <a class="lien-texte" routerLink="/parcours">Le parcours et le déroulement</a>
 </app-bloc-cta>

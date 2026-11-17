@@ -1,0 +1,22 @@
+:host {
+  display: block;
+}
+
+/* Un thème par rangée : titre à gauche sur ordinateur, questions à droite. */
+.groupe {
+  display: grid;
+  gap: var(--esp-4);
+}
+.groupe + .groupe {
+  margin-top: var(--esp-8);
+}
+@media (min-width: 960px) {
+  .groupe {
+    grid-template-columns: 18rem minmax(0, 46rem);
+    gap: var(--esp-8);
+    align-items: start;
+  }
+}
+.groupe__titre {
+  font-size: var(--taille-h2);
+}

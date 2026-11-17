@@ -1,0 +1,31 @@
+:host {
+  display: block;
+}
+
+.approche {
+  align-items: start;
+}
+.approche__liens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--esp-2) var(--esp-6);
+}
+.approche__liens a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+.approche__adresse {
+  font-style: normal;
+  color: var(--espresso);
+}
+.approche__horaires {
+  width: 100%;
+}
+.approche__horaires li {
+  color: var(--espresso);
+}
+.approche__heures {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}

@@ -6,7 +6,7 @@ import { aUnePageSoin } from '../../data/soins-detail';
 import { CATEGORIES_SOINS, texteAPartirDe } from '../../data/tarifs';
 import { BlocCta } from '../../shared/bloc-cta/bloc-cta';
 import { BoutonReserver } from '../../shared/bouton-reserver/bouton-reserver';
-import { LigneTarif } from '../../shared/carte-soin/ligne-tarif';
+import { LigneTarif } from '../../shared/ligne-tarif/ligne-tarif';
 
 /** Largeur à partir de laquelle toutes les catégories sont ouvertes (ordinateur). */
 const REQUETE_ORDINATEUR = '(min-width: 960px)';

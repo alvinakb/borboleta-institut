@@ -9,7 +9,7 @@ import { Accordeon } from '../../shared/accordeon/accordeon';
 import { Apparition } from '../../shared/apparition/apparition';
 import { BlocCta } from '../../shared/bloc-cta/bloc-cta';
 import { BoutonReserver } from '../../shared/bouton-reserver/bouton-reserver';
-import { LigneTarif } from '../../shared/carte-soin/ligne-tarif';
+import { LigneTarif } from '../../shared/ligne-tarif/ligne-tarif';
 import { ColonnesSoins } from '../../shared/colonnes-soins/colonnes-soins';
 import { EmplacementImage } from '../../shared/emplacement-image/emplacement-image';
 

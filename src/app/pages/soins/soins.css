@@ -1,0 +1,14 @@
+:host {
+  display: block;
+}
+
+.liste {
+  scroll-margin-top: var(--hauteur-entete);
+}
+.liste__grille {
+  margin-top: var(--esp-7);
+}
+
+.post-op {
+  align-items: start;
+}

@@ -9,11 +9,11 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section" aria-label="Questions par thème">
   <div class="conteneur">
-    @for (groupe of groupes; track groupe.titre) {
-      <section class="flux" style="margin-bottom: 3rem; max-width: 52rem">
-        <h2 class="titre">{{ groupe.titre }}</h2>
+    @for (groupe of groupes; track groupe.titre; let i = $index) {
+      <section class="groupe" [attr.aria-labelledby]="'groupe-' + i">
+        <h2 class="groupe__titre" [id]="'groupe-' + i">{{ groupe.titre }}</h2>
         <app-accordeon [questions]="groupe.questions" />
       </section>
     }
@@ -22,5 +22,7 @@
 
 <app-bloc-cta [alt]="true" surtitre="Une autre question ?" titre="Écrivez-nous" motCle="simplement">
   <a class="bouton" routerLink="/contact">Nous contacter</a>
-  <app-bouton-reserver libelle="Réserver un soin" variante="contour" />
+  <a class="lien-texte" [href]="planity" target="_blank" rel="noopener"
+    >Réserver un soin<span class="visuellement-cache"> sur Planity (nouvel onglet)</span></a
+  >
 </app-bloc-cta>

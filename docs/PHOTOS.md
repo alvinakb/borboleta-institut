@@ -30,9 +30,6 @@ Liste de toutes les photos prévues sur le site. En attendant, chaque emplacemen
 | `assets/images/accueil-formation.jpg` | Accueil | Bloc « Centre de formation » | Paysage 4:3 | Mains d’une stagiaire guidées par celles de la formatrice (visage hors cadre) |
 | `assets/images/accueil-carte-cadeau.jpg` | Accueil | Bloc « Les cartes cadeaux » | Paysage 3:2 (1600 × 1067) | Carte cadeau Borboleta posée sur une serviette ou un plateau, détail doré |
 | `assets/images/soin-<id>.jpg` | Soins (cartes de la page `/soins`) | Image de chaque carte de soin | Paysage 4:3 (960 × 720) | Le geste propre à chaque soin. Une photo par identifiant de `contenu/tarifs.json` : `offres-decouverte`, `drainage-renata-franca`, `miracle-face`, `remodelage`, `rouleau-bresilien`, `visage-lcp`, `kobido`, `radiofrequence`, `pressotherapie`, `post-operatoire`, `dr-vodder`, `femme-enceinte`, `cures` |
-| `assets/images/institut-cabine.jpg` | L’institut | Bloc « Le drainage et le remodelage » | Paysage 4:3 | La cabine, vue d’ensemble, lumière douce |
-| `assets/images/cartes-cadeaux.jpg` | Cartes cadeaux | Bloc principal | Paysage 4:3 | Carte cadeau en main ou dans son enveloppe |
-| `assets/images/formatrice-mains.jpg` | La formatrice | Bloc « Sa pédagogie » | Paysage 4:3 | Les mains de Mariline pendant une démonstration, jamais son visage |
 
 ## Photos ajoutées en passe 2
 
@@ -81,11 +78,25 @@ Chaque page a deux photos : le grand visuel du haut et la photo du bloc « En qu
 | `assets/images/formation-kobido.jpg` | Centre de formation | 5. Parcours, carte En complément | Paysage 4:3 | Geste de Kobido enseigné, mains sur le visage |
 | `assets/images/formatrice-portrait-mains.jpg` | Centre de formation | 7. Bloc « Votre formatrice » | Portrait 4:5 (1200 × 1500) | Les mains de Mariline, jamais son visage ; à défaut, le logo sur fond espresso |
 
-### Autres pages
+## Pages de l’institut et du centre de formation (message 3)
+
+Chaque page de contenu s’ouvre sur un grand visuel plein écran sombre : le texte est posé sur un voile, il reste lisible quelle que soit la photo. Image du haut : pas de lazy, `fetchpriority="high"`.
 
 | Fichier | Page | Emplacement | Format conseillé | Ce qu’elle doit montrer |
 |---|---|---|---|---|
-| `assets/images/contact-facade.jpg` | Contact | À côté des infos pratiques (prévu, pas encore en place) | Paysage 4:3 | Entrée de l’institut, plaque, sans passants reconnaissables |
+| `assets/images/institut-hero.jpg` | `/institut` | Grand visuel plein écran (« Borboleta, prendre soin autrement ») | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | L’ambiance de l’institut : linge blanc, lumière douce, mains posées sur une serviette |
+| `assets/images/institut-cabine.jpg` | `/institut` | Bloc « Le drainage et le remodelage » | Paysage 4:3 (1600 × 1200) | La cabine, vue d’ensemble, lumière douce |
+| `assets/images/soins-hero.jpg` | `/soins` | Grand visuel plein écran (« Nos soins à Draveil ») | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Mains en plein geste de drainage, serviette blanche |
+| `assets/images/cartes-cadeaux-hero.jpg` | `/cartes-cadeaux` | Grand visuel plein écran (« Les cartes cadeaux ») | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Cartes cadeaux et enveloppes sur un plateau, détail doré, tons nude |
+| `assets/images/cartes-cadeaux.jpg` | `/cartes-cadeaux` | Bloc « Un moment de bien-être à offrir » | Paysage 4:3 (1600 × 1200) | Carte cadeau en main ou dans son enveloppe |
+| `assets/images/avis-hero.jpg` | `/avis` | Grand visuel plein écran (« Une note de 5 sur 5 ») | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Une cliente détendue après le soin, de dos ou visage hors cadre (accord écrit), ou un détail de la cabine |
+| `assets/images/parcours-hero.jpg` | `/parcours` | Grand visuel plein écran (« Le parcours et le déroulement ») | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Une table de formation préparée : supports de cours, huiles, serviettes |
+| `assets/images/formatrice-hero.jpg` | `/formatrice` | Grand visuel plein écran (« Da Costa Mariline, praticienne et formatrice ») | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Les mains de Mariline en geste de drainage, **jamais son visage** |
+| `assets/images/formatrice-mains.jpg` | `/formatrice` | Bloc « Montrer, faire faire, corriger » | Paysage 4:3 (1600 × 1200) | Les mains de Mariline pendant une démonstration, jamais son visage |
+| `assets/images/financement-hero.jpg` | `/financement` | Grand visuel plein écran (« Une formation finançable ») | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Une stagiaire prend des notes à côté de la table de soin (visage hors cadre) |
+| `assets/images/calendrier-hero.jpg` | `/calendrier` | Grand visuel plein écran (« Calendrier des sessions ») | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | La salle de formation prête à accueillir un groupe |
+| `assets/images/inscription-hero.jpg` | `/inscription` | Grand visuel plein écran (« S’inscrire à une formation ») | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Binôme de stagiaires en pratique, mains sur la jambe |
+| `assets/images/contact-facade.jpg` | `/contact` | Grand visuel plein écran (« Venez nous rencontrer ») | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Entrée de l’institut, plaque, sans passants reconnaissables |
 
 ## Logos et fichiers graphiques (déjà en place)
 
@@ -100,4 +111,4 @@ Chaque page a deux photos : le grand visuel du haut et la photo du bloc « En qu
 
 | Fichier | Où | Consigne |
 |---|---|---|
-| `public/images/qualiopi.png` | Bandeau confiance de l’accueil, page Financement, pied de page | Logo officiel Qualiopi tel que remis avec le certificat (fond transparent ou blanc, environ 480 px de large). Il suffit de déposer le fichier puis de relancer `npm run build` : il s’affiche automatiquement sur fond blanc, à côté de la mention « actions de formation ». Tant qu’il manque, seule la mention est affichée. |
+| `public/images/qualiopi.png` | Bandeau confiance de l’accueil et page Financement (fonds clairs uniquement) | Logo officiel Qualiopi tel que remis avec le certificat (environ 480 px de large). Il suffit de déposer le fichier puis de relancer `npm run build` : il s’affiche automatiquement, sans cadre, à côté de la mention « actions de formation ». Tant qu’il manque, seule la mention est affichée. Le pied de page sombre n’affiche jamais le logo, seulement le texte « Centre de formation certifié Qualiopi » et la mention. |

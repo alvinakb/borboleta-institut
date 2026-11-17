@@ -6,51 +6,54 @@
 </section>
 
 <section class="section">
-  <div class="conteneur flux" style="max-width: 52rem">
-    <h2 class="titre">Éditeur du site</h2>
-    <p>
-      {{ info.nom }}<br />
-      @if (info.legal.statutJuridique) {
-        {{ info.legal.statutJuridique }}<br />
-      }
-      Responsable de la publication : {{ info.responsable }}<br />
-      {{ adresse }}<br />
-      SIRET : {{ info.legal.siret }}<br />
-      E-mail : <a [href]="'mailto:' + info.email">{{ info.email }}</a>
-      @if (telephone) {
-        <br />Téléphone : <a [href]="telephone">{{ info.telephone }}</a>
-      }
-    </p>
-
-    @if (info.legal.numeroDeclarationActivite || info.legal.certificatQualiopi) {
-      <h2 class="titre">Organisme de formation</h2>
+  <div class="conteneur">
+    <div class="texte-legal">
+      <h2>Éditeur du site</h2>
       <p>
-        @if (info.legal.numeroDeclarationActivite) {
-          Numéro de déclaration d’activité : {{ info.legal.numeroDeclarationActivite }}<br />
-          Cet enregistrement ne vaut pas agrément de l’État.<br />
+        {{ info.nom }}<br />
+        @if (info.legal.statutJuridique) {
+          {{ info.legal.statutJuridique }}<br />
         }
-        @if (info.legal.certificatQualiopi) {
-          Certificat Qualiopi : {{ info.legal.certificatQualiopi }}
+        Responsable de la publication : {{ info.responsable }}<br />
+        {{ adresse }}<br />
+        SIRET : {{ info.legal.siret }}<br />
+        E-mail : <a [href]="'mailto:' + info.email">{{ info.email }}</a>
+        @if (telephone) {
+          <br />Téléphone : <a [href]="telephone">{{ info.telephone }}</a>
         }
       </p>
-    }
 
-    <h2 class="titre">Hébergeur</h2>
-    <p>
-      {{ info.legal.hebergeur.raisonSociale }}<br />
-      {{ info.legal.hebergeur.adresse }}<br />
-      <a [href]="info.legal.hebergeur.site" target="_blank" rel="noopener"
-        >{{ info.legal.hebergeur.site }}<span class="visuellement-cache"> (nouvel onglet)</span></a
-      >
-    </p>
+      @if (info.legal.numeroDeclarationActivite || info.legal.certificatQualiopi) {
+        <h2>Organisme de formation</h2>
+        <p>
+          @if (info.legal.numeroDeclarationActivite) {
+            Numéro de déclaration d’activité : {{ info.legal.numeroDeclarationActivite }}<br />
+            Cet enregistrement ne vaut pas agrément de l’État.<br />
+          }
+          @if (info.legal.certificatQualiopi) {
+            Certificat Qualiopi : {{ info.legal.certificatQualiopi }}
+          }
+        </p>
+      }
 
-    <h2 class="titre">Propriété intellectuelle</h2>
-    <p>
-      Les textes, logos et visuels de ce site sont la propriété de {{ info.nom }}. Toute
-      reproduction sans autorisation écrite est interdite.
-    </p>
+      <h2>Hébergeur</h2>
+      <p>
+        {{ info.legal.hebergeur.raisonSociale }}<br />
+        {{ info.legal.hebergeur.adresse }}<br />
+        <a [href]="info.legal.hebergeur.site" target="_blank" rel="noopener"
+          >{{ info.legal.hebergeur.site
+          }}<span class="visuellement-cache"> (nouvel onglet)</span></a
+        >
+      </p>
 
-    <h2 class="titre">Données personnelles</h2>
-    <p>Voir notre <a routerLink="/confidentialite">politique de confidentialité</a>.</p>
+      <h2>Propriété intellectuelle</h2>
+      <p>
+        Les textes, logos et visuels de ce site sont la propriété de {{ info.nom }}. Toute
+        reproduction sans autorisation écrite est interdite.
+      </p>
+
+      <h2>Données personnelles</h2>
+      <p>Voir notre <a routerLink="/confidentialite">politique de confidentialité</a>.</p>
+    </div>
   </div>
 </section>

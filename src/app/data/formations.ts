@@ -152,3 +152,17 @@ export const NIVEAUX_FORMATION: readonly NiveauFormation[] = [
     formations: formationsParId('kobido'),
   },
 ];
+
+/** Dispositifs de financement (pages Centre de formation et Financement). */
+export const FINANCEMENTS: readonly { readonly nom: string; readonly texte: string }[] = [
+  { nom: 'CPF', texte: 'Mon Compte Formation, pour mobiliser vos droits à la formation.' },
+  {
+    nom: 'OPCO',
+    texte: 'Pour les salariées, selon l’opérateur de compétences de votre branche.',
+  },
+  { nom: 'FAFCEA', texte: 'Pour les cheffes d’entreprise artisanale.' },
+  {
+    nom: 'France Travail',
+    texte: 'Pour les personnes en recherche d’emploi ou en reconversion.',
+  },
+];
