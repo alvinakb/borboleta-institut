@@ -12,6 +12,7 @@ Site de Borboleta Institut, institut de drainage lymphatique à Draveil (91) et 
 
 ## Design
 
+- **Toujours suivre `docs/DESIGN-SYSTEM.md`** : c'est la référence absolue pour le design (couleurs, typo, composants, structure reprise de Spa Renata França). En cas de contradiction avec les points ci-dessous, c'est `docs/DESIGN-SYSTEM.md` qui l'emporte.
 - Modèle de structure : le site Spa Renata França (sparenatafranca.com), pages Accueil, Formation et Drainage. On reprend : la structure des pages, le menu, les grands visuels plein écran, le parcours de formation par niveaux, les piliers de la technique, le formulaire « En savoir plus », le bouton d'action répété après les sections. On ne copie aucun texte ni image de ce site.
 - Palette Borboleta : crème `#F4F1EB`, beige `#E8DCC8`, doré (dégradé du logo, de `#E9CB86` à `#A97B3F`), anthracite `#2C2C2C`. Noir profond `#0E0E0E` possible pour des bandeaux, comme le logo sur fond noir.
 - Typo : titres en serif élégante (Cormorant Garamond ou équivalent), un mot clé en italique doré. Petits surtitres en capitales espacées dorées. Corps en sans-serif léger (Jost ou équivalent).
