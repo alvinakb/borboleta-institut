@@ -1,0 +1,116 @@
+:host {
+  display: block;
+}
+
+.soins {
+  padding-block: var(--espace-section);
+}
+.soins__entete {
+  margin-bottom: var(--esp-6);
+}
+.soins__entete > * + * {
+  margin-top: var(--esp-2);
+}
+
+/* Mobile et tablette : défilement horizontal au doigt, sans faire défiler la page. */
+.colonnes {
+  list-style: none;
+  margin: 0;
+  display: flex;
+  gap: var(--esp-3);
+  padding: 0 20px var(--esp-3);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--taupe) transparent;
+}
+.colonne {
+  position: relative;
+  flex: 0 0 min(72vw, 18rem);
+  max-width: none;
+  height: clamp(26rem, 62vh, 35rem);
+  scroll-snap-align: start;
+  container-type: inline-size;
+  border-radius: var(--rayon-carte);
+  overflow: hidden;
+  transition: box-shadow var(--transition);
+}
+.colonne:hover {
+  box-shadow: var(--ombre);
+}
+.colonne:has(.colonne__lien:focus-visible) {
+  outline: 2px solid var(--brun);
+  outline-offset: 2px;
+}
+.colonne__image {
+  position: absolute;
+  inset: 0;
+}
+
+/* Panneau clair posé sur la photo : le texte reste lisible quelle que soit l’image
+   (espresso sur --fond à 94 % : 13,2:1 au pire, brun 5,7:1). */
+.colonne__panneau {
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  bottom: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-1);
+  padding: 10px 10px 6px;
+  background: rgba(251, 247, 244, 0.94);
+  border-radius: 12px;
+}
+.colonne__nom {
+  font-size: clamp(1rem, 9cqi, 1.5rem);
+  overflow-wrap: normal;
+  hyphens: manual;
+}
+.colonne__lien {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  font-size: var(--taille-petit);
+  font-weight: 600;
+  color: var(--brun);
+}
+.colonne__lien:focus-visible {
+  outline: none;
+}
+/* Toute la colonne est cliquable. */
+.colonne__lien::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+/* Ordinateur : toutes les colonnes côte à côte, sur toute la largeur. */
+@media (min-width: 1024px) {
+  .colonnes {
+    display: grid;
+    grid-template-columns: repeat(var(--nb-colonnes, 7), minmax(0, 1fr));
+    gap: var(--esp-2);
+    padding: 0 var(--marge-laterale);
+    overflow: visible;
+  }
+  .colonne {
+    height: clamp(26rem, 64vh, 35rem);
+  }
+}
+
+/* Liens vers les soins qui n’ont pas de colonne. */
+.voir-aussi {
+  margin-top: var(--esp-5);
+  max-width: none;
+}
+.voir-aussi__libelle {
+  font-weight: 600;
+  margin-right: var(--esp-1);
+}
+.voir-aussi a {
+  display: inline-block;
+  padding-block: 10px;
+  font-weight: 600;
+}

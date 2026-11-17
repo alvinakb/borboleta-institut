@@ -1,59 +1,71 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
-import { CATEGORIES_AVEC_SOINS, formaterPrix } from '../../data/tarifs';
+import { aUnePageSoin } from '../../data/soins-detail';
+import { CATEGORIES_AVEC_SOINS, formaterPrix, texteAPartirDe } from '../../data/tarifs';
 import { BlocCta } from '../../shared/bloc-cta/bloc-cta';
 import { BoutonReserver } from '../../shared/bouton-reserver/bouton-reserver';
 
+/** Largeur à partir de laquelle toutes les catégories sont ouvertes (ordinateur). */
+const REQUETE_ORDINATEUR = '(min-width: 960px)';
+
+/**
+ * Page Tarifs (docs/DESIGN-SYSTEM.md, partie 5, « Ligne de tarif ») : sommaire d’ancres,
+ * nom à gauche, durée en petit texte, prix à droite en brun 600 et chiffres tabulaires.
+ * Catégories repliables sur mobile, toutes ouvertes sur ordinateur. Un seul bouton « Réserver »
+ * par catégorie, et un lien vers la page du soin quand elle existe.
+ */
 @Component({
   selector: 'app-tarifs',
   imports: [RouterLink, BlocCta, BoutonReserver],
   templateUrl: './tarifs.html',
-  styles: `
-    .categorie {
-      scroll-margin-top: 6rem;
-    }
-    .categorie + .categorie {
-      margin-top: 3.5rem;
-    }
-    .liste-tarifs {
-      list-style: none;
-      margin: 1.5rem 0 0;
-      padding: 0;
-      border-top: 1px solid var(--ligne);
-    }
-    .ligne {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.5rem 1.5rem;
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--ligne);
-    }
-    .ligne__nom {
-      flex: 1 1 16rem;
-      min-width: 0;
-    }
-    .ligne__duree {
-      font-size: var(--taille-petit);
-      color: var(--texte-doux);
-    }
-    /* Prix : brun 600, chiffres tabulaires (6,4:1 sur --fond). */
-    .ligne__prix {
-      font-weight: 600;
-      color: var(--brun);
-      font-variant-numeric: tabular-nums;
-      white-space: nowrap;
-    }
-    .sommaire {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--esp-2) var(--esp-5);
-      margin-top: var(--esp-5);
-    }
-  `,
+  styleUrl: './tarifs.css',
 })
 export class Tarifs {
   protected readonly categories = CATEGORIES_AVEC_SOINS;
   protected readonly formaterPrix = formaterPrix;
+  protected readonly aPartirDe = texteAPartirDe;
+  protected readonly aUnePage = aUnePageSoin;
+
+  protected readonly ordinateur = signal(window.matchMedia(REQUETE_ORDINATEUR).matches);
+  /** Catégories ouvertes sur mobile. */
+  protected readonly ouvertes = signal<ReadonlySet<string>>(new Set());
+
+  constructor() {
+    const requete = window.matchMedia(REQUETE_ORDINATEUR);
+    const ecoute = (e: MediaQueryListEvent) => this.ordinateur.set(e.matches);
+    requete.addEventListener('change', ecoute);
+    const destroyRef = inject(DestroyRef);
+    destroyRef.onDestroy(() => requete.removeEventListener('change', ecoute));
+
+    // Lien du sommaire (ou /tarifs#<id> depuis une autre page) : la catégorie s’ouvre.
+    inject(ActivatedRoute)
+      .fragment.pipe(takeUntilDestroyed(destroyRef))
+      .subscribe((id) => {
+        if (id && this.categories.some((c) => c.id === id)) {
+          this.ouvertes.update((o) => new Set(o).add(id));
+        }
+      });
+  }
+
+  protected estOuverte(id: string): boolean {
+    return this.ordinateur() || this.ouvertes().has(id);
+  }
+
+  protected basculer(id: string): void {
+    this.ouvertes.update((o) => {
+      const suite = new Set(o);
+      if (suite.has(id)) suite.delete(id);
+      else suite.add(id);
+      return suite;
+    });
+  }
+
+  /** « 30min » devient « 30 min », « 1h30 » devient « 1 h 30 ». */
+  protected duree(texte: string): string {
+    return texte
+      .replace(/(\d)\s*h\s*(\d*)/, (_, h, m) => `${h} h${m ? ' ' + m : ''}`)
+      .replace(/(\d)\s*min/, '$1 min');
+  }
 }

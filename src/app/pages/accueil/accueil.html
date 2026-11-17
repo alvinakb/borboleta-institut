@@ -20,29 +20,7 @@
 </section>
 
 <!-- 2. Bandeau des soins en colonnes verticales -->
-<section class="soins" aria-labelledby="titre-soins">
-  <div class="conteneur soins__entete" appApparition>
-    <p class="surtitre">Les soins de l’institut</p>
-    <h2 class="titre" id="titre-soins">Un soin pour chaque envie</h2>
-  </div>
-  <ul class="colonnes" appApparition>
-    @for (famille of familles; track famille.id) {
-      <li class="colonne">
-        <app-emplacement-image
-          class="colonne__image"
-          [fichier]="'assets/images/accueil-soin-' + famille.id + '.jpg'"
-          [pleinEcran]="true"
-        />
-        <div class="colonne__panneau">
-          <h3 class="colonne__nom">{{ famille.nom }}</h3>
-          <a class="colonne__lien" routerLink="/soins" [fragment]="famille.id"
-            >En savoir plus<span class="visuellement-cache"> : {{ famille.nom }}</span></a
-          >
-        </div>
-      </li>
-    }
-  </ul>
-</section>
+<app-colonnes-soins surtitre="Les soins de l’institut" titre="Un soin pour chaque envie" />
 
 <!-- 3. L’institut à Draveil : texte et image -->
 <section class="section section--alt" aria-labelledby="titre-institut">

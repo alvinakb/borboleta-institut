@@ -14,9 +14,9 @@
     <p class="surtitre">Un parcours par niveaux</p>
     <h2 class="titre">Du socle à l’expertise</h2>
     <ol class="grille" style="margin-top: 2rem; padding: 0; list-style: none">
-      @for (niveau of niveaux; track niveau.numero) {
+      @for (niveau of niveaux; track niveau.libelle) {
         <li class="flux">
-          <p class="surtitre">Niveau {{ niveau.numero }}</p>
+          <p class="surtitre">{{ niveau.libelle }}</p>
           <h3>{{ niveau.titre }}</h3>
           <p>{{ niveau.texte }}</p>
           <ul>

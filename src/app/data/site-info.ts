@@ -23,6 +23,12 @@ export const CERTIFICAT_QUALIOPI: string = '';
 /** Statut juridique (ex. « Entreprise individuelle, micro-entreprise »). */
 export const STATUT_JURIDIQUE: string = '';
 
+/**
+ * Délai de réponse annoncé après l’envoi d’un formulaire (ex. « sous 48 heures ouvrées »).
+ * À fixer par la cliente : tant qu’il est vide, le message dit « dans les meilleurs délais ».
+ */
+export const DELAI_REPONSE: string = '';
+
 /** Lien wa.me, ou null tant que le numéro n’est pas renseigné. */
 export function lienWhatsApp(): string | null {
   return WHATSAPP_NUMERO ? `https://wa.me/${WHATSAPP_NUMERO}` : null;

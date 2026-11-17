@@ -30,25 +30,63 @@ Liste de toutes les photos prévues sur le site. En attendant, chaque emplacemen
 | `assets/images/accueil-formation.jpg` | Accueil | Bloc « Centre de formation » | Paysage 4:3 | Mains d’une stagiaire guidées par celles de la formatrice (visage hors cadre) |
 | `assets/images/accueil-carte-cadeau.jpg` | Accueil | Bloc « Les cartes cadeaux » | Paysage 3:2 (1600 × 1067) | Carte cadeau Borboleta posée sur une serviette ou un plateau, détail doré |
 | `assets/images/instagram-1.jpg` à `instagram-4.jpg` | Accueil | Aperçu Instagram (4 vignettes) | Carré 1:1 (960 × 960) | Quatre publications récentes du compte, choisies parmi les plus représentatives |
-| `assets/images/soin-<id>.jpg` | Soins (cartes) | Image de chaque carte de soin | Paysage 4:3 (960 × 720) | Le geste propre à chaque soin. Une photo par identifiant de `contenu/tarifs.json` : `offres-decouverte`, `drainage-renata-franca`, `miracle-face`, `remodelage`, `rouleau-bresilien`, `visage-lcp`, `kobido`, `radiofrequence`, `pressotherapie`, `post-operatoire`, `dr-vodder`, `femme-enceinte`, `cures` |
+| `assets/images/soin-<id>.jpg` | Soins (cartes de la page `/soins`) | Image de chaque carte de soin | Paysage 4:3 (960 × 720) | Le geste propre à chaque soin. Une photo par identifiant de `contenu/tarifs.json` : `offres-decouverte`, `drainage-renata-franca`, `miracle-face`, `remodelage`, `rouleau-bresilien`, `visage-lcp`, `kobido`, `radiofrequence`, `pressotherapie`, `post-operatoire`, `dr-vodder`, `femme-enceinte`, `cures` |
 | `assets/images/institut-cabine.jpg` | L’institut | Bloc « Le drainage et le remodelage » | Paysage 4:3 | La cabine, vue d’ensemble, lumière douce |
 | `assets/images/cartes-cadeaux.jpg` | Cartes cadeaux | Bloc principal | Paysage 4:3 | Carte cadeau en main ou dans son enveloppe |
-| `assets/images/formation-<id>.jpg` | Nos formations | Image de chaque formation | Paysage 4:3 | Une photo par formation : `drainage-corps`, `drainage-visage`, `remodelage`, `post-operatoire`, `kobido` ; pratique en binôme, mains et gestes |
 | `assets/images/formatrice-mains.jpg` | La formatrice | Bloc « Sa pédagogie » | Paysage 4:3 | Les mains de Mariline pendant une démonstration, jamais son visage |
 
-## Photos prévues pour la passe 2
+## Photos ajoutées en passe 2
+
+### Pages de soin `/soins/<id>` (une page par soin, onze pages)
+
+Chaque page a deux photos : le grand visuel du haut et la photo du bloc « En quoi consiste ce soin ? ». Le bandeau « Découvrir les autres soins » en bas de page réutilise les photos des colonnes de l’accueil (`accueil-soin-<id>.jpg`).
 
 | Fichier | Page | Emplacement | Format conseillé | Ce qu’elle doit montrer |
 |---|---|---|---|---|
-| `assets/images/soin-<id>-hero.jpg` | Pages de soin `/soins/<id>` | Grand visuel plein écran | Paysage 16:9 + recadrage portrait 9:16 | Le soin en cours, cadrage large sur les mains. Pour `drainage-renata-franca`, `miracle-face`, `remodelage`, `kobido`, `radiofrequence`, `post-operatoire`, `femme-enceinte` |
-| `assets/images/soin-<id>-deroule.jpg` | Pages de soin | Bloc « Déroulé d’une séance » | Paysage 4:3 | Un détail du geste ou de la préparation (huile, serviettes) |
-| `assets/images/formation-hero.jpg` | Centre de formation | En-tête plein écran sombre | Paysage 16:9 + portrait 9:16 | Salle de formation, tables de soin, binômes en pratique, lumière douce |
-| `assets/images/formation-pedagogie.jpg` | Centre de formation | Bloc « Une pédagogie pensée pour apprendre avec ses mains » | Paysage 4:3 | Correction du geste en direct, mains de la formatrice sur celles d’une stagiaire |
-| `assets/images/formation-journee-theorie.jpg` | Centre de formation | « Une journée de formation », étape 1 | Paysage 3:2 | Support de cours, planche d’anatomie, carnet |
-| `assets/images/formation-journee-pratique.jpg` | Centre de formation | « Une journée de formation », étape 2 | Paysage 3:2 | Pratique en binôme sur table |
-| `assets/images/formation-journee-attestation.jpg` | Centre de formation | « Une journée de formation », étape 3 | Paysage 3:2 | Attestation de fin de formation posée sur la table (sans nom lisible) |
-| `assets/images/formatrice-portrait-mains.jpg` | Centre de formation | Bloc « La formatrice » | Portrait 4:5 | Mains de Mariline, ou le logo sur fond espresso à défaut |
-| `assets/images/contact-facade.jpg` | Contact | À côté des infos pratiques | Paysage 4:3 | Entrée de l’institut, plaque, sans passants reconnaissables |
+| `assets/images/soin-drainage-renata-franca-hero.jpg` | `/soins/drainage-renata-franca` | Grand visuel plein écran (Drainage lymphatique méthode Renata França) | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Mains en geste de pompage sur la jambe, serviette blanche. Image du haut : pas de lazy. |
+| `assets/images/soin-drainage-renata-franca-deroule.jpg` | `/soins/drainage-renata-franca` | Bloc « En quoi consiste ce soin ? » | Paysage 4:3 (1600 × 1200) | Huile et serviettes prêtes sur la table, ou détail des mains sur le mollet |
+| `assets/images/soin-miracle-face-hero.jpg` | `/soins/miracle-face` | Grand visuel plein écran (Miracle Face) | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Mains sur le visage d’une cliente (pas Mariline), cadrage serré sur les mains. Image du haut : pas de lazy. |
+| `assets/images/soin-miracle-face-deroule.jpg` | `/soins/miracle-face` | Bloc « En quoi consiste ce soin ? » | Paysage 4:3 (1600 × 1200) | Détail des doigts le long de la mâchoire |
+| `assets/images/soin-remodelage-hero.jpg` | `/soins/remodelage` | Grand visuel plein écran (Remodelage) | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Geste de palper rouler sur la cuisse. Image du haut : pas de lazy. |
+| `assets/images/soin-remodelage-deroule.jpg` | `/soins/remodelage` | Bloc « En quoi consiste ce soin ? » | Paysage 4:3 (1600 × 1200) | Détail des mains en pincement ou en glissement |
+| `assets/images/soin-rouleau-bresilien-hero.jpg` | `/soins/rouleau-bresilien` | Grand visuel plein écran (Rouleau brésilien) | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Le rouleau en bois en cours de soin sur la cuisse ou le bras. Image du haut : pas de lazy. |
+| `assets/images/soin-rouleau-bresilien-deroule.jpg` | `/soins/rouleau-bresilien` | Bloc « En quoi consiste ce soin ? » | Paysage 4:3 (1600 × 1200) | Le rouleau posé sur une serviette blanche |
+| `assets/images/soin-visage-lcp-hero.jpg` | `/soins/visage-lcp` | Grand visuel plein écran (Soins du visage LCP) | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Soin du visage en cours, produits LCP en arrière-plan. Image du haut : pas de lazy. |
+| `assets/images/soin-visage-lcp-deroule.jpg` | `/soins/visage-lcp` | Bloc « En quoi consiste ce soin ? » | Paysage 4:3 (1600 × 1200) | Les produits LCP alignés, lumière douce |
+| `assets/images/soin-kobido-hero.jpg` | `/soins/kobido` | Grand visuel plein écran (Kobido) | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Mains en geste de Kobido sur le visage, lumière tamisée. Image du haut : pas de lazy. |
+| `assets/images/soin-kobido-deroule.jpg` | `/soins/kobido` | Bloc « En quoi consiste ce soin ? » | Paysage 4:3 (1600 × 1200) | Détail de la digitopression |
+| `assets/images/soin-radiofrequence-hero.jpg` | `/soins/radiofrequence` | Grand visuel plein écran (Radiofréquence Bloomea) | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Appareil Bloomea en cours de soin, main et pièce à main. Image du haut : pas de lazy. |
+| `assets/images/soin-radiofrequence-deroule.jpg` | `/soins/radiofrequence` | Bloc « En quoi consiste ce soin ? » | Paysage 4:3 (1600 × 1200) | L’appareil Bloomea seul, dans la cabine |
+| `assets/images/soin-pressotherapie-hero.jpg` | `/soins/pressotherapie` | Grand visuel plein écran (Pressothérapie) | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Les bottes de pression en place sur les jambes, cliente allongée (visage hors cadre). Image du haut : pas de lazy. |
+| `assets/images/soin-pressotherapie-deroule.jpg` | `/soins/pressotherapie` | Bloc « En quoi consiste ce soin ? » | Paysage 4:3 (1600 × 1200) | Détail des bottes et de l’appareil |
+| `assets/images/soin-post-operatoire-hero.jpg` | `/soins/post-operatoire` | Grand visuel plein écran (Post-opératoire) | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Mains douces sur l’abdomen, ambiance calme (aucune cicatrice visible). Image du haut : pas de lazy. |
+| `assets/images/soin-post-operatoire-deroule.jpg` | `/soins/post-operatoire` | Bloc « En quoi consiste ce soin ? » | Paysage 4:3 (1600 × 1200) | Mains posées à plat, geste lent |
+| `assets/images/soin-dr-vodder-hero.jpg` | `/soins/dr-vodder` | Grand visuel plein écran (Méthode Dr Vodder) | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Mains en drainage manuel sur une zone (nuque ou bras). Image du haut : pas de lazy. |
+| `assets/images/soin-dr-vodder-deroule.jpg` | `/soins/dr-vodder` | Bloc « En quoi consiste ce soin ? » | Paysage 4:3 (1600 × 1200) | Détail d’un geste circulaire sur la peau |
+| `assets/images/soin-femme-enceinte-hero.jpg` | `/soins/femme-enceinte` | Grand visuel plein écran (Femme enceinte) | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Mains posées sur un ventre arrondi, serviette blanche. Image du haut : pas de lazy. |
+| `assets/images/soin-femme-enceinte-deroule.jpg` | `/soins/femme-enceinte` | Bloc « En quoi consiste ce soin ? » | Paysage 4:3 (1600 × 1200) | Jambes drainées en position confortable, coussins |
+
+### Page Centre de formation `/formations`
+
+| Fichier | Page | Emplacement | Format conseillé | Ce qu’elle doit montrer |
+|---|---|---|---|---|
+| `assets/images/formation-hero.jpg` | Centre de formation | 1. En-tête plein écran sombre (sous le titre « Le drainage lymphatique, transmis avec soin ») | Paysage 16:9 + portrait 9:16 | Salle de formation, tables de soin, binômes en pratique, lumière douce. Image du haut : pas de lazy. |
+| `assets/images/formation-pedagogie.jpg` | Centre de formation | 3. Bloc « Une pédagogie pensée pour apprendre avec ses mains » | Paysage 4:3 | Correction du geste en direct : mains de la formatrice sur celles d’une stagiaire (visages hors cadre) |
+| `assets/images/formation-journee-theorie.jpg` | Centre de formation | 4. Journée de formation, étape 1 | Paysage 3:2 | Support de cours, planche d’anatomie, carnet |
+| `assets/images/formation-journee-pratique.jpg` | Centre de formation | 4. Journée de formation, étape 2 | Paysage 3:2 | Pratique en binôme sur table |
+| `assets/images/formation-journee-attestation.jpg` | Centre de formation | 4. Journée de formation, étape 3 | Paysage 3:2 | Attestation de fin de formation posée sur la table (sans nom lisible) |
+| `assets/images/formation-drainage-corps.jpg` | Centre de formation | 5. Parcours, carte Niveau 1 | Paysage 4:3 | Pratique du drainage corps en binôme, mains sur la jambe |
+| `assets/images/formation-drainage-visage.jpg` | Centre de formation | 5. Parcours, carte Niveau 2 | Paysage 4:3 | Pratique du drainage visage en binôme |
+| `assets/images/formation-remodelage.jpg` | Centre de formation | 5. Parcours, carte Niveau 2 | Paysage 4:3 | Geste de remodelage enseigné sur table |
+| `assets/images/formation-post-operatoire.jpg` | Centre de formation | 5. Parcours, carte Niveau 3 | Paysage 4:3 | Démonstration d’un geste doux sur l’abdomen (aucune cicatrice visible) |
+| `assets/images/formation-kobido.jpg` | Centre de formation | 5. Parcours, carte En complément | Paysage 4:3 | Geste de Kobido enseigné, mains sur le visage |
+| `assets/images/formatrice-portrait-mains.jpg` | Centre de formation | 7. Bloc « Votre formatrice » | Portrait 4:5 (1200 × 1500) | Les mains de Mariline, jamais son visage ; à défaut, le logo sur fond espresso |
+
+### Autres pages
+
+| Fichier | Page | Emplacement | Format conseillé | Ce qu’elle doit montrer |
+|---|---|---|---|---|
+| `assets/images/contact-facade.jpg` | Contact | À côté des infos pratiques (prévu, pas encore en place) | Paysage 4:3 | Entrée de l’institut, plaque, sans passants reconnaissables |
 
 ## Logos et fichiers graphiques (déjà en place)
 

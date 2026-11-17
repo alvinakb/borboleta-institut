@@ -29,6 +29,8 @@ export interface Formation {
   readonly jours: number | null;
   readonly format: string;
   readonly niveau: string;
+  /** Prérequis affiché sur la carte du parcours par niveaux. */
+  readonly prerequis: string;
   readonly groupe: string;
   readonly programme: string;
   /** Prix en euros, ou null tant qu’il n’est pas fourni (« nous consulter »). */

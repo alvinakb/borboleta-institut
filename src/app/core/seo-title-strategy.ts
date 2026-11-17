@@ -1,8 +1,15 @@
 import { Injectable, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { RouterStateSnapshot, TitleStrategy } from '@angular/router';
+import {
+  ActivatedRouteSnapshot,
+  CanMatchFn,
+  ResolveFn,
+  RouterStateSnapshot,
+  TitleStrategy,
+} from '@angular/router';
 
 import { SITE_INFO } from '../data/site-info';
+import { SUFFIXE_TITRE, aUnePageSoin, detailSoin } from '../data/soins-detail';
 
 /** Données SEO à placer dans `data` de chaque route. */
 export interface DonneesSeo {
@@ -15,6 +22,10 @@ export interface DonneesSeo {
 /**
  * Met à jour le titre (service Title) et la meta description (service Meta) à chaque
  * navigation, à partir de `title` et `data.description` de la route active.
+ *
+ * Routes dynamiques (ex. /soins/:id) : `title` est une fonction de résolution et
+ * `resolve: { description }` fournit la description ; Angular fusionne les données résolues
+ * dans `data`, la stratégie les lit donc de la même façon. Voir les résolveurs plus bas.
  */
 @Injectable({ providedIn: 'root' })
 export class SeoTitleStrategy extends TitleStrategy {
@@ -43,3 +54,16 @@ export class SeoTitleStrategy extends TitleStrategy {
     this.meta.updateTag({ property: 'og:title', content: titre });
   }
 }
+
+// ---------- Pages de soin /soins/:id ----------
+
+/** La route /soins/:id ne s’applique qu’aux soins qui ont une page : sinon, page 404 (noindex). */
+export const soinExiste: CanMatchFn = (_route, segments) => aUnePageSoin(segments[1]?.path ?? '');
+
+/** Titre SEO du soin, suffixe compris (60 caractères maximum). */
+export const titreSoin: ResolveFn<string> = (route: ActivatedRouteSnapshot) =>
+  (detailSoin(route.paramMap.get('id'))?.seoTitre ?? 'Nos soins') + SUFFIXE_TITRE;
+
+/** Meta description du soin (155 caractères maximum). */
+export const descriptionSoin: ResolveFn<string> = (route: ActivatedRouteSnapshot) =>
+  detailSoin(route.paramMap.get('id'))?.seoDescription ?? '';

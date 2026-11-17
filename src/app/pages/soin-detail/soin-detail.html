@@ -1,0 +1,151 @@
+@if (detail(); as d) {
+  <!-- 1. Visuel plein écran -->
+  <section class="hero fond-sombre" aria-labelledby="titre-soin">
+    <app-emplacement-image
+      class="hero__image"
+      [fichier]="'assets/images/soin-' + d.id + '-hero.jpg'"
+      [pleinEcran]="true"
+      [sombre]="true"
+    />
+    <div class="conteneur hero__texte">
+      <p class="surtitre">Les soins de l’institut à Draveil</p>
+      <h1 class="titre-page" id="titre-soin">{{ d.titre }}</h1>
+      <p class="hero__phrase">{{ d.phrase }}</p>
+      <div class="groupe-boutons">
+        <app-bouton-reserver
+          libelle="Réserver sur Planity"
+          [aideAcces]="'Réserver : ' + d.nomCourt"
+        />
+        <a class="lien-texte" [routerLink]="[]" fragment="tarifs">Voir les tarifs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Le soin, pour qui -->
+  <section class="section" aria-labelledby="titre-consiste">
+    <div class="conteneur deux-colonnes">
+      <div class="flux" appApparition>
+        <p class="surtitre">Le soin</p>
+        <h2 class="titre" id="titre-consiste">En quoi consiste ce soin ?</h2>
+        @for (p of d.consiste; track $index) {
+          <p>{{ p }}</p>
+        }
+        @if (d.pourQui) {
+          <h3 class="soin__sous-titre">Pour qui ?</h3>
+          <p>{{ d.pourQui }}</p>
+        }
+      </div>
+      <app-emplacement-image
+        [fichier]="'assets/images/soin-' + d.id + '-deroule.jpg'"
+        [description]="d.nomCourt + ' : le geste en cabine'"
+        ratio="4 / 3"
+        appApparition
+      />
+    </div>
+  </section>
+
+  <!-- Déroulé d’une séance -->
+  <section class="section section--alt" aria-labelledby="titre-deroule">
+    <div class="conteneur">
+      <div class="flux" appApparition>
+        <p class="surtitre">Votre rendez-vous</p>
+        <h2 class="titre" id="titre-deroule">Le déroulé d’une séance</h2>
+      </div>
+      <ol class="etapes">
+        @for (e of d.deroule; track e.titre; let i = $index) {
+          <li class="etape" appApparition [delaiApparition]="i * 0.08">
+            <span class="etape__numero" aria-hidden="true">{{ i + 1 }}</span>
+            <h3>{{ e.titre }}</h3>
+            <p>{{ e.texte }}</p>
+          </li>
+        }
+      </ol>
+    </div>
+  </section>
+
+  <!-- 3. Tarifs -->
+  @if (categorie(); as c) {
+    <section class="section tarifs" id="tarifs" aria-labelledby="titre-tarifs">
+      <div class="conteneur tarifs__grille">
+        <div class="flux" appApparition>
+          <p class="surtitre">Tarifs</p>
+          <h2 class="titre" id="titre-tarifs">Séance et cures</h2>
+          <p class="chapo">
+            Les tarifs sont identiques à ceux affichés sur Planity, où vous pouvez réserver à tout
+            moment.
+          </p>
+          <div class="groupe-boutons">
+            <app-bouton-reserver
+              libelle="Réserver sur Planity"
+              [aideAcces]="'Réserver : ' + d.nomCourt"
+            />
+            <a class="lien-texte" routerLink="/tarifs">Tous les tarifs</a>
+          </div>
+        </div>
+        <div appApparition>
+          <ul class="liste-tarifs">
+            @for (s of c.soins; track s.nom) {
+              <li class="ligne-tarif">
+                <span class="ligne-tarif__nom"
+                  >{{ s.nom }} <span class="ligne-tarif__duree">{{ duree(s.duree) }}</span></span
+                >
+                <span class="ligne-tarif__prix">{{ formaterPrix(s.prix) }}</span>
+              </li>
+            }
+          </ul>
+          @if (complements().length) {
+            <h3 class="tarifs__complement">Offres et cures associées</h3>
+            <ul class="liste-tarifs">
+              @for (s of complements(); track s.nom) {
+                <li class="ligne-tarif">
+                  <span class="ligne-tarif__nom"
+                    >{{ s.nom }} <span class="ligne-tarif__duree">{{ duree(s.duree) }}</span></span
+                  >
+                  <span class="ligne-tarif__prix">{{ formaterPrix(s.prix) }}</span>
+                </li>
+              }
+            </ul>
+          }
+        </div>
+      </div>
+    </section>
+  }
+
+  <!-- 4. Précautions et questions fréquentes -->
+  <section class="section section--alt" aria-labelledby="titre-precautions">
+    <div class="conteneur deux-colonnes precautions">
+      <div class="flux" appApparition>
+        <p class="surtitre">Bon à savoir</p>
+        <h2 class="titre" id="titre-precautions">Précautions</h2>
+        <ul class="precautions__liste">
+          @for (p of d.precautions; track $index) {
+            <li>{{ p }}</li>
+          }
+        </ul>
+      </div>
+      <div class="flux" appApparition>
+        <p class="surtitre">Vos questions</p>
+        <h2 class="titre">Questions fréquentes</h2>
+        <app-accordeon [questions]="d.faq" />
+        <p><a class="lien-fleche" routerLink="/faq">Toutes les questions</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Les autres soins en colonnes -->
+  <app-colonnes-soins
+    surtitre="Les soins de l’institut"
+    titre="Découvrir les autres soins"
+    [exclure]="d.id"
+    [voirAussi]="true"
+  />
+
+  <app-bloc-cta
+    [alt]="true"
+    titre="Prendre rendez-vous à Draveil"
+    texte="Réservez votre soin en ligne sur Planity, à tout moment."
+  >
+    <app-bouton-reserver libelle="Réserver un soin" />
+    <a class="lien-texte" routerLink="/cartes-cadeaux">Offrir une carte cadeau</a>
+  </app-bloc-cta>
+}

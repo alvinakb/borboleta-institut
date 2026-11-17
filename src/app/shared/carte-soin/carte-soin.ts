@@ -2,6 +2,7 @@ import { Component, computed, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { SITE_INFO } from '../../data/site-info';
+import { lienPageSoin } from '../../data/soins-detail';
 import { texteAPartirDe } from '../../data/tarifs';
 import type { CategorieSoins } from '../../data/types';
 import { EmplacementImage } from '../emplacement-image/emplacement-image';
@@ -19,7 +20,7 @@ import { EmplacementImage } from '../emplacement-image/emplacement-image';
       <app-emplacement-image [fichier]="'assets/images/soin-' + categorie().id + '.jpg'" />
       <div class="carte__corps">
         <h3 class="carte__titre">
-          <a class="carte__lien" [routerLink]="lienDetail()" [fragment]="categorie().id">{{
+          <a class="carte__lien" [routerLink]="lien().lien" [fragment]="lien().fragment">{{
             categorie().titre
           }}</a>
         </h3>
@@ -49,8 +50,8 @@ import { EmplacementImage } from '../emplacement-image/emplacement-image';
 })
 export class CarteSoin {
   readonly categorie = input.required<CategorieSoins>();
-  /** Page de détail (les pages /soins/<id> arrivent en passe 2 ; en attendant, les tarifs). */
-  readonly lienDetail = input('/tarifs');
+  /** Page de détail /soins/<id>, ou la catégorie sur la page Tarifs (offres, cures). */
+  protected readonly lien = computed(() => lienPageSoin(this.categorie().id));
   protected readonly planity = SITE_INFO.planity;
   protected readonly aPartirDe = computed(() => texteAPartirDe(this.categorie()));
   /** Durée du soin le moins cher de la catégorie (celui du « à partir de »). */

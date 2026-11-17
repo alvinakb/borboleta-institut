@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 
+import { descriptionSoin, soinExiste, titreSoin } from './core/seo-title-strategy';
+
 // Une route par page. Titre (title) et meta description (data.description) par page,
 // appliqués par core/seo-title-strategy.ts. Mot clé principal : drainage lymphatique à Draveil (91).
 
@@ -35,6 +37,15 @@ export const routes: Routes = [
     },
   },
   {
+    // Une page par catégorie de soins (hors offres découverte et cures, sur la page Tarifs).
+    // Identifiant inconnu : la route ne s’applique pas et la page 404 (noindex) s’affiche.
+    path: 'soins/:id',
+    canMatch: [soinExiste],
+    loadComponent: () => import('./pages/soin-detail/soin-detail').then((m) => m.SoinDetail),
+    title: titreSoin,
+    resolve: { description: descriptionSoin },
+  },
+  {
     path: 'tarifs',
     loadComponent: () => import('./pages/tarifs/tarifs').then((m) => m.Tarifs),
     title: 'Tarifs drainage lymphatique à Draveil' + SUFFIXE,
@@ -65,10 +76,10 @@ export const routes: Routes = [
   {
     path: 'formations',
     loadComponent: () => import('./pages/formations/formations').then((m) => m.Formations),
-    title: 'Formations drainage lymphatique' + SUFFIXE,
+    title: 'Formations au drainage lymphatique' + SUFFIXE,
     data: {
       description:
-        'Cinq formations en présentiel et en petit groupe : drainage corps et visage, remodelage, post-opératoire et Kobido. Centre certifié Qualiopi.',
+        'Centre de formation certifié Qualiopi : drainage lymphatique corps et visage, remodelage, post-opératoire et Kobido, en présentiel et en petit groupe.',
     },
   },
   {

@@ -152,7 +152,9 @@ export class Header {
   /** Une page du sous-menu est la page en cours : la rubrique est marquée active. */
   protected rubriqueActive(entree: MenuNav): boolean {
     const chemin = this.url().split(/[?#]/)[0];
-    return !!entree.sousMenu?.some((lien) => !lien.externe && lien.lien === chemin);
+    return !!entree.sousMenu?.some(
+      (lien) => !lien.externe && (lien.lien === chemin || chemin.startsWith(lien.lien + '/')),
+    );
   }
 
   protected surDefilement(): void {

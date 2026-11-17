@@ -13,13 +13,14 @@ export const FORMATIONS: readonly Formation[] = [
     id: 'drainage-corps',
     numero: 1,
     titre: 'Drainage lymphatique corps',
-    surtitre: 'Présentiel · 21 h · 3 jours',
+    surtitre: 'Présentiel, 21 h sur 3 jours',
     accroche:
       'Trois jours pour apprendre à drainer avec la bonne pression et le bon rythme. La formation socle, à suivre en premier.',
     dureeHeures: 21,
     jours: 3,
     format: '3 jours en présentiel',
     niveau: 'Débutant accepté',
+    prerequis: 'Aucun, débutantes acceptées',
     groupe: 'Petit groupe',
     programme:
       'Anatomie du système lymphatique et voies de drainage, techniques manuelles (pression, pompage, appel et réabsorption), pratique intensive sur mannequin puis entre participants avec corrections en temps réel, indications et contre-indications.',
@@ -29,13 +30,14 @@ export const FORMATIONS: readonly Formation[] = [
     id: 'drainage-visage',
     numero: 2,
     titre: 'Drainage lymphatique visage',
-    surtitre: 'Présentiel · Format à confirmer',
+    surtitre: 'Présentiel, format à confirmer',
     accroche:
       'Le drainage du visage à visée esthétique : effet bonne mine, traits reposés, regard défatigué.',
     dureeHeures: null,
     jours: null,
     format: 'Présentiel',
     niveau: 'Drainage corps recommandé',
+    prerequis: 'Drainage lymphatique corps recommandé',
     groupe: 'Petit groupe',
     programme:
       'Spécificités du visage, du cou et de la nuque, protocole visage complet, dosage de la pression sur les zones sensibles, intégration du soin dans une prestation plus large.',
@@ -45,13 +47,14 @@ export const FORMATIONS: readonly Formation[] = [
     id: 'remodelage',
     numero: 3,
     titre: 'Remodelage, massage anti-cellulite',
-    surtitre: 'Présentiel · Format à confirmer',
+    surtitre: 'Présentiel, format à confirmer',
     accroche:
       'La technique qui sculpte : lisser l’aspect de la cellulite et redessiner la silhouette par des manœuvres fermes et précises.',
     dureeHeures: null,
     jours: null,
     format: 'Présentiel',
     niveau: 'Drainage corps recommandé',
+    prerequis: 'Drainage lymphatique corps recommandé',
     groupe: 'Petit groupe',
     programme:
       'Compréhension du tissu adipeux et de la cellulite, palper rouler, pincements et glissements, remodelage corps entier et membres inférieurs, le soin signature qui associe drainage et remodelage.',
@@ -61,13 +64,14 @@ export const FORMATIONS: readonly Formation[] = [
     id: 'post-operatoire',
     numero: 4,
     titre: 'Drainage post-opératoire, chirurgie esthétique',
-    surtitre: 'Présentiel · Format à confirmer',
+    surtitre: 'Présentiel, format à confirmer',
     accroche:
       'Accompagner la récupération après une chirurgie esthétique du visage et du corps, toujours avec l’accord du professionnel de santé qui assure le suivi.',
     dureeHeures: null,
     jours: null,
     format: 'Présentiel',
     niveau: 'Drainage corps et visage en prérequis',
+    prerequis: 'Drainage lymphatique corps et visage',
     groupe: 'Petit groupe',
     programme:
       'Phases de la récupération, précautions et signaux d’alerte, protocoles adaptés visage et corps, douceur des manœuvres selon chaque zone, traçabilité des séances.',
@@ -77,13 +81,14 @@ export const FORMATIONS: readonly Formation[] = [
     id: 'kobido',
     numero: 5,
     titre: 'Lifting japonais, Kobido',
-    surtitre: 'Présentiel · Format à confirmer',
+    surtitre: 'Présentiel, format à confirmer',
     accroche:
       'La technique japonaise qui associe lissage, drainage et digitopression pour un effet rajeunissant naturel. Un soin de reconnexion, à intégrer à votre carte.',
     dureeHeures: null,
     jours: null,
     format: 'Présentiel',
     niveau: 'Ouvert, soin complémentaire',
+    prerequis: 'Aucun, soin complémentaire',
     groupe: 'Petit groupe',
     programme:
       'Origine et principes du Kobido, lecture du visage et points de digitopression, enchaînement complet du protocole liftant, travail du rythme et de la précision, mise en valeur du soin en cabine.',
@@ -102,9 +107,12 @@ export function textePrixFormation(f: Formation): string {
   return f.prix === null ? NOUS_CONSULTER : formaterPrix(f.prix);
 }
 
-/** Un niveau du parcours de formation (page Parcours et accueil). */
+/** Un niveau du parcours de formation (page Centre de formation et page Parcours). */
 export interface NiveauFormation {
-  readonly numero: number;
+  /** Numéro du niveau, ou null pour « En complément ». */
+  readonly numero: number | null;
+  /** « Niveau 1 », « En complément »… */
+  readonly libelle: string;
   readonly titre: string;
   readonly texte: string;
   readonly formations: readonly Formation[];
@@ -112,25 +120,35 @@ export interface NiveauFormation {
 
 const formationsParId = (...ids: string[]) => FORMATIONS.filter((f) => ids.includes(f.id));
 
-/** Parcours par niveaux : le socle, les spécialisations, l’expertise. */
+/** Parcours par niveaux : le socle, les spécialisations, l’expertise, et le Kobido en complément. */
 export const NIVEAUX_FORMATION: readonly NiveauFormation[] = [
   {
     numero: 1,
+    libelle: 'Niveau 1',
     titre: 'Le socle',
     texte: 'La formation à suivre en premier, ouverte aux débutantes.',
     formations: formationsParId('drainage-corps'),
   },
   {
     numero: 2,
+    libelle: 'Niveau 2',
     titre: 'Les spécialisations',
     texte:
       'Une fois le drainage corps acquis, vous choisissez les techniques à ajouter à votre carte.',
-    formations: formationsParId('drainage-visage', 'remodelage', 'kobido'),
+    formations: formationsParId('drainage-visage', 'remodelage'),
   },
   {
     numero: 3,
+    libelle: 'Niveau 3',
     titre: 'L’expertise',
     texte: 'Le post-opératoire demande le drainage corps et visage en prérequis.',
     formations: formationsParId('post-operatoire'),
+  },
+  {
+    numero: null,
+    libelle: 'En complément',
+    titre: 'Le Kobido',
+    texte: 'Un soin du visage japonais, à ajouter à votre carte quand vous le souhaitez.',
+    formations: formationsParId('kobido'),
   },
 ];

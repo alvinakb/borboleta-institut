@@ -1,0 +1,184 @@
+<ul class="sessions">
+  @for (f of formations; track f.id) {
+    @let estOuverte = ouverte() === f.id;
+    <li class="session" [class.session--ouverte]="estOuverte" [id]="prefixe + f.id">
+      <div class="session__entete">
+        <p class="session__niveau">{{ f.surtitre }}</p>
+        <h3 class="session__titre">{{ f.titre }}</h3>
+        <p class="session__statut">Prochaines sessions : nous consulter</p>
+        <button
+          type="button"
+          class="bouton session__bouton"
+          [class.bouton--contour]="estOuverte"
+          [attr.aria-expanded]="estOuverte"
+          [attr.aria-controls]="'demande-' + f.id"
+          (click)="basculer(f)"
+        >
+          {{ estOuverte ? 'Fermer' : 'Être informée des prochaines dates' }}
+          <span class="visuellement-cache"> : {{ f.titre }}</span>
+        </button>
+      </div>
+
+      <div class="session__contenu" [id]="'demande-' + f.id" [hidden]="!estOuverte">
+        @if (estOuverte) {
+          @if (etat() === 'envoye' || etat() === 'test') {
+            <div
+              class="resultat"
+              [class.resultat--test]="etat() === 'test'"
+              [id]="'demande-' + f.id + '-resultat'"
+              role="status"
+              tabindex="-1"
+            >
+              @if (etat() === 'envoye') {
+                <p class="resultat__titre">Merci, votre demande est bien envoyée.</p>
+                <p>
+                  Nous vous prévenons dès qu’une session de la formation {{ f.titre }} est ouverte,
+                  et nous vous répondons {{ delai }}.
+                </p>
+                @if (whatsapp) {
+                  <p>
+                    Une question en attendant ?
+                    <a [href]="whatsapp" target="_blank" rel="noopener"
+                      >Écrivez-nous sur WhatsApp<span class="visuellement-cache">
+                        (nouvel onglet)</span
+                      ></a
+                    >
+                  </p>
+                }
+              } @else {
+                <p class="resultat__titre">{{ messageTest }}</p>
+                <p>Votre demande n’a pas été transmise depuis cette version de test du site.</p>
+              }
+            </div>
+          } @else {
+            <form
+              class="formulaire"
+              [formGroup]="formulaire"
+              (ngSubmit)="envoyer(f)"
+              novalidate
+              [attr.aria-label]="'Être informée des prochaines dates : ' + f.titre"
+            >
+              <p class="formulaire__aide">Tous les champs sont obligatoires, sauf le téléphone.</p>
+
+              <div class="champ">
+                <label [for]="'demande-' + f.id + '-nom'">Nom et prénom</label>
+                <input
+                  [id]="'demande-' + f.id + '-nom'"
+                  type="text"
+                  formControlName="nom"
+                  autocomplete="name"
+                  required
+                  [attr.aria-invalid]="!!erreur('nom')"
+                  [attr.aria-describedby]="erreur('nom') ? 'demande-' + f.id + '-nom-erreur' : null"
+                />
+                @if (erreur('nom'); as e) {
+                  <p class="champ__erreur" [id]="'demande-' + f.id + '-nom-erreur'">{{ e }}</p>
+                }
+              </div>
+
+              <div class="champ">
+                <label [for]="'demande-' + f.id + '-telephone'">Téléphone (facultatif)</label>
+                <input
+                  [id]="'demande-' + f.id + '-telephone'"
+                  type="tel"
+                  formControlName="telephone"
+                  autocomplete="tel"
+                  inputmode="tel"
+                  [attr.aria-invalid]="!!erreur('telephone')"
+                  [attr.aria-describedby]="
+                    erreur('telephone') ? 'demande-' + f.id + '-telephone-erreur' : null
+                  "
+                />
+                @if (erreur('telephone'); as e) {
+                  <p class="champ__erreur" [id]="'demande-' + f.id + '-telephone-erreur'">
+                    {{ e }}
+                  </p>
+                }
+              </div>
+
+              <div class="champ">
+                <label [for]="'demande-' + f.id + '-email'">E-mail</label>
+                <input
+                  [id]="'demande-' + f.id + '-email'"
+                  type="email"
+                  formControlName="email"
+                  autocomplete="email"
+                  required
+                  [attr.aria-invalid]="!!erreur('email')"
+                  [attr.aria-describedby]="
+                    erreur('email') ? 'demande-' + f.id + '-email-erreur' : null
+                  "
+                />
+                @if (erreur('email'); as e) {
+                  <p class="champ__erreur" [id]="'demande-' + f.id + '-email-erreur'">{{ e }}</p>
+                }
+              </div>
+
+              <div class="champ">
+                <label [for]="'demande-' + f.id + '-formation'">Formation visée</label>
+                <select
+                  [id]="'demande-' + f.id + '-formation'"
+                  formControlName="formation"
+                  required
+                  [attr.aria-invalid]="!!erreur('formation')"
+                  [attr.aria-describedby]="
+                    erreur('formation') ? 'demande-' + f.id + '-formation-erreur' : null
+                  "
+                >
+                  @for (option of formations; track option.id) {
+                    <option [value]="option.id">{{ option.titre }}</option>
+                  }
+                </select>
+                @if (erreur('formation'); as e) {
+                  <p class="champ__erreur" [id]="'demande-' + f.id + '-formation-erreur'">
+                    {{ e }}
+                  </p>
+                }
+              </div>
+
+              <!-- Champ piège anti-spam : invisible et ignoré par les lecteurs d’écran. -->
+              <div class="champ-piege" aria-hidden="true">
+                <label [for]="'demande-' + f.id + '-site'">Site web</label>
+                <input
+                  [id]="'demande-' + f.id + '-site'"
+                  type="text"
+                  formControlName="site_web"
+                  tabindex="-1"
+                  autocomplete="off"
+                />
+              </div>
+
+              <div class="champ champ--case">
+                <input
+                  [id]="'demande-' + f.id + '-rgpd'"
+                  type="checkbox"
+                  formControlName="rgpd"
+                  required
+                  [attr.aria-invalid]="!!erreur('rgpd')"
+                  [attr.aria-describedby]="
+                    erreur('rgpd') ? 'demande-' + f.id + '-rgpd-erreur' : null
+                  "
+                />
+                <label [for]="'demande-' + f.id + '-rgpd'"
+                  >J’accepte que mes coordonnées soient utilisées pour me répondre, conformément à
+                  la <a routerLink="/confidentialite">politique de confidentialité</a>.</label
+                >
+                @if (erreur('rgpd'); as e) {
+                  <p class="champ__erreur" [id]="'demande-' + f.id + '-rgpd-erreur'">{{ e }}</p>
+                }
+              </div>
+
+              @if (etat() === 'erreur') {
+                <p class="formulaire__echec" role="alert">{{ messageErreur() }}</p>
+              }
+
+              <button type="submit" class="bouton" [disabled]="etat() === 'envoi'">
+                {{ etat() === 'envoi' ? 'Envoi en cours…' : 'Envoyer' }}
+              </button>
+            </form>
+          }
+        }
+      </div>
+    </li>
+  }
+</ul>

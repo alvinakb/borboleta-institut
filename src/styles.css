@@ -318,6 +318,119 @@ h2 {
   margin-top: var(--esp-4);
 }
 
+/* ---------- Grand visuel plein écran (accueil, pages de soin, centre de formation) ----------
+   Section sombre : emplacement-image [pleinEcran] [sombre] en fond (voile compris), texte en
+   --fond centré par-dessus (14,8:1 sur espresso voilé). */
+.hero {
+  position: relative;
+  display: grid;
+  min-height: calc(100vh - var(--hauteur-entete));
+  min-height: calc(100svh - var(--hauteur-entete));
+  overflow: hidden;
+}
+.hero > * {
+  grid-area: 1 / 1;
+}
+.hero__image {
+  min-height: inherit;
+}
+.hero__texte {
+  position: relative;
+  z-index: 1;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--esp-5);
+  padding-block: var(--esp-8);
+  text-align: center;
+}
+.hero .titre-page {
+  max-width: 18ch;
+}
+.hero__phrase {
+  max-width: 38rem;
+  font-size: var(--taille-texte);
+}
+.hero .groupe-boutons {
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--esp-2);
+}
+
+/* Emplacement photo posé directement sur une section --fond-alt : aplat nude pour qu’il reste
+   visible (sinon même couleur que le fond). */
+.section--alt .deux-colonnes > app-emplacement-image .emplacement {
+  background: var(--nude);
+}
+
+/* ---------- Étapes numérotées (déroulé d’une séance, journée de formation) ---------- */
+.etapes {
+  list-style: none;
+  margin: var(--esp-6) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--esp-6);
+}
+@media (min-width: 900px) {
+  .etapes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.etape {
+  display: flex;
+  flex-direction: column;
+  gap: var(--esp-3);
+  max-width: none;
+}
+/* Numéro : Fraunces, brun (5,7:1 sur --fond-alt). */
+.etape__numero {
+  font-family: var(--police-titre);
+  font-optical-sizing: auto;
+  font-size: var(--taille-h2);
+  line-height: 1;
+  color: var(--brun);
+}
+.etape p {
+  color: var(--texte-doux);
+}
+
+/* ---------- 5. Ligne de tarif (page Tarifs, pages de soin) ----------
+   Nom à gauche, durée en petit texte, prix à droite en brun 600 et chiffres tabulaires. */
+.liste-tarifs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--ligne);
+}
+.ligne-tarif {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--esp-4);
+  padding: var(--esp-4) 0;
+  border-bottom: 1px solid var(--ligne);
+  max-width: none;
+}
+.ligne-tarif__nom {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.ligne-tarif__duree {
+  font-size: var(--taille-petit);
+  color: var(--texte-doux);
+}
+/* Prix : brun 600 (6,4:1 sur --fond, 5,7:1 sur --fond-alt). */
+.ligne-tarif__prix {
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--brun);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-align: right;
+}
+
 /* ---------- 5. Boutons ---------- */
 .bouton {
   display: inline-flex;

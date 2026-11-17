@@ -2,41 +2,27 @@
   <div class="conteneur">
     <p class="surtitre">Centre de formation</p>
     <h1 class="titre-page">Calendrier des sessions</h1>
-    <p class="chapo">Prochaines sessions : nous consulter.</p>
+    <p class="chapo">
+      Prochaines sessions : nous consulter. Les dates sont fixées au fil de l’année, en petit
+      groupe. Choisissez une formation et laissez-nous vos coordonnées : nous vous prévenons dès
+      qu’une session est ouverte.
+    </p>
   </div>
 </section>
 
-<section class="section">
-  <div class="conteneur deux-colonnes" style="align-items: start">
-    <div class="flux">
-      <p class="surtitre">Les formations</p>
-      <h2 class="titre">Être informée des prochaines dates</h2>
-      <p>
-        Les dates sont fixées au fil de l’année, en petit groupe. Laissez-nous vos coordonnées et la
-        formation qui vous intéresse : nous vous prévenons dès qu’une session est ouverte.
-      </p>
-      <ul>
-        @for (f of formations; track f.id) {
-          <li>
-            <a routerLink="/formations" [fragment]="f.id">{{ f.titre }}</a> : prochaine session,
-            nous consulter
-          </li>
-        }
-      </ul>
-    </div>
-    <!-- Emplacement du formulaire « Être informée des prochaines dates » (étape contact-o2switch). -->
-    <div class="emplacement-formulaire flux" id="formulaire-dates">
-      <h3>Formulaire « Être informée des prochaines dates »</h3>
-      <p>
-        Le formulaire sera ajouté à l’étape suivante. En attendant, écrivez-nous via la page
-        contact.
-      </p>
-      <a class="bouton" routerLink="/contact">Nous contacter</a>
-    </div>
+<section class="section" aria-labelledby="titre-dates">
+  <div class="conteneur">
+    <h2 class="titre" id="titre-dates">Être informée des prochaines dates</h2>
+    <app-demande-formation class="calendrier__cartes" />
   </div>
 </section>
 
-<app-bloc-cta surtitre="Prise en charge" titre="Pensez au" motCle="financement" [sombre]="true">
+<app-bloc-cta
+  [alt]="true"
+  surtitre="Prise en charge"
+  titre="Pensez au financement"
+  texte="Organisme certifié Qualiopi : CPF, OPCO, FAFCEA ou France Travail."
+>
   <a class="bouton" routerLink="/financement">Le financement</a>
-  <a class="bouton bouton--clair" routerLink="/inscription">S’inscrire</a>
+  <a class="lien-texte" routerLink="/formations">Le centre de formation</a>
 </app-bloc-cta>

@@ -1,0 +1,54 @@
+:host {
+  display: block;
+}
+
+.soin__sous-titre {
+  margin-top: var(--esp-6);
+}
+
+/* ---------- Tarifs ---------- */
+.tarifs {
+  scroll-margin-top: var(--hauteur-entete);
+}
+.tarifs__grille {
+  display: grid;
+  gap: var(--esp-6);
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .tarifs__grille {
+    grid-template-columns: 1fr 1.3fr;
+    gap: var(--esp-8);
+  }
+}
+.tarifs__complement {
+  margin: var(--esp-6) 0 var(--esp-3);
+}
+
+/* ---------- Précautions ---------- */
+.precautions {
+  align-items: start;
+}
+.precautions__liste {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.precautions__liste li {
+  position: relative;
+  padding-left: var(--esp-5);
+}
+.precautions__liste li + li {
+  margin-top: var(--esp-3);
+}
+/* Puce : petit losange taupe (décor uniquement). */
+.precautions__liste li::before {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  background: var(--taupe);
+  transform: rotate(45deg);
+}

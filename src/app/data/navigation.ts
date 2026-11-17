@@ -46,11 +46,8 @@ export const ROUTES_FORMATION: readonly string[] = [
   '/inscription',
 ];
 
-/**
- * Cible du bouton « Demander une formation » (barre fixe mobile).
- * Passe 2 : quand la section « Prochaines sessions » existera sur /formations avec
- * id="sessions", remplacer par { lien: '/formations', fragment: 'sessions' }.
- */
+/** Cible du bouton « Demander une formation » (barre fixe mobile) : la section des sessions. */
 export const DEMANDE_FORMATION: { readonly lien: string; readonly fragment?: string } = {
-  lien: '/inscription',
+  lien: '/formations',
+  fragment: 'sessions',
 };

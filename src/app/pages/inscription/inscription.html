@@ -13,7 +13,7 @@
   <div class="conteneur">
     <ol class="grille" style="padding: 0; list-style: none">
       <li class="flux">
-        <p class="surtitre">1 · Le formulaire</p>
+        <p class="surtitre">Le formulaire</p>
         <h2 class="titre">Par le site</h2>
         <p>Remplissez le formulaire de contact en précisant la formation visée.</p>
         <a class="bouton" routerLink="/contact">Remplir le formulaire</a>
@@ -21,7 +21,7 @@
       <!-- Étape masquée tant que TELEPHONE et WHATSAPP_NUMERO sont vides (data/site-info.ts). -->
       @if (telephone || whatsapp) {
         <li class="flux">
-          <p class="surtitre">2 · Par téléphone ou WhatsApp</p>
+          <p class="surtitre">Par téléphone ou WhatsApp</p>
           <h2 class="titre">Échanger de vive voix</h2>
           <p>Une question avant de vous lancer ? Échangeons directement.</p>
           <div class="groupe-boutons">
@@ -37,7 +37,7 @@
         </li>
       }
       <li class="flux">
-        <p class="surtitre">{{ telephone || whatsapp ? 3 : 2 }} · Mon Compte Formation</p>
+        <p class="surtitre">Mon Compte Formation</p>
         <h2 class="titre">Via le CPF</h2>
         <p>Vous pouvez mobiliser vos droits à la formation via Mon Compte Formation.</p>
         <a class="bouton bouton--contour" routerLink="/financement">Le financement</a>

@@ -7,34 +7,62 @@
       tarifs sont identiques à ceux affichés sur Planity, où vous pouvez réserver à tout moment.
     </p>
     <nav class="sommaire" aria-label="Catégories de soins">
-      @for (categorie of categories; track categorie.id) {
-        <a class="lien-fleche" [routerLink]="[]" [fragment]="categorie.id">{{ categorie.titre }}</a>
-      }
+      <ul>
+        @for (c of categories; track c.id) {
+          <li>
+            <a [routerLink]="[]" [fragment]="c.id">{{ c.titre }}</a>
+          </li>
+        }
+      </ul>
     </nav>
   </div>
 </section>
 
 <section class="section">
   <div class="conteneur">
-    @for (categorie of categories; track categorie.id) {
-      <section
-        class="categorie"
-        [id]="categorie.id"
-        [attr.aria-labelledby]="'titre-' + categorie.id"
-      >
-        <h2 class="titre" [id]="'titre-' + categorie.id">{{ categorie.titre }}</h2>
-        <p>{{ categorie.intro }}</p>
-        <ul class="liste-tarifs">
-          @for (soin of categorie.soins; track soin.nom) {
-            <li class="ligne">
-              <span class="ligne__nom"
-                >{{ soin.nom }} <span class="ligne__duree">({{ soin.duree }})</span></span
-              >
-              <span class="ligne__prix">{{ formaterPrix(soin.prix) }}</span>
-              <app-bouton-reserver variante="contour" [aideAcces]="'Réserver : ' + soin.nom" />
-            </li>
+    @for (c of categories; track c.id) {
+      @let ouverte = estOuverte(c.id);
+      <section class="categorie" [id]="c.id" [attr.aria-labelledby]="'titre-' + c.id">
+        <h2 class="categorie__titre" [id]="'titre-' + c.id">
+          @if (ordinateur()) {
+            {{ c.titre }}
+          } @else {
+            <button
+              type="button"
+              class="categorie__bouton"
+              [attr.aria-expanded]="ouverte"
+              [attr.aria-controls]="'contenu-' + c.id"
+              (click)="basculer(c.id)"
+            >
+              <span class="categorie__nom">
+                {{ c.titre }}
+                <span class="categorie__min">{{ aPartirDe(c) }}</span>
+              </span>
+              <span class="categorie__icone" aria-hidden="true"></span>
+            </button>
           }
-        </ul>
+        </h2>
+        <div class="categorie__contenu" [id]="'contenu-' + c.id" [hidden]="!ouverte">
+          <p class="categorie__intro">{{ c.intro }}</p>
+          <ul class="liste-tarifs">
+            @for (s of c.soins; track s.nom) {
+              <li class="ligne-tarif">
+                <span class="ligne-tarif__nom"
+                  >{{ s.nom }} <span class="ligne-tarif__duree">{{ duree(s.duree) }}</span></span
+                >
+                <span class="ligne-tarif__prix">{{ formaterPrix(s.prix) }}</span>
+              </li>
+            }
+          </ul>
+          <div class="categorie__actions">
+            <app-bouton-reserver [aideAcces]="'Réserver : ' + c.titre" />
+            @if (aUnePage(c.id)) {
+              <a class="lien-fleche" [routerLink]="['/soins', c.id]"
+                >Découvrir le soin<span class="visuellement-cache"> : {{ c.titre }}</span></a
+              >
+            }
+          </div>
+        </div>
       </section>
     }
   </div>
@@ -44,8 +72,7 @@
   [alt]="true"
   surtitre="Offrir"
   titre="Une envie de faire plaisir ?"
-  motCle="Les cartes cadeaux"
-  texte="Disponibles en institut, pour un soin, une cure ou un montant libre."
+  texte="Les cartes cadeaux sont disponibles en institut, pour un soin, une cure ou un montant libre."
 >
   <a class="bouton" routerLink="/cartes-cadeaux">Les cartes cadeaux</a>
   <app-bouton-reserver libelle="Réserver un soin" variante="contour" />

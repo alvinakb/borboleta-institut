@@ -1,0 +1,35 @@
+<section class="soins" [attr.aria-labelledby]="idTitre">
+  <div class="conteneur soins__entete" appApparition>
+    @if (surtitre()) {
+      <p class="surtitre">{{ surtitre() }}</p>
+    }
+    <h2 class="titre" [id]="idTitre">{{ titre() }}</h2>
+  </div>
+  <ul class="colonnes" [style.--nb-colonnes]="colonnes().length" appApparition>
+    @for (c of colonnes(); track c.id) {
+      <li class="colonne">
+        <app-emplacement-image
+          class="colonne__image"
+          [fichier]="'assets/images/accueil-soin-' + c.id + '.jpg'"
+          [pleinEcran]="true"
+        />
+        <div class="colonne__panneau">
+          <h3 class="colonne__nom">{{ c.nom }}</h3>
+          <a class="colonne__lien" [routerLink]="['/soins', c.id]"
+            >En savoir plus<span class="visuellement-cache"> : {{ c.nom }}</span></a
+          >
+        </div>
+      </li>
+    }
+  </ul>
+  @if (autres().length) {
+    <div class="conteneur">
+      <p class="voir-aussi">
+        <span class="voir-aussi__libelle">Voir aussi :</span>
+        @for (a of autres(); track a.id; let dernier = $last) {
+          <a [routerLink]="['/soins', a.id]">{{ a.nom }}</a>{{ dernier ? '' : ', ' }}
+        }
+      </p>
+    </div>
+  }
+</section>
