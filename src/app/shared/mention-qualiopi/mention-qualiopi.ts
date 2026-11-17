@@ -3,25 +3,28 @@ import { Component, input } from '@angular/core';
 import { LOGO_QUALIOPI_PRESENT } from '../../data/tarifs.generated';
 
 /**
- * Mention Qualiopi : logo officiel (public/images/qualiopi.png, affiché seulement s’il a été
- * déposé, détecté au build par scripts/generer-donnees.mjs) et catégorie d’actions certifiée.
- * Le logo est toujours posé sur un fond clair, comme l’exige sa charte d’usage.
+ * Mention Qualiopi : catégorie d’actions certifiée, et logo officiel
+ * (public/images/qualiopi.png) affiché seulement s’il a été déposé (détecté au build par
+ * scripts/generer-donnees.mjs) ET seulement sur fond clair : jamais dans le pied de page sombre,
+ * qui reçoit la version texte (entrée « sombre »).
  */
 @Component({
   selector: 'app-mention-qualiopi',
   template: `
     <div class="qualiopi" [class.qualiopi--sombre]="sombre()" [class.qualiopi--centre]="centre()">
-      @if (logo) {
-        <span class="qualiopi__logo">
-          <img
-            src="images/qualiopi.png"
-            alt="Logo Qualiopi, processus certifié, République française"
-            width="240"
-            height="120"
-            loading="lazy"
-            decoding="async"
-          />
-        </span>
+      @if (logo && !sombre()) {
+        <img
+          class="qualiopi__logo"
+          src="images/qualiopi.png"
+          alt="Logo Qualiopi, processus certifié, République française"
+          width="240"
+          height="120"
+          loading="lazy"
+          decoding="async"
+        />
+      }
+      @if (sombre()) {
+        <p class="qualiopi__titre">Centre de formation certifié Qualiopi</p>
       }
       <p class="qualiopi__mention">
         La certification qualité a été délivrée au titre de la catégorie d’actions suivante :
@@ -41,15 +44,19 @@ import { LOGO_QUALIOPI_PRESENT } from '../../data/tarifs.generated';
       text-align: center;
     }
     .qualiopi__logo {
-      display: inline-flex;
-      padding: var(--esp-2) var(--esp-3);
-      background: #fff;
-      border-radius: 8px;
-    }
-    .qualiopi__logo img {
       display: block;
-      height: 56px;
+      height: 64px;
       width: auto;
+    }
+    .qualiopi--sombre {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--esp-1);
+    }
+    .qualiopi__titre {
+      margin: 0;
+      font-weight: 600;
+      color: var(--fond);
     }
     .qualiopi__mention {
       margin: 0;
@@ -63,7 +70,7 @@ import { LOGO_QUALIOPI_PRESENT } from '../../data/tarifs.generated';
   `,
 })
 export class MentionQualiopi {
-  /** Sur fond espresso (pied de page). */
+  /** Sur fond espresso (pied de page) : version texte seule, jamais de logo. */
   readonly sombre = input(false);
   /** Centré (bandeau confiance). */
   readonly centre = input(false);
