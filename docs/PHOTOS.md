@@ -2,12 +2,21 @@
 
 Liste de toutes les photos prévues sur le site. En attendant, chaque emplacement affiche un aplat `--fond-alt` (ou `--espresso` voilé pour les grands visuels sombres) avec le papillon du logo en filigrane. Aucun nom de fichier n’est visible à l’écran : le chemin attendu est noté dans l’attribut `data-photo` de l’emplacement (composant `src/app/shared/emplacement-image`).
 
+## Remplacement automatique
+
+Il suffit de déposer le fichier dans `src/assets/images/` **avec exactement le nom indiqué** (minuscules, sans espace ni accent) puis de relancer `npm run build` : au prochain build, la vraie photo remplace son emplacement, sans toucher au code.
+
+- Le script `scripts/generer-donnees.mjs` (lancé par `npm run build` et `npm start`) liste les photos et vidéos présentes dans `src/assets/images/` et écrit cette liste dans `src/app/data/tarifs.generated.ts` (`MEDIAS_PRESENTS`).
+- Le composant `emplacement-image` affiche alors une vraie image (`width`/`height`, texte alternatif, `loading="lazy"` sauf l’image du haut de page, `object-fit: cover`), avec le même ratio et le même arrondi que l’emplacement. Tant que le fichier manque, l’aplat et le papillon restent affichés.
+- Le fichier JPG portant le nom indiqué est obligatoire. Les versions WebP `nom-480.webp`, `nom-960.webp`, `nom-1600.webp` sont facultatives : si elles sont déposées à côté, elles sont proposées automatiquement aux navigateurs (`srcset`).
+- Avec `npm start`, relancer la commande après avoir déposé un fichier.
+
 ## Consignes (docs/DESIGN-SYSTEM.md, partie 6)
 
 - **Ce que l’on montre** : des mains, des gestes, des soins, des serviettes blanches, une lumière naturelle et douce, des tons chauds (nude rosé, brun), comme sur l’Instagram @borboletainstitut.
 - **Jamais le visage de Mariline.** Pour les clientes ou stagiaires photographiées : accord écrit, visage hors cadre ou de dos de préférence.
 - **Pas de banque d’images générique.**
-- **Formats** : AVIF ou WebP, avec repli JPG. Exporter chaque photo en 480, 960 et 1600 px de large (`srcset`), avec le même nom suivi de la largeur : `accueil-hero-480.webp`, `accueil-hero-960.webp`, `accueil-hero-1600.webp`, `accueil-hero-1600.jpg`.
+- **Formats** : JPG obligatoire, au nom exact du tableau et en 1600 px de large (ex. `accueil-hero.jpg`) ; versions WebP facultatives en 480, 960 et 1600 px de large (`srcset`), avec le même nom suivi de la largeur : `accueil-hero-480.webp`, `accueil-hero-960.webp`, `accueil-hero-1600.webp`.
 - **Chargement** : `loading="lazy"` partout sauf l’image du haut de page (grand visuel), qui reçoit `fetchpriority="high"`.
 - **Dimensions** : toujours indiquer `width` et `height` (ou le ratio) pour éviter les sauts de mise en page.
 - **Contraste** : sur les grands visuels sombres, le texte reste posé sur un voile sombre (déjà prévu dans l’emplacement) ; sur les colonnes de soins, il reste dans le panneau clair.
@@ -18,7 +27,8 @@ Liste de toutes les photos prévues sur le site. En attendant, chaque emplacemen
 
 | Fichier | Page | Emplacement | Format conseillé | Ce qu’elle doit montrer |
 |---|---|---|---|---|
-| `assets/images/accueil-hero.jpg` | Accueil | Grand visuel plein écran (sous le titre « Drainage lymphatique à Draveil ») | Paysage 16:9 (1600 × 900) et recadrage portrait 9:16 pour mobile ; sujet centré, zone calme au centre pour le texte | Mains en plein drainage sur une jambe ou un dos, serviette blanche, lumière douce. Image du haut : pas de lazy. |
+| `assets/images/accueil-hero.mp4` | Accueil | Grand visuel plein écran : vidéo courte en boucle, muette, sans contrôles (facultative) | MP4 H.264, 1920 × 1080, 6 à 12 s en boucle, sans son, 2 à 4 Mo maximum. Si possible, une version 1280 × 720 pour mobile nommée `accueil-hero-720.mp4` | Mains et gestes de soin en lumière douce, mouvements lents, **jamais le visage de Mariline**. Raccord propre entre la fin et le début pour une boucle invisible. Le texte reste posé sur le voile sombre. |
+| `assets/images/accueil-hero.jpg` | Accueil | Grand visuel plein écran (sous le titre « Drainage lymphatique à Draveil ») ; image de secours de la vidéo | Paysage 16:9 (1600 × 900) et recadrage portrait 9:16 pour mobile ; sujet centré, zone calme au centre pour le texte | Si une vidéo est fournie : une image tirée de la vidéo. Sinon : mains en plein drainage sur une jambe ou un dos, serviette blanche, lumière douce. Elle sert d’image d’attente de la vidéo, et elle remplace la vidéo pour les personnes qui préfèrent réduire les animations, en mode économie de données et sur mobile en connexion lente (2G, 3G). Sans vidéo, elle s’affiche avec un zoom très lent. Image du haut : pas de lazy. |
 | `assets/images/accueil-soin-drainage-renata-franca.jpg` | Accueil | Colonne « Drainage Renata França » | Portrait haut 1:2 à 1:3 (800 × 1800), sujet dans le tiers haut (le bas est couvert par le panneau du nom) | Mains, geste de pompage sur la jambe |
 | `assets/images/accueil-soin-miracle-face.jpg` | Accueil | Colonne « Miracle Face » | Portrait haut 1:2 à 1:3 | Mains sur le visage d’une cliente (pas Mariline), cadrage serré sur les mains |
 | `assets/images/accueil-soin-remodelage.jpg` | Accueil | Colonne « Remodelage » | Portrait haut 1:2 à 1:3 | Geste de remodelage (palper rouler) sur la cuisse ou le ventre |
@@ -97,6 +107,19 @@ Chaque page de contenu s’ouvre sur un grand visuel plein écran sombre : le te
 | `assets/images/calendrier-hero.jpg` | `/calendrier` | Grand visuel plein écran (« Calendrier des sessions ») | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | La salle de formation prête à accueillir un groupe |
 | `assets/images/inscription-hero.jpg` | `/inscription` | Grand visuel plein écran (« S’inscrire à une formation ») | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Binôme de stagiaires en pratique, mains sur la jambe |
 | `assets/images/contact-facade.jpg` | `/contact` | Grand visuel plein écran (« Venez nous rencontrer ») | Paysage 16:9 (1600 × 900) + recadrage portrait 9:16 pour mobile, zone calme au centre pour le texte | Entrée de l’institut, plaque, sans passants reconnaissables |
+
+## Galerie « L’institut en images » (page `/institut`)
+
+Six photos en bande horizontale, défilable au doigt ou avec les flèches (jamais de défilement automatique). Trois photos visibles sur ordinateur, une et un peu de la suivante sur mobile. Aucun visage. Le texte alternatif de chaque photo est déjà écrit dans `src/app/pages/institut/institut.ts` : si la photo montre autre chose, le modifier en même temps.
+
+| Fichier | Format conseillé | Ce qu’elle doit montrer (texte alternatif prévu) |
+|---|---|---|
+| `assets/images/institut-1.jpg` | Paysage 3:2 (1600 × 1067) | La cabine de soin, vue d’ensemble (« La cabine de soin de Borboleta Institut à Draveil ») |
+| `assets/images/institut-2.jpg` | Paysage 3:2 (1600 × 1067) | L’espace d’accueil (« L’espace d’accueil de l’institut ») |
+| `assets/images/institut-3.jpg` | Paysage 3:2 (1600 × 1067) | Les produits utilisés en cabine, alignés, lumière douce (« Les produits utilisés pendant les soins ») |
+| `assets/images/institut-4.jpg` | Paysage 3:2 (1600 × 1067) | La table de soin préparée, linge blanc (« La table de soin préparée avec du linge blanc ») |
+| `assets/images/institut-5.jpg` | Paysage 3:2 (1600 × 1067) | Un détail de décoration (plante, papillon, objet), cadrage serré (« Un détail de la décoration de l’institut ») |
+| `assets/images/institut-6.jpg` | Paysage 3:2 (1600 × 1067) | L’ambiance générale, lumière naturelle (« L’ambiance calme et lumineuse de l’institut ») |
 
 ## Logos et fichiers graphiques (déjà en place)
 
