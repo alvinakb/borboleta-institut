@@ -28,6 +28,14 @@ export class Header {
 
   private readonly hote = inject<ElementRef<HTMLElement>>(ElementRef);
 
+  /** Lien d'évitement : donne le focus au contenu sans changer de page (le <base href> ferait revenir à l'accueil). */
+  allerAuContenu(evenement: Event): void {
+    evenement.preventDefault();
+    const contenu = document.getElementById('contenu');
+    contenu?.focus();
+    contenu?.scrollIntoView();
+  }
+
   constructor() {
     inject(Router)
       .events.pipe(

@@ -1,5 +1,11 @@
-import { ApplicationConfig, LOCALE_ID, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { registerLocaleData } from '@angular/common';
+import {
+  ApplicationConfig,
+  LOCALE_ID,
+  inject,
+  provideAppInitializer,
+  provideBrowserGlobalErrorListeners,
+} from '@angular/core';
+import { ViewportScroller, registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { TitleStrategy, provideRouter, withInMemoryScrolling } from '@angular/router';
 
@@ -17,5 +23,7 @@ export const appConfig: ApplicationConfig = {
     ),
     { provide: TitleStrategy, useClass: SeoTitleStrategy },
     { provide: LOCALE_ID, useValue: 'fr' },
+    // Décalage pour que les ancres ne passent pas sous le header collant.
+    provideAppInitializer(() => inject(ViewportScroller).setOffset([0, 96])),
   ],
 };
