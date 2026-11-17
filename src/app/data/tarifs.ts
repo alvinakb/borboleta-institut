@@ -17,6 +17,13 @@ export function formaterPrix(montant: number): string {
   return formatEuro.format(montant);
 }
 
+/** Durée lisible : « 30min » devient « 30 min », « 1h30 » devient « 1 h 30 ». */
+export function formaterDuree(texte: string): string {
+  return texte
+    .replace(/(\d)\s*h\s*(\d*)/, (_, h: string, m: string) => `${h} h${m ? ' ' + m : ''}`)
+    .replace(/(\d)\s*min/, '$1 min');
+}
+
 /** Retourne la catégorie correspondant à l’identifiant, ou undefined. */
 export function categorieParId(id: string): CategorieSoins | undefined {
   return CATEGORIES_SOINS.find((c) => c.id === id);

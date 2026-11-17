@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 
 import { SITE_INFO } from '../../data/site-info';
 import { lienPageSoin } from '../../data/soins-detail';
-import { texteAPartirDe } from '../../data/tarifs';
+import { formaterDuree, texteAPartirDe } from '../../data/tarifs';
 import type { CategorieSoins } from '../../data/types';
 import { EmplacementImage } from '../emplacement-image/emplacement-image';
 
@@ -59,6 +59,6 @@ export class CarteSoin {
     const soins = this.categorie().soins;
     if (!soins.length) return null;
     const moinsCher = soins.reduce((a, b) => (b.prix < a.prix ? b : a));
-    return moinsCher.duree.replace(/(\d)\s*min/, '$1 min');
+    return formaterDuree(moinsCher.duree);
   });
 }

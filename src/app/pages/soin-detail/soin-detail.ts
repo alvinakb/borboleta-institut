@@ -4,11 +4,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { map } from 'rxjs';
 
 import { detailSoin, tarifsComplementaires } from '../../data/soins-detail';
-import { categorieParId, formaterPrix } from '../../data/tarifs';
+import { categorieParId } from '../../data/tarifs';
 import { Accordeon } from '../../shared/accordeon/accordeon';
 import { Apparition } from '../../shared/apparition/apparition';
 import { BlocCta } from '../../shared/bloc-cta/bloc-cta';
 import { BoutonReserver } from '../../shared/bouton-reserver/bouton-reserver';
+import { LigneTarif } from '../../shared/carte-soin/ligne-tarif';
 import { ColonnesSoins } from '../../shared/colonnes-soins/colonnes-soins';
 import { EmplacementImage } from '../../shared/emplacement-image/emplacement-image';
 
@@ -29,6 +30,7 @@ import { EmplacementImage } from '../../shared/emplacement-image/emplacement-ima
     BoutonReserver,
     ColonnesSoins,
     EmplacementImage,
+    LigneTarif,
   ],
   templateUrl: './soin-detail.html',
   styleUrl: './soin-detail.css',
@@ -45,12 +47,4 @@ export class SoinDetail {
     const d = this.detail();
     return d ? tarifsComplementaires(d) : [];
   });
-  protected readonly formaterPrix = formaterPrix;
-
-  /** « 30min » devient « 30 min », « 1h30 » devient « 1 h 30 ». */
-  protected duree(texte: string): string {
-    return texte
-      .replace(/(\d)\s*h\s*(\d*)/, (_, h, m) => `${h} h${m ? ' ' + m : ''}`)
-      .replace(/(\d)\s*min/, '$1 min');
-  }
 }

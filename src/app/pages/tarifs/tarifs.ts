@@ -3,28 +3,36 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { aUnePageSoin } from '../../data/soins-detail';
-import { CATEGORIES_AVEC_SOINS, formaterPrix, texteAPartirDe } from '../../data/tarifs';
+import { CATEGORIES_SOINS, texteAPartirDe } from '../../data/tarifs';
 import { BlocCta } from '../../shared/bloc-cta/bloc-cta';
 import { BoutonReserver } from '../../shared/bouton-reserver/bouton-reserver';
+import { LigneTarif } from '../../shared/carte-soin/ligne-tarif';
 
 /** Largeur à partir de laquelle toutes les catégories sont ouvertes (ordinateur). */
 const REQUETE_ORDINATEUR = '(min-width: 960px)';
 
+/** Catégories sans soin tarifé (contenu/tarifs.json) : renvoi vers leur page dédiée. */
+const RENVOIS_SANS_TARIF: Readonly<Record<string, { lien: string; libelle: string }>> = {
+  'cartes-cadeaux': { lien: '/cartes-cadeaux', libelle: 'Découvrir les cartes cadeaux' },
+};
+
 /**
  * Page Tarifs (docs/DESIGN-SYSTEM.md, partie 5, « Ligne de tarif ») : sommaire d’ancres,
  * nom à gauche, durée en petit texte, prix à droite en brun 600 et chiffres tabulaires.
- * Catégories repliables sur mobile, toutes ouvertes sur ordinateur. Un seul bouton « Réserver »
- * par catégorie, et un lien vers la page du soin quand elle existe.
+ * Catégories repliables sur mobile, toutes ouvertes sur ordinateur. Chaque ligne a un lien
+ * « Réserver » discret vers Planity ; un bouton principal « Réserver » par catégorie, et un lien
+ * vers la page du soin quand elle existe. Les catégories sans soin (cartes cadeaux) renvoient
+ * vers leur page.
  */
 @Component({
   selector: 'app-tarifs',
-  imports: [RouterLink, BlocCta, BoutonReserver],
+  imports: [RouterLink, BlocCta, BoutonReserver, LigneTarif],
   templateUrl: './tarifs.html',
   styleUrl: './tarifs.css',
 })
 export class Tarifs {
-  protected readonly categories = CATEGORIES_AVEC_SOINS;
-  protected readonly formaterPrix = formaterPrix;
+  /** Toutes les catégories de contenu/tarifs.json, dans l’ordre du fichier. */
+  protected readonly categories = CATEGORIES_SOINS;
   protected readonly aPartirDe = texteAPartirDe;
   protected readonly aUnePage = aUnePageSoin;
 
@@ -62,10 +70,7 @@ export class Tarifs {
     });
   }
 
-  /** « 30min » devient « 30 min », « 1h30 » devient « 1 h 30 ». */
-  protected duree(texte: string): string {
-    return texte
-      .replace(/(\d)\s*h\s*(\d*)/, (_, h, m) => `${h} h${m ? ' ' + m : ''}`)
-      .replace(/(\d)\s*min/, '$1 min');
+  protected renvoiSansTarif(id: string): { lien: string; libelle: string } {
+    return RENVOIS_SANS_TARIF[id] ?? { lien: '/contact', libelle: 'Nous contacter' };
   }
 }

@@ -66,8 +66,21 @@ export const LOGO_QUALIOPI_PRESENT = ${existsSync(resolve(racine, 'public/images
 export const CATEGORIES_SOINS: readonly CategorieSoins[] = ${JSON.stringify(categories, null, 2)};
 `;
 
+// Mise en forme Prettier (même style que le reste du code, pas de diff inutile).
+// Si Prettier n’est pas installé, le fichier est écrit tel quel.
+let sortie = contenu;
+try {
+  const prettier = await import('prettier');
+  const options = (await prettier.resolveConfig(cible)) ?? {};
+  sortie = await prettier.format(contenu, { ...options, filepath: cible });
+} catch (e) {
+  if (e?.code !== 'ERR_MODULE_NOT_FOUND') {
+    console.warn('Prettier : mise en forme ignorée (' + (e?.message ?? e) + ')');
+  }
+}
+
 mkdirSync(dirname(cible), { recursive: true });
-writeFileSync(cible, contenu, 'utf8');
+writeFileSync(cible, sortie, 'utf8');
 const nbSoins = categories.reduce((n, c) => n + c.soins.length, 0);
 console.log(
   `Données générées : ${categories.length} catégories, ${nbSoins} soins -> src/app/data/tarifs.generated.ts`,

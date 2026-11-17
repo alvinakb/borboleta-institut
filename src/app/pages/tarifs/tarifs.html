@@ -36,7 +36,9 @@
             >
               <span class="categorie__nom">
                 {{ c.titre }}
-                <span class="categorie__min">{{ aPartirDe(c) }}</span>
+                @if (aPartirDe(c); as min) {
+                  <span class="categorie__min">{{ min }}</span>
+                }
               </span>
               <span class="categorie__icone" aria-hidden="true"></span>
             </button>
@@ -44,24 +46,27 @@
         </h2>
         <div class="categorie__contenu" [id]="'contenu-' + c.id" [hidden]="!ouverte">
           <p class="categorie__intro">{{ c.intro }}</p>
-          <ul class="liste-tarifs">
-            @for (s of c.soins; track s.nom) {
-              <li class="ligne-tarif">
-                <span class="ligne-tarif__nom"
-                  >{{ s.nom }} <span class="ligne-tarif__duree">{{ duree(s.duree) }}</span></span
+          @if (c.soins.length) {
+            <ul class="liste-tarifs">
+              @for (s of c.soins; track s.nom) {
+                <li appLigneTarif [soin]="s"></li>
+              }
+            </ul>
+            <div class="categorie__actions">
+              <app-bouton-reserver [aideAcces]="'Réserver : ' + c.titre" />
+              @if (aUnePage(c.id)) {
+                <a class="lien-fleche" [routerLink]="['/soins', c.id]"
+                  >Découvrir le soin<span class="visuellement-cache"> : {{ c.titre }}</span></a
                 >
-                <span class="ligne-tarif__prix">{{ formaterPrix(s.prix) }}</span>
-              </li>
-            }
-          </ul>
-          <div class="categorie__actions">
-            <app-bouton-reserver [aideAcces]="'Réserver : ' + c.titre" />
-            @if (aUnePage(c.id)) {
-              <a class="lien-fleche" [routerLink]="['/soins', c.id]"
-                >Découvrir le soin<span class="visuellement-cache"> : {{ c.titre }}</span></a
-              >
-            }
-          </div>
+              }
+            </div>
+          } @else {
+            <!-- Catégorie sans soin tarifé (cartes cadeaux) : renvoi vers sa page. -->
+            <div class="categorie__actions">
+              @let renvoi = renvoiSansTarif(c.id);
+              <a class="bouton" [routerLink]="renvoi.lien">{{ renvoi.libelle }}</a>
+            </div>
+          }
         </div>
       </section>
     }

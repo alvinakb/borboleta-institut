@@ -85,24 +85,14 @@
         <div appApparition>
           <ul class="liste-tarifs">
             @for (s of c.soins; track s.nom) {
-              <li class="ligne-tarif">
-                <span class="ligne-tarif__nom"
-                  >{{ s.nom }} <span class="ligne-tarif__duree">{{ duree(s.duree) }}</span></span
-                >
-                <span class="ligne-tarif__prix">{{ formaterPrix(s.prix) }}</span>
-              </li>
+              <li appLigneTarif [soin]="s"></li>
             }
           </ul>
           @if (complements().length) {
             <h3 class="tarifs__complement">Offres et cures associées</h3>
             <ul class="liste-tarifs">
               @for (s of complements(); track s.nom) {
-                <li class="ligne-tarif">
-                  <span class="ligne-tarif__nom"
-                    >{{ s.nom }} <span class="ligne-tarif__duree">{{ duree(s.duree) }}</span></span
-                  >
-                  <span class="ligne-tarif__prix">{{ formaterPrix(s.prix) }}</span>
-                </li>
+                <li appLigneTarif [soin]="s"></li>
               }
             </ul>
           }
