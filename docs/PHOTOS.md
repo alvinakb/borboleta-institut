@@ -95,3 +95,9 @@ Chaque page a deux photos : le grand visuel du haut et la photo du bloc « En qu
 | `public/images/logo-borboleta-clair.png` | Pied de page sur fond espresso |
 | `public/images/papillon.png` | Filigrane des emplacements photo (papillon du logo, transparent) |
 | Logo Qualiopi officiel | À fournir par Mariline : à placer dans la bande confiance de l’accueil et sur la page Financement. Ne pas utiliser de logo redessiné. |
+
+## Logo Qualiopi (à fournir par Mariline)
+
+| Fichier | Où | Consigne |
+|---|---|---|
+| `public/images/qualiopi.png` | Bandeau confiance de l’accueil, page Financement, pied de page | Logo officiel Qualiopi tel que remis avec le certificat (fond transparent ou blanc, environ 480 px de large). Il suffit de déposer le fichier puis de relancer `npm run build` : il s’affiche automatiquement sur fond blanc, à côté de la mention « actions de formation ». Tant qu’il manque, seule la mention est affichée. |

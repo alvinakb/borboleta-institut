@@ -3,10 +3,11 @@ import { RouterLink } from '@angular/router';
 
 import { LIENS_FOOTER } from '../../data/navigation';
 import { ADRESSE_COMPLETE, LIEN_ITINERAIRE, SITE_INFO } from '../../data/site-info';
+import { MentionQualiopi } from '../mention-qualiopi/mention-qualiopi';
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink],
+  imports: [MentionQualiopi, RouterLink],
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })

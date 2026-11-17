@@ -2,7 +2,7 @@
 // contenu/tarifs.json est la seule source des prix du site : ne jamais écrire un prix ailleurs.
 // Lancement : npm run donnees (lancé automatiquement avant npm start et npm run build).
 
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -59,6 +59,9 @@ const contenu = `// ============================================================
 import type { CategorieSoins } from './types';
 
 export const RESERVATION_PLANITY = ${JSON.stringify(brut.reservation_planity)};
+
+/** Vrai si le logo officiel Qualiopi a été déposé dans public/images/qualiopi.png. */
+export const LOGO_QUALIOPI_PRESENT = ${existsSync(resolve(racine, 'public/images/qualiopi.png'))};
 
 export const CATEGORIES_SOINS: readonly CategorieSoins[] = ${JSON.stringify(categories, null, 2)};
 `;

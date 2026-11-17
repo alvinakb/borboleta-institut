@@ -10,10 +10,12 @@ import { BlocCta } from '../../shared/bloc-cta/bloc-cta';
 import { BoutonReserver } from '../../shared/bouton-reserver/bouton-reserver';
 import { ColonnesSoins } from '../../shared/colonnes-soins/colonnes-soins';
 import { EmplacementImage } from '../../shared/emplacement-image/emplacement-image';
+import { MentionQualiopi } from '../../shared/mention-qualiopi/mention-qualiopi';
 
 @Component({
   selector: 'app-accueil',
   imports: [
+    MentionQualiopi,
     RouterLink,
     Accordeon,
     Apparition,

@@ -3,10 +3,11 @@ import { RouterLink } from '@angular/router';
 
 import { SITE_INFO } from '../../data/site-info';
 import { BlocCta } from '../../shared/bloc-cta/bloc-cta';
+import { MentionQualiopi } from '../../shared/mention-qualiopi/mention-qualiopi';
 
 @Component({
   selector: 'app-financement',
-  imports: [RouterLink, BlocCta],
+  imports: [MentionQualiopi, RouterLink, BlocCta],
   templateUrl: './financement.html',
 })
 export class Financement {

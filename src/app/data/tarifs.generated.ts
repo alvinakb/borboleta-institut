@@ -8,6 +8,9 @@ import type { CategorieSoins } from './types';
 
 export const RESERVATION_PLANITY = "https://www.planity.com/borboleta-institut-91210-draveil";
 
+/** Vrai si le logo officiel Qualiopi a été déposé dans public/images/qualiopi.png. */
+export const LOGO_QUALIOPI_PRESENT = false;
+
 export const CATEGORIES_SOINS: readonly CategorieSoins[] = [
   {
     "id": "offres-decouverte",
