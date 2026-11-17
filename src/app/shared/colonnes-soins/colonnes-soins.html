@@ -5,7 +5,7 @@
     }
     <h2 class="titre" [id]="idTitre">{{ titre() }}</h2>
   </div>
-  <ul class="colonnes" [style.--nb-colonnes]="colonnes().length" appApparition>
+  <ul class="colonnes" appApparition>
     @for (c of colonnes(); track c.id) {
       <li class="colonne">
         <app-emplacement-image

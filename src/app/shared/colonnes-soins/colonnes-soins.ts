@@ -22,8 +22,9 @@ function colonne(id: string): ColonneSoin {
 /**
  * Bandeau des soins en colonnes verticales (signature reprise du site Spa Renata França,
  * docs/DESIGN-SYSTEM.md, partie 10) : une colonne haute par famille de soins, photo en fond,
- * nom et lien « En savoir plus » vers /soins/<id>. Défilement horizontal au doigt sur mobile,
- * colonnes côte à côte sur ordinateur.
+ * nom et lien « En savoir plus » vers /soins/<id>. Défilement horizontal au doigt sur mobile
+ * et tablette (léger aimant) ; à partir de 1280 px, colonnes côte à côte, la colonne survolée
+ * s’élargit.
  *
  * Sur une page de soin, [exclure] retire le soin en cours ; les soins qui n’ont pas de colonne
  * sont proposés en liens texte sous le bandeau (« Voir aussi »).

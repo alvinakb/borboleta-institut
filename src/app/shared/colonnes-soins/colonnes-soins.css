@@ -12,23 +12,25 @@
   margin-top: var(--esp-2);
 }
 
-/* Mobile et tablette : défilement horizontal au doigt, sans faire défiler la page. */
+/* Mobile et tablette : défilement horizontal au doigt avec un léger aimant (proximity), sans
+   faire défiler la page. Le retrait d’aimantation est égal à la marge du conteneur. */
 .colonnes {
   list-style: none;
   margin: 0;
   display: flex;
   gap: var(--esp-3);
-  padding: 0 20px var(--esp-3);
+  padding: 0 var(--marge-laterale) var(--esp-3);
   overflow-x: auto;
   overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: 20px;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--marge-laterale);
   scrollbar-width: thin;
   scrollbar-color: var(--taupe) transparent;
 }
 .colonne {
   position: relative;
   flex: 0 0 min(72vw, 18rem);
+  min-width: 0;
   max-width: none;
   height: clamp(26rem, 62vh, 35rem);
   scroll-snap-align: start;
@@ -86,17 +88,38 @@
   inset: 0;
 }
 
-/* Ordinateur : toutes les colonnes côte à côte, sur toute la largeur. */
-@media (min-width: 1024px) {
+/* Grand écran : toutes les colonnes côte à côte, sur toute la largeur. En dessous de 1280 px,
+   sept colonnes seraient trop étroites pour « Radiofréquence » : la bande reste défilable. */
+@media (min-width: 1280px) {
   .colonnes {
-    display: grid;
-    grid-template-columns: repeat(var(--nb-colonnes, 7), minmax(0, 1fr));
     gap: var(--esp-2);
-    padding: 0 var(--marge-laterale);
     overflow: visible;
   }
   .colonne {
+    flex: 1 1 0;
     height: clamp(26rem, 64vh, 35rem);
+  }
+}
+
+/* Souris (survol possible) : la colonne survolée ou qui a le focus s’élargit en douceur, les
+   autres se resserrent juste assez pour que le nom le plus long tienne encore, et sa photo zoome
+   légèrement. Rien si l’utilisatrice préfère réduire les animations : largeur fixe, pas de zoom. */
+@media (min-width: 1280px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .colonne {
+    transition:
+      flex-grow 500ms cubic-bezier(0.25, 0.1, 0.25, 1),
+      box-shadow var(--transition);
+  }
+  .colonne:hover,
+  .colonne:focus-within {
+    flex-grow: 1.4;
+  }
+  .colonne__image {
+    transition: transform 600ms ease;
+  }
+  .colonne:hover .colonne__image,
+  .colonne:focus-within .colonne__image {
+    transform: scale(1.05);
   }
 }
 
